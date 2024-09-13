@@ -21,5 +21,5 @@ export const AppNameTypography = styled(Typography)`
   direction: rtl;
   flex-grow: 1;
   font-size: 1.5rem;
-  color: #F2F2F2;
+  color: #f2f2f2;
 `;

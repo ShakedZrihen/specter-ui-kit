@@ -1,0 +1,27 @@
+{{#if createStyled}}
+import { Styled{{pascalCase componentName}} } from './{{pascalCase componentName}}.style';
+
+{{/if}}
+export interface {{pascalCase componentName}}Props {
+  // TODO: Document component props
+}
+
+/**
+ * TODO: document component functionality
+ *
+ * [Figma](https://https://www.figma.com/file/...)
+ *
+ * ```tsx
+ * <{{pascalCase componentName}} />
+ * ```
+ */
+export function {{pascalCase componentName}}(props: {{pascalCase componentName}}Props) {
+  return (
+    {{#if createStyled}}
+    <Styled{{pascalCase componentName}}>{{pascalCase componentName}}</Styled{{pascalCase componentName}}>
+    {{else}}
+    <div>{{pascalCase componentName}}</div>
+    {{/if}}
+  );
+};
+

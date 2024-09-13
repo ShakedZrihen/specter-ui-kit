@@ -1,0 +1,21 @@
+import { IconProps } from '../IconProps';
+import { StyledIcon } from '../StyledIcon';
+
+export function {{normalizeIconName iconName}}Icon(props: IconProps) {
+  const { size = 16, color, className } = props;
+
+  return (
+    <StyledIcon color={color} data-testid="linui-{{kebabCase iconName}}-icon">
+      <svg
+        width={size}
+        height={size}
+        viewBox='0 0 16 17'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+        className={className}
+      >
+        {/* TODO: copy svg here */}
+      </svg>
+    </StyledIcon>
+  );
+}

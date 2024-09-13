@@ -1,0 +1,14 @@
+import { {{pascalCase componentName}} } from './{{pascalCase componentName}}';
+import { render } from '@testing-library/react';
+import { LinuiTheme } from '@/context/theme';
+
+describe('{{pascalCase componentName}}', () => {
+  it('should render', () => {
+    const { container } = render(
+      <LinuiTheme>
+        <{{pascalCase componentName}} />
+      </LinuiTheme>,
+    );
+    expect(container.getElementsByTagName('div')).toBeDefined();
+  });
+});

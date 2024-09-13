@@ -13,7 +13,7 @@ type Story = StoryObj<typeof Topbar>;
 export const Primary: Story = {
   render: () => (
     <SpecterTheme>
-      <Topbar appName='ספקטר' appIcon={<SpectorLogo />}/>
+      <Topbar appName='ספקטר' appIcon={<SpectorLogo />} />
     </SpecterTheme>
   ),
 };
