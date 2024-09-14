@@ -1,1 +1,1 @@
-export { Button } from './Topbar';
+export { Topbar } from './Topbar';
