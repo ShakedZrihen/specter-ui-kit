@@ -1,0 +1,1 @@
+export { FilterByChips } from './FilterByChips';

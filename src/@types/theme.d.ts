@@ -7,11 +7,13 @@ declare module '@mui/material/styles' {
       link: {
         color: string;
       };
+      filterChip: { background: string };
       header: {
         text: string;
       };
       divider: {
         color: string;
+        blue: string;
       };
       text: {
         secondary: string;

@@ -16,8 +16,12 @@ export const colorPalette = {
   checkbox: {
     border: '#116DFF',
   },
+  filterChip: {
+    background: '#F2F3F6',
+  },
   divider: {
     color: '#CED0D4',
+    blue: '#D2DEF2',
   },
   common: {
     white: '#FFFFFF',
