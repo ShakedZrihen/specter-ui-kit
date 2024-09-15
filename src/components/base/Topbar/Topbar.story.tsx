@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Topbar } from './Topbar'; // Assuming the Topbar component is in the same directory
-import { SpecterTheme } from '../../context/theme/SpecterTheme';
-import SpectorLogo from '../assets/spector-logo.svg?react';
+import { SpecterTheme } from '../../../context/theme/SpecterTheme';
+import SpectorLogo from '../../assets/spector-logo.svg?react';
 
 export default {
   title: 'Components/Topbar',

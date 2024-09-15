@@ -6,9 +6,11 @@ export const StyledSearch = styled('div')`
   align-items: center;
   padding: 0.5rem 0.8rem;
   border-radius: 50px;
-  background-color: ${({ theme }) => alpha(theme.colorPalette.common.white, 0.15)};
+  background-color: ${({ theme }) =>
+    alpha(theme.colorPalette.common.white, 0.15)};
   &:hover {
-    background-color: ${({ theme }) => alpha(theme.colorPalette.common.white, 0.25)};
+    background-color: ${({ theme }) =>
+      alpha(theme.colorPalette.common.white, 0.25)};
   }
   margin-left: 0;
   width: 20rem;

@@ -1,9 +1,10 @@
 import { createTheme } from '@mui/material';
 import { typography } from './typography';
 
-const colorPalette = {
+export const colorPalette = {
   header: {
     text: '#F2F2F2',
+    background: '#1B1E2D',
   },
   common: {
     white: '#FFFFFF',

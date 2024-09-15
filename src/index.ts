@@ -1,1 +1,1 @@
-export { Topbar } from './components/Topbar';
+export * from './components';
