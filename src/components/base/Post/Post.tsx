@@ -1,10 +1,13 @@
 import { TextWithHighlights } from '../TextWithHighlights';
 import {
+  PostAuthor,
   PostAvatar,
   PostContent,
+  PostDatetime,
   PostFooter,
   PostHeader,
   PostHeaderContent,
+  PostSource,
   StyledPost,
 } from './Post.style';
 
@@ -14,7 +17,13 @@ export interface PostProps {
     avatar: string;
   };
   time: string;
-  source: string;
+  date: string;
+  source: {
+    url: string;
+    channelName: string;
+    channelUrl: string;
+    sourceName: string;
+  };
   content: string;
   isRead: boolean;
   highlightedText: string[];
@@ -30,16 +39,26 @@ export interface PostProps {
  * ```
  */
 export function Post(props: PostProps) {
-  const { author, time, source, content, highlightedText = [] } = props;
+  const { author, time, date, source, content, highlightedText = [] } = props;
+  const cleanProtocol = (url: string) =>
+    url.replace('https://', '').replace('http://', '');
 
   return (
     <StyledPost>
       <PostHeader>
-        <PostAvatar />
+        <PostAvatar alt={author.name} src={author.avatar} />
         <PostHeaderContent>
-          <div>{author.name}</div>
-          <div>{time}</div>
-          <div>{source}</div>
+          <PostAuthor>{author.name}</PostAuthor>
+          <PostDatetime>
+            {time} • {date}
+          </PostDatetime>
+          <PostSource>
+            <a href={source.url}>
+              {cleanProtocol(source.url)}
+            </a>
+            •<a href={source.channelUrl}>{source.channelName}</a> •{' '}
+            <span>{source.sourceName}</span>
+          </PostSource>
         </PostHeaderContent>
       </PostHeader>
       <PostContent>

@@ -4,11 +4,18 @@ import '@mui/material/styles';
 declare module '@mui/material/styles' {
   interface Theme {
     colorPalette: {
+      link: {
+        color: string;
+      };
       header: {
         text: string;
       };
       divider: {
         color: string;
+      };
+      text: {
+        secondary: string;
+        primary: string;
       };
       common: {
         white: string;

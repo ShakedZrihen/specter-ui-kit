@@ -8,4 +8,7 @@ export const HighlightedText = styled('span')`
 
 export const StyledTextWithHighlights = styled(Typography)`
   direction: rtl;
+  color: ${({ theme }) => theme.colorPalette.text.primary};
+  font-size: 1.2rem;
+  font-weight: 400;
 `;

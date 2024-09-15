@@ -6,6 +6,13 @@ export const colorPalette = {
     text: '#F2F2F2',
     background: '#1B1E2D',
   },
+  link: {
+    color: '#1877f2',
+  },
+  text: {
+    secondary: '#6E747F',
+    primary: '#050505',
+  },
   divider: {
     color: '#CED0D4',
   },
