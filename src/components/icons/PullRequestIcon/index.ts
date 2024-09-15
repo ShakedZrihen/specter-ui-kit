@@ -1,0 +1,1 @@
+export { PullRequestIcon } from './PullRequestIcon';

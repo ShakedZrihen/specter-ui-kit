@@ -1,0 +1,1 @@
+export { DocumetsIcon } from './DocumetsIcon';

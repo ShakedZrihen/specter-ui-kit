@@ -1,0 +1,1 @@
+export { TwitterXIcon } from './TwitterXIcon';

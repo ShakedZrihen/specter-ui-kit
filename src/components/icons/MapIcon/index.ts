@@ -1,0 +1,1 @@
+export { MapIcon } from './MapIcon';
