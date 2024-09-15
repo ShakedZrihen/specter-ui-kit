@@ -25,6 +25,7 @@ export const PostHeaderContent = styled(Typography)`
   display: flex;
   flex-direction: column;
   direction: rtl;
+  flex-grow: 1;
 `;
 
 export const PostDatetime = styled(Typography)`
@@ -37,7 +38,15 @@ export const PostAuthor = styled(Typography)`
   color: ${({ theme }) => theme.colorPalette.text.primary};
 `;
 
-export const PostReadIndicator = styled('div')``;
+export const PostReadIndicator = styled('div')`
+  & .MuiFormControlLabel-root {
+    margin-left: 0;
+  }
+
+  & .MuiFormControlLabel-label {
+    margin-right: -0.3rem;
+  }
+`;
 
 export const PostSource = styled('div')`
   display: flex;
@@ -66,7 +75,26 @@ export const PostContent = styled(Typography)`
 `;
 
 export const PostFooter = styled('div')`
-  height: 1rem;
-  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  height: 3rem;
+  padding: 0 3rem;
   border-top: 1px solid ${({ theme }) => theme.colorPalette.divider.color};
+`;
+
+export const ActionButton = styled('div')`
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: ${({ theme }) => theme.colorPalette.text.primary};
+  p {
+    margin-right: 0.5rem;
+  }
+
+  :hover {
+    cursor: pointer;
+    svg {
+      fill: ${({ theme }) => theme.colorPalette.common.highlight};
+    }
+  }
 `;

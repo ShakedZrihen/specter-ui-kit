@@ -13,6 +13,9 @@ export const colorPalette = {
     secondary: '#6E747F',
     primary: '#050505',
   },
+  checkbox: {
+    border: '#116DFF',
+  },
   divider: {
     color: '#CED0D4',
   },
@@ -28,4 +31,17 @@ export const lightMode = createTheme({
   },
   typography,
   colorPalette,
+  components: {
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          // This changes the border color (line color)
+          color: colorPalette.checkbox.border,
+          '&.Mui-checked': {
+            color: colorPalette.checkbox.border, // Color when checked
+          },
+        },
+      },
+    },
+  },
 });

@@ -7,6 +7,7 @@ const meta: Meta<typeof Post> = {
   component: Post,
   argTypes: {},
   args: {
+    id: '1',
     author: {
       name: 'Nablusarlrasas48',
       avatar:
@@ -23,6 +24,7 @@ const meta: Meta<typeof Post> = {
     content: 'ידיעות אחרונות: האימוץ המשותף של חמאס והג׳יהאד האיסלאמי לאחריות על הפיגוע ב״תל אביב״, מזכיר לנו את ימי השיא האינתיפאדה השנייה, שבהם ביצעו שני הארגונים גם פיגועים...',
     isRead: false,
     highlightedText: ['חמאס'],
+    onSave: () => alert('saved'),
   },
 };
 
@@ -33,7 +35,7 @@ export const Basic: Story = {
   render(props) {
     return (
       <SpecterTheme>
-        <Post {...props} />;
+        <Post {...props} />
       </SpecterTheme>
     );
   },
