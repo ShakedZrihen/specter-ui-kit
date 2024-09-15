@@ -22,6 +22,7 @@ declare module '@mui/material/styles' {
       common: {
         white: string;
         highlight: string;
+        icon: string;
       };
     };
   }

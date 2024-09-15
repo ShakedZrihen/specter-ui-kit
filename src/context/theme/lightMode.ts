@@ -26,7 +26,7 @@ export const colorPalette = {
   common: {
     white: '#FFFFFF',
     highlight: '#FFDF5F',
-    icon: '#2860A8'
+    icon: '#2860A8',
   },
 };
 
