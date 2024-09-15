@@ -1,4 +1,4 @@
-import { AppBar, styled, Typography } from '@mui/material';
+import { AppBar, styled, Toolbar, Typography } from '@mui/material';
 
 export const StyledAppBar = styled(AppBar)`
   position: static;
@@ -12,14 +12,25 @@ export const TopbarAppDetailsContainer = styled('div')`
   direction: rtl;
 
   & > svg {
-    margin-left: 0.4rem;
+    margin-left: 0.5rem;
   }
 `;
 
+export const TopbarContainer = styled(Toolbar)`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const TopbarSearchContainer = styled('div')``;
+
+export const TopbarUserContextContainer = styled('div')`
+  width: 10%;
+`;
+
 export const AppNameTypography = styled(Typography)`
-  font-weight: 700;
+  font-weight: 600;
   direction: rtl;
   flex-grow: 1;
-  font-size: 1.5rem;
-  color: #f2f2f2;
+  font-size: 1.8rem;
+  color: ${({ theme }) => theme.colorPalette.header.text};
 `;

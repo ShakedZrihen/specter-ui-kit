@@ -17,3 +17,16 @@ export const Primary: Story = {
     </SpecterTheme>
   ),
 };
+
+export const WithSearch: Story = {
+  render: () => (
+    <SpecterTheme>
+      <Topbar
+        appName='ספקטר'
+        appIcon={<SpectorLogo />}
+        withSearch
+        onSearch={console.log}
+      />
+    </SpecterTheme>
+  ),
+};
