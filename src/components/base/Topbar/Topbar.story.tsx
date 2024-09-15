@@ -4,7 +4,7 @@ import { SpecterTheme } from '../../../context/theme/SpecterTheme';
 import SpectorLogo from '../../assets/spector-logo.svg?react';
 
 export default {
-  title: 'Components/Topbar',
+  title: 'base/Topbar',
   component: Topbar,
 } as Meta;
 

@@ -1,0 +1,1 @@
+export { TextWithHighlights } from './TextWithHighlights';

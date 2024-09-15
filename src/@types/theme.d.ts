@@ -7,8 +7,12 @@ declare module '@mui/material/styles' {
       header: {
         text: string;
       };
+      divider: {
+        color: string;
+      };
       common: {
         white: string;
+        highlight: string;
       };
     };
   }

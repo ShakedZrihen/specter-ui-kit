@@ -13,6 +13,6 @@ type Story = StoryObj<typeof {{pascalCase componentName}}>;
 
 export const Basic: Story = {
   render(props) {
-    return <{{pascalCase componentName}} {...props} />;
+    return  <SpecterTheme><{{pascalCase componentName}} {...props} /></SpecterTheme>;
   },
 };
