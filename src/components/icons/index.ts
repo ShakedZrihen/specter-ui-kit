@@ -20,3 +20,4 @@ export { TwitterXIcon } from './TwitterXIcon';
 export { TrashIcon } from './TrashIcon';
 export { CalendarIcon } from './CalendarIcon';
 export { LoopIcon } from './LoopIcon';
+export { OrderByIcon } from './OrderByIcon';
