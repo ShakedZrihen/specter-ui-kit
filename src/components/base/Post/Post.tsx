@@ -1,4 +1,5 @@
-import { Checkbox, FormControlLabel, Typography } from '@mui/material';
+import { Checkbox, FormControlLabel, Typography, Divider } from '@mui/material';
+
 import { TextWithHighlights } from '../TextWithHighlights';
 import {
   ActionButton,
@@ -99,6 +100,7 @@ export function Post(props: PostProps) {
       <PostContent>
         <TextWithHighlights text={content} highlightedText={highlightedText} />
       </PostContent>
+      <Divider />
       <PostFooter>
         <ActionButton onClick={() => onSave(id)}>
           <FavoriteIcon color={colorPalette.text.primary} size={20} />

@@ -79,7 +79,6 @@ export const PostFooter = styled('div')`
   justify-content: space-between;
   height: 3rem;
   padding: 0 3rem;
-  border-top: 1px solid ${({ theme }) => theme.colorPalette.divider.color};
 `;
 
 export const ActionButton = styled('div')`
