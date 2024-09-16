@@ -11,10 +11,6 @@ import { JSXElementConstructor, useState } from 'react';
 import { SelectedFiltersIndicator } from './SelectedFiltersIndicator';
 
 export interface SelectedFilters {
-  // creationTime?: string;
-  // lastUpdate?: string;
-  // systemFirstSeen?: string;
-  // timeFrame?: string;
   [key: string]: string | undefined;
 }
 

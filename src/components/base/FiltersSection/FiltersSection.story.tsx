@@ -1,8 +1,14 @@
 import { styled } from '@mui/material';
 import { SpecterTheme } from '../../../context/theme/SpecterTheme';
-import { FiltersSection } from './FiltersSection';
+import {
+  FiltersSection,
+  FiltersSectionProps,
+  SelectedFilters,
+} from './FiltersSection';
 import type { Meta, StoryObj } from '@storybook/react';
 import { CreationTimeFilter } from './Filters/CreationTimeFilter';
+import { useState } from 'react';
+import { omit } from 'lodash';
 
 const meta: Meta<typeof FiltersSection> = {
   title: 'base/FiltersSection',
@@ -32,11 +38,37 @@ export const ByTime: Story = {
       width: 20rem;
     `;
 
+    const FiltersContainer = (props: FiltersSectionProps) => {
+      const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>(
+        props.selectedFilters ?? {},
+      );
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const updateFilters = (filterName: string, selectedFilter: any) => {
+        if (filterName in selectedFilters && !selectedFilter) {
+          setSelectedFilters(omit(selectedFilters, filterName));
+        } else if (selectedFilter) {
+          setSelectedFilters({
+            ...selectedFilters,
+            [filterName]: selectedFilter,
+          });
+        }
+      };
+
+      return (
+        <Container>
+          <FiltersSection
+            {...props}
+            selectedFilters={selectedFilters}
+            onChange={updateFilters}
+          />
+        </Container>
+      );
+    };
+
     return (
       <SpecterTheme>
-        <Container>
-          <FiltersSection {...props} />
-        </Container>
+        <FiltersContainer {...props} />
       </SpecterTheme>
     );
   },

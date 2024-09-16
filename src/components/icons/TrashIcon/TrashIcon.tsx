@@ -2,10 +2,14 @@ import { IconProps } from '../IconProps';
 import { StyledIcon } from '../StyledIcon';
 
 export function TrashIcon(props: IconProps) {
-  const { size = 30, color = 'white', className } = props;
+  const { size = 30, color = 'white', className, onClick } = props;
 
   return (
-    <StyledIcon color={color} data-testid='specter-trash-icon'>
+    <StyledIcon
+      color={color}
+      data-testid='specter-trash-icon'
+      {...(onClick ? { onClick } : {})}
+    >
       <svg
         width={size}
         height={size}
