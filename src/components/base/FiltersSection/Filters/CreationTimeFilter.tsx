@@ -1,6 +1,6 @@
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { CalendarIcon, TrashIcon } from '../../../icons';
+import { CalendarIcon } from '../../../icons';
 import { colorPalette } from '../../../../context/theme/lightMode';
 import dayjs from 'dayjs';
 import {
@@ -8,7 +8,7 @@ import {
   StyledDesktopDateTimePicker,
   StyledFilter,
   StyledLabel,
-  TrashContainer,
+  Trash,
 } from './CreationTimeFilter.style';
 
 interface CreationTimeFilterProps {
@@ -36,9 +36,11 @@ export const CreationTimeFilter = ({
             }}
           />
         </LocalizationProvider>
-        <TrashContainer onClick={() => onChange(null)}>
-          <TrashIcon size={40} color={colorPalette.link.color} />
-        </TrashContainer>
+        <Trash
+          onClick={() => onChange(null)}
+          size={35}
+          color={colorPalette.link.color}
+        />
       </ActionsContainer>
     </StyledFilter>
   );

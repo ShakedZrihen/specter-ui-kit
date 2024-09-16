@@ -1,5 +1,6 @@
 import { styled, Typography } from '@mui/material';
 import { DesktopDateTimePicker } from '@mui/x-date-pickers/DesktopDateTimePicker';
+import { TrashIcon } from '../../../icons';
 
 export const StyledFilter = styled('div')`
   display: flex;
@@ -11,6 +12,7 @@ export const StyledFilter = styled('div')`
 export const StyledLabel = styled(Typography)`
   font-weight: 600;
   font-size: 1rem;
+  margin-bottom: 0.2rem;
 `;
 
 export const ActionsContainer = styled('div')`
@@ -19,12 +21,8 @@ export const ActionsContainer = styled('div')`
   flex-direction: row-reverse;
 `;
 
-export const TrashContainer = styled('div')`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 0.5rem;
-
+export const Trash = styled(TrashIcon)`
+  margin-left: 0.2rem;
   :hover {
     cursor: pointer;
   }

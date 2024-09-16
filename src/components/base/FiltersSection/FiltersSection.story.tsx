@@ -18,10 +18,10 @@ const meta: Meta<typeof FiltersSection> = {
 export default meta;
 type Story = StoryObj<typeof FiltersSection>;
 
-export const Basic: Story = {
+export const ByTime: Story = {
   render(props) {
     const Container = styled('div')`
-      width: 30rem;
+      width: 20rem;
     `;
 
     return (
