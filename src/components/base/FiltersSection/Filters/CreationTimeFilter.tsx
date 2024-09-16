@@ -14,16 +14,20 @@ import {
 interface CreationTimeFilterProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChange: (date: any) => void;
+  value?: string;
 }
 
-export const CreationTimeFilter = ({ onChange }: CreationTimeFilterProps) => {
+export const CreationTimeFilter = ({
+  onChange,
+  value,
+}: CreationTimeFilterProps) => {
   return (
     <StyledFilter>
       <StyledLabel>זמן יצירה</StyledLabel>{' '}
       <ActionsContainer>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <StyledDesktopDateTimePicker
-            defaultValue={dayjs('2022-04-17T15:30')}
+            defaultValue={value ? dayjs(value) : null}
             onChange={onChange}
             slots={{
               openPickerIcon: () => (
@@ -32,7 +36,7 @@ export const CreationTimeFilter = ({ onChange }: CreationTimeFilterProps) => {
             }}
           />
         </LocalizationProvider>
-        <TrashContainer>
+        <TrashContainer onClick={() => onChange(null)}>
           <TrashIcon size={40} color={colorPalette.link.color} />
         </TrashContainer>
       </ActionsContainer>

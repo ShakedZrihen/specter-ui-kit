@@ -9,6 +9,9 @@ const meta: Meta<typeof FiltersSection> = {
   argTypes: {},
   args: {
     filterName: 'לפי זמן',
+    onChange(filterName, selectedValue) {
+      console.log(filterName, selectedValue);
+    },
   },
 };
 

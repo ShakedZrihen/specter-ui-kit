@@ -9,10 +9,19 @@ import { ChevronDownIcon, ChevronLeftIcon } from '../../icons';
 import { colorPalette } from '../../../context/theme/lightMode';
 import { useState } from 'react';
 import { CreationTimeFilter } from './Filters/CreationTimeFilter';
+import { SelectedFiltersIndicator } from './SelectedFiltersIndicator';
+
+export interface SelectedFilters {
+  creationTime?: string;
+  lastUpdate?: string;
+  systemFirstSeen?: string;
+  timeFrame?: string;
+}
 
 export interface FiltersSectionProps {
   filterName: string;
-  selectedFilters?: string[];
+  selectedFilters?: SelectedFilters;
+  onChange: (filterName: string, selectedValue?: string) => void;
 }
 
 /**
@@ -26,13 +35,16 @@ export interface FiltersSectionProps {
  */
 export function FiltersSection({
   filterName,
-  selectedFilters = [],
+  selectedFilters = {},
+  onChange,
 }: FiltersSectionProps) {
   const [expanded, setExpanded] = useState(false);
 
   const handleChange = (isExpanded: boolean) => {
     setExpanded(isExpanded);
   };
+
+  const selectedFiltersLength = Object.keys(selectedFilters).length;
 
   return (
     <StyledAccordion
@@ -51,16 +63,22 @@ export function FiltersSection({
         <Typography sx={{ marginRight: '0.5rem', fontWeight: 600, flex: 1 }}>
           {filterName}
         </Typography>
-        {selectedFilters.length > 0 ? (
-          <SelectedFilters>
-            <Typography sx={{ color: colorPalette.common.white }}>
-              {selectedFilters.length}
-            </Typography>
-          </SelectedFilters>
-        ) : null}
+        <SelectedFiltersIndicator
+          selectedFiltersNumber={selectedFiltersLength}
+        />
       </StyledAccordionSummary>
       <StyledAccordionDetails>
-        <CreationTimeFilter onChange={date => console.log({ date })} />
+        <CreationTimeFilter
+          value={selectedFilters.creationTime}
+          onChange={date => {
+            if (!date) {
+              // unset filter
+              return onChange('creationTime', undefined);
+            }
+
+            onChange('creationTime', new Date(date).toISOString());
+          }}
+        />
       </StyledAccordionDetails>
     </StyledAccordion>
   );
