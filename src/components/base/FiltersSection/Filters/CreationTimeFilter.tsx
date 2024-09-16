@@ -1,9 +1,9 @@
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { CalendarIcon, TrashIcon } from '../../../icons';
 import { colorPalette } from '../../../../context/theme/lightMode';
+import { DesktopDateTimePicker } from '@mui/x-date-pickers/DesktopDateTimePicker';
+import dayjs from 'dayjs';
 import {
   ActionsContainer,
   StyledFilter,
@@ -22,20 +22,29 @@ export const CreationTimeFilter = ({ onChange }: CreationTimeFilterProps) => {
       <StyledLabel>זמן יצירה</StyledLabel>{' '}
       <ActionsContainer>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DemoContainer components={['DatePicker']}>
-            <DatePicker
-              label='בחר תאריך'
-              sx={{
-                backgroundColor: colorPalette.common.white,
-              }}
-              onChange={onChange}
-              slots={{
-                openPickerIcon: () => (
-                  <CalendarIcon size={25} color={colorPalette.link.color} />
-                ),
-              }}
-            />
-          </DemoContainer>
+          <DesktopDateTimePicker
+            defaultValue={dayjs('2022-04-17T15:30')}
+            sx={{
+              backgroundColor: colorPalette.common.white,
+              '& .MuiInputBase-input': {
+                padding: 0,
+                paddingLeft: '1rem',
+                width: '10rem',
+              },
+              fieldset: {
+                border: `1px solid ${colorPalette.divider.blue}`,
+                ':hover': {
+                  outline: 'none',
+                },
+              },
+            }}
+            onChange={onChange}
+            slots={{
+              openPickerIcon: () => (
+                <CalendarIcon size={20} color={colorPalette.link.color} />
+              ),
+            }}
+          />
         </LocalizationProvider>
         <TrashContainer>
           <TrashIcon size={40} color={colorPalette.link.color} />
