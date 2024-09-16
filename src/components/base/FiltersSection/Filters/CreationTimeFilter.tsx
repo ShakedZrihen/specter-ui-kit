@@ -28,7 +28,9 @@ export const CreationTimeFilter = ({
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <StyledDesktopDateTimePicker
             defaultValue={value ? dayjs(value) : null}
-            onChange={onChange}
+            onChange={date =>
+              onChange(date ? new Date(date.toString()).toISOString() : null)
+            }
             slots={{
               openPickerIcon: () => (
                 <CalendarIcon size={20} color={colorPalette.link.color} />

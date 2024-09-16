@@ -2,6 +2,7 @@ import { styled } from '@mui/material';
 import { SpecterTheme } from '../../../context/theme/SpecterTheme';
 import { FiltersSection } from './FiltersSection';
 import type { Meta, StoryObj } from '@storybook/react';
+import { CreationTimeFilter } from './Filters/CreationTimeFilter';
 
 const meta: Meta<typeof FiltersSection> = {
   title: 'base/FiltersSection',
@@ -12,6 +13,13 @@ const meta: Meta<typeof FiltersSection> = {
     onChange(filterName, selectedValue) {
       console.log(filterName, selectedValue);
     },
+    selectedFilters: {},
+    filterList: [
+      {
+        filterName: 'creationTime',
+        Component: CreationTimeFilter,
+      },
+    ],
   },
 };
 

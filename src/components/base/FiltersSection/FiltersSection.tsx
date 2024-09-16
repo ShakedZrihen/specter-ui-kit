@@ -7,21 +7,31 @@ import {
 } from './FiltersSection.style';
 import { ChevronDownIcon, ChevronLeftIcon } from '../../icons';
 import { colorPalette } from '../../../context/theme/lightMode';
-import { useState } from 'react';
-import { CreationTimeFilter } from './Filters/CreationTimeFilter';
+import { JSXElementConstructor, useState } from 'react';
 import { SelectedFiltersIndicator } from './SelectedFiltersIndicator';
 
 export interface SelectedFilters {
-  creationTime?: string;
-  lastUpdate?: string;
-  systemFirstSeen?: string;
-  timeFrame?: string;
+  // creationTime?: string;
+  // lastUpdate?: string;
+  // systemFirstSeen?: string;
+  // timeFrame?: string;
+  [key: string]: string | undefined;
+}
+
+export interface FilterDefinition {
+  filterName: string;
+  Component: JSXElementConstructor<{
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    value: any;
+    onChange: (selectedValue?: string) => void;
+  }>;
 }
 
 export interface FiltersSectionProps {
   filterName: string;
   selectedFilters?: SelectedFilters;
   onChange: (filterName: string, selectedValue?: string) => void;
+  filterList: FilterDefinition[];
 }
 
 /**
@@ -36,6 +46,7 @@ export interface FiltersSectionProps {
 export function FiltersSection({
   filterName,
   selectedFilters = {},
+  filterList,
   onChange,
 }: FiltersSectionProps) {
   const [expanded, setExpanded] = useState(false);
@@ -68,17 +79,20 @@ export function FiltersSection({
         />
       </StyledAccordionSummary>
       <StyledAccordionDetails>
-        <CreationTimeFilter
-          value={selectedFilters.creationTime}
-          onChange={date => {
-            if (!date) {
-              // unset filter
-              return onChange('creationTime', undefined);
-            }
+        {filterList.map(({ filterName, Component }: FilterDefinition) => (
+          <Component
+            key={filterName}
+            value={selectedFilters[filterName]}
+            onChange={selectedValue => {
+              if (!selectedValue) {
+                // unset filter
+                return onChange(filterName, undefined);
+              }
 
-            onChange('creationTime', new Date(date).toISOString());
-          }}
-        />
+              onChange(filterName, selectedValue);
+            }}
+          />
+        ))}
       </StyledAccordionDetails>
     </StyledAccordion>
   );
