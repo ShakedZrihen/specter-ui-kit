@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { SpecterTheme } from '../../../context/theme/SpecterTheme';
 import { Post } from './Post';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -34,9 +35,22 @@ type Story = StoryObj<typeof Post>;
 
 export const Basic: Story = {
   render(props) {
+    const PostWithActions = () => {
+      const [isRead, setIsRead] = useState(false);
+
+      return (
+        <Post
+          {...props}
+          isRead={isRead}
+          onUnread={() => setIsRead(false)}
+          onRead={() => setIsRead(true)}
+        />
+      );
+    };
+
     return (
       <SpecterTheme>
-        <Post {...props} />
+        <PostWithActions />
       </SpecterTheme>
     );
   },

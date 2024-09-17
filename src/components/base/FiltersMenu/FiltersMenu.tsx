@@ -6,10 +6,16 @@ import {
   StyledDrawer,
   CloseMenuContainer,
   FiltersControllerButton,
+  FiltersContainer,
 } from './FiltersMenu.style';
 import { useState } from 'react';
 import { CloseIcon, FilterIcon } from '../../icons';
 import { colorPalette } from '../../../context/theme/lightMode';
+
+interface FiltersMenuProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  filters: any[];
+}
 
 /**
  * TODO: document component functionality
@@ -20,7 +26,7 @@ import { colorPalette } from '../../../context/theme/lightMode';
  * <FiltersMenu />
  * ```
  */
-export function FiltersMenu() {
+export function FiltersMenu({ filters }: FiltersMenuProps) {
   const [open, toggleDrawer] = useState(false);
 
   return (
@@ -42,6 +48,7 @@ export function FiltersMenu() {
           </CloseMenuContainer>
         </FiltersHeader>
         <Divider />
+        <FiltersContainer>{filters}</FiltersContainer>
       </StyledDrawer>
     </StyledFiltersMenu>
   );

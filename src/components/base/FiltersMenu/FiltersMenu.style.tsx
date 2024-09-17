@@ -48,3 +48,8 @@ export const FiltersControllerButton = styled('div')`
     font-size: 1rem;
   }
 `;
+
+export const FiltersContainer = styled('div')`
+  margin: 1rem auto;
+  width: 18rem;
+`;
