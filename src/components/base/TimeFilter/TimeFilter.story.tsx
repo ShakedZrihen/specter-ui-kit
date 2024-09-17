@@ -11,7 +11,7 @@ const meta: Meta<typeof TimeFilter> = {
     value: undefined,
     onChange: (date: string | null | undefined) => {
       console.log(date);
-    }
+    },
   },
 };
 
