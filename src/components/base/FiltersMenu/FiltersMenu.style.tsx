@@ -13,6 +13,8 @@ export const FiltersHeader = styled('div')`
 export const Title = styled(Typography)`
   font-weight: 500;
   margin-right: 0.3rem;
+
+  flex: 1;
 `;
 
 export const StyledDrawer = styled(Drawer)`
