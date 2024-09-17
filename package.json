@@ -1,8 +1,21 @@
 {
   "name": "specter-ui-kit",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.1.4-rc2",
   "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "storybook": "storybook dev -p 6006",
@@ -54,6 +67,7 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1",
+    "vite-plugin-dts": "^4.2.1",
     "vite-plugin-svgr": "^4.2.0"
   },
   "eslintConfig": {
