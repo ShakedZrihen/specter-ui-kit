@@ -1,6 +1,6 @@
 import { styled, Typography } from '@mui/material';
 import { DesktopDateTimePicker } from '@mui/x-date-pickers/DesktopDateTimePicker';
-import { TrashIcon } from '../../../icons';
+import { TrashIcon } from '../../icons';
 
 export const StyledFilter = styled('div')`
   display: flex;
