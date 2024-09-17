@@ -1,0 +1,1 @@
+export { DescriptionAccordion } from './DescriptionAccordion';
