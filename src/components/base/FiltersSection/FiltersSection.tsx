@@ -56,7 +56,7 @@ export function FiltersSection({
   return (
     <StyledAccordion
       expanded={expanded}
-      onChange={(e, isExpanded) => handleChange(isExpanded)}
+      onChange={(_e, isExpanded) => handleChange(isExpanded)}
     >
       <StyledAccordionSummary
         expandIcon={
