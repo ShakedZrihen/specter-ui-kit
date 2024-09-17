@@ -1,4 +1,5 @@
 import { Drawer, styled, Typography } from '@mui/material';
+import { darken } from '@mui/system';
 
 export const StyledFiltersMenu = styled('div')``;
 
@@ -12,13 +13,19 @@ export const FiltersHeader = styled('div')`
 export const Title = styled(Typography)`
   font-weight: 500;
   margin-right: 0.3rem;
-  flex: 1;
 `;
 
 export const StyledDrawer = styled(Drawer)`
   .MuiDrawer-paper {
     width: 20rem;
   }
+`;
+
+export const FiltersMenuContainer = styled('div')`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
 `;
 
 export const CloseMenuContainer = styled('div')`
@@ -52,4 +59,22 @@ export const FiltersControllerButton = styled('div')`
 export const FiltersContainer = styled('div')`
   margin: 1rem auto;
   width: 18rem;
+  flex: 1;
+`;
+
+export const FiltersActionContainer = styled('div')`
+  display: flex;
+  padding: 1.5rem;
+  direction: rtl;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+
+  & a {
+    text-decoration: none;
+    color: ${({ theme }) => theme.colorPalette.link.color};
+    :hover {
+      cursor: pointer;
+      color: ${({ theme }) => darken(theme.colorPalette.link.color, 0.2)};
+    }
+  }
 `;

@@ -27,7 +27,7 @@ export const CreationTimeFilter = ({
       <ActionsContainer>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <StyledDesktopDateTimePicker
-            defaultValue={value ? dayjs(value) : null}
+            value={value ? dayjs(value) : null}
             onChange={date => {
               onChange(date ? new Date(date.toString()).toISOString() : null);
             }}
