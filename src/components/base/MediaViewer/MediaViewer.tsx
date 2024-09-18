@@ -1,4 +1,6 @@
+import { ReactImageGalleryProps } from 'react-image-gallery';
 import { StyledMediaViewer } from './MediaViewer.style';
+
 
 export interface MediaViewerProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -14,12 +16,13 @@ export interface MediaViewerProps {
  * <MediaViewer />
  * ```
  */
-export function MediaViewer({ items }: MediaViewerProps) {
+export function MediaViewer(props: ReactImageGalleryProps) {
   return (
     <StyledMediaViewer
+      {...props}
       showPlayButton={false}
       showThumbnails={false}
-      items={items}
+      showBullets
     />
   );
 }
