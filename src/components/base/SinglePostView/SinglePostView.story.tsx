@@ -7,6 +7,7 @@ const meta: Meta<typeof SinglePostView> = {
   component: SinglePostView,
   argTypes: {},
   args: {
+    isOpen: true,
     post: {
       id: '1',
       author: {
