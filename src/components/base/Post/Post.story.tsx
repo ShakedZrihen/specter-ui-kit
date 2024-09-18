@@ -27,6 +27,7 @@ const meta: Meta<typeof Post> = {
     isRead: false,
     highlightedText: ['חמאס'],
     onSave: () => alert('saved'),
+    enrichments: {},
   },
 };
 

@@ -1,4 +1,5 @@
 import { Avatar, Card, styled, Typography } from '@mui/material';
+import { lighten } from '@mui/system';
 
 export const StyledPost = styled(Card)`
   display: flex;
@@ -79,6 +80,15 @@ export const PostFooter = styled('div')`
   justify-content: space-between;
   height: 3rem;
   padding: 0 3rem;
+  align-items: center;
+`;
+
+export const PostSlimFooter = styled('div')`
+  display: flex;
+  height: 3rem;
+  align-items: center;
+  gap: 1rem;
+  padding-right: 0.8rem;
 `;
 
 export const ActionButton = styled('div')`
@@ -92,8 +102,6 @@ export const ActionButton = styled('div')`
 
   :hover {
     cursor: pointer;
-    svg {
-      fill: ${({ theme }) => theme.colorPalette.common.highlight};
-    }
+    color: ${({ theme }) => lighten(theme.colorPalette.text.primary, 0.6)};
   }
 `;

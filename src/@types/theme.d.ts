@@ -10,6 +10,7 @@ declare module '@mui/material/styles' {
       filterChip: { background: string };
       header: {
         text: string;
+        fill: string;
       };
       divider: {
         color: string;
