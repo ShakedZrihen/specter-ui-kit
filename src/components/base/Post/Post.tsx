@@ -21,7 +21,7 @@ export interface PostMedia {
   extraInfo?: Record<string, string>;
 }
 
-export interface PostProps {
+export interface Post {
   id: string | number;
   author: {
     name: string;
@@ -44,11 +44,6 @@ export interface PostProps {
   };
   isRead: boolean;
   slimView?: boolean;
-  onRead?: (id: string | number) => void;
-  onUnread?: (id: string | number) => void;
-  onSave?: (id: string | number) => void;
-  onShare?: (id: string | number) => void;
-  onMore?: (id: string | number) => void;
   highlightedText: string[];
   enrichments?: {
     metadata?: Record<string, string>;
@@ -56,6 +51,14 @@ export interface PostProps {
     operationalHistory?: Record<string, string>;
     relatedEntities?: Record<string, string>;
   };
+}
+
+export interface PostProps extends Post {
+  onRead?: (id: string | number) => void;
+  onUnread?: (id: string | number) => void;
+  onSave?: (id: string | number) => void;
+  onShare?: (id: string | number) => void;
+  onMore?: (id: string | number) => void;
 }
 
 /**
@@ -127,6 +130,7 @@ export function Post(props: PostProps & { className?: string }) {
           text={content}
           highlightedText={highlightedText}
           direction={direction}
+          maxLines={5}
         />
       </PostContent>
       {!slimView && <Divider />}

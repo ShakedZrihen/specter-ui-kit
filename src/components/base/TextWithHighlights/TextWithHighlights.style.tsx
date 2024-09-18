@@ -7,9 +7,18 @@ export const HighlightedText = styled('span')<{ direction: string }>`
   direction: ${({ direction }) => direction};
 `;
 
-export const StyledTextWithHighlights = styled(Typography)<{ direction: string }>`
+export const StyledTextWithHighlights = styled(Typography)<{
+  direction: string;
+}>`
   direction: ${({ direction }) => direction};
   color: ${({ theme }) => theme.colorPalette.text.primary};
   font-size: 1.2rem;
   font-weight: 400;
+`;
+
+export const ShowMoreButton = styled('span')`
+  display: flex;
+  direction: rtl;
+  cursor: pointer;
+  color: ${({ theme }) => theme.colorPalette.link.color};
 `;

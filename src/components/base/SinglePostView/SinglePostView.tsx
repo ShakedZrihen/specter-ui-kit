@@ -12,30 +12,9 @@ import {
 } from './SinglePostView.style';
 import { colorPalette } from '../../../context/theme/lightMode';
 import { DescriptionAccordion } from '../DescriptionAccordion';
+import { Post } from '../Post';
 export interface SinglePostViewProps {
-  post: {
-    id: string | number;
-    author: {
-      name: string;
-      avatar: string;
-    };
-    time: string;
-    date: string;
-    source: {
-      url: string;
-      channelName: string;
-      channelUrl: string;
-      sourceName: string;
-    };
-    enrichments: {
-      metadata: Record<string, string>;
-      ai: Record<string, string>;
-      operationalHistory: Record<string, string>;
-      relatedEntities: Record<string, string>;
-    };
-    content: string;
-    isRead: boolean;
-  };
+  post: Post;
   isOpen: boolean;
 }
 
