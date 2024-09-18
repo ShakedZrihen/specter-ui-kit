@@ -7,7 +7,17 @@ import {
 
 export const StyledDescriptionAccordion = styled(Accordion)`
   box-shadow: none;
-  width: 30rem;
+  width: 100%;
+  margin-bottom: 1rem;
+
+  &.Mui-expanded {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  ::before {
+    height: 0;
+  }
 `;
 
 export const StyledAccordionDetails = styled(AccordionDetails)`
@@ -29,6 +39,7 @@ export const StyledAccordionSummary = styled(AccordionSummary)`
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: 1px solid ${({ theme }) => theme.colorPalette.divider.blue};
+  transform: none !important;
 
   & .MuiAccordionSummary-expandIconWrapper {
     transform: none !important;
@@ -39,8 +50,7 @@ export const StyledAccordionSummary = styled(AccordionSummary)`
     min-height: 3rem;
     padding: 0.5rem;
     border-radius: 0.5rem 0.5rem 0 0;
-    // border-bottom: 1px solid ${({ theme }) =>
-      theme.colorPalette.divider.blue};
+    margin: 0;
   }
 
   background-color: ${({ theme }) => theme.colorPalette.header.fill};

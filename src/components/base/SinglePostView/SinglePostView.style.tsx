@@ -1,14 +1,15 @@
 import { Modal, styled } from '@mui/material';
 import { CloseIcon } from '../../icons';
+import { Post } from '../Post';
 
 export const StyledSinglePostView = styled(Modal)``;
 
 export const SinglePostViewContainer = styled('div')`
   display: flex;
   direction: rtl;
-  height: 70vh;
-  width: 80vw;
-  margin: 10vh auto;
+  height: 80vh;
+  width: 90vw;
+  margin: 6vh auto;
   background-color: ${({ theme }) => theme.colorPalette.common.white};
   padding: 1.3rem;
   border-radius: 0.5rem;
@@ -20,7 +21,6 @@ export const SinglePostViewContainer = styled('div')`
 
 export const SinglePostContentContainer = styled('div')`
   width: 60%;
-  background-color: green;
 `;
 
 export const SinglePostLeftSideContainer = styled('div')`
@@ -30,7 +30,10 @@ export const SinglePostLeftSideContainer = styled('div')`
 `;
 
 export const SinglePostMetadataContainer = styled('div')`
-  background-color: yellow;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const SinglePostViewActionsContainer = styled('div')`
@@ -43,4 +46,14 @@ export const StyledCloseIcon = styled(CloseIcon)`
   :hover {
     cursor: pointer;
   }
+`;
+
+export const StyledSinglePost = styled(Post)`
+  box-shadow: none;
+  padding: 1rem;
+`;
+
+export const ExtraInfoContainer = styled('div')`
+  max-height: 70vh;
+  overflow-y: auto;
 `;

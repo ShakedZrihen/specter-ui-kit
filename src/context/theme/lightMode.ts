@@ -5,7 +5,7 @@ export const colorPalette = {
   header: {
     text: '#F2F2F2',
     background: '#1B1E2D',
-    fill: '#E9EFF9'
+    fill: '#E9EFF9',
   },
   link: {
     color: '#1877f2',

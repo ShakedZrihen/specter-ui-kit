@@ -43,7 +43,14 @@ export function DescriptionAccordion({
           )
         }
       >
-        <Typography sx={{ marginRight: '0.5rem', fontWeight: 500, flex: 1, fontSize: '1.2rem' }}>
+        <Typography
+          sx={{
+            marginRight: '0.5rem',
+            fontWeight: 500,
+            flex: 1,
+            fontSize: '1.2rem',
+          }}
+        >
           {descriptionName}
         </Typography>
       </StyledAccordionSummary>
