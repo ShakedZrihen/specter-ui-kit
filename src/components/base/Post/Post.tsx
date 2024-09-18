@@ -40,6 +40,7 @@ export interface PostProps {
     original: string;
     translated?: string;
     translatedHebrew?: string;
+    selected?: string;
   };
   isRead: boolean;
   slimView?: boolean;
@@ -72,7 +73,7 @@ export function Post(props: PostProps & { className?: string }) {
     time,
     date,
     source,
-    content: { original: content },
+    content: { original, selected },
     isRead,
     id,
     highlightedText = [],
@@ -86,9 +87,10 @@ export function Post(props: PostProps & { className?: string }) {
   const cleanProtocol = (url: string) =>
     url.replace('https://', '').replace('http://', '');
 
+  const content = selected || original;
   const language = franc(content);
   const direction = getTextDirection(language);
-  console.log({ language, direction });
+
   return (
     <StyledPost className={className}>
       <PostHeader>
