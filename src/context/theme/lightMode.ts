@@ -5,7 +5,6 @@ export const colorPalette = {
   header: {
     text: '#F2F2F2',
     background: '#1B1E2D',
-    fill: '#E9EFF9',
   },
   link: {
     color: '#1877f2',
@@ -29,6 +28,10 @@ export const colorPalette = {
     highlight: '#FFDF5F',
     icon: '#2860A8',
   },
+  primaryColor: {
+    color: '#474E72'
+  },
+  secondaryColor: '#1B1E2D',
 };
 
 export const lightMode = createTheme({
@@ -41,10 +44,9 @@ export const lightMode = createTheme({
     MuiCheckbox: {
       styleOverrides: {
         root: {
-          // This changes the border color (line color)
           color: colorPalette.checkbox.border,
           '&.Mui-checked': {
-            color: colorPalette.checkbox.border, // Color when checked
+            color: colorPalette.checkbox.border,
           },
         },
       },

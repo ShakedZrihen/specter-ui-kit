@@ -1,4 +1,5 @@
 import { SpecterTheme } from '../../../context/theme/SpecterTheme';
+import { FiltersSection } from '../FiltersSection';
 import { CreationTimeFilter } from '../FiltersSection/Filters/CreationTimeFilter';
 import { FiltersMenu } from './FiltersMenu';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -9,15 +10,19 @@ const meta: Meta<typeof FiltersMenu> = {
   argTypes: {},
   args: {
     filters: [
-      {
-        filterSectionName: 'לפי זמן',
-        filterList: [
+      <FiltersSection
+        filterName='לפי זמן'
+        onChange={(filterName, selectedValue) => {
+          console.log(filterName, selectedValue);
+        }}
+        selectedFilters={{}}
+        filterList={[
           {
             filterName: 'creationTime',
             Component: CreationTimeFilter,
           },
-        ],
-      },
+        ]}
+      />,
     ],
   },
 };

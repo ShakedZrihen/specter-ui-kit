@@ -38,13 +38,11 @@ export function FilterByChips({
           />
         ))}
       </ChipContainer>
-      {appliedFilters.length > 0 ? (
-        <ClearFilters
-          label='ניקוי פילטרים'
-          variant='outlined'
-          onClick={() => onClearFilters?.()}
-        />
-      ) : null}
+      <ClearFilters
+        label='ניקוי פילטרים'
+        variant='outlined'
+        onClick={() => onClearFilters?.()}
+      />
     </StyledFilterByChips>
   );
 }

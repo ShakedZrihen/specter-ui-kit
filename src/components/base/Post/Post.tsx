@@ -1,18 +1,21 @@
-import { Checkbox, FormControlLabel, Divider } from '@mui/material';
+import { Checkbox, FormControlLabel, Typography, Divider } from '@mui/material';
 
 import { TextWithHighlights } from '../TextWithHighlights';
 import {
+  ActionButton,
   PostAuthor,
   PostAvatar,
   PostContent,
   PostDatetime,
+  PostFooter,
   PostHeader,
   PostHeaderContent,
   PostReadIndicator,
   PostSource,
   StyledPost,
 } from './Post.style';
-import { Footer, SlimFooter } from './Footer';
+import { FavoriteIcon, MoreIcon, ShareIcon } from '../../icons';
+import { colorPalette } from '../../../context/theme/lightMode';
 
 export interface PostProps {
   id: string | number;
@@ -30,19 +33,12 @@ export interface PostProps {
   };
   content: string;
   isRead: boolean;
-  slimView?: boolean;
   onRead?: (id: string | number) => void;
   onUnread?: (id: string | number) => void;
   onSave?: (id: string | number) => void;
   onShare?: (id: string | number) => void;
   onMore?: (id: string | number) => void;
   highlightedText: string[];
-  enrichments?: {
-    metadata?: Record<string, string>;
-    ai?: Record<string, string>;
-    operationalHistory?: Record<string, string>;
-    relatedEntities?: Record<string, string>;
-  };
 }
 
 /**
@@ -54,18 +50,16 @@ export interface PostProps {
  * <Post />
  * ```
  */
-export function Post(props: PostProps & { className?: string }) {
+export function Post(props: PostProps) {
   const {
     author,
     time,
     date,
     source,
     content,
+    highlightedText = [],
     isRead,
     id,
-    highlightedText = [],
-    className,
-    slimView = true,
     onMore = () => {},
     onSave = () => {},
     onShare = () => {},
@@ -75,7 +69,7 @@ export function Post(props: PostProps & { className?: string }) {
     url.replace('https://', '').replace('http://', '');
 
   return (
-    <StyledPost className={className}>
+    <StyledPost>
       <PostHeader>
         <PostAvatar alt={author.name} src={author.avatar} />
         <PostHeaderContent>
@@ -89,31 +83,38 @@ export function Post(props: PostProps & { className?: string }) {
             <span>{source.sourceName}</span>
           </PostSource>
         </PostHeaderContent>
-        {!slimView && (
-          <PostReadIndicator>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={isRead}
-                  onClick={() =>
-                    isRead ? props.onUnread?.(id) : props.onRead?.(id)
-                  }
-                />
-              }
-              label='סימון כנקרא'
-            />
-          </PostReadIndicator>
-        )}
+        <PostReadIndicator>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={isRead}
+                onClick={() =>
+                  isRead ? props.onUnread?.(id) : props.onRead?.(id)
+                }
+              />
+            }
+            label='סימון כנקרא'
+          />
+        </PostReadIndicator>
       </PostHeader>
       <PostContent>
         <TextWithHighlights text={content} highlightedText={highlightedText} />
       </PostContent>
-      {!slimView && <Divider />}
-      {slimView ? (
-        <SlimFooter onSave={onSave} onShare={onShare} id={id} />
-      ) : (
-        <Footer onMore={onMore} onSave={onSave} onShare={onShare} id={id} />
-      )}
+      <Divider />
+      <PostFooter>
+        <ActionButton onClick={() => onSave(id)}>
+          <FavoriteIcon color={colorPalette.text.primary} size={20} />
+          <Typography>שמירה לאוספים</Typography>
+        </ActionButton>
+        <ActionButton onClick={() => onShare(id)}>
+          <ShareIcon color={colorPalette.text.primary} size={20} />
+          <Typography>שיתוף</Typography>
+        </ActionButton>
+        <ActionButton onClick={() => onMore(id)}>
+          <MoreIcon color={colorPalette.text.primary} size={20} />
+          <Typography>מידע נוסף</Typography>
+        </ActionButton>
+      </PostFooter>
     </StyledPost>
   );
 }

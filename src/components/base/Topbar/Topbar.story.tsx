@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Topbar } from './Topbar'; // Assuming the Topbar component is in the same directory
+import { Topbar } from './Topbar';
 import { SpecterTheme } from '../../../context/theme/SpecterTheme';
 import SpectorLogo from '../../assets/spector-logo.svg?react';
 
@@ -26,6 +26,34 @@ export const WithSearch: Story = {
         appIcon={<SpectorLogo />}
         withSearch
         onSearch={console.log}
+      />
+    </SpecterTheme>
+  ),
+};
+
+export const WithTranslationButton: Story = {
+  render: () => (
+    <SpecterTheme>
+      <Topbar
+        appName='ספקטר'
+        appIcon={<SpectorLogo />}
+        withTranslationButton
+        onLanguageChange={console.log} 
+      />
+    </SpecterTheme>
+  ),
+};
+
+export const WithSearchAndTranslationButton: Story = {
+  render: () => (
+    <SpecterTheme>
+      <Topbar
+        appName='ספקטר'
+        appIcon={<SpectorLogo />}
+        withSearch
+        withTranslationButton
+        onSearch={console.log}
+        onLanguageChange={console.log}
       />
     </SpecterTheme>
   ),
