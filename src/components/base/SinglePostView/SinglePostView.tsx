@@ -12,7 +12,6 @@ import {
 } from './SinglePostView.style';
 import { colorPalette } from '../../../context/theme/lightMode';
 import { DescriptionAccordion } from '../DescriptionAccordion';
-
 export interface SinglePostViewProps {
   post: {
     id: string | number;
@@ -37,6 +36,7 @@ export interface SinglePostViewProps {
     content: string;
     isRead: boolean;
   };
+  isOpen: boolean;
 }
 
 /**
@@ -48,11 +48,11 @@ export interface SinglePostViewProps {
  * <SinglePostView />
  * ```
  */
-export function SinglePostView({ post }: SinglePostViewProps) {
+export function SinglePostView({ post, isOpen }: SinglePostViewProps) {
   const { enrichments } = post;
 
   return (
-    <StyledSinglePostView open={true}>
+    <StyledSinglePostView open={isOpen}>
       <SinglePostViewContainer>
         <SinglePostContentContainer>
           <StyledSinglePost {...post} highlightedText={[]} slimView={true} />
