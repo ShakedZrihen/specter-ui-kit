@@ -41,9 +41,7 @@ export const Basic: Story = {
 
     return (
       <SpecterTheme>
-        <div style={{ width: '500px', height: '500px' }}>
-          <MediaViewer items={items} />
-        </div>
+        <MediaViewer items={items} />
       </SpecterTheme>
     );
   },
