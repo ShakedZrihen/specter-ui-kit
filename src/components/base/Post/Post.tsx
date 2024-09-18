@@ -1,5 +1,5 @@
 import { Checkbox, FormControlLabel, Divider } from '@mui/material';
-
+import { franc } from 'franc';
 import { TextWithHighlights } from '../TextWithHighlights';
 import {
   PostAuthor,
@@ -13,6 +13,7 @@ import {
   StyledPost,
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
+import { getTextDirection } from '../../../utils/textDirection';
 export interface PostMedia {
   type: 'image' | 'video';
   url: string;
@@ -85,6 +86,9 @@ export function Post(props: PostProps & { className?: string }) {
   const cleanProtocol = (url: string) =>
     url.replace('https://', '').replace('http://', '');
 
+  const language = franc(content);
+  const direction = getTextDirection(language);
+  console.log({ language, direction });
   return (
     <StyledPost className={className}>
       <PostHeader>
@@ -116,8 +120,12 @@ export function Post(props: PostProps & { className?: string }) {
           </PostReadIndicator>
         )}
       </PostHeader>
-      <PostContent>
-        <TextWithHighlights text={content} highlightedText={highlightedText} />
+      <PostContent direction={direction}>
+        <TextWithHighlights
+          text={content}
+          highlightedText={highlightedText}
+          direction={direction}
+        />
       </PostContent>
       {!slimView && <Divider />}
       {slimView ? (

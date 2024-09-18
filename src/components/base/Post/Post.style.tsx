@@ -68,11 +68,11 @@ export const PostSource = styled('div')`
   }
 `;
 
-export const PostContent = styled(Typography)`
+export const PostContent = styled(Typography)<{ direction: string }>`
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  direction: rtl;
+  direction: ${({ direction }) => direction};
 `;
 
 export const PostFooter = styled('div')`

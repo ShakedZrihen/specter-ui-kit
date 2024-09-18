@@ -6,6 +6,7 @@ import {
 export interface TextWithHighlightsProps {
   text: string;
   highlightedText: string[];
+  direction: string;
 }
 
 /**
@@ -20,6 +21,7 @@ export interface TextWithHighlightsProps {
 export function TextWithHighlights({
   highlightedText,
   text,
+  direction,
 }: TextWithHighlightsProps) {
   const highlightText = (content: string) => {
     // Create a regular expression to find the highlighted text, preserving word boundaries
@@ -32,7 +34,9 @@ export function TextWithHighlights({
       highlightedText.some(
         highlight => highlight.toLowerCase() === part.toLowerCase(),
       ) ? (
-        <HighlightedText key={index}>{part}</HighlightedText>
+        <HighlightedText key={index} direction={direction}>
+          {part}
+        </HighlightedText>
       ) : (
         part
       ),
@@ -40,6 +44,8 @@ export function TextWithHighlights({
   };
 
   return (
-    <StyledTextWithHighlights>{highlightText(text)}</StyledTextWithHighlights>
+    <StyledTextWithHighlights direction={direction}>
+      {highlightText(text)}
+    </StyledTextWithHighlights>
   );
 }
