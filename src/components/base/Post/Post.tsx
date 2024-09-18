@@ -13,6 +13,12 @@ import {
   StyledPost,
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
+export interface PostMedia {
+  type: 'image' | 'video';
+  url: string;
+  thumbnail: string;
+  extraInfo?: Record<string, string>;
+}
 
 export interface PostProps {
   id: string | number;
@@ -28,7 +34,12 @@ export interface PostProps {
     channelUrl: string;
     sourceName: string;
   };
-  content: string;
+  medias?: PostMedia[];
+  content: {
+    original: string;
+    translated?: string;
+    translatedHebrew?: string;
+  };
   isRead: boolean;
   slimView?: boolean;
   onRead?: (id: string | number) => void;
@@ -60,7 +71,7 @@ export function Post(props: PostProps & { className?: string }) {
     time,
     date,
     source,
-    content,
+    content: { original: content },
     isRead,
     id,
     highlightedText = [],
