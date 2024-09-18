@@ -127,6 +127,7 @@ export function Post(props: PostProps & { className?: string }) {
           text={content}
           highlightedText={highlightedText}
           direction={direction}
+          maxLines={5}
         />
       </PostContent>
       {!slimView && <Divider />}

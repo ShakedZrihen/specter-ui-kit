@@ -1,5 +1,8 @@
+import { useMemo, useState } from 'react';
+import { elipsis } from '../../../utils/elipsisContent';
 import {
   HighlightedText,
+  ShowMoreButton,
   StyledTextWithHighlights,
 } from './TextWithHighlights.style';
 
@@ -7,6 +10,7 @@ export interface TextWithHighlightsProps {
   text: string;
   highlightedText: string[];
   direction: string;
+  maxLines?: number;
 }
 
 /**
@@ -22,7 +26,14 @@ export function TextWithHighlights({
   highlightedText,
   text,
   direction,
+  maxLines = 5,
 }: TextWithHighlightsProps) {
+  const { elipsisContent, hasMore } = useMemo(
+    () => elipsis(text, maxLines),
+    [text, maxLines],
+  );
+  const [showMore, setShowMore] = useState(false);
+
   const highlightText = (content: string) => {
     // Create a regular expression to find the highlighted text, preserving word boundaries
     const regex = new RegExp(`(${highlightedText.join('|')})`, 'gi');
@@ -45,7 +56,13 @@ export function TextWithHighlights({
 
   return (
     <StyledTextWithHighlights direction={direction}>
-      {highlightText(text)}
+      {highlightText(showMore ? text : elipsisContent)}
+      {hasMore && !showMore && '...'}
+      {hasMore && (
+        <ShowMoreButton onClick={() => setShowMore(prevState => !prevState)}>
+          {showMore ? 'הצג פחות' : 'הצג עוד'}
+        </ShowMoreButton>
+      )}
     </StyledTextWithHighlights>
   );
 }
