@@ -17,7 +17,7 @@ interface TopbarProps {
   withTranslationButton?: boolean;
   onSearch?: (searchTerm: string) => void;
   onLanguageChange?: (language: string) => void;
-  supportedLanguages?: string[]; 
+  supportedLanguages?: string[]; // Добавляем supportedLanguages
 }
 
 export const Topbar = ({
@@ -27,7 +27,7 @@ export const Topbar = ({
   withSearch,
   withTranslationButton,
   onLanguageChange,
-  supportedLanguages = ['en', 'ar', 'he'], 
+  supportedLanguages = ['en', 'ar', 'he'], // Значение по умолчанию
 }: TopbarProps) => {
   const topbarElements = [
     <TopbarAppDetailsContainer key="app-details">
@@ -49,7 +49,7 @@ export const Topbar = ({
       <TopbarUserContextContainer key="translation-button">
         <TranslationButton 
           onLanguageChange={onLanguageChange} 
-          supportedLanguages={supportedLanguages} 
+          supportedLanguages={supportedLanguages} // Передаем supportedLanguages
         />
       </TopbarUserContextContainer>
     );
