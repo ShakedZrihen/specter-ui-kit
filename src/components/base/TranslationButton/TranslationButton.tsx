@@ -14,7 +14,7 @@ const languageLabels: Record<string, string> = {
   he: 'Hebrew',
 };
 
-export function TranslationButton({ onLanguageChange, supportedLanguages }: TranslationButtonProps) {
+export function TranslationButton({ onLanguageChange, supportedLanguages = [] }: TranslationButtonProps) {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -45,7 +45,7 @@ export function TranslationButton({ onLanguageChange, supportedLanguages }: Tran
       <Menu
         id="language-menu"
         anchorEl={anchorEl}
-        open={Boolean(anchorEl) && open}
+        open={open}
         onClose={handleClose}
       >
         {supportedLanguages.length > 0 ? (
@@ -55,7 +55,7 @@ export function TranslationButton({ onLanguageChange, supportedLanguages }: Tran
             </MenuItem>
           ))
         ) : (
-          <MenuItem>No languages available</MenuItem>
+          <MenuItem>שפות אינן זמינות</MenuItem>
         )}
       </Menu>
     </>
