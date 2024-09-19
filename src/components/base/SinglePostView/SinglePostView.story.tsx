@@ -47,6 +47,7 @@ const meta: Meta<typeof SinglePostView> = {
           'קשרים חברתיים נוספים': 'איחוד האמירויות, פלסטין',
         },
       },
+      highlightedText: [],
     },
   },
 };
