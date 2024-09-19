@@ -3,7 +3,7 @@ import { TranslationButton } from './TranslationButton';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof TranslationButton> = {
-  title: 'components\base/TranslationButton',
+  title: 'base/TranslationButton',
   component: TranslationButton,
   argTypes: {},
   args: {},
