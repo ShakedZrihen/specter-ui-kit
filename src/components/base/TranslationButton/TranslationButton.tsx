@@ -1,20 +1,30 @@
 import React, { useState } from 'react';
 import { StyledTranslationButton, StyledTranslateIcon } from './TranslationButton.style';
-import { Menu, MenuItem } from '@mui/material';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 export interface TranslationButtonProps {
-
   onLanguageChange: (language: string) => void;
+  supportedLanguages: string[];
 }
 
-export function TranslationButton({ onLanguageChange }: TranslationButtonProps) {
+const languageLabels: Record<string, string> = {
+  en: 'English',
+  ar: 'Arabic',
+  he: 'Hebrew',
+};
+
+export function TranslationButton({ onLanguageChange, supportedLanguages }: TranslationButtonProps) {
+  const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
+    setOpen(true);
   };
 
   const handleClose = () => {
+    setOpen(false);
     setAnchorEl(null);
   };
 
@@ -26,7 +36,7 @@ export function TranslationButton({ onLanguageChange }: TranslationButtonProps) 
   return (
     <>
       <StyledTranslationButton
-        aria-controls={anchorEl ? 'language-menu' : undefined}
+        aria-controls={open ? 'language-menu' : undefined}
         aria-haspopup="true"
         onClick={handleClick}
       >
@@ -35,12 +45,18 @@ export function TranslationButton({ onLanguageChange }: TranslationButtonProps) 
       <Menu
         id="language-menu"
         anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
+        open={Boolean(anchorEl) && open}
         onClose={handleClose}
       >
-        <MenuItem onClick={() => handleLanguageChange('en')}>English</MenuItem>
-        <MenuItem onClick={() => handleLanguageChange('ar')}>Arabic</MenuItem>
-        <MenuItem onClick={() => handleLanguageChange('he')}>Hebrew</MenuItem>
+        {supportedLanguages.length > 0 ? (
+          supportedLanguages.map((language) => (
+            <MenuItem key={language} onClick={() => handleLanguageChange(language)}>
+              {languageLabels[language] || language.toUpperCase()}
+            </MenuItem>
+          ))
+        ) : (
+          <MenuItem>No languages available</MenuItem>
+        )}
       </Menu>
     </>
   );

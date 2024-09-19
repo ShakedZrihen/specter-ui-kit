@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import React from 'react';
 import {
   AppNameTypography,
   StyledAppBar,
@@ -7,16 +7,17 @@ import {
   TopbarSearchContainer,
   TopbarUserContextContainer,
 } from './Topbar.style';
-import { Search } from './Search/Search'; 
+import { Search } from './Search/Search';
 import { TranslationButton } from '../TranslationButton/TranslationButton';
 
 interface TopbarProps {
   appName: string;
-  appIcon?: ReactElement; 
+  appIcon?: React.ReactElement;
   withSearch?: boolean;
-  withTranslationButton?: boolean; 
+  withTranslationButton?: boolean;
   onSearch?: (searchTerm: string) => void;
-  onLanguageChange?: (language: string) => void; 
+  onLanguageChange?: (language: string) => void;
+  supportedLanguages?: string[]; 
 }
 
 export const Topbar = ({
@@ -25,7 +26,8 @@ export const Topbar = ({
   onSearch,
   withSearch,
   withTranslationButton,
-  onLanguageChange, 
+  onLanguageChange,
+  supportedLanguages = ['en', 'ar', 'he'], 
 }: TopbarProps) => {
   const topbarElements = [
     <TopbarAppDetailsContainer key="app-details">
@@ -45,7 +47,10 @@ export const Topbar = ({
   if (withTranslationButton && onLanguageChange) {
     topbarElements.push(
       <TopbarUserContextContainer key="translation-button">
-        <TranslationButton onLanguageChange={onLanguageChange} />
+        <TranslationButton 
+          onLanguageChange={onLanguageChange} 
+          supportedLanguages={supportedLanguages} 
+        />
       </TopbarUserContextContainer>
     );
   }
