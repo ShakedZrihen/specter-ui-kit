@@ -1,6 +1,6 @@
 import { Checkbox, FormControlLabel, Divider } from '@mui/material';
 import { franc } from 'franc';
-import { TextWithHighlights } from '../TextWithHighlights';
+import { TextWithHighlights } from '../../base/TextWithHighlights';
 import {
   PostAuthor,
   PostAvatar,
@@ -14,6 +14,7 @@ import {
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
+
 export interface PostMedia {
   type: 'image' | 'video';
   url: string;
@@ -21,7 +22,7 @@ export interface PostMedia {
   extraInfo?: Record<string, string>;
 }
 
-export interface Post {
+export interface IPost {
   id: string | number;
   author: {
     name: string;
@@ -53,7 +54,7 @@ export interface Post {
   };
 }
 
-export interface PostProps extends Post {
+export interface PostProps extends IPost {
   onRead?: (id: string | number) => void;
   onUnread?: (id: string | number) => void;
   onSave?: (id: string | number) => void;
