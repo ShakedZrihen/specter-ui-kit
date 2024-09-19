@@ -8,6 +8,7 @@ const meta: Meta<typeof Post> = {
   component: Post,
   argTypes: {},
   args: {
+    slimView: false,
     id: '1',
     author: {
       name: 'Nablusarlrasas48',

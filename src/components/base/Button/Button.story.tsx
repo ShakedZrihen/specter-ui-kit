@@ -9,7 +9,7 @@ const meta: Meta<typeof Button> = {
   component: Button,
   argTypes: {},
   args: {
-    endIcon: <DocumetsIcon color={colorPalette.link.color} size={20} />,
+    startIcon: <DocumetsIcon color={colorPalette.link.color} size={20} />,
   },
 };
 

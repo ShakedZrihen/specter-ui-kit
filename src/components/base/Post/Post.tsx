@@ -81,7 +81,7 @@ export function Post(props: PostProps & { className?: string }) {
     id,
     highlightedText = [],
     className,
-    slimView = true,
+    slimView = false,
     onMore = () => {},
     onSave = () => {},
     onShare = () => {},
