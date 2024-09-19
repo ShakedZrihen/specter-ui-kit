@@ -14,6 +14,7 @@ interface TopbarProps {
   appIcon?: ReactElement;
   withSearch?: boolean;
   onSearch?: (searchTerm: string) => void;
+  className?: string;
 }
 
 export const Topbar = ({
@@ -21,6 +22,7 @@ export const Topbar = ({
   appIcon,
   onSearch,
   withSearch,
+  className,
 }: TopbarProps) => {
   const topbarElements = [
     <TopbarAppDetailsContainer>
@@ -40,7 +42,7 @@ export const Topbar = ({
   topbarElements.push(<TopbarUserContextContainer />);
 
   return (
-    <StyledAppBar>
+    <StyledAppBar className={className}>
       <TopbarContainer>{topbarElements}</TopbarContainer>
     </StyledAppBar>
   );
