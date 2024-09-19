@@ -1,5 +1,5 @@
 import { Checkbox, FormControlLabel, Divider } from '@mui/material';
-
+import { franc } from 'franc';
 import { TextWithHighlights } from '../TextWithHighlights';
 import {
   PostAuthor,
@@ -13,8 +13,15 @@ import {
   StyledPost,
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
+import { getTextDirection } from '../../../utils/textDirection';
+export interface PostMedia {
+  type: 'image' | 'video';
+  url: string;
+  thumbnail: string;
+  extraInfo?: Record<string, string>;
+}
 
-export interface PostProps {
+export interface Post {
   id: string | number;
   author: {
     name: string;
@@ -28,14 +35,15 @@ export interface PostProps {
     channelUrl: string;
     sourceName: string;
   };
-  content: string;
+  medias?: PostMedia[];
+  content: {
+    original: string;
+    translated?: string;
+    translatedHebrew?: string;
+    selected?: string;
+  };
   isRead: boolean;
   slimView?: boolean;
-  onRead?: (id: string | number) => void;
-  onUnread?: (id: string | number) => void;
-  onSave?: (id: string | number) => void;
-  onShare?: (id: string | number) => void;
-  onMore?: (id: string | number) => void;
   highlightedText: string[];
   enrichments?: {
     metadata?: Record<string, string>;
@@ -43,6 +51,14 @@ export interface PostProps {
     operationalHistory?: Record<string, string>;
     relatedEntities?: Record<string, string>;
   };
+}
+
+export interface PostProps extends Post {
+  onRead?: (id: string | number) => void;
+  onUnread?: (id: string | number) => void;
+  onSave?: (id: string | number) => void;
+  onShare?: (id: string | number) => void;
+  onMore?: (id: string | number) => void;
 }
 
 /**
@@ -60,12 +76,12 @@ export function Post(props: PostProps & { className?: string }) {
     time,
     date,
     source,
-    content,
+    content: { original, selected },
     isRead,
     id,
     highlightedText = [],
     className,
-    slimView = true,
+    slimView = false,
     onMore = () => {},
     onSave = () => {},
     onShare = () => {},
@@ -73,6 +89,10 @@ export function Post(props: PostProps & { className?: string }) {
 
   const cleanProtocol = (url: string) =>
     url.replace('https://', '').replace('http://', '');
+
+  const content = selected || original;
+  const language = franc(content);
+  const direction = getTextDirection(language);
 
   return (
     <StyledPost className={className}>
@@ -105,8 +125,13 @@ export function Post(props: PostProps & { className?: string }) {
           </PostReadIndicator>
         )}
       </PostHeader>
-      <PostContent>
-        <TextWithHighlights text={content} highlightedText={highlightedText} />
+      <PostContent direction={direction}>
+        <TextWithHighlights
+          text={content}
+          highlightedText={highlightedText}
+          direction={direction}
+          maxLines={5}
+        />
       </PostContent>
       {!slimView && <Divider />}
       {slimView ? (

@@ -16,6 +16,7 @@ interface TopbarProps {
   withSearch?: boolean;
   withTranslationButton?: boolean;
   onSearch?: (searchTerm: string) => void;
+  className?: string;
   onLanguageChange?: (language: string) => void;
 }
 
@@ -24,11 +25,12 @@ export const Topbar = ({
   appIcon,
   onSearch,
   withSearch,
+  className,
   withTranslationButton,
   onLanguageChange,
 }: TopbarProps) => {
   return (
-    <StyledAppBar>
+    <StyledAppBar className={className}>
       <TopbarContainer>
         <TopbarAppDetailsContainer>
           {appIcon}
@@ -41,9 +43,9 @@ export const Topbar = ({
         )}
         <TopbarUserContextContainer>
           {withTranslationButton && onLanguageChange && (
-            <TranslationButton 
-              onLanguageChange={onLanguageChange} 
-              supportedLanguages={['en', 'ar', 'he']} 
+            <TranslationButton
+              onLanguageChange={onLanguageChange}
+              supportedLanguages={['en', 'ar', 'he']}
             />
           )}
         </TopbarUserContextContainer>

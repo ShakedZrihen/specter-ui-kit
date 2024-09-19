@@ -8,6 +8,7 @@ const meta: Meta<typeof Post> = {
   component: Post,
   argTypes: {},
   args: {
+    slimView: false,
     id: '1',
     author: {
       name: 'Nablusarlrasas48',
@@ -22,8 +23,10 @@ const meta: Meta<typeof Post> = {
       channelUrl: 'https://www.google.com',
       sourceName: 'Twitter',
     },
-    content:
-      'ידיעות אחרונות: האימוץ המשותף של חמאס והג׳יהאד האיסלאמי לאחריות על הפיגוע ב״תל אביב״, מזכיר לנו את ימי השיא האינתיפאדה השנייה, שבהם ביצעו שני הארגונים גם פיגועים...',
+    content: {
+      original:
+        'ידיעות אחרונות: האימוץ המשותף של חמאס והג׳יהאד האיסלאמי לאחריות על הפיגוע ב״תל אביב״, מזכיר לנו את ימי השיא האינתיפאדה השנייה, שבהם ביצעו שני הארגונים גם פיגועים...',
+    },
     isRead: false,
     highlightedText: ['חמאס'],
     onSave: () => alert('saved'),

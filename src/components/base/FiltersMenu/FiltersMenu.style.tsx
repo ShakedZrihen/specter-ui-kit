@@ -46,6 +46,7 @@ export const FiltersControllerButton = styled('div')`
   padding: 0.3rem 1.2rem;
   background-color: ${({ theme }) => theme.colorPalette.common.white};
   box-shadow: 0px 0px 5px 0px #0000001f;
+
   width: 7rem;
 
   :hover {

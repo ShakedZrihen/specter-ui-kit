@@ -26,6 +26,9 @@ interface FiltersMenuProps {
   filters: FilterSectionDefinition[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onSave: (filters: any) => void; //TODO: Add type
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  menuOverides?: any;
+  className?: string;
 }
 
 /**
@@ -37,7 +40,12 @@ interface FiltersMenuProps {
  * <FiltersMenu />
  * ```
  */
-export function FiltersMenu({ filters, onSave }: FiltersMenuProps) {
+export function FiltersMenu({
+  filters,
+  onSave,
+  menuOverides = {},
+  className,
+}: FiltersMenuProps) {
   const [open, toggleDrawer] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState<{
     [filterSectionName: string]: { [filterName: string]: string };
@@ -70,7 +78,7 @@ export function FiltersMenu({ filters, onSave }: FiltersMenuProps) {
   };
 
   return (
-    <StyledFiltersMenu>
+    <StyledFiltersMenu className={className}>
       <FiltersControllerButton onClick={() => toggleDrawer(true)}>
         <FilterIcon color={colorPalette.common.icon} size={18} />
         <Title>פילטרים</Title>
@@ -79,6 +87,7 @@ export function FiltersMenu({ filters, onSave }: FiltersMenuProps) {
         open={open}
         onClose={() => toggleDrawer(false)}
         hideBackdrop={true}
+        sx={menuOverides}
       >
         <FiltersMenuContainer>
           <FiltersHeader>
