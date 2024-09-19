@@ -11,7 +11,6 @@ export const TopbarAppDetailsContainer = styled('div')`
   display: flex;
   align-items: center;
   direction: rtl;
-
   & > svg {
     margin-left: 0.5rem;
   }
@@ -20,11 +19,21 @@ export const TopbarAppDetailsContainer = styled('div')`
 export const TopbarContainer = styled(Toolbar)`
   display: flex;
   justify-content: space-between;
+  align-items: center; 
+  width: 100%;
 `;
 
-export const TopbarSearchContainer = styled('div')``;
+export const TopbarSearchContainer = styled('div')`
+  display: flex;
+  align-items: center;
+  flex-grow: 1; 
+  justify-content: center; 
+`;
 
 export const TopbarUserContextContainer = styled('div')`
+  display: flex;
+  align-items: center;
+  justify-content: center; 
   width: 10%;
 `;
 
