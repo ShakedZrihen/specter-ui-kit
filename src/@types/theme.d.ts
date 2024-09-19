@@ -25,6 +25,10 @@ declare module '@mui/material/styles' {
         highlight: string;
         icon: string;
       };
+      colors: {
+        primary: string;
+        secondary: string;
+      }
     };
   }
   interface ThemeOptions {

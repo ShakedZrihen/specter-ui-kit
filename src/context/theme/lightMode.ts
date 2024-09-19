@@ -28,10 +28,10 @@ export const colorPalette = {
     highlight: '#FFDF5F',
     icon: '#2860A8',
   },
-  primaryColor: {
-    color: '#474E72'
+  colors: {
+    primary: '#474E72',
+    secondary: '#1B1E2D',
   },
-  secondaryColor: '#1B1E2D',
 };
 
 export const lightMode = createTheme({
