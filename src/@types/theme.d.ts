@@ -28,7 +28,7 @@ declare module '@mui/material/styles' {
       colors: {
         primary: string;
         secondary: string;
-      }
+      };
     };
   }
   interface ThemeOptions {

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { StyledTranslationButton, StyledTranslateIcon } from './TranslationButton.style';
+import {
+  StyledTranslationButton,
+  StyledTranslateIcon,
+} from './TranslationButton.style';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
@@ -14,7 +17,10 @@ const languageLabels: Record<string, string> = {
   he: 'Hebrew',
 };
 
-export function TranslationButton({ onLanguageChange, supportedLanguages = [] }: TranslationButtonProps) {
+export function TranslationButton({
+  onLanguageChange,
+  supportedLanguages = [],
+}: TranslationButtonProps) {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -37,20 +43,23 @@ export function TranslationButton({ onLanguageChange, supportedLanguages = [] }:
     <>
       <StyledTranslationButton
         aria-controls={open ? 'language-menu' : undefined}
-        aria-haspopup="true"
+        aria-haspopup='true'
         onClick={handleClick}
       >
         <StyledTranslateIcon />
       </StyledTranslationButton>
       <Menu
-        id="language-menu"
+        id='language-menu'
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
       >
         {supportedLanguages.length > 0 ? (
-          supportedLanguages.map((language) => (
-            <MenuItem key={language} onClick={() => handleLanguageChange(language)}>
+          supportedLanguages.map(language => (
+            <MenuItem
+              key={language}
+              onClick={() => handleLanguageChange(language)}
+            >
               {languageLabels[language] || language.toUpperCase()}
             </MenuItem>
           ))

@@ -19,21 +19,21 @@ export const TopbarAppDetailsContainer = styled('div')`
 export const TopbarContainer = styled(Toolbar)`
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center;
   width: 100%;
 `;
 
 export const TopbarSearchContainer = styled('div')`
   display: flex;
   align-items: center;
-  flex-grow: 1; 
-  justify-content: center; 
+  flex-grow: 1;
+  justify-content: center;
 `;
 
 export const TopbarUserContextContainer = styled('div')`
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   width: 10%;
 `;
 

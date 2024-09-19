@@ -15,13 +15,14 @@ export default meta;
 type Story = StoryObj<typeof TranslationButton>;
 
 export const Basic: Story = {
-  render: (props) => (
+  render: props => (
     <SpecterTheme>
       <TranslationButton {...props} />
     </SpecterTheme>
   ),
   args: {
-    onLanguageChange: (language) => console.log(`Language changed to: ${language}`),
+    onLanguageChange: language =>
+      console.log(`Language changed to: ${language}`),
     supportedLanguages: ['en', 'ar', 'he'],
   },
 };
