@@ -3,6 +3,7 @@ import { AppBar, styled, Toolbar, Typography } from '@mui/material';
 export const StyledAppBar = styled(AppBar)`
   position: static;
   direction: rtl;
+  height: 4rem;
   background-color: #1b1e2d;
 `;
 
