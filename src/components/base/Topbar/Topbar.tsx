@@ -8,7 +8,7 @@ import {
   TopbarUserContextContainer,
 } from './Topbar.style';
 import { Search } from './Search/Search';
-import { TranslationButton } from '../TranslationButton/TranslationButton';
+import { TranslationButton } from '../../custom/TranslationButton/TranslationButton';
 
 interface TopbarProps {
   appName: string;

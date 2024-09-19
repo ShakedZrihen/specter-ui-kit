@@ -2,7 +2,7 @@ import { styled, Typography } from '@mui/material';
 import { colorPalette } from '../../../context/theme/lightMode';
 import { DocumetsIcon, FavoriteIcon, MoreIcon, ShareIcon } from '../../icons';
 import { ActionButton, PostFooter, PostSlimFooter } from './Post.style';
-import { Button } from '../Button';
+import { Button } from '../../base/Button';
 
 interface FooterProps {
   onSave: (id: number | string) => void;
