@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import React from 'react';
 import {
   AppNameTypography,
   StyledAppBar,
@@ -7,13 +7,16 @@ import {
   TopbarSearchContainer,
   TopbarUserContextContainer,
 } from './Topbar.style';
-import { Search } from './Search';
+import { Search } from './Search/Search';
+import { TranslationButton } from '../TranslationButton/TranslationButton';
 
 interface TopbarProps {
   appName: string;
-  appIcon?: ReactElement;
+  appIcon?: React.ReactElement;
   withSearch?: boolean;
+  withTranslationButton?: boolean;
   onSearch?: (searchTerm: string) => void;
+  onLanguageChange?: (language: string) => void;
 }
 
 export const Topbar = ({
@@ -21,27 +24,30 @@ export const Topbar = ({
   appIcon,
   onSearch,
   withSearch,
+  withTranslationButton,
+  onLanguageChange,
 }: TopbarProps) => {
-  const topbarElements = [
-    <TopbarAppDetailsContainer>
-      {appIcon}
-      <AppNameTypography>{appName}</AppNameTypography>
-    </TopbarAppDetailsContainer>,
-  ];
-
-  if (withSearch && onSearch) {
-    topbarElements.push(
-      <TopbarSearchContainer key='search'>
-        <Search onSearch={onSearch} />
-      </TopbarSearchContainer>,
-    );
-  }
-
-  topbarElements.push(<TopbarUserContextContainer />);
-
   return (
     <StyledAppBar>
-      <TopbarContainer>{topbarElements}</TopbarContainer>
+      <TopbarContainer>
+        <TopbarAppDetailsContainer>
+          {appIcon}
+          <AppNameTypography>{appName}</AppNameTypography>
+        </TopbarAppDetailsContainer>
+        {withSearch && onSearch && (
+          <TopbarSearchContainer>
+            <Search onSearch={onSearch} />
+          </TopbarSearchContainer>
+        )}
+        <TopbarUserContextContainer>
+          {withTranslationButton && onLanguageChange && (
+            <TranslationButton 
+              onLanguageChange={onLanguageChange} 
+              supportedLanguages={['en', 'ar', 'he']} 
+            />
+          )}
+        </TopbarUserContextContainer>
+      </TopbarContainer>
     </StyledAppBar>
   );
 };
