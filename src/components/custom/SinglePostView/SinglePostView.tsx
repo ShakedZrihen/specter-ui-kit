@@ -17,6 +17,7 @@ import { IPost } from '../../../@types/post';
 export interface SinglePostViewProps {
   post: IPost & { isSlimView?: boolean; highlightedText?: string[] };
   isOpen: boolean;
+  onClose?: () => void;
 }
 
 /**
@@ -28,7 +29,7 @@ export interface SinglePostViewProps {
  * <SinglePostView />
  * ```
  */
-export function SinglePostView({ post, isOpen }: SinglePostViewProps) {
+export function SinglePostView({ post, isOpen, onClose }: SinglePostViewProps) {
   const { enrichments } = post;
 
   return (
@@ -40,7 +41,9 @@ export function SinglePostView({ post, isOpen }: SinglePostViewProps) {
         <Divider orientation='vertical' flexItem />
         <SinglePostLeftSideContainer>
           <SinglePostViewActionsContainer>
-            <StyledCloseIcon color={colorPalette.text.primary} />
+            <div onClick={onClose}>
+              <StyledCloseIcon color={colorPalette.text.primary} />
+            </div>
           </SinglePostViewActionsContainer>
           <SinglePostMetadataContainer>
             <Typography

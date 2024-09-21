@@ -32,6 +32,11 @@ export const colorPalette = {
     primary: '#474E72',
     secondary: '#1B1E2D',
   },
+  filters: {
+    headers: {
+      color: '#E9EFF9',
+    },
+  },
 };
 
 export const lightMode = createTheme({

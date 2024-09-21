@@ -49,6 +49,7 @@ const meta: Meta<typeof SinglePostView> = {
       },
       highlightedText: [],
     },
+    onClose: () => {alert('closed')},
   },
 };
 

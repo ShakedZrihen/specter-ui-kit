@@ -53,7 +53,7 @@ export const StyledAccordionSummary = styled(AccordionSummary)`
     margin: 0;
   }
 
-  background-color: ${({ theme }) => theme.colorPalette.header.fill};
+  background-color: ${({ theme }) => theme.colorPalette.filters.headers.color} !important;
 `;
 
 export const StyledDescriptionRow = styled('div')`
