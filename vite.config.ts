@@ -9,8 +9,8 @@ export default defineConfig({
     react(),
     svgr(),
     dts({
-      insertTypesEntry: true, // Optional, adds 'types' entry in package.json
-      outDir: 'dist/types', // Specify where to generate type definitions
+      insertTypesEntry: true,
+      outDir: 'dist/types',
     }),
   ],
   esbuild: {
@@ -34,10 +34,9 @@ export default defineConfig({
       entry: 'src/index.ts',
       name: 'specter-ui-kit',
       fileName(format, entryName) {
-        if (format === 'es') {
-          return `${entryName}.${format}.js`;
-        }
-        return `${entryName}.js`;
+        return format === 'es'
+          ? `${entryName}.${format}.js`
+          : `${entryName}.js`;
       },
       formats: ['cjs', 'es'],
     },
@@ -47,7 +46,7 @@ export default defineConfig({
         preserveModulesRoot: 'src',
         dir: 'dist',
       },
-      external: ['react', 'react-dom'], // Exclude react and react-dom from bundle
+      external: ['react', 'react-dom'],
     },
   },
 });

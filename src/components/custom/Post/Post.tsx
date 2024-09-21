@@ -14,47 +14,11 @@ import {
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
-
-export interface PostMedia {
-  type: 'image' | 'video';
-  url: string;
-  thumbnail: string;
-  extraInfo?: Record<string, string>;
-}
-
-export interface IPost {
-  id: string | number;
-  author: {
-    name: string;
-    avatar: string;
-  };
-  time: string;
-  date: string;
-  source: {
-    url: string;
-    channelName: string;
-    channelUrl: string;
-    sourceName: string;
-  };
-  medias?: PostMedia[];
-  content: {
-    original: string;
-    translated?: string;
-    translatedHebrew?: string;
-    selected?: string;
-  };
-  isRead: boolean;
-  slimView?: boolean;
-  highlightedText: string[];
-  enrichments?: {
-    metadata?: Record<string, string>;
-    ai?: Record<string, string>;
-    operationalHistory?: Record<string, string>;
-    relatedEntities?: Record<string, string>;
-  };
-}
+import { IPost } from '../../../@types/post';
 
 export interface PostProps extends IPost {
+  slimView?: boolean;
+  highlightedText?: string[];
   onRead?: (id: string | number) => void;
   onUnread?: (id: string | number) => void;
   onSave?: (id: string | number) => void;
@@ -105,9 +69,14 @@ export function Post(props: PostProps & { className?: string }) {
             {time} • {date}
           </PostDatetime>
           <PostSource>
-            <a href={source.url}>{cleanProtocol(source.url)}</a>•
-            <a href={source.channelUrl}>{source.channelName}</a> •{' '}
-            <span>{source.sourceName}</span>
+            <a href={source.url} target='_blank'>
+              {cleanProtocol(source.url)}
+            </a>
+            •
+            <a href={source.channelUrl} target='_blank'>
+              {source.channelName}
+            </a>{' '}
+            • <span>{source.sourceName}</span>
           </PostSource>
         </PostHeaderContent>
         {!slimView && (

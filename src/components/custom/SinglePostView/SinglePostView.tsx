@@ -12,10 +12,10 @@ import {
 } from './SinglePostView.style';
 import { colorPalette } from '../../../context/theme/lightMode';
 import { DescriptionAccordion } from '../DescriptionAccordion';
-import { IPost } from '../Post/Post';
+import { IPost } from '../../../@types/post';
 
 export interface SinglePostViewProps {
-  post: IPost;
+  post: IPost & { isSlimView?: boolean; highlightedText?: string[] };
   isOpen: boolean;
 }
 
