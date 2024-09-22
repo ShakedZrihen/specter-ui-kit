@@ -36,7 +36,7 @@ export function SinglePostView({ post, isOpen, onClose }: SinglePostViewProps) {
     <StyledSinglePostView open={isOpen}>
       <SinglePostViewContainer>
         <SinglePostContentContainer>
-          <StyledSinglePost {...post} highlightedText={[]} slimView={true} />
+          <StyledSinglePost {...post} slimView={true} />
         </SinglePostContentContainer>
         <Divider orientation='vertical' flexItem />
         <SinglePostLeftSideContainer>
