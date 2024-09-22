@@ -75,7 +75,7 @@ export function Post(props: PostProps & { className?: string }) {
             </Link>
             •
             <Link href={source.channelUrl} target='_blank'>
-              <ChannelName direction={getTextDirection(source.channelName)}>
+              <ChannelName direction={getTextDirection(franc(source.channelName))}>
                 {source.channelName}
               </ChannelName>
             </Link>{' '}
@@ -98,11 +98,11 @@ export function Post(props: PostProps & { className?: string }) {
           </PostReadIndicator>
         )}
       </PostHeader>
-      <PostContent direction={direction}>
+      <PostContent direction={getTextDirection(franc(content))}>
         <TextWithHighlights
           text={content}
           highlightedText={highlightedText}
-          direction={direction}
+          direction={getTextDirection(franc(content))}
           maxLines={5}
         />
       </PostContent>
