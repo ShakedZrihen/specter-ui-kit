@@ -11,6 +11,7 @@ import {
   PostReadIndicator,
   PostSource,
   StyledPost,
+  ChannelName,
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
@@ -74,7 +75,9 @@ export function Post(props: PostProps & { className?: string }) {
             </Link>
             •
             <Link href={source.channelUrl} target='_blank'>
-              <Typography noWrap sx={{ width: "80px", direction: "ltr" }}>{source.channelName}</Typography>
+              <ChannelName direction={getTextDirection(source.channelName)}>
+                {source.channelName}
+              </ChannelName>
             </Link>{' '}
             • <Typography>{source.sourceName}</Typography>
           </PostSource>
