@@ -7,10 +7,10 @@ export const StyledSearch = styled('div')`
   padding: 0.5rem 0.8rem;
   border-radius: 50px;
   background-color: ${({ theme }) =>
-    alpha(theme.colorPalette.common.white, 0.15)};
+    alpha(theme.colorPalette.colors.spWhite, 0.15)};
   &:hover {
     background-color: ${({ theme }) =>
-      alpha(theme.colorPalette.common.white, 0.25)};
+      alpha(theme.colorPalette.colors.spWhite, 0.25)};
   }
   margin-left: 0;
   width: 20rem;

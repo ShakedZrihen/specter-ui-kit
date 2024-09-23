@@ -10,7 +10,7 @@ export const SinglePostViewContainer = styled('div')`
   height: 80vh;
   width: 90vw;
   margin: 6vh auto;
-  background-color: ${({ theme }) => theme.colorPalette.common.white};
+  background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
   padding: 1.3rem;
   border-radius: 0.5rem;
 

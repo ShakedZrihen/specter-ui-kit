@@ -26,7 +26,7 @@ export const SelectedFiltersIndicator = ({
 
   return (
     <SelectedFilters>
-      <Typography sx={{ color: colorPalette.common.white }}>
+      <Typography sx={{ color: colorPalette.colors.spWhite }}>
         {selectedFiltersNumber}
       </Typography>
     </SelectedFilters>
