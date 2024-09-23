@@ -19,7 +19,7 @@ export const StyledButton = styled(Typography)<{ selected: boolean }>`
   display: flex;
   align-items: center;
   font-size: 0.8rem;
-  color: ${({ theme }) => theme.colorPalette.common.white};
+  color: ${({ theme }) => theme.colorPalette.colors.spWhite};
   background-color: ${({ theme, selected }) =>
     selected
       ? theme.colorPalette.button.searchType.stroke
@@ -38,7 +38,7 @@ export const AdditionalSearchSettingContainer = styled('div')`
   & hr {
     height: 1rem;
     margin: 0 1.5rem;
-    border: 0.95px solid ${({ theme }) => theme.colorPalette.common.white};
+    border: 0.95px solid ${({ theme }) => theme.colorPalette.colors.spWhite};
   }
 `;
 

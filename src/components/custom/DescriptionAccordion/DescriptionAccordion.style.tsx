@@ -26,7 +26,7 @@ export const StyledAccordionDetails = styled(AccordionDetails)`
   border-radius: 0 0 0.5rem 0.5rem;
   border-width: 0px 1px 1px 1px;
   border-style: solid;
-  background-color: ${({ theme }) => theme.colorPalette.common.white};
+  background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
 `;
 
 export const StyledAccordionSummary = styled(AccordionSummary)`

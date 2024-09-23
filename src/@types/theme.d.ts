@@ -20,6 +20,7 @@ declare module '@mui/material/styles' {
       primary: string;
     };
     common: {
+      // deprecated white color
       white: string;
       highlight: string;
       icon: string;
@@ -28,6 +29,7 @@ declare module '@mui/material/styles' {
       primary: string;
       secondary: string;
       spGray_10: string;
+      spWhite: string;
     };
     filters: {
       headers: {
