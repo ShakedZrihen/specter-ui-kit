@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel, Divider } from '@mui/material';
+import { Checkbox, FormControlLabel, Divider, Link, Typography } from '@mui/material';
 import { franc } from 'franc';
 import { TextWithHighlights } from '../../base/TextWithHighlights';
 import {
@@ -11,6 +11,7 @@ import {
   PostReadIndicator,
   PostSource,
   StyledPost,
+  ChannelName,
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
@@ -69,14 +70,16 @@ export function Post(props: PostProps & { className?: string }) {
             {time} • {date}
           </PostDatetime>
           <PostSource>
-            <a href={source.url} target='_blank'>
+            <Link href={source.url} target='_blank'>
               {cleanProtocol(source.url)}
-            </a>
+            </Link>
             •
-            <a href={source.channelUrl} target='_blank'>
-              {source.channelName}
-            </a>{' '}
-            • <span>{source.sourceName}</span>
+            <Link href={source.channelUrl} target='_blank'>
+              <ChannelName direction={getTextDirection(franc(source.channelName))}>
+                {source.channelName}
+              </ChannelName>
+            </Link>{' '}
+            • <Typography>{source.sourceName}</Typography>
           </PostSource>
         </PostHeaderContent>
         {!slimView && (
@@ -95,11 +98,11 @@ export function Post(props: PostProps & { className?: string }) {
           </PostReadIndicator>
         )}
       </PostHeader>
-      <PostContent direction={direction}>
+      <PostContent direction={getTextDirection(franc(content))}>
         <TextWithHighlights
           text={content}
           highlightedText={highlightedText}
-          direction={direction}
+          direction={getTextDirection(franc(content))}
           maxLines={5}
         />
       </PostContent>

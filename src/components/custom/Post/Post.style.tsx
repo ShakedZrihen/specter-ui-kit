@@ -105,3 +105,11 @@ export const ActionButton = styled('div')`
     color: ${({ theme }) => lighten(theme.colorPalette.text.primary, 0.6)};
   }
 `;
+
+export const ChannelName = styled(Typography)<{ direction: string }>`
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    direction: ${({ direction }) => direction};
+    width: 5rem;
+`;
