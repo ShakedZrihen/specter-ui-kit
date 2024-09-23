@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import {
   AppNameTypography,
   StyledAppBar,
@@ -11,13 +11,8 @@ import {
 import { Search } from './Search/Search';
 import { TranslationButton } from '../../custom/TranslationButton/TranslationButton';
 import { SearchSettings } from './SearchSettings';
-import { SearchType } from './SearchSettings/SearchSettings.types';
-
-interface SearchProps {
-  onSearch?: (searchTerm: string, searchType: string) => void;
-  withSearch?: boolean;
-  searchSettingsWidth?: string;
-}
+import { useSearch } from './Search/useSearch';
+import { SearchProps } from './Search/Search.types';
 
 interface TranslationProps {
   withTranslationButton?: boolean;
@@ -43,30 +38,7 @@ export const Topbar = ({
   supportedLanguages = ['en', 'ar', 'he'],
   onLanguageChange,
 }: TopbarProps) => {
-  const [searchFocused, setSearchFocused] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [searchType, setSearchType] = useState<SearchType>(SearchType.Semantic);
-  const searchInputRef = useRef<HTMLDivElement>(null);
-
-  const onSearchSettingsChange = (
-    searchType: SearchType,
-    { operator }: { operator: string } = { operator: '' },
-  ) => {
-    setSearchType(searchType);
-
-    if (operator) {
-      setSearchTerm(searchTerm + ` ${operator} `);
-    }
-
-    if (searchInputRef.current) {
-      // refocus on search for better UX
-      searchInputRef.current.focus();
-    }
-  };
-
-  const performSearch = () => {
-    onSearch?.(searchTerm, searchType);
-  };
+  const searchParams = useSearch({ onSearch });
 
   return (
     <TopbarWithSettingBar>
@@ -79,11 +51,11 @@ export const Topbar = ({
           {withSearch && onSearch && (
             <TopbarSearchContainer>
               <Search
-                onSearch={performSearch}
-                searchTerm={searchTerm}
-                setSearchTerm={setSearchTerm}
-                onFocus={() => setSearchFocused(true)}
-                searchInputRef={searchInputRef}
+                onSearch={searchParams.performSearch}
+                searchTerm={searchParams.searchTerm}
+                setSearchTerm={searchParams.setSearchTerm}
+                onFocus={() => searchParams.setSearchFocused(true)}
+                searchInputRef={searchParams.searchInputRef}
               />
             </TopbarSearchContainer>
           )}
@@ -97,12 +69,12 @@ export const Topbar = ({
           </TopbarUserContextContainer>
         </TopbarContainer>
       </StyledAppBar>
-      {withSearch && searchFocused && (
+      {withSearch && searchParams.searchFocused && (
         <SearchSettings
           width={searchSettingsWidth}
-          onChange={onSearchSettingsChange}
-          searchType={searchType}
-          setSearchType={setSearchType}
+          onChange={searchParams.onSearchSettingsChange}
+          searchType={searchParams.searchType}
+          setSearchType={searchParams.setSearchType}
         />
       )}
     </TopbarWithSettingBar>
