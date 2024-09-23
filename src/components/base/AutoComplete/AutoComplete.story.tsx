@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { SpecterTheme } from '../../../../context/theme/SpecterTheme';
+import { SpecterTheme } from '../../../context/theme/SpecterTheme';
 import { AutoComplete } from './AutoComplete';
 import type { Meta, StoryObj } from '@storybook/react';
 
