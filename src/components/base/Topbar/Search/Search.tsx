@@ -8,9 +8,11 @@ import { useState } from 'react';
 
 interface SearchProps {
   onSearch: (searchTerm: string) => void;
+  onFocus: () => void;
+  onBlur: () => void;
 }
 
-export const Search = ({ onSearch }: SearchProps) => {
+export const Search = ({ onSearch, onFocus, onBlur }: SearchProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   // TODO: add support of multiple search terms
   // add support for chips
@@ -28,6 +30,8 @@ export const Search = ({ onSearch }: SearchProps) => {
             onSearch(searchTerm);
           }
         }}
+        onFocus={onFocus}
+        onBlur={onBlur}
         inputProps={{ 'aria-label': 'search' }}
       />
     </StyledSearch>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   AppNameTypography,
   StyledAppBar,
@@ -6,9 +6,11 @@ import {
   TopbarContainer,
   TopbarSearchContainer,
   TopbarUserContextContainer,
+  TopbarWithSettingBar,
 } from './Topbar.style';
 import { Search } from './Search/Search';
 import { TranslationButton } from '../../custom/TranslationButton/TranslationButton';
+import { StyledSearchSettings } from './SearchSettings/SearchSettings.style';
 
 interface TopbarProps {
   appName: string;
@@ -29,27 +31,38 @@ export const Topbar = ({
   withTranslationButton,
   onLanguageChange,
 }: TopbarProps) => {
+  const [searchFocused, setSearchFocused] = useState(false);
+
   return (
-    <StyledAppBar className={className}>
-      <TopbarContainer>
-        <TopbarAppDetailsContainer>
-          {appIcon}
-          <AppNameTypography>{appName}</AppNameTypography>
-        </TopbarAppDetailsContainer>
-        {withSearch && onSearch && (
-          <TopbarSearchContainer>
-            <Search onSearch={onSearch} />
-          </TopbarSearchContainer>
-        )}
-        <TopbarUserContextContainer>
-          {withTranslationButton && onLanguageChange && (
-            <TranslationButton
-              onLanguageChange={onLanguageChange}
-              supportedLanguages={['en', 'ar', 'he']}
-            />
+    <TopbarWithSettingBar>
+      <StyledAppBar className={className}>
+        <TopbarContainer>
+          <TopbarAppDetailsContainer>
+            {appIcon}
+            <AppNameTypography>{appName}</AppNameTypography>
+          </TopbarAppDetailsContainer>
+          {withSearch && onSearch && (
+            <TopbarSearchContainer>
+              <Search
+                onSearch={onSearch}
+                onFocus={() => setSearchFocused(true)}
+                onBlur={() => setSearchFocused(false)}
+              />
+            </TopbarSearchContainer>
           )}
-        </TopbarUserContextContainer>
-      </TopbarContainer>
-    </StyledAppBar>
+          <TopbarUserContextContainer>
+            {withTranslationButton && onLanguageChange && (
+              <TranslationButton
+                onLanguageChange={onLanguageChange}
+                supportedLanguages={['en', 'ar', 'he']}
+              />
+            )}
+          </TopbarUserContextContainer>
+        </TopbarContainer>
+      </StyledAppBar>
+      {withSearch && searchFocused && (
+        <StyledSearchSettings width='calc(100% - 4rem)' />
+      )}
+    </TopbarWithSettingBar>
   );
 };
