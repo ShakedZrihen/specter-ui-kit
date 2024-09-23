@@ -33,7 +33,9 @@ export const colorPalette = {
     primary: '#474E72',
     secondary: '#1B1E2D',
     spGray_10: '#BDC1D3',
-    spWhite: '#FFFFFF'
+    spWhite: '#FFFFFF',
+    spBlue_10: '#A8CAFF',
+    spBlue_20: '#D6E6FE'
   },
   filters: {
     headers: {
