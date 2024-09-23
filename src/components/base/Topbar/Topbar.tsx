@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   AppNameTypography,
   StyledAppBar,
@@ -10,28 +10,63 @@ import {
 } from './Topbar.style';
 import { Search } from './Search/Search';
 import { TranslationButton } from '../../custom/TranslationButton/TranslationButton';
-import { StyledSearchSettings } from './SearchSettings/SearchSettings.style';
+import { SearchSettings } from './SearchSettings';
+import { SearchType } from './SearchSettings/SearchSettings.types';
 
-interface TopbarProps {
+interface SearchProps {
+  onSearch?: (searchTerm: string, searchType: string) => void;
+  withSearch?: boolean;
+  searchSettingsWidth?: string;
+}
+
+interface TranslationProps {
+  withTranslationButton?: boolean;
+  supportedLanguages?: string[];
+  onLanguageChange?: (language: string) => void;
+}
+interface TopbarProps extends SearchProps, TranslationProps {
   appName: string;
   appIcon?: React.ReactElement;
-  withSearch?: boolean;
-  withTranslationButton?: boolean;
-  onSearch?: (searchTerm: string) => void;
   className?: string;
-  onLanguageChange?: (language: string) => void;
 }
 
 export const Topbar = ({
   appName,
   appIcon,
-  onSearch,
-  withSearch,
   className,
+  // search props
+  withSearch,
+  searchSettingsWidth,
+  onSearch,
+  // translation props
   withTranslationButton,
+  supportedLanguages = ['en', 'ar', 'he'],
   onLanguageChange,
 }: TopbarProps) => {
   const [searchFocused, setSearchFocused] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchType, setSearchType] = useState<SearchType>(SearchType.Semantic);
+  const searchInputRef = useRef<HTMLDivElement>(null);
+
+  const onSearchSettingsChange = (
+    searchType: SearchType,
+    { operator }: { operator: string } = { operator: '' },
+  ) => {
+    setSearchType(searchType);
+
+    if (operator) {
+      setSearchTerm(searchTerm + ` ${operator} `);
+    }
+
+    if (searchInputRef.current) {
+      // refocus on search for better UX
+      searchInputRef.current.focus();
+    }
+  };
+
+  const performSearch = () => {
+    onSearch?.(searchTerm, searchType);
+  };
 
   return (
     <TopbarWithSettingBar>
@@ -44,9 +79,11 @@ export const Topbar = ({
           {withSearch && onSearch && (
             <TopbarSearchContainer>
               <Search
-                onSearch={onSearch}
+                onSearch={performSearch}
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
                 onFocus={() => setSearchFocused(true)}
-                onBlur={() => setSearchFocused(false)}
+                searchInputRef={searchInputRef}
               />
             </TopbarSearchContainer>
           )}
@@ -54,14 +91,19 @@ export const Topbar = ({
             {withTranslationButton && onLanguageChange && (
               <TranslationButton
                 onLanguageChange={onLanguageChange}
-                supportedLanguages={['en', 'ar', 'he']}
+                supportedLanguages={supportedLanguages}
               />
             )}
           </TopbarUserContextContainer>
         </TopbarContainer>
       </StyledAppBar>
       {withSearch && searchFocused && (
-        <StyledSearchSettings width='calc(100% - 4rem)' />
+        <SearchSettings
+          width={searchSettingsWidth}
+          onChange={onSearchSettingsChange}
+          searchType={searchType}
+          setSearchType={setSearchType}
+        />
       )}
     </TopbarWithSettingBar>
   );
