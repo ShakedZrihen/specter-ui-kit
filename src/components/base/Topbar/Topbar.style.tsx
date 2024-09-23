@@ -4,7 +4,9 @@ export const StyledAppBar = styled(AppBar)`
   position: static;
   direction: rtl;
   height: 4rem;
-  background-color: #1b1e2d;
+  background-color: ${({ theme }) => theme.colorPalette.header.background};
+  box-shadow: none !important;
+  border-bottom: 1px solid ${({ theme }) => theme.colorPalette.colors.primary};
 `;
 
 export const TopbarAppDetailsContainer = styled('div')`
@@ -43,4 +45,9 @@ export const AppNameTypography = styled(Typography)`
   flex-grow: 1;
   font-size: 1.8rem;
   color: ${({ theme }) => theme.colorPalette.header.text};
+`;
+
+export const TopbarWithSettingBar = styled('div')`
+  display: flex;
+  flex-direction: column;
 `;

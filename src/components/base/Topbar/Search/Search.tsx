@@ -4,14 +4,22 @@ import {
   StyledInputBase,
   StyledSearch,
 } from './Search.style';
-import { useState } from 'react';
 
 interface SearchProps {
   onSearch: (searchTerm: string) => void;
+  onFocus: () => void;
+  searchTerm: string;
+  setSearchTerm: (searchTerm: string) => void;
+  searchInputRef?: React.RefObject<HTMLDivElement>;
 }
 
-export const Search = ({ onSearch }: SearchProps) => {
-  const [searchTerm, setSearchTerm] = useState('');
+export const Search = ({
+  searchTerm,
+  searchInputRef,
+  onSearch,
+  onFocus,
+  setSearchTerm,
+}: SearchProps) => {
   // TODO: add support of multiple search terms
   // add support for chips
 
@@ -21,13 +29,16 @@ export const Search = ({ onSearch }: SearchProps) => {
         <SearchIcon />
       </SearchIconWrapper>
       <StyledInputBase
+        inputRef={searchInputRef}
         placeholder='חפש...'
+        value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
         onKeyDown={e => {
           if (e.key === 'Enter') {
             onSearch(searchTerm);
           }
         }}
+        onFocus={onFocus}
         inputProps={{ 'aria-label': 'search' }}
       />
     </StyledSearch>

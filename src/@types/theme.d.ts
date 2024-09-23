@@ -2,48 +2,53 @@
 import '@mui/material/styles';
 
 declare module '@mui/material/styles' {
-  interface Theme {
-    colorPalette: {
-      link: {
+  interface ColorPalette {
+    link: {
+      color: string;
+    };
+    filterChip: { background: string };
+    header: {
+      text: string;
+      background: string;
+    };
+    divider: {
+      color: string;
+      blue: string;
+    };
+    text: {
+      secondary: string;
+      primary: string;
+    };
+    common: {
+      white: string;
+      highlight: string;
+      icon: string;
+    };
+    colors: {
+      primary: string;
+      secondary: string;
+      spGray_10: string;
+    };
+    filters: {
+      headers: {
         color: string;
       };
-      filterChip: { background: string };
-      header: {
-        text: string;
-        fill: string;
-      };
-      divider: {
-        color: string;
-        blue: string;
-      };
-      text: {
-        secondary: string;
-        primary: string;
-      };
-      common: {
-        white: string;
-        highlight: string;
-        icon: string;
-      };
-      colors: {
-        primary: string;
-        secondary: string;
-      };
-      filters: {
-        headers: {
-          color: string;
+    };
+    button: {
+      searchType: {
+        stroke: string;
+        selected: {
+          fill: string;
         };
       };
     };
   }
+
+  interface Theme {
+    colorPalette: ColorPalette;
+  }
+
   interface ThemeOptions {
-    colorPalette?: {
-      header?: {
-        text?: string;
-      };
-      common?: {
-        white?: string;
-      };
-    };
+    colorPalette?: ColorPalette;
   }
 }
