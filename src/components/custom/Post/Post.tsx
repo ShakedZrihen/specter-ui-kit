@@ -1,4 +1,10 @@
-import { Checkbox, FormControlLabel, Divider, Link, Typography } from '@mui/material';
+import {
+  Checkbox,
+  FormControlLabel,
+  Divider,
+  Link,
+  Typography,
+} from '@mui/material';
 import { franc } from 'franc';
 import { TextWithHighlights } from '../../base/TextWithHighlights';
 import {
@@ -57,8 +63,6 @@ export function Post(props: PostProps & { className?: string }) {
     url.replace('https://', '').replace('http://', '');
 
   const content = selected || original;
-  const language = franc(content);
-  const direction = getTextDirection(language);
 
   return (
     <StyledPost className={className}>
@@ -75,7 +79,9 @@ export function Post(props: PostProps & { className?: string }) {
             </Link>
             •
             <Link href={source.channelUrl} target='_blank'>
-              <ChannelName direction={getTextDirection(franc(source.channelName))}>
+              <ChannelName
+                direction={getTextDirection(franc(source.channelName))}
+              >
                 {source.channelName}
               </ChannelName>
             </Link>{' '}
