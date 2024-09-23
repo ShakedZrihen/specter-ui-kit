@@ -107,9 +107,9 @@ export const ActionButton = styled('div')`
 `;
 
 export const ChannelName = styled(Typography)<{ direction: string }>`
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    direction: ${({ direction }) => direction};
-    width: 5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  direction: ${({ direction }) => direction};
+  width: 5rem;
 `;

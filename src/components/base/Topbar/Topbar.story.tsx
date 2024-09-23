@@ -38,7 +38,7 @@ export const WithTranslationButton: Story = {
         appName='ספקטר'
         appIcon={<SpectorLogo />}
         withTranslationButton
-        onLanguageChange={console.log} 
+        onLanguageChange={console.log}
       />
     </SpecterTheme>
   ),

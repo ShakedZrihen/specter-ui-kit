@@ -27,7 +27,7 @@ interface IPost {
     selected?: string;
   };
   isRead: boolean;
-    enrichments?: {
+  enrichments?: {
     metadata?: Record<string, string>;
     ai?: Record<string, string>;
     operationalHistory?: Record<string, string>;
