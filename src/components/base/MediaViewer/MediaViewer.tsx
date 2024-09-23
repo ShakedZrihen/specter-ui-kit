@@ -1,7 +1,6 @@
 import { ReactImageGalleryProps } from 'react-image-gallery';
 import { StyledMediaViewer } from './MediaViewer.style';
 
-
 export interface MediaViewerProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   items?: any;

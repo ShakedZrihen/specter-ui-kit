@@ -1,7 +1,7 @@
 {
   "name": "specter-ui-kit",
   "private": false,
-  "version": "0.7.2",
+  "version": "0.8.0",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -24,6 +24,7 @@
     "lint": "eslint ./src",
     "generate": "plop",
     "postgenerate": "prettier ./src --write --log-level silent",
+    "prettier": "prettier ./src --write --log-level silent",
     "preview": "vite preview"
   },
   "dependencies": {

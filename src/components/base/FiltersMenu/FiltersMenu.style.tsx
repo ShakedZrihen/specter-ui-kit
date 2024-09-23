@@ -44,7 +44,7 @@ export const FiltersControllerButton = styled('div')`
   align-items: center;
   border-radius: 0 1.5rem 1.5rem 0;
   padding: 0.3rem 1.2rem;
-  background-color: ${({ theme }) => theme.colorPalette.common.white};
+  background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
   box-shadow: 0px 0px 5px 0px #0000001f;
 
   width: 7rem;

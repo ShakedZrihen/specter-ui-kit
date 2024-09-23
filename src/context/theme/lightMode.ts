@@ -24,6 +24,7 @@ export const colorPalette = {
     blue: '#D2DEF2',
   },
   common: {
+    // deprecated white color
     white: '#FFFFFF',
     highlight: '#FFDF5F',
     icon: '#2860A8',
@@ -31,10 +32,20 @@ export const colorPalette = {
   colors: {
     primary: '#474E72',
     secondary: '#1B1E2D',
+    spGray_10: '#BDC1D3',
+    spWhite: '#FFFFFF'
   },
   filters: {
     headers: {
       color: '#E9EFF9',
+    },
+  },
+  button: {
+    searchType: {
+      stroke: '#3C4158',
+      selected: {
+        fill: '#3C4158',
+      },
     },
   },
 };

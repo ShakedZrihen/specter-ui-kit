@@ -6,50 +6,77 @@ import {
   TopbarContainer,
   TopbarSearchContainer,
   TopbarUserContextContainer,
+  TopbarWithSettingBar,
 } from './Topbar.style';
 import { Search } from './Search/Search';
 import { TranslationButton } from '../../custom/TranslationButton/TranslationButton';
+import { SearchSettings } from './SearchSettings';
+import { useSearch } from './Search/useSearch';
+import { SearchProps } from './Search/Search.types';
 
-interface TopbarProps {
+interface TranslationProps {
+  withTranslationButton?: boolean;
+  supportedLanguages?: string[];
+  onLanguageChange?: (language: string) => void;
+}
+interface TopbarProps extends SearchProps, TranslationProps {
   appName: string;
   appIcon?: React.ReactElement;
-  withSearch?: boolean;
-  withTranslationButton?: boolean;
-  onSearch?: (searchTerm: string) => void;
   className?: string;
-  onLanguageChange?: (language: string) => void;
 }
 
 export const Topbar = ({
   appName,
   appIcon,
-  onSearch,
-  withSearch,
   className,
+  // search props
+  withSearch,
+  searchSettingsWidth,
+  onSearch,
+  // translation props
   withTranslationButton,
+  supportedLanguages = ['en', 'ar', 'he'],
   onLanguageChange,
 }: TopbarProps) => {
+  const searchParams = useSearch({ onSearch });
+
   return (
-    <StyledAppBar className={className}>
-      <TopbarContainer>
-        <TopbarAppDetailsContainer>
-          {appIcon}
-          <AppNameTypography>{appName}</AppNameTypography>
-        </TopbarAppDetailsContainer>
-        {withSearch && onSearch && (
-          <TopbarSearchContainer>
-            <Search onSearch={onSearch} />
-          </TopbarSearchContainer>
-        )}
-        <TopbarUserContextContainer>
-          {withTranslationButton && onLanguageChange && (
-            <TranslationButton
-              onLanguageChange={onLanguageChange}
-              supportedLanguages={['en', 'ar', 'he']}
-            />
+    <TopbarWithSettingBar>
+      <StyledAppBar className={className}>
+        <TopbarContainer>
+          <TopbarAppDetailsContainer>
+            {appIcon}
+            <AppNameTypography>{appName}</AppNameTypography>
+          </TopbarAppDetailsContainer>
+          {withSearch && onSearch && (
+            <TopbarSearchContainer>
+              <Search
+                onSearch={searchParams.performSearch}
+                searchTerm={searchParams.searchTerm}
+                setSearchTerm={searchParams.setSearchTerm}
+                onFocus={() => searchParams.setSearchFocused(true)}
+                searchInputRef={searchParams.searchInputRef}
+              />
+            </TopbarSearchContainer>
           )}
-        </TopbarUserContextContainer>
-      </TopbarContainer>
-    </StyledAppBar>
+          <TopbarUserContextContainer>
+            {withTranslationButton && onLanguageChange && (
+              <TranslationButton
+                onLanguageChange={onLanguageChange}
+                supportedLanguages={supportedLanguages}
+              />
+            )}
+          </TopbarUserContextContainer>
+        </TopbarContainer>
+      </StyledAppBar>
+      {withSearch && searchParams.searchFocused && (
+        <SearchSettings
+          width={searchSettingsWidth}
+          onChange={searchParams.onSearchSettingsChange}
+          searchType={searchParams.searchType}
+          setSearchType={searchParams.setSearchType}
+        />
+      )}
+    </TopbarWithSettingBar>
   );
 };

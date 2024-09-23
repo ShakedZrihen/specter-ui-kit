@@ -4,7 +4,7 @@ export const StyledFilterByChips = styled('div')`
   display: flex;
   align-items: center;
   height: 2rem;
-  background-color: ${({ theme }) => theme.colorPalette.common.white};
+  background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
   box-shadow: 0px 0px 5px 0px #0000001f;
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   direction: rtl;
