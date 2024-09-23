@@ -41,7 +41,7 @@ export const StyledDesktopDateTimePicker = styled(DesktopDateTimePicker)`
 
   & .MuiInputBase-root {
     border: 1px solid ${({ theme }) => theme.colorPalette.divider.blue};
-
+    direction: ltr;
     &:hover {
       border: 1px solid ${({ theme }) => theme.colorPalette.link.color};
     }
