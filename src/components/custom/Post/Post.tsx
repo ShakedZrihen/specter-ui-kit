@@ -22,6 +22,7 @@ import {
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
 import { IPost } from '../../../@types/post';
+import { MediaViewer } from '../../base/MediaViewer/MediaViewer';
 
 export interface PostProps extends IPost {
   slimView?: boolean;
@@ -31,7 +32,14 @@ export interface PostProps extends IPost {
   onSave?: (id: string | number) => void;
   onShare?: (id: string | number) => void;
   onMore?: (id: string | number) => void;
+  mediaItems?: { 
+    original: string; 
+    thumbnail?: string; 
+    description?: string; 
+    type?: 'image' | 'video'; 
+  }[];  
 }
+
 
 /**
  * TODO: document component functionality
@@ -57,6 +65,7 @@ export function Post(props: PostProps & { className?: string }) {
     onMore = () => {},
     onSave = () => {},
     onShare = () => {},
+    mediaItems = [],  
   } = props;
 
   const cleanProtocol = (url: string) =>
@@ -111,7 +120,8 @@ export function Post(props: PostProps & { className?: string }) {
           direction={getTextDirection(franc(content))}
           maxLines={5}
         />
-      </PostContent>
+      </PostContent> 
+      <MediaViewer items={mediaItems} />
       {!slimView && <Divider />}
       {slimView ? (
         <SlimFooter onSave={onSave} onShare={onShare} id={id} />

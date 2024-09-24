@@ -24,7 +24,6 @@
     "lint": "eslint ./src",
     "generate": "plop",
     "postgenerate": "prettier ./src --write --log-level silent",
-    "prettier": "prettier ./src --write --log-level silent",
     "preview": "vite preview"
   },
   "dependencies": {
