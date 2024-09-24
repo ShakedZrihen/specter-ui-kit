@@ -73,6 +73,7 @@ export const StyledLabel = styled(Typography)`
   font-weight: 600;
   font-size: 1rem;
   margin-bottom: 0.2rem;
+  margin-right: 0.3rem;
 `;
 
 export const StyledComponent = styled('div')`
