@@ -31,7 +31,7 @@ export const Topbar = ({
   className,
   // search props
   withSearch,
-  searchSettingsWidth,
+  searchSettingsStyleOverrides,
   onSearch,
   // translation props
   withTranslationButton,
@@ -71,7 +71,7 @@ export const Topbar = ({
       </StyledAppBar>
       {withSearch && searchParams.searchFocused && (
         <SearchSettings
-          width={searchSettingsWidth}
+          searchSettingsStyleOverrides={searchSettingsStyleOverrides}
           onChange={searchParams.onSearchSettingsChange}
           searchType={searchParams.searchType}
           setSearchType={searchParams.setSearchType}

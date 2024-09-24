@@ -10,7 +10,7 @@ import { SearchType } from './SearchSettings.types';
 import { Divider } from '@mui/material';
 
 export interface SearchSettingsProps {
-  width?: string;
+  searchSettingsStyleOverrides?: string;
   searchType?: SearchType;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChange?: (searchType: SearchType, extraInfo?: any) => void;
@@ -27,7 +27,7 @@ export interface SearchSettingsProps {
  * ```
  */
 export function SearchSettings({
-  width,
+  searchSettingsStyleOverrides,
   searchType,
   onChange,
 }: SearchSettingsProps) {
@@ -39,7 +39,7 @@ export function SearchSettings({
   const supportedOperators = ['OR', 'AND', 'NOT', '*', '"', ')', '('];
 
   return (
-    <StyledSearchSettings width={width}>
+    <StyledSearchSettings searchSettingsStyleOverrides={searchSettingsStyleOverrides}>
       <StyledButton
         selected={searchType === SearchType.Semantic}
         onClick={() => onSearchSettingsChange(SearchType.Semantic)}

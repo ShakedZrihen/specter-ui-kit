@@ -21,4 +21,5 @@ export const ShowMoreButton = styled('span')`
   direction: rtl;
   cursor: pointer;
   color: ${({ theme }) => theme.colorPalette.link.color};
+  margin-right: 1rem;
 `;

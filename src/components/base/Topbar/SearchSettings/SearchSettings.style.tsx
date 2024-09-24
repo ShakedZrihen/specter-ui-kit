@@ -1,10 +1,12 @@
 import { styled, Typography } from '@mui/material';
 
-export const StyledSearchSettings = styled('div')<{ width?: string }>`
+export const StyledSearchSettings = styled('div')<{
+  searchSettingsStyleOverrides?: string;
+}>`
   height: 2.8rem;
   padding-right: 1rem;
   background-color: ${({ theme }) => theme.colorPalette.header.background};
-  ${({ width }) => (width ? `width: ${width};` : '')};
+  ${({ searchSettingsStyleOverrides }) => searchSettingsStyleOverrides ?? ''}
   border-right: 1px solid ${({ theme }) => theme.colorPalette.colors.primary};
   display: flex;
   direction: rtl;
