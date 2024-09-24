@@ -33,7 +33,7 @@ export const Topbar = ({
   withSearch,
   searchSettingsStyleOverrides,
   onSearch,
-  onSeachFocus,
+  onSearchFocus,
   onSearchBlur,
   // translation props
   withTranslationButton,
@@ -58,7 +58,7 @@ export const Topbar = ({
                 setSearchTerm={searchParams.setSearchTerm}
                 onFocus={() => {
                   searchParams.setSearchFocused(true);
-                  onSeachFocus?.();
+                  onSearchFocus?.();
                 }}
                 searchInputRef={searchParams.searchInputRef}
               />
