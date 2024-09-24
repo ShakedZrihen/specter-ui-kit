@@ -6,3 +6,4 @@ export { FiltersSection } from './FiltersSection';
 export { TimeFilter } from './TimeFilter';
 export { Button } from './Button';
 export { MediaViewer } from './MediaViewer';
+export { SmallNotification } from './SmallNotification';

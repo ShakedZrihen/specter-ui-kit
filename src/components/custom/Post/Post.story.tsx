@@ -3,9 +3,6 @@ import { SpecterTheme } from '../../../context/theme/SpecterTheme';
 import { Post } from './Post';
 import type { Meta, StoryObj } from '@storybook/react';
 
-
-
-
 const meta: Meta<typeof Post> = {
   title: 'base/Post',
   component: Post,
@@ -32,9 +29,10 @@ const meta: Meta<typeof Post> = {
     },
     isRead: false,
     highlightedText: ['חמאס'],
-    mediaItems: [  
+    mediaItems: [
       {
-        original: 'https://pic1.calcalist.co.il/picserver3/crop_images/2023/11/22/SJpONDjNa/SJpONDjNa_0_0_1182_638_0_xx-large.jpg',
+        original:
+          'https://pic1.calcalist.co.il/picserver3/crop_images/2023/11/22/SJpONDjNa/SJpONDjNa_0_0_1182_638_0_xx-large.jpg',
         type: 'image',
       },
       {
@@ -42,7 +40,8 @@ const meta: Meta<typeof Post> = {
         type: 'video',
       },
       {
-        original: 'https://pic1.calcalist.co.il/picserver3/crop_images/2022/08/14/HkLGOVUR9/HkLGOVUR9_0_0_1570_847_0_xx-large.jpg',
+        original:
+          'https://pic1.calcalist.co.il/picserver3/crop_images/2022/08/14/HkLGOVUR9/HkLGOVUR9_0_0_1570_847_0_xx-large.jpg',
         type: 'image',
       },
     ],
