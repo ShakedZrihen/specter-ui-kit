@@ -3,6 +3,9 @@ import { SpecterTheme } from '../../../context/theme/SpecterTheme';
 import { Post } from './Post';
 import type { Meta, StoryObj } from '@storybook/react';
 
+
+
+
 const meta: Meta<typeof Post> = {
   title: 'base/Post',
   component: Post,
