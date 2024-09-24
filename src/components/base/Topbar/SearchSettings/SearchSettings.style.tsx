@@ -71,3 +71,18 @@ export const SearchOperatorContainer = styled('div')`
     cursor: pointer;
   }
 `;
+
+export const CloseSearchSettings = styled('div')`
+display: flex:
+align-items: center;
+justify-content: center;
+margin-left: 1rem;
+:hover {
+  cursor: pointer;
+}
+`;
+
+export const SearchSettingsFiltersContainer = styled('div')`
+  display: flex;
+  flex: 1;
+`;
