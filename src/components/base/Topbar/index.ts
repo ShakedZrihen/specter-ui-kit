@@ -1,2 +1,2 @@
 export { Topbar } from './Topbar';
-export { SearchSettings } from './SearchSettings';
+export { SearchSettings, SearchType } from './SearchSettings';

@@ -1,4 +1,4 @@
-export { Topbar } from './Topbar';
+export * from './Topbar';
 export { TextWithHighlights } from './TextWithHighlights';
 export { FilterByChips } from './FilterByChips';
 export { FiltersMenu } from './FiltersMenu';
