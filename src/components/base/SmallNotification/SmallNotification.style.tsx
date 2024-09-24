@@ -9,7 +9,7 @@ export const StyleSnackbar = styled(Snackbar)`
   border-width: 1px 1px 0px 1px;
   border-style: solid;
   border-color: #FA9349;
-  padding: 16px;
+  padding: 6px;
   display: flex;
   flex-direction: column; 
   justify-content: flex-start;
@@ -49,22 +49,19 @@ export const StyleSnackbar = styled(Snackbar)`
 `;
 
 export const StyledTitle = styled(Typography)`
-font-weight: 600;
+font-weight: ${({ theme }) => theme.typography.fontWeightBold};
 color: rgb(0 0 0);
 text-align: right;
 font-size: 1.125rem;
-font-family: ${({ theme }) => theme.typography.fontFamily};
 `;
 
 export const StyledLabel = styled(Typography)`
-font-weight: 400;
+font-weight: ${({ theme }) => theme.typography.fontWeightMedium};
 color: rgb(0 0 0);
 text-align: right;
-font-family: ${({ theme }) => theme.typography.fontFamily};
 `;
 
 export const StyledButtonText = styled(Typography)`
 color: #1877F2;
-font-weight: 600;
-font-family: ${({ theme }) => theme.typography.fontFamily};
+font-weight: ${({ theme }) => theme.typography.fontWeightBold};
 `;
