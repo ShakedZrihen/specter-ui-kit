@@ -30,6 +30,7 @@ declare module '@mui/material/styles' {
       secondary: string;
       spGray_10: string;
       spWhite: string;
+      spBlack: string;
     };
     filters: {
       headers: {

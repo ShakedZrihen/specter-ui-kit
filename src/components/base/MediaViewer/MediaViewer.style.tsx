@@ -1,32 +1,45 @@
-import styled from 'styled-components';
+import { alpha, styled } from '@mui/material/styles';
 
-export const StyledMediaViewer = styled.div`
-  /* Basic styling for the media viewer */
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
+export const StyledMediaViewer = styled('div')(({ theme }) => ({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+}));
 
-export const PhotoContainer = styled.div`
-  position: relative;
-  width: 50%; /* Each photo takes half the space */
-  img {
-    width: 100%;
-    object-fit: cover;
-  }
-`;
+export const PhotoContainer = styled('div')(({ theme }) => ({
+  position: 'relative',
+  width: '50%',
+  '& img': {
+    width: '100%',
+    objectFit: 'cover',
+  },
+}));
 
-export const PhotoOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
-  color: white;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-`;
+export const StyledVideo = styled('video')({
+  width: '100%',
+  objectFit: 'cover',
+});
+
+export const TwoMediaWrapper = styled('div')({
+  display: 'flex',
+  gap: '10px',
+});
+
+export const SingleMediaWrapper = styled('div')({
+  width: '100%',
+});
+
+export const PhotoOverlay = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  background: alpha(theme.colorPalette.colors.spBlack, 0.5),
+  color: 'white',
+  fontSize: '24px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontWeight: 'bold',
+}));

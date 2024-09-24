@@ -29,6 +29,20 @@ const meta: Meta<typeof Post> = {
     },
     isRead: false,
     highlightedText: ['חמאס'],
+    mediaItems: [  
+      {
+        original: 'https://pic1.calcalist.co.il/picserver3/crop_images/2023/11/22/SJpONDjNa/SJpONDjNa_0_0_1182_638_0_xx-large.jpg',
+        type: 'image',
+      },
+      {
+        original: 'https://samplelib.com/lib/preview/mp4/sample-5s.mp4',
+        type: 'video',
+      },
+      {
+        original: 'https://pic1.calcalist.co.il/picserver3/crop_images/2022/08/14/HkLGOVUR9/HkLGOVUR9_0_0_1570_847_0_xx-large.jpg',
+        type: 'image',
+      },
+    ],
     onSave: () => alert('saved'),
     enrichments: {},
   },

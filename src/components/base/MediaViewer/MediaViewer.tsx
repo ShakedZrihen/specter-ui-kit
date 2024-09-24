@@ -1,11 +1,9 @@
-import { ReactImageGalleryProps } from 'react-image-gallery';
-import { StyledMediaViewer, PhotoContainer, PhotoOverlay } from './MediaViewer.style';
+import { StyledMediaViewer, StyledVideo, PhotoOverlay, TwoMediaWrapper, SingleMediaWrapper } from './MediaViewer.style';
 import { Typography } from '@mui/material';
 
 export interface MediaViewerProps {
   items: { original: string; thumbnail?: string; description?: string; type?: 'image' | 'video' }[];
 }
-
 
 export function MediaViewer({ items, ...props }: MediaViewerProps) {
   if (!items || items.length === 0) return null;
@@ -15,14 +13,10 @@ export function MediaViewer({ items, ...props }: MediaViewerProps) {
   const renderMedia = (item: { original: string; description?: string; type?: 'image' | 'video' }) => {
     if (item.type === 'video') {
       return (
-        <video
-          key={item.original}
-          controls
-          style={{ width: '100%', objectFit: 'cover' }}
-        >
+        <StyledVideo key={item.original} controls>
           <source src={item.original} type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+        </StyledVideo>
       );
     }
     return (
@@ -38,32 +32,27 @@ export function MediaViewer({ items, ...props }: MediaViewerProps) {
   return (
     <StyledMediaViewer {...props}>
       {items.length === 2 ? (
-        <div style={{ display: 'flex', gap: '10px' }}>
+        <TwoMediaWrapper>
           {items.slice(0, 2).map((item, index) => (
             <div key={index} style={{ width: '50%' }}>
               {renderMedia(item)}
             </div>
           ))}
-        </div>
+        </TwoMediaWrapper>
       ) : items.length > 2 ? (
-        <div style={{ display: 'flex', gap: '10px', position: 'relative' }}>
-          <div style={{ width: '50%' }}>
-            {renderMedia(items[0])}
-          </div>
-
+        <TwoMediaWrapper style={{ position: 'relative' }}>
+          <div style={{ width: '50%' }}>{renderMedia(items[0])}</div>
           <div style={{ position: 'relative', width: '50%' }}>
             {renderMedia(items[1])}
             {remainingPhotosCount > 0 && (
               <PhotoOverlay>
-             <Typography> +{remainingPhotosCount}</Typography>  
+                <Typography>+{remainingPhotosCount}</Typography>
               </PhotoOverlay>
             )}
           </div>
-        </div>
+        </TwoMediaWrapper>
       ) : (
-        <div style={{ width: '100%' }}>
-          {renderMedia(items[0])}
-        </div>
+        <SingleMediaWrapper>{renderMedia(items[0])}</SingleMediaWrapper>
       )}
     </StyledMediaViewer>
   );
