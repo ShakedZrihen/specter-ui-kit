@@ -1,6 +1,7 @@
 import { Autocomplete, darken, styled, TextField } from '@mui/material';
 
 export const StyledAutoComplete = styled(Autocomplete)`
+  width: 45vw;
   & .MuiInputBase-root {
     border: 2px solid ${({ theme }) => theme.colorPalette.colors.spBlue_10};
     direction: ltr;
@@ -53,3 +54,18 @@ export const StyledAutoComplete = styled(Autocomplete)`
 `;
 
 export const CustomTextField = styled(TextField)``;
+
+export const TrashButton = styled('button')`
+  background-color: transparent;
+  border: none;
+  padding: 0; 
+  margin: 0; 
+  cursor: pointer;
+`;
+
+export const Wrapper = styled('div')`
+  display: flex; 
+  flex-direction: row;
+  align-items: center;
+  width: 100vw;
+`;

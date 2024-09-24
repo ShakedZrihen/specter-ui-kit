@@ -1,5 +1,5 @@
-import { StyledAutoComplete, CustomTextField } from './AutoComplete.style';
-import { ChevronDownIcon } from '../../icons';
+import { StyledAutoComplete, CustomTextField, TrashButton, Wrapper } from './AutoComplete.style';
+import { ChevronDownIcon, TrashIcon } from '../../icons';
 import { colorPalette } from '../../../context/theme/lightMode';
 import { renderOptions, renderTags } from './AutoComplete.overrides';
 import { useAutocomplete } from './useAutoComplete';
@@ -22,10 +22,14 @@ export function AutoComplete({
     checkedIcon,
     handleDelete,
     handleInputChange,
-    handleChange,
+    handleChange
   } = useAutocomplete({ onChange });
 
   return (
+    <Wrapper>
+      <TrashButton onClick={() => selectedValues.forEach((value) => handleDelete(value))}>
+        <TrashIcon color='#1877F2' size="2.5rem" />
+    </TrashButton>
     <StyledAutoComplete
       multiple // Allow multiselect
       freeSolo // Keep text after selection
@@ -52,7 +56,8 @@ export function AutoComplete({
           <ChevronDownIcon size={35} color={colorPalette.link.color} />
         </div>
       }
-      clearIcon={null} // We will implement it with the Trash
+      clearIcon={null}
     />
+    </Wrapper>
   );
 }

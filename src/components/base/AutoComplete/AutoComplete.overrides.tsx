@@ -60,10 +60,8 @@ export const renderTags = (
 
 export const renderOptions = (
   props: React.HTMLAttributes<HTMLLIElement> & {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     key: any;
   },
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   option: any,
   {
     selected,
@@ -77,9 +75,11 @@ export const renderOptions = (
 ) => {
   const { key, ...optionProps } = props;
   return (
+    <>
     <li key={key} {...optionProps}>
       <Checkbox icon={icon} checkedIcon={checkedIcon} checked={selected} />
       {option}
     </li>
+    </>
   );
 };
