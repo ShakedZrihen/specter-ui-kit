@@ -1,11 +1,11 @@
-import { Autocomplete, darken, styled, TextField } from '@mui/material';
+import { Autocomplete, darken, styled, TextField, Typography } from '@mui/material';
 
 export const StyledAutoComplete = styled(Autocomplete)`
   width: 45vw;
   & .MuiInputBase-root {
     border: 2px solid ${({ theme }) => theme.colorPalette.colors.spBlue_10};
     direction: ltr;
-    border-radius: 6px;
+    border-radius: 10px;
     &:hover {
       border: 2px solid ${({ theme }) => theme.colorPalette.link.color};
     }
@@ -67,5 +67,17 @@ export const Wrapper = styled('div')`
   display: flex; 
   flex-direction: row;
   align-items: center;
-  width: 100vw;
+`;
+
+export const StyledLabel = styled(Typography)`
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+`;
+
+export const StyledComponent = styled('div')`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 1rem;
 `;

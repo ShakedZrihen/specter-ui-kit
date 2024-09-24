@@ -1,4 +1,4 @@
-import { StyledAutoComplete, CustomTextField, TrashButton, Wrapper } from './AutoComplete.style';
+import { StyledAutoComplete, CustomTextField, TrashButton, Wrapper, StyledLabel, StyledComponent } from './AutoComplete.style';
 import { ChevronDownIcon, TrashIcon } from '../../icons';
 import { colorPalette } from '../../../context/theme/lightMode';
 import { renderOptions, renderTags } from './AutoComplete.overrides';
@@ -6,6 +6,7 @@ import { useAutocomplete } from './useAutoComplete';
 
 export interface AutoCompleteProps {
   values: string[];
+  label: string;
   className?: string;
   onChange?: (value: string[]) => void;
 }
@@ -14,6 +15,7 @@ export function AutoComplete({
   values,
   className,
   onChange,
+  label
 }: AutoCompleteProps) {
   const {
     selectedValues,
@@ -26,9 +28,13 @@ export function AutoComplete({
   } = useAutocomplete({ onChange });
 
   return (
+    <StyledComponent>
+      <StyledLabel>
+        {label}
+      </StyledLabel>{' '}
     <Wrapper>
       <TrashButton onClick={() => selectedValues.forEach((value) => handleDelete(value))}>
-        <TrashIcon color='#1877F2' size="2.5rem" />
+        <TrashIcon color='#1877F2' size={37} />
     </TrashButton>
     <StyledAutoComplete
       multiple // Allow multiselect
@@ -59,5 +65,6 @@ export function AutoComplete({
       clearIcon={null}
     />
     </Wrapper>
+    </StyledComponent>
   );
 }

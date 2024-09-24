@@ -30,6 +30,7 @@ const meta: Meta<typeof AutoComplete> = {
       'שסק',
       'פפאיה',
     ],
+    label: "פרטים לא רלוונטים"
   },
 };
 
