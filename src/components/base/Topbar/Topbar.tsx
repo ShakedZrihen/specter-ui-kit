@@ -75,6 +75,7 @@ export const Topbar = ({
           onChange={searchParams.onSearchSettingsChange}
           searchType={searchParams.searchType}
           setSearchType={searchParams.setSearchType}
+          close={searchParams.closeSearchSettings}
         />
       )}
     </TopbarWithSettingBar>

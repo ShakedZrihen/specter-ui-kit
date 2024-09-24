@@ -31,6 +31,10 @@ export const useSearch = ({ onSearch }: UseSearchProps) => {
     onSearch?.(searchTerm, searchType);
   };
 
+  const closeSearchSettings = () => {
+    setSearchFocused(false);
+  };
+
   return {
     searchFocused,
     setSearchFocused,
@@ -41,5 +45,6 @@ export const useSearch = ({ onSearch }: UseSearchProps) => {
     searchInputRef,
     onSearchSettingsChange,
     performSearch,
+    closeSearchSettings,
   };
 };
