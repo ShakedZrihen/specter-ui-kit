@@ -14,7 +14,7 @@ export interface TranslationButtonProps {
 const languageLabels: Record<string, string> = {
   en: 'English',
   ar: 'Arabic',
-  he: 'Hebrew',
+  he: 'עברית',
 };
 
 export function TranslationButton({

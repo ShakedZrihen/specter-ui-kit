@@ -37,6 +37,7 @@ export const TopbarUserContextContainer = styled('div')`
   align-items: center;
   justify-content: center;
   width: 10%;
+  margin-left: 1rem;
 `;
 
 export const AppNameTypography = styled(Typography)`
