@@ -74,6 +74,8 @@ export const FiltersActionContainer = styled('div')`
 
   & a {
     text-decoration: none;
+    font-family: 'Assistant';
+    font-weight: 600;
     color: ${({ theme }) => theme.colorPalette.link.color};
     :hover {
       cursor: pointer;
