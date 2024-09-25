@@ -4,7 +4,7 @@ import '@mui/material/styles';
 declare module '@mui/material/styles' {
   interface ColorPalette {
     link: {
-      color: string;
+      color: string; createTheme
     };
     filterChip: { background: string };
     header: {
@@ -31,8 +31,6 @@ declare module '@mui/material/styles' {
       spGray_10: string;
       spWhite: string;
       spBlack: string;
-      spLightGray_50: string;
-      spLightGray_40: string;
     };
     filters: {
       headers: {
