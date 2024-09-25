@@ -3,7 +3,7 @@ import { SinglePostView } from './SinglePostView';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof SinglePostView> = {
-  title: 'base/SinglePostView',
+  title: 'custom/SinglePostView',
   component: SinglePostView,
   argTypes: {},
   args: {
