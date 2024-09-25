@@ -31,6 +31,9 @@ declare module '@mui/material/styles' {
       spGray_10: string;
       spWhite: string;
       spBlack: string;
+      spOrange_10: string;
+      spOrange_50: string;
+      spBlue: string;
       spLightGray_50: string;
       spLightGray_40: string;
       spBlue_20: string;
