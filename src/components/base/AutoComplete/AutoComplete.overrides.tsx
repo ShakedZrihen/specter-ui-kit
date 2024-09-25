@@ -76,10 +76,10 @@ export const renderOptions = (
   const { key, ...optionProps } = props;
   return (
     <>
-    <li key={key} {...optionProps}>
-      <Checkbox icon={icon} checkedIcon={checkedIcon} checked={selected} />
-      {option}
-    </li>
+      <li key={key} {...optionProps}>
+        <Checkbox icon={icon} checkedIcon={checkedIcon} checked={selected} />
+        {option}
+      </li>
     </>
   );
 };

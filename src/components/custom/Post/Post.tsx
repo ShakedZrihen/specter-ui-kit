@@ -81,18 +81,22 @@ export function Post(props: PostProps & { className?: string }) {
             <Link href={source.url} target='_blank'>
               {cleanProtocol(source.url)}
             </Link>
-            {source.channelName ? (<>
-              •
-            <Link href={source.channelUrl} target='_blank'>
-              <ChannelName
-                direction={getTextDirection(franc(source.channelName))}
-              >
-                {source.channelName}
-              </ChannelName>
-            </Link>{' '}
-            </>)
-            : (null)}
-            • <Typography style={{ paddingRight: "0.2rem" }}>{source.sourceName}</Typography>
+            {source.channelName ? (
+              <>
+                •
+                <Link href={source.channelUrl} target='_blank'>
+                  <ChannelName
+                    direction={getTextDirection(franc(source.channelName))}
+                  >
+                    {source.channelName}
+                  </ChannelName>
+                </Link>{' '}
+              </>
+            ) : null}
+            •{' '}
+            <Typography style={{ paddingRight: '0.2rem' }}>
+              {source.sourceName}
+            </Typography>
           </PostSource>
         </PostHeaderContent>
         {!slimView && (

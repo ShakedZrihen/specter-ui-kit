@@ -7,9 +7,9 @@ const meta: Meta<typeof SmallNotification> = {
   component: SmallNotification,
   argTypes: {},
   args: {
-    label: "4,246 פרטים נוספים נקצרו",
-    title: "שימו לב",
-    buttonLabel: "ריענון"
+    label: '4,246 פרטים נוספים נקצרו',
+    title: 'שימו לב',
+    buttonLabel: 'ריענון',
   },
 };
 
