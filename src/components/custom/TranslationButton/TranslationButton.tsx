@@ -11,12 +11,6 @@ export interface TranslationButtonProps {
   supportedLanguages: string[];
 }
 
-const languageLabels: Record<string, string> = {
-  en: 'English',
-  ar: 'Arabic',
-  he: 'עברית',
-};
-
 export function TranslationButton({
   onLanguageChange,
   supportedLanguages = [],
@@ -60,7 +54,7 @@ export function TranslationButton({
               key={language}
               onClick={() => handleLanguageChange(language)}
             >
-              {languageLabels[language] || language.toUpperCase()}
+              {language}
             </MenuItem>
           ))
         ) : (
