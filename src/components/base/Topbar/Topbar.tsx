@@ -37,7 +37,7 @@ export const Topbar = ({
   onSearchBlur,
   // translation props
   withTranslationButton,
-  supportedLanguages = ['en', 'ar', 'he'],
+  supportedLanguages = ['עברית', 'English', 'שפת מקור'],
   onLanguageChange,
 }: TopbarProps) => {
   const searchParams = useSearch({ onSearch });

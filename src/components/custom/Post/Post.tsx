@@ -33,12 +33,12 @@ export interface PostProps extends IPost {
   onSave?: (id: string | number) => void;
   onShare?: (id: string | number) => void;
   onMore?: (id: string | number) => void;
-  mediaItems?: { 
-    original: string; 
-    thumbnail?: string; 
-    description?: string; 
-    type?: 'image' | 'video'; 
-  }[];  
+  mediaItems?: {
+    original: string;
+    thumbnail?: string;
+    description?: string;
+    type?: 'image' | 'video';
+  }[];
 }
 
 export function Post(props: PostProps & { className?: string }) {
@@ -56,7 +56,7 @@ export function Post(props: PostProps & { className?: string }) {
     onMore = () => {},
     onSave = () => {},
     onShare = () => {},
-    mediaItems = [],  
+    mediaItems = [],
   } = props;
 
   const cleanProtocol = (url: string) =>
@@ -115,7 +115,7 @@ export function Post(props: PostProps & { className?: string }) {
           direction={getTextDirection(franc(content))}
           maxLines={5}
         />
-      </PostContent> 
+      </PostContent>
       <MediaViewer items={mediaItems} />
       {!slimView && <Divider />}
       {slimView ? (
