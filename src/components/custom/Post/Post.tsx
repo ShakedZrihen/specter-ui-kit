@@ -6,6 +6,7 @@ import {
   Typography,
 } from '@mui/material';
 import { franc } from 'franc';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'; // Import the icon
 import { TextWithHighlights } from '../../base/TextWithHighlights';
 import {
   PostAuthor,
@@ -40,16 +41,6 @@ export interface PostProps extends IPost {
   }[];  
 }
 
-
-/**
- * TODO: document component functionality
- *
- * [Figma](https://https://www.figma.com/file/...)
- *
- * ```tsx
- * <Post />
- * ```
- */
 export function Post(props: PostProps & { className?: string }) {
   const {
     author,
@@ -76,7 +67,11 @@ export function Post(props: PostProps & { className?: string }) {
   return (
     <StyledPost className={className}>
       <PostHeader>
-        <PostAvatar alt={author.name} src={author.avatar} />
+        {author.avatar ? (
+          <PostAvatar alt={author.name} src={author.avatar} />
+        ) : (
+          <AccountCircleIcon sx={{ fontSize: 48 }} titleAccess={author.name} />
+        )}
         <PostHeaderContent>
           <PostAuthor>{author.name}</PostAuthor>
           <PostDatetime>
