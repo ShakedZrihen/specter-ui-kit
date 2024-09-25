@@ -4,7 +4,7 @@ import '@mui/material/styles';
 declare module '@mui/material/styles' {
   interface ColorPalette {
     link: {
-      color: string; createTheme
+      color: string;
     };
     filterChip: { background: string };
     header: {
