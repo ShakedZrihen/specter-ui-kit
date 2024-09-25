@@ -85,5 +85,5 @@ export const FiltersActionContainer = styled('div')`
 `;
 
 export const StyledTypography = styled(Typography)`
-  font-weight: 600;
+  font-weight: 500;
 `;
