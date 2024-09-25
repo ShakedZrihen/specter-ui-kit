@@ -30,7 +30,7 @@ const meta: Meta<typeof AutoComplete> = {
       'שסק',
       'פפאיה',
     ],
-    label: "פרטים לא רלוונטים"
+    label: 'פרטים לא רלוונטים',
   },
 };
 
@@ -39,9 +39,7 @@ type Story = StoryObj<typeof AutoComplete>;
 
 export const Basic: Story = {
   render(props) {
-    const StyledContainer = styled('div')`
-      width: 30rem;
-    `;
+    const StyledContainer = styled('div')``;
     return (
       <SpecterTheme>
         <StyledContainer>

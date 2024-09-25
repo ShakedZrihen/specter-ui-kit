@@ -36,6 +36,8 @@ export const colorPalette = {
     spBlack: '#000000',
     spLightGray_50: '#D3D3D3',
     spLightGray_40: '#ECEBEB',
+    spBlue_20: '#D6E6FE',
+    spBlue_10: '#D6E6FE'
   },
   filters: {
     headers: {
