@@ -7,12 +7,17 @@ import {
 } from '@mui/material';
 
 export const StyledAutoComplete = styled(Autocomplete)`
-  width: 45vw;
+  background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
+  width: 100%;
+
   & .MuiInputBase-root {
-    border: 2px solid ${({ theme }) => theme.colorPalette.colors.spBlue_10};
+    border: 1px solid ${({ theme }) => theme.colorPalette.divider.blue};
     direction: ltr;
-    border-radius: 10px;
     &:hover {
+      border: 1px solid ${({ theme }) => theme.colorPalette.link.color};
+    }
+
+    &:focus {
       border: 2px solid ${({ theme }) => theme.colorPalette.link.color};
     }
   }
@@ -73,6 +78,7 @@ export const Wrapper = styled('div')`
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 100%;
 `;
 
 export const StyledLabel = styled(Typography)`

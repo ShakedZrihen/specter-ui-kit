@@ -19,7 +19,7 @@ import {
   FiltersSection,
 } from '../FiltersSection/FiltersSection';
 
-interface FilterSectionDefinition {
+export interface FilterSectionDefinition {
   filterSectionName: string;
   filterList: FilterDefinition[];
 }

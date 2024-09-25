@@ -19,7 +19,8 @@ export interface FilterDefinition {
   Component: JSXElementConstructor<{
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any;
-    onChange: (selectedValue?: string) => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onChange: (selectedValue?: any) => void;
   }>;
 }
 
@@ -79,7 +80,8 @@ export function FiltersSection({
           <Component
             key={filterName}
             value={selectedFilters[filterName]}
-            onChange={selectedValue => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            onChange={(selectedValue: any) => {
               if (!selectedValue) {
                 // unset filter
                 return onChange(filterName, undefined);
