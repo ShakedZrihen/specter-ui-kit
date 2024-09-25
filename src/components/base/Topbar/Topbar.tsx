@@ -33,6 +33,8 @@ export const Topbar = ({
   withSearch,
   searchSettingsStyleOverrides,
   onSearch,
+  onSearchFocus,
+  onSearchBlur,
   // translation props
   withTranslationButton,
   supportedLanguages = ['en', 'ar', 'he'],
@@ -54,7 +56,10 @@ export const Topbar = ({
                 onSearch={searchParams.performSearch}
                 searchTerm={searchParams.searchTerm}
                 setSearchTerm={searchParams.setSearchTerm}
-                onFocus={() => searchParams.setSearchFocused(true)}
+                onFocus={() => {
+                  searchParams.setSearchFocused(true);
+                  onSearchFocus?.();
+                }}
                 searchInputRef={searchParams.searchInputRef}
               />
             </TopbarSearchContainer>
@@ -75,7 +80,10 @@ export const Topbar = ({
           onChange={searchParams.onSearchSettingsChange}
           searchType={searchParams.searchType}
           setSearchType={searchParams.setSearchType}
-          close={searchParams.closeSearchSettings}
+          close={() => {
+            searchParams.closeSearchSettings();
+            onSearchBlur?.();
+          }}
         />
       )}
     </TopbarWithSettingBar>
