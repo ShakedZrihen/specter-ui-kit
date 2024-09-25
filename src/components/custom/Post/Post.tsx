@@ -6,7 +6,7 @@ import {
   Typography,
 } from '@mui/material';
 import { franc } from 'franc';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'; // Import the icon
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'; 
 import { TextWithHighlights } from '../../base/TextWithHighlights';
 import {
   PostAuthor,
@@ -116,7 +116,7 @@ export function Post(props: PostProps & { className?: string }) {
           maxLines={5}
         />
       </PostContent>
-      <MediaViewer items={mediaItems} />
+      <MediaViewer items={mediaItems} postData={props} />
       {!slimView && <Divider />}
       {slimView ? (
         <SlimFooter onSave={onSave} onShare={onShare} id={id} />

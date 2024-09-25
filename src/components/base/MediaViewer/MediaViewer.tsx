@@ -1,11 +1,15 @@
+import React, { useState } from 'react';
+import { SinglePostView } from '../../custom';
 import {
   StyledMediaViewer,
   StyledVideo,
   PhotoOverlay,
   TwoMediaWrapper,
   SingleMediaWrapper,
+  PhotoContainer,
 } from './MediaViewer.style';
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
+import { IPost } from '../../../@types/post';
 
 export interface MediaViewerProps {
   items: {
@@ -14,12 +18,23 @@ export interface MediaViewerProps {
     description?: string;
     type?: 'image' | 'video';
   }[];
+  postData: IPost; 
 }
 
-export function MediaViewer({ items, ...props }: MediaViewerProps) {
+export function MediaViewer({ items, postData, ...props }: MediaViewerProps) {
+  const [isSinglePostOpen, setIsSinglePostOpen] = useState(false);
+  const [currentPost, setCurrentPost] = useState<IPost | null>(null);
+
   if (!items || items.length === 0) return null;
 
   const remainingPhotosCount = items.length - 2;
+
+  const handleClick = () => {
+    setCurrentPost(postData); 
+    setIsSinglePostOpen(true);  
+    console.log(isSinglePostOpen);
+    console.log(currentPost);
+  };
 
   const renderMedia = (item: {
     original: string;
@@ -29,7 +44,7 @@ export function MediaViewer({ items, ...props }: MediaViewerProps) {
     if (item.type === 'video') {
       return (
         <StyledVideo key={item.original} controls>
-          <source src={item.original} type='video/mp4' />
+          <source src={item.original} type="video/mp4" />
           Your browser does not support the video tag.
         </StyledVideo>
       );
@@ -39,36 +54,47 @@ export function MediaViewer({ items, ...props }: MediaViewerProps) {
         key={item.original}
         src={item.original}
         alt={item.description || 'Media'}
-        style={{ width: '100%', objectFit: 'cover' }}
+        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
       />
     );
   };
 
   return (
-    <StyledMediaViewer {...props}>
-      {items.length === 2 ? (
-        <TwoMediaWrapper>
-          {items.slice(0, 2).map((item, index) => (
-            <div key={index} style={{ width: '50%' }}>
-              {renderMedia(item)}
-            </div>
-          ))}
-        </TwoMediaWrapper>
-      ) : items.length > 2 ? (
-        <TwoMediaWrapper style={{ position: 'relative' }}>
-          <div style={{ width: '50%' }}>{renderMedia(items[0])}</div>
-          <div style={{ position: 'relative', width: '50%' }}>
-            {renderMedia(items[1])}
-            {remainingPhotosCount > 0 && (
-              <PhotoOverlay>
-                <Typography>+{remainingPhotosCount}</Typography>
-              </PhotoOverlay>
-            )}
-          </div>
-        </TwoMediaWrapper>
-      ) : (
-        <SingleMediaWrapper>{renderMedia(items[0])}</SingleMediaWrapper>
+    <>
+      <StyledMediaViewer {...props}>
+        {items.length === 2 ? (
+          <TwoMediaWrapper>
+            {items.slice(0, 2).map((item, index) => (
+              <PhotoContainer key={index}>{renderMedia(item)}</PhotoContainer>
+            ))}
+          </TwoMediaWrapper>
+        ) : items.length > 2 ? (
+          <TwoMediaWrapper>
+            <PhotoContainer>{renderMedia(items[0])}</PhotoContainer>
+            <PhotoContainer style={{ position: 'relative' }}>
+              {renderMedia(items[1])}
+              {remainingPhotosCount > 0 && (
+                <PhotoOverlay>
+                  <Button onClick={handleClick}>
+                    <Typography>+{remainingPhotosCount}</Typography>
+                  </Button>
+                </PhotoOverlay>
+              )}
+            </PhotoContainer>
+          </TwoMediaWrapper>
+        ) : (
+          <SingleMediaWrapper>{renderMedia(items[0])}</SingleMediaWrapper>
+        )}
+      </StyledMediaViewer>
+
+  
+      {isSinglePostOpen && currentPost && (
+        <SinglePostView
+          post={currentPost}
+          isOpen={isSinglePostOpen}
+          onClose={() => setIsSinglePostOpen(false)} 
+        />
       )}
-    </StyledMediaViewer>
+    </>
   );
 }
