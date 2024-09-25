@@ -5,10 +5,10 @@ export const StyledSmallNotification = styled('div')``;
 
 export const StyleSnackbar = styled(Snackbar)`
   direction: rtl; 
-  background-color: ${({ theme }) => theme.colorPalette.colors.spOrange10}; 
+  background-color: ${({ theme }) => theme.colorPalette.colors.spOrange_10}; 
   border-width: 1px 1px 0px 1px;
   border-style: solid;
-  border-color: ${({ theme }) => theme.colorPalette.colors.spOrange50};
+  border-color: ${({ theme }) => theme.colorPalette.colors.spOrange_50};
   padding: 6px;
   display: flex;
   flex-direction: column; 
@@ -21,7 +21,7 @@ export const StyleSnackbar = styled(Snackbar)`
   opacity: 1; 
 
   .MuiSnackbarContent-root {
-    background-color: ${({ theme }) => theme.colorPalette.colors.spOrange10}; 
+    background-color: ${({ theme }) => theme.colorPalette.colors.spOrange_10}; 
     padding: 0;
     box-shadow: none; 
   }
