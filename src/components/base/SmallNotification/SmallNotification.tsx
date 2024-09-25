@@ -3,7 +3,6 @@ import { StyledSmallNotification, StyleSnackbar, StyledTitle, StyledLabel, Style
 import { CloseIcon } from '../../icons';
 
 export interface SmallNotificationProps {
-  amountOfNewPosts: number;
   title: string;
   label: string;
   className?: string;
@@ -11,7 +10,7 @@ export interface SmallNotificationProps {
   buttonLabel: string;
 }
 
-export function SmallNotification({ amountOfNewPosts, label, title, className, onChange = () => { }, buttonLabel }: SmallNotificationProps) {
+export function SmallNotification({ label, title, className, onChange = () => { }, buttonLabel }: SmallNotificationProps) {
   const [open, setOpen] = useState<boolean>(true);
 
   const handleClose = () => {
@@ -26,7 +25,7 @@ export function SmallNotification({ amountOfNewPosts, label, title, className, o
       message={
         <div>
           <StyledTitle>{title}</StyledTitle>
-          <StyledLabel>{amountOfNewPosts.toLocaleString()} {label}</StyledLabel>
+          <StyledLabel>{label}</StyledLabel>
         </div>
       }
       action={

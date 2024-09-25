@@ -5,10 +5,10 @@ export const StyledSmallNotification = styled('div')``;
 
 export const StyleSnackbar = styled(Snackbar)`
   direction: rtl; 
-  background-color: #FFEADB; 
+  background-color: ${({ theme }) => theme.colorPalette.colors.champagne}; 
   border-width: 1px 1px 0px 1px;
   border-style: solid;
-  border-color: #FA9349;
+  border-color: ${({ theme }) => theme.colorPalette.colors.orange};
   padding: 6px;
   display: flex;
   flex-direction: column; 
@@ -16,12 +16,12 @@ export const StyleSnackbar = styled(Snackbar)`
   position: relative;
   width: 20rem;
   border-radius: 6px 6px 0px 0px; 
-  box-shadow: 0px 0px 6.6px 2px #00000026; 
+  box-shadow: 0px 0px 6.6px 2px ${({ theme }) => theme.colorPalette.colors.mpBlack}; 
   gap: 24px; 
   opacity: 1; 
 
   .MuiSnackbarContent-root {
-    background-color: #FFEADB; 
+    background-color: ${({ theme }) => theme.colorPalette.colors.champagne}; 
     padding: 0;
     box-shadow: none; 
   }
@@ -50,18 +50,18 @@ export const StyleSnackbar = styled(Snackbar)`
 
 export const StyledTitle = styled(Typography)`
 font-weight: ${({ theme }) => theme.typography.fontWeightBold};
-color: rgb(0 0 0);
+color: ${({ theme }) => theme.colorPalette.colors.spBlack};
 text-align: right;
 font-size: 1.125rem;
 `;
 
 export const StyledLabel = styled(Typography)`
 font-weight: ${({ theme }) => theme.typography.fontWeightMedium};
-color: rgb(0 0 0);
+color: ${({ theme }) => theme.colorPalette.colors.spBlack};
 text-align: right;
 `;
 
 export const StyledButtonText = styled(Typography)`
-color: #1877F2;
+color: ${({ theme }) => theme.colorPalette.colors.blueDress};
 font-weight: ${({ theme }) => theme.typography.fontWeightBold};
 `;
