@@ -1,4 +1,10 @@
-import { Autocomplete, darken, styled, TextField, Typography } from '@mui/material';
+import {
+  Autocomplete,
+  darken,
+  styled,
+  TextField,
+  Typography,
+} from '@mui/material';
 
 export const StyledAutoComplete = styled(Autocomplete)`
   width: 45vw;
@@ -58,13 +64,13 @@ export const CustomTextField = styled(TextField)``;
 export const TrashButton = styled('button')`
   background-color: transparent;
   border: none;
-  padding: 0; 
-  margin: 0; 
+  padding: 0;
+  margin: 0;
   cursor: pointer;
 `;
 
 export const Wrapper = styled('div')`
-  display: flex; 
+  display: flex;
   flex-direction: row;
   align-items: center;
 `;
