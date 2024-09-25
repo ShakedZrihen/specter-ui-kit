@@ -7,7 +7,10 @@ const meta: Meta<typeof SmallNotification> = {
   component: SmallNotification,
   argTypes: {},
   args: {
-    amountOfNewPosts: 4246
+    amountOfNewPosts: 4246,
+    label: "פרטים נוספים נקצרו",
+    title: "שימו לב",
+    buttonLabel: "ריענון"
   },
 };
 
