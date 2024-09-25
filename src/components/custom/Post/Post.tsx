@@ -6,7 +6,6 @@ import {
   Typography,
 } from '@mui/material';
 import { franc } from 'franc';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'; // Import the icon
 import { TextWithHighlights } from '../../base/TextWithHighlights';
 import {
   PostAuthor,
@@ -67,11 +66,7 @@ export function Post(props: PostProps & { className?: string }) {
   return (
     <StyledPost className={className}>
       <PostHeader>
-        {author.avatar ? (
-          <PostAvatar alt={author.name} src={author.avatar} />
-        ) : (
-          <AccountCircleIcon sx={{ fontSize: 48 }} titleAccess={author.name} />
-        )}
+      <PostAvatar alt={author.name} src={author.avatar} />
         <PostHeaderContent>
           <PostAuthor>{author.name}</PostAuthor>
           <PostDatetime>
