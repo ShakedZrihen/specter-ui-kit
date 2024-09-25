@@ -9,6 +9,7 @@ import {
   FiltersContainer,
   FiltersMenuContainer,
   FiltersActionContainer,
+  StyledTypography,
 } from './FiltersMenu.style';
 import { useState } from 'react';
 import { CloseIcon, FilterIcon } from '../../icons';
@@ -119,7 +120,9 @@ export function FiltersMenu({
           </FiltersContainer>
           <Divider />
           <FiltersActionContainer>
-            <Link onClick={() => onSave(selectedFilters)}>פילטור</Link>
+            <Link onClick={() => onSave(selectedFilters)}>
+              <StyledTypography>פילטור</StyledTypography>
+            </Link>
           </FiltersActionContainer>
         </FiltersMenuContainer>
       </StyledDrawer>
