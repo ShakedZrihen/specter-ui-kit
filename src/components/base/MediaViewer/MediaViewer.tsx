@@ -1,8 +1,19 @@
-import { StyledMediaViewer, StyledVideo, PhotoOverlay, TwoMediaWrapper, SingleMediaWrapper } from './MediaViewer.style';
+import {
+  StyledMediaViewer,
+  StyledVideo,
+  PhotoOverlay,
+  TwoMediaWrapper,
+  SingleMediaWrapper,
+} from './MediaViewer.style';
 import { Typography } from '@mui/material';
 
 export interface MediaViewerProps {
-  items: { original: string; thumbnail?: string; description?: string; type?: 'image' | 'video' }[];
+  items: {
+    original: string;
+    thumbnail?: string;
+    description?: string;
+    type?: 'image' | 'video';
+  }[];
 }
 
 export function MediaViewer({ items, ...props }: MediaViewerProps) {
@@ -10,11 +21,15 @@ export function MediaViewer({ items, ...props }: MediaViewerProps) {
 
   const remainingPhotosCount = items.length - 2;
 
-  const renderMedia = (item: { original: string; description?: string; type?: 'image' | 'video' }) => {
+  const renderMedia = (item: {
+    original: string;
+    description?: string;
+    type?: 'image' | 'video';
+  }) => {
     if (item.type === 'video') {
       return (
         <StyledVideo key={item.original} controls>
-          <source src={item.original} type="video/mp4" />
+          <source src={item.original} type='video/mp4' />
           Your browser does not support the video tag.
         </StyledVideo>
       );
