@@ -1,27 +1,74 @@
-import { ReactImageGalleryProps } from 'react-image-gallery';
-import { StyledMediaViewer } from './MediaViewer.style';
+import {
+  StyledMediaViewer,
+  StyledVideo,
+  PhotoOverlay,
+  TwoMediaWrapper,
+  SingleMediaWrapper,
+} from './MediaViewer.style';
+import { Typography } from '@mui/material';
 
 export interface MediaViewerProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  items?: any;
+  items: {
+    original: string;
+    thumbnail?: string;
+    description?: string;
+    type?: 'image' | 'video';
+  }[];
 }
 
-/**
- * TODO: document component functionality
- *
- * [Figma](https://https://www.figma.com/file/...)
- *
- * ```tsx
- * <MediaViewer />
- * ```
- */
-export function MediaViewer(props: ReactImageGalleryProps) {
+export function MediaViewer({ items, ...props }: MediaViewerProps) {
+  if (!items || items.length === 0) return null;
+
+  const remainingPhotosCount = items.length - 2;
+
+  const renderMedia = (item: {
+    original: string;
+    description?: string;
+    type?: 'image' | 'video';
+  }) => {
+    if (item.type === 'video') {
+      return (
+        <StyledVideo key={item.original} controls>
+          <source src={item.original} type='video/mp4' />
+          Your browser does not support the video tag.
+        </StyledVideo>
+      );
+    }
+    return (
+      <img
+        key={item.original}
+        src={item.original}
+        alt={item.description || 'Media'}
+        style={{ width: '100%', objectFit: 'cover' }}
+      />
+    );
+  };
+
   return (
-    <StyledMediaViewer
-      {...props}
-      showPlayButton={false}
-      showThumbnails={false}
-      showBullets
-    />
+    <StyledMediaViewer {...props}>
+      {items.length === 2 ? (
+        <TwoMediaWrapper>
+          {items.slice(0, 2).map((item, index) => (
+            <div key={index} style={{ width: '50%' }}>
+              {renderMedia(item)}
+            </div>
+          ))}
+        </TwoMediaWrapper>
+      ) : items.length > 2 ? (
+        <TwoMediaWrapper style={{ position: 'relative' }}>
+          <div style={{ width: '50%' }}>{renderMedia(items[0])}</div>
+          <div style={{ position: 'relative', width: '50%' }}>
+            {renderMedia(items[1])}
+            {remainingPhotosCount > 0 && (
+              <PhotoOverlay>
+                <Typography>+{remainingPhotosCount}</Typography>
+              </PhotoOverlay>
+            )}
+          </div>
+        </TwoMediaWrapper>
+      ) : (
+        <SingleMediaWrapper>{renderMedia(items[0])}</SingleMediaWrapper>
+      )}
+    </StyledMediaViewer>
   );
 }

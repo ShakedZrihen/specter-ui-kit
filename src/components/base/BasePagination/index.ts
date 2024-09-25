@@ -1,0 +1,1 @@
+export { BasePagination } from './BasePagination';

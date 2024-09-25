@@ -3,6 +3,15 @@ import { MediaViewer } from './MediaViewer';
 import type { Meta, StoryObj } from '@storybook/react';
 import ReactPlayer from 'react-player';
 
+interface MediaItem {
+  original: string;
+  thumbnail?: string;
+  description?: string;
+  type?: 'image' | 'video';
+  sizes?: string;
+  renderItem?: () => JSX.Element;
+}
+
 const meta: Meta<typeof MediaViewer> = {
   title: 'base/MediaViewer',
   component: MediaViewer,
@@ -28,7 +37,7 @@ const meta: Meta<typeof MediaViewer> = {
           />
         ),
       },
-    ],
+    ] as MediaItem[], // Ensure items is cast to MediaItem[]
   },
 };
 

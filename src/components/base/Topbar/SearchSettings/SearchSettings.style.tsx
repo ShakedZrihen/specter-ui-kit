@@ -1,10 +1,12 @@
 import { styled, Typography } from '@mui/material';
 
-export const StyledSearchSettings = styled('div')<{ width?: string }>`
+export const StyledSearchSettings = styled('div')<{
+  searchSettingsStyleOverrides?: string;
+}>`
   height: 2.8rem;
   padding-right: 1rem;
   background-color: ${({ theme }) => theme.colorPalette.header.background};
-  ${({ width }) => (width ? `width: ${width};` : '')};
+  ${({ searchSettingsStyleOverrides }) => searchSettingsStyleOverrides ?? ''}
   border-right: 1px solid ${({ theme }) => theme.colorPalette.colors.primary};
   display: flex;
   direction: rtl;
@@ -68,4 +70,19 @@ export const SearchOperatorContainer = styled('div')`
   :hover {
     cursor: pointer;
   }
+`;
+
+export const CloseSearchSettings = styled('div')`
+display: flex:
+align-items: center;
+justify-content: center;
+margin-left: 1rem;
+:hover {
+  cursor: pointer;
+}
+`;
+
+export const SearchSettingsFiltersContainer = styled('div')`
+  display: flex;
+  flex: 1;
 `;

@@ -1,5 +1,7 @@
 export interface SearchProps {
   onSearch?: (searchTerm: string, searchType: string) => void;
+  onSearchFocus?: () => void;
+  onSearchBlur?: () => void;
   withSearch?: boolean;
-  searchSettingsWidth?: string;
+  searchSettingsStyleOverrides?: string;
 }

@@ -1,13 +1,10 @@
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-import TranslateIcon from '@mui/icons-material/Translate';
+import { TranslateIcon } from '../../icons';
 
 const StyledTranslationButton = styled(Button)(({ theme }) => ({
-  backgroundColor: theme.colorPalette.colors.primary,
+  backgroundColor: theme.colorPalette.colors.secondary,
   color: 'white',
-  '&:hover': {
-    backgroundColor: theme.colorPalette.colors.secondary,
-  },
   minWidth: 'auto',
   padding: '8px',
   borderRadius: '4px',

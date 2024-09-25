@@ -31,11 +31,13 @@ export const Topbar = ({
   className,
   // search props
   withSearch,
-  searchSettingsWidth,
+  searchSettingsStyleOverrides,
   onSearch,
+  onSearchFocus,
+  onSearchBlur,
   // translation props
   withTranslationButton,
-  supportedLanguages = ['en', 'ar', 'he'],
+  supportedLanguages = ['עברית', 'English', 'שפת מקור'],
   onLanguageChange,
 }: TopbarProps) => {
   const searchParams = useSearch({ onSearch });
@@ -54,7 +56,10 @@ export const Topbar = ({
                 onSearch={searchParams.performSearch}
                 searchTerm={searchParams.searchTerm}
                 setSearchTerm={searchParams.setSearchTerm}
-                onFocus={() => searchParams.setSearchFocused(true)}
+                onFocus={() => {
+                  searchParams.setSearchFocused(true);
+                  onSearchFocus?.();
+                }}
                 searchInputRef={searchParams.searchInputRef}
               />
             </TopbarSearchContainer>
@@ -71,10 +76,14 @@ export const Topbar = ({
       </StyledAppBar>
       {withSearch && searchParams.searchFocused && (
         <SearchSettings
-          width={searchSettingsWidth}
+          searchSettingsStyleOverrides={searchSettingsStyleOverrides}
           onChange={searchParams.onSearchSettingsChange}
           searchType={searchParams.searchType}
           setSearchType={searchParams.setSearchType}
+          close={() => {
+            searchParams.closeSearchSettings();
+            onSearchBlur?.();
+          }}
         />
       )}
     </TopbarWithSettingBar>

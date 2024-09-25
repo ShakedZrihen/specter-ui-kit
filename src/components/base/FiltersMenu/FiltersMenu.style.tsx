@@ -74,10 +74,16 @@ export const FiltersActionContainer = styled('div')`
 
   & a {
     text-decoration: none;
+    font-family: 'Assistant';
+    font-weight: 600;
     color: ${({ theme }) => theme.colorPalette.link.color};
     :hover {
       cursor: pointer;
       color: ${({ theme }) => darken(theme.colorPalette.link.color, 0.2)};
     }
   }
+`;
+
+export const StyledTypography = styled(Typography)`
+  font-weight: 600;
 `;
