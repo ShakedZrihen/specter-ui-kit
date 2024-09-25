@@ -32,6 +32,7 @@ declare module '@mui/material/styles' {
       spWhite: string;
       spBlack: string;
       spLightGray_50: string;
+      spLightGray_40: string;
     };
     filters: {
       headers: {
