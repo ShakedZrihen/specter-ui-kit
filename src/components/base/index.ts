@@ -7,4 +7,5 @@ export { TimeFilter } from './TimeFilter';
 export { Button } from './Button';
 export { MediaViewer } from './MediaViewer';
 export { BasePagination } from './BasePagination';
+export { SystemChip } from './SystemChip';
 export { SmallNotification } from './SmallNotification';
