@@ -3,6 +3,7 @@ import '@mui/material/styles';
 
 declare module '@mui/material/styles' {
   interface ColorPalette {
+    primary: any;
     link: {
       color: string;
     };

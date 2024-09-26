@@ -42,7 +42,7 @@
     "react-dom": "^18.3.1",
     "react-image-gallery": "^1.3.0",
     "react-player": "^2.16.0",
-    "specter-ui-kit": "file:",
+    "specter-ui-kit": "0.15.1",
     "stylis-plugin-rtl": "^2.1.1"
   },
   "devDependencies": {
