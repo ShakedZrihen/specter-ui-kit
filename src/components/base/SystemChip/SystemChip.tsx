@@ -9,15 +9,17 @@ export interface SystemChipProps {
 
 
 export function SystemChip({ bgColor, label, onClick, icon }: SystemChipProps) {
-  // return <StatusChip onClick={onClick} style={{ background: bgColor }}>
-  //   {label}
-  //   </StatusChip>;
-  return <InfoChip style={{
-    display: "flex",
-    flexDirection: "row", 
-    alignItems: "center", 
-    justifyContent: "center", 
-  }} onClick={onClick}>
-    {icon} {label}
-  </InfoChip>
+  if(icon) {
+    return <InfoChip style={{
+      display: "flex",
+      flexDirection: "row", 
+      alignItems: "center", 
+      justifyContent: "center", 
+    }} onClick={onClick}>
+      {icon} {label}
+    </InfoChip>
+  }
+  return <StatusChip onClick={onClick} style={{ background: bgColor }}>
+    {label}
+    </StatusChip>;
 }
