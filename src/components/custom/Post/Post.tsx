@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   Checkbox,
   FormControlLabel,
@@ -5,9 +6,8 @@ import {
   Link,
   Typography,
 } from '@mui/material';
-import { franc } from 'franc';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { TextWithHighlights } from '../../base/TextWithHighlights';
+import { franc } from 'franc';
 import {
   PostAuthor,
   PostAvatar,
@@ -24,7 +24,9 @@ import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
 import { IPost } from '../../../@types/post';
 import { MediaViewer } from '../../base/MediaViewer/MediaViewer';
-import { MediaCarousel } from '../../base/MediaCarousel/MediaCarousel'; 
+import { SinglePostView } from '../../custom';
+import { TextWithHighlights } from '../../base/TextWithHighlights';
+import { MediaCarousel } from '../../base';
 
 export interface PostProps extends IPost {
   slimView?: boolean;
@@ -60,6 +62,16 @@ export function Post(props: PostProps & { className?: string }) {
     mediaItems = [],
   } = props;
 
+  const [isSinglePostOpen, setIsSinglePostOpen] = useState(false);
+
+  const handleViewMore = () => {
+    setIsSinglePostOpen(true);
+  };
+
+  const closeSinglePostView = () => {
+    setIsSinglePostOpen(false);
+  };
+
   const cleanProtocol = (url: string) =>
     url.replace('https://', '').replace('http://', '');
 
@@ -75,19 +87,19 @@ export function Post(props: PostProps & { className?: string }) {
             {time} • {date}
           </PostDatetime>
           <PostSource>
-            <Link href={source.url} target='_blank'>
+            <Link href={source.url} target="_blank">
               {cleanProtocol(source.url)}
             </Link>
             {source.channelName ? (
               <>
                 •
-                <Link href={source.channelUrl} target='_blank'>
+                <Link href={source.channelUrl} target="_blank">
                   <ChannelName
                     direction={getTextDirection(franc(source.channelName))}
                   >
                     {source.channelName}
                   </ChannelName>
-                </Link>{' '}
+                </Link>
               </>
             ) : null}
             •{' '}
@@ -107,7 +119,7 @@ export function Post(props: PostProps & { className?: string }) {
                   }
                 />
               }
-              label='סימון כנקרא'
+              label="Mark as read"
             />
           </PostReadIndicator>
         )}
@@ -120,19 +132,32 @@ export function Post(props: PostProps & { className?: string }) {
           maxLines={5}
         />
       </PostContent>
-      
-  
+
       {!slimView ? (
-        <MediaViewer items={mediaItems} postData={props} isSinglePostOpen={slimView} />
+        <MediaViewer
+          items={mediaItems}
+          isSinglePostOpen={isSinglePostOpen}
+          onViewMore={handleViewMore}
+          setIsSinglePostOpen={setIsSinglePostOpen} 
+
+        />
       ) : (
-        <MediaCarousel items={mediaItems} />
+        <MediaCarousel items={mediaItems} isSinglePostOpen={slimView} />
       )}
-      
+
       {!slimView && <Divider />}
       {slimView ? (
         <SlimFooter onSave={onSave} onShare={onShare} id={id} />
       ) : (
         <Footer onMore={onMore} onSave={onSave} onShare={onShare} id={id} />
+      )}
+
+      {isSinglePostOpen && (
+        <SinglePostView
+          post={props}
+          isOpen={isSinglePostOpen}
+          onClose={closeSinglePostView}
+        />
       )}
     </StyledPost>
   );
