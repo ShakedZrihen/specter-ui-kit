@@ -2,10 +2,10 @@ import { IconProps } from '../IconProps';
 import { StyledIcon } from '../StyledIcon';
 
 export function CloseIcon(props: IconProps) {
-  const { size = 30, color = 'white', className } = props;
+  const { size = 30, color = 'white', className, style } = props;
 
   return (
-    <StyledIcon color={color} data-testid='specter-close-icon'>
+    <StyledIcon color={color} data-testid='specter-close-icon' style={style}>
       <svg
         width={size}
         height={size}

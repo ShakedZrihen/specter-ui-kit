@@ -4,7 +4,7 @@ import { Post } from './Post';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Post> = {
-  title: 'base/Post',
+  title: 'custom/Post',
   component: Post,
   argTypes: {},
   args: {

@@ -68,11 +68,7 @@ export function Post(props: PostProps & { className?: string }) {
   return (
     <StyledPost className={className}>
       <PostHeader>
-        {author.avatar ? (
-          <PostAvatar alt={author.name} src={author.avatar} />
-        ) : (
-          <AccountCircleIcon sx={{ fontSize: 48 }} titleAccess={author.name} />
-        )}
+        <PostAvatar alt={author.name} src={author.avatar} />
         <PostHeaderContent>
           <PostAuthor>{author.name}</PostAuthor>
           <PostDatetime>
@@ -82,15 +78,22 @@ export function Post(props: PostProps & { className?: string }) {
             <Link href={source.url} target='_blank'>
               {cleanProtocol(source.url)}
             </Link>
-            •
-            <Link href={source.channelUrl} target='_blank'>
-              <ChannelName
-                direction={getTextDirection(franc(source.channelName))}
-              >
-                {source.channelName}
-              </ChannelName>
-            </Link>{' '}
-            • <Typography>{source.sourceName}</Typography>
+            {source.channelName ? (
+              <>
+                •
+                <Link href={source.channelUrl} target='_blank'>
+                  <ChannelName
+                    direction={getTextDirection(franc(source.channelName))}
+                  >
+                    {source.channelName}
+                  </ChannelName>
+                </Link>{' '}
+              </>
+            ) : null}
+            •{' '}
+            <Typography style={{ paddingRight: '0.2rem' }}>
+              {source.sourceName}
+            </Typography>
           </PostSource>
         </PostHeaderContent>
         {!slimView && (

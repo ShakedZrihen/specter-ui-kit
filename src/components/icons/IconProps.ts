@@ -3,4 +3,5 @@ export interface IconProps {
   color?: string;
   className?: string;
   onClick?: () => void;
+  style?: React.CSSProperties;
 }
