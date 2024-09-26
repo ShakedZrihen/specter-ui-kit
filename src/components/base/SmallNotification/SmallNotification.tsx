@@ -60,7 +60,7 @@ export function SmallNotification({
             <button className='action-button' onClick={onRefresh}>
               <StyledButtonText>{buttonLabel}</StyledButtonText>
             </button>
-            <div onClick={() => alert("here")} >
+            <div onClick={() => handleClose(null, null)} >
               <StyledButtonClose color={colorPalette.colors.primary} />
             </div>
           </>
