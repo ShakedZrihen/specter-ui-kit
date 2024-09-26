@@ -6,7 +6,7 @@ import {
   Typography,
 } from '@mui/material';
 import { franc } from 'franc';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'; 
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { TextWithHighlights } from '../../base/TextWithHighlights';
 import {
   PostAuthor,
@@ -24,6 +24,7 @@ import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
 import { IPost } from '../../../@types/post';
 import { MediaViewer } from '../../base/MediaViewer/MediaViewer';
+import { MediaCarousel } from '../../base/MediaCarousel/MediaCarousel'; 
 
 export interface PostProps extends IPost {
   slimView?: boolean;
@@ -116,7 +117,14 @@ export function Post(props: PostProps & { className?: string }) {
           maxLines={5}
         />
       </PostContent>
-      <MediaViewer items={mediaItems} postData={props} />
+      
+  
+      {!slimView ? (
+        <MediaViewer items={mediaItems} postData={props} isSinglePostOpen={slimView} />
+      ) : (
+        <MediaCarousel items={mediaItems} />
+      )}
+      
       {!slimView && <Divider />}
       {slimView ? (
         <SlimFooter onSave={onSave} onShare={onShare} id={id} />

@@ -18,22 +18,34 @@ export interface MediaViewerProps {
     description?: string;
     type?: 'image' | 'video';
   }[];
-  postData: IPost; 
+  postData: IPost;
+  isSinglePostOpen?: boolean;
 }
 
-export function MediaViewer({ items, postData, ...props }: MediaViewerProps) {
-  const [isSinglePostOpen, setIsSinglePostOpen] = useState(false);
+export function MediaViewer({
+  items,
+  postData,
+  isSinglePostOpen: isSinglePostOpenProp = false,
+  ...props
+}: MediaViewerProps) {
   const [currentPost, setCurrentPost] = useState<IPost | null>(null);
+  const [slimView, setSlimView] = useState<boolean>(false);
+  const [isSinglePostOpen, setIsSinglePostOpen] =
+    useState<boolean>(isSinglePostOpenProp);
 
   if (!items || items.length === 0) return null;
 
   const remainingPhotosCount = items.length - 2;
 
   const handleClick = () => {
-    setCurrentPost(postData); 
-    setIsSinglePostOpen(true);  
-    console.log(isSinglePostOpen);
-    console.log(currentPost);
+    setCurrentPost(postData);
+    setSlimView(true);
+    setIsSinglePostOpen(true);
+  };
+
+  const closeSinglePostView = () => {
+    setIsSinglePostOpen(false);
+    setSlimView(false);
   };
 
   const renderMedia = (item: {
@@ -44,7 +56,7 @@ export function MediaViewer({ items, postData, ...props }: MediaViewerProps) {
     if (item.type === 'video') {
       return (
         <StyledVideo key={item.original} controls>
-          <source src={item.original} type="video/mp4" />
+          <source src={item.original} type='video/mp4' />
           Your browser does not support the video tag.
         </StyledVideo>
       );
@@ -54,7 +66,7 @@ export function MediaViewer({ items, postData, ...props }: MediaViewerProps) {
         key={item.original}
         src={item.original}
         alt={item.description || 'Media'}
-        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
       />
     );
   };
@@ -73,7 +85,7 @@ export function MediaViewer({ items, postData, ...props }: MediaViewerProps) {
             <PhotoContainer>{renderMedia(items[0])}</PhotoContainer>
             <PhotoContainer style={{ position: 'relative' }}>
               {renderMedia(items[1])}
-              {remainingPhotosCount > 0 && (
+              {!isSinglePostOpen && remainingPhotosCount > 0 && (
                 <PhotoOverlay>
                   <Button onClick={handleClick}>
                     <Typography>+{remainingPhotosCount}</Typography>
@@ -87,12 +99,11 @@ export function MediaViewer({ items, postData, ...props }: MediaViewerProps) {
         )}
       </StyledMediaViewer>
 
-  
       {isSinglePostOpen && currentPost && (
         <SinglePostView
           post={currentPost}
           isOpen={isSinglePostOpen}
-          onClose={() => setIsSinglePostOpen(false)} 
+          onClose={closeSinglePostView}
         />
       )}
     </>
