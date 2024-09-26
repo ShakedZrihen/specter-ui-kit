@@ -1,5 +1,6 @@
 import { styled, alpha } from '@mui/material';
 import { Snackbar, Typography } from '@mui/material';
+import { CloseIcon } from '../../icons';
 
 export const StyledSmallNotification = styled('div')``;
 
@@ -25,14 +26,6 @@ export const StyleSnackbar = styled(Snackbar)`
     background-color: ${({ theme }) => theme.colorPalette.colors.spOrange_10};
     padding: 0;
     box-shadow: none;
-  }
-
-  .close-icon {
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    font-size: 16px;
-    cursor: pointer;
   }
 
   .action-button {
@@ -66,3 +59,17 @@ export const StyledButtonText = styled(Typography)`
   color: ${({ theme }) => theme.colorPalette.colors.spBlue};
   font-weight: ${({ theme }) => theme.typography.fontWeightBold};
 `;
+
+export const StyledButtonClose = styled(CloseIcon)`
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0; 
+    margin: 0;
+`;
+
+export const CloseButton = styled('div')``;

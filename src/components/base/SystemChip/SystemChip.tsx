@@ -1,7 +1,7 @@
 import { StatusChip, InfoChip } from './SystemChip.style';
 
 export interface SystemChipProps {
-    bgColor: "#BFECB0" | "#FFE7C2" | "#FFC2C2" | "#F2F3F6";
+    bgColor: "#BFECB0" | "#FFE7C2" | "#FFC2C2";
     icon?: any;
     onClick: () => null;
     label: string;
@@ -10,14 +10,9 @@ export interface SystemChipProps {
 
 export function SystemChip({ bgColor, label, onClick, icon }: SystemChipProps) {
   if(icon) {
-    return <InfoChip style={{
-      display: "flex",
-      flexDirection: "row", 
-      alignItems: "center", 
-      justifyContent: "center", 
-    }} onClick={onClick}>
+    return <InfoChip onClick={onClick}>
       {icon} {label}
-    </InfoChip>
+    </InfoChip> 
   }
   return <StatusChip onClick={onClick} style={{ background: bgColor }}>
     {label}
