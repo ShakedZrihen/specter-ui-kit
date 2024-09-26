@@ -6,9 +6,7 @@ import {
   StyledLabel,
   StyledButtonText,
   StyledButtonClose,
-  CloseButton
 } from './SmallNotification.style';
-import { CloseIcon } from '../../icons';
 import { colorPalette } from '../../../context/theme/lightMode';
 
 export interface SmallNotificationProps {
@@ -30,6 +28,7 @@ export function SmallNotification({
 }: SmallNotificationProps) {
   const [open, setOpen] = useState<boolean>(true);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleClose = (event: any, reason: any) => {
     if (reason === 'clickaway') {
       return;
@@ -40,7 +39,7 @@ export function SmallNotification({
 
   const onRefresh = () => {
     onChange();
-  }
+  };
 
   return (
     <StyledSmallNotification className={className}>
@@ -60,7 +59,7 @@ export function SmallNotification({
             <button className='action-button' onClick={onRefresh}>
               <StyledButtonText>{buttonLabel}</StyledButtonText>
             </button>
-            <div onClick={() => alert("here")} >
+            <div onClick={() => alert('here')}>
               <StyledButtonClose color={colorPalette.colors.primary} />
             </div>
           </>
