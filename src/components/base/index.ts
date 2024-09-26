@@ -9,3 +9,4 @@ export { MediaViewer } from './MediaViewer';
 export { BasePagination } from './BasePagination';
 export { SystemChip } from './SystemChip';
 export { SmallNotification } from './SmallNotification';
+export { Dropzone } from './Dropzone';
