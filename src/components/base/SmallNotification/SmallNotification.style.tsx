@@ -61,15 +61,15 @@ export const StyledButtonText = styled(Typography)`
 `;
 
 export const StyledButtonClose = styled(CloseIcon)`
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0; 
-    margin: 0;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
 `;
 
 export const CloseButton = styled('div')``;
