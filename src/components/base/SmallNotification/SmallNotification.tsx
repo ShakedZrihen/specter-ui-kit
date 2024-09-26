@@ -63,7 +63,6 @@ export function SmallNotification({
             <div onClick={() => alert("here")} >
               <StyledButtonClose color={colorPalette.colors.primary} />
             </div>
-              {/* <CloseIcon color='black' /> */}
           </>
         }
       />
