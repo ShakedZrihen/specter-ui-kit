@@ -118,7 +118,6 @@ export function FiltersMenu({
         </FiltersMenuContainer>
       </StyledDrawer>
     </StyledFiltersMenu>
-    <button style={{ marginLeft: "500px"}} onClick={() => alert('succeed')}>test click outside</button>
     </>
   );
 }
