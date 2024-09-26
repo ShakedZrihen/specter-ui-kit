@@ -25,22 +25,11 @@ interface FilterSectionDefinition {
 }
 interface FiltersMenuProps {
   filters: FilterSectionDefinition[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onSave: (filters: any) => void; //TODO: Add type
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   menuOverides?: any;
   className?: string;
 }
 
-/**
- * TODO: document component functionality
- *
- * [Figma](https://https://www.figma.com/file/...)
- *
- * ```tsx
- * <FiltersMenu />
- * ```
- */
 export function FiltersMenu({
   filters,
   onSave,
@@ -79,12 +68,14 @@ export function FiltersMenu({
   };
 
   return (
+    <>
     <StyledFiltersMenu className={className}>
       <FiltersControllerButton onClick={() => toggleDrawer(true)}>
         <FilterIcon color={colorPalette.common.icon} size={18} />
         <Title>פילטרים</Title>
       </FiltersControllerButton>
       <StyledDrawer
+        variant='persistent'
         open={open}
         onClose={() => toggleDrawer(false)}
         hideBackdrop={true}
@@ -127,5 +118,6 @@ export function FiltersMenu({
         </FiltersMenuContainer>
       </StyledDrawer>
     </StyledFiltersMenu>
+    </>
   );
 }

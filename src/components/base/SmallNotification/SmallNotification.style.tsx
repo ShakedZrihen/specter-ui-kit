@@ -71,5 +71,3 @@ export const StyledButtonClose = styled(CloseIcon)`
   padding: 0;
   margin: 0;
 `;
-
-export const CloseButton = styled('div')``;
