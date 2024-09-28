@@ -1,12 +1,12 @@
 import { alpha, styled } from '@mui/material/styles';
 
-export const StyledMediaViewer = styled('div')(({ theme }) => ({
+export const StyledMediaViewer = styled('div')(() => ({
   width: '100%',
   display: 'flex',
   justifyContent: 'center',
 }));
 
-export const PhotoContainer = styled('div')(({ theme }) => ({
+export const PhotoContainer = styled('div')(() => ({
   position: 'relative',
   width: '50%',
   '& img': {

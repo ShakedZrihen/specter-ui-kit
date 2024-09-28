@@ -1,11 +1,11 @@
 import {
   StyledMediaViewer,
-  StyledVideo,
   PhotoOverlay,
   TwoMediaWrapper,
   SingleMediaWrapper,
 } from './MediaViewer.style';
 import { Typography } from '@mui/material';
+import ReactPlayer from 'react-player';
 
 export interface MediaViewerProps {
   items: {
@@ -28,10 +28,10 @@ export function MediaViewer({ items, ...props }: MediaViewerProps) {
   }) => {
     if (item.type === 'video') {
       return (
-        <StyledVideo key={item.original} controls>
-          <source src={item.original} type='video/mp4' />
-          Your browser does not support the video tag.
-        </StyledVideo>
+        <ReactPlayer
+          controls
+          url={item.original}
+        />
       );
     }
     return (

@@ -60,8 +60,10 @@ export const renderTags = (
 
 export const renderOptions = (
   props: React.HTMLAttributes<HTMLLIElement> & {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     key: any;
   },
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   option: any,
   {
     selected,
