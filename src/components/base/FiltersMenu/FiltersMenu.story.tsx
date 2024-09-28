@@ -30,7 +30,12 @@ export const Basic: Story = {
     return (
       <SpecterTheme>
         <FiltersMenu {...props} />
-        <button style={{ marginLeft: "500px"}} onClick={() => alert('succeed')}>test click outside</button>
+        <button
+          style={{ marginLeft: '500px' }}
+          onClick={() => alert('succeed')}
+        >
+          test click outside
+        </button>
       </SpecterTheme>
     );
   },

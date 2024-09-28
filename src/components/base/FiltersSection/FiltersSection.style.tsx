@@ -7,6 +7,16 @@ import {
 
 export const StyledAccordion = styled(Accordion)`
   box-shadow: none;
+  margin-bottom: 1rem;
+
+  &.Mui-expanded {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  ::before {
+    height: 0;
+  }
 `;
 
 export const StyledAccordionSummary = styled(AccordionSummary)`

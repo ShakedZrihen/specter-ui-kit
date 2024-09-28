@@ -27,12 +27,7 @@ export function MediaViewer({ items, ...props }: MediaViewerProps) {
     type?: 'image' | 'video';
   }) => {
     if (item.type === 'video') {
-      return (
-        <ReactPlayer
-          controls
-          url={item.original}
-        />
-      );
+      return <ReactPlayer controls url={item.original} />;
     }
     return (
       <img

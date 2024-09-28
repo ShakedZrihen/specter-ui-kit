@@ -19,7 +19,7 @@ import {
   FiltersSection,
 } from '../FiltersSection/FiltersSection';
 
-interface FilterSectionDefinition {
+export interface FilterSectionDefinition {
   filterSectionName: string;
   filterList: FilterDefinition[];
 }
@@ -69,55 +69,55 @@ export function FiltersMenu({
 
   return (
     <>
-    <StyledFiltersMenu className={className}>
-      <FiltersControllerButton onClick={() => toggleDrawer(true)}>
-        <FilterIcon color={colorPalette.common.icon} size={18} />
-        <Title>פילטרים</Title>
-      </FiltersControllerButton>
-      <StyledDrawer
-        variant='persistent'
-        open={open}
-        onClose={() => toggleDrawer(false)}
-        hideBackdrop={true}
-        sx={menuOverides}
-      >
-        <FiltersMenuContainer>
-          <FiltersHeader>
-            <FilterIcon color={colorPalette.common.icon} size={18} />
-            <Title>פילטרים</Title>
-            <CloseMenuContainer onClick={() => toggleDrawer(false)}>
-              <CloseIcon color={colorPalette.text.primary} size={25} />
-            </CloseMenuContainer>
-          </FiltersHeader>
-          <Divider />
-          <FiltersContainer>
-            {filters.map(({ filterSectionName, filterList }) => {
-              return (
-                <FiltersSection
-                  key={filterSectionName}
-                  filterName={filterSectionName}
-                  filterList={filterList}
-                  selectedFilters={selectedFilters[filterSectionName]}
-                  onChange={(filterName, selectedValue) => {
-                    updateSelectedFilters(
-                      filterSectionName,
-                      filterName,
-                      selectedValue,
-                    );
-                  }}
-                />
-              );
-            })}
-          </FiltersContainer>
-          <Divider />
-          <FiltersActionContainer>
-            <Link onClick={() => onSave(selectedFilters)}>
-              <StyledTypography>פילטור</StyledTypography>
-            </Link>
-          </FiltersActionContainer>
-        </FiltersMenuContainer>
-      </StyledDrawer>
-    </StyledFiltersMenu>
+      <StyledFiltersMenu className={className}>
+        <FiltersControllerButton onClick={() => toggleDrawer(true)}>
+          <FilterIcon color={colorPalette.common.icon} size={18} />
+          <Title>פילטרים</Title>
+        </FiltersControllerButton>
+        <StyledDrawer
+          variant='persistent'
+          open={open}
+          onClose={() => toggleDrawer(false)}
+          hideBackdrop={true}
+          sx={menuOverides}
+        >
+          <FiltersMenuContainer>
+            <FiltersHeader>
+              <FilterIcon color={colorPalette.common.icon} size={18} />
+              <Title>פילטרים</Title>
+              <CloseMenuContainer onClick={() => toggleDrawer(false)}>
+                <CloseIcon color={colorPalette.text.primary} size={25} />
+              </CloseMenuContainer>
+            </FiltersHeader>
+            <Divider />
+            <FiltersContainer>
+              {filters.map(({ filterSectionName, filterList }) => {
+                return (
+                  <FiltersSection
+                    key={filterSectionName}
+                    filterName={filterSectionName}
+                    filterList={filterList}
+                    selectedFilters={selectedFilters[filterSectionName]}
+                    onChange={(filterName, selectedValue) => {
+                      updateSelectedFilters(
+                        filterSectionName,
+                        filterName,
+                        selectedValue,
+                      );
+                    }}
+                  />
+                );
+              })}
+            </FiltersContainer>
+            <Divider />
+            <FiltersActionContainer>
+              <Link onClick={() => onSave(selectedFilters)}>
+                <StyledTypography>פילטור</StyledTypography>
+              </Link>
+            </FiltersActionContainer>
+          </FiltersMenuContainer>
+        </StyledDrawer>
+      </StyledFiltersMenu>
     </>
   );
 }
