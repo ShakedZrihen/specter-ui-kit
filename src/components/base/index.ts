@@ -7,4 +7,4 @@ export { TimeFilter } from './TimeFilter';
 export { Button } from './Button';
 export { MediaViewer } from './MediaViewer';
 export { BasePagination } from './BasePagination';
-export { ColletionModal } from './ColletionModal'
+export { CollectionModal } from './ColletionModal'

@@ -1,1 +1,1 @@
-export { ColletionModal } from './CollectionModal';
+export { CollectionModal } from './CollectionModal';
