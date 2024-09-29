@@ -106,7 +106,7 @@ export function Post(props: PostProps & { className?: string }) {
                   }
                 />
               }
-              label='Mark as read'
+              label='סימון כנקרא'
             />
           </PostReadIndicator>
         )}
