@@ -5,7 +5,6 @@ import {
   StyledColletionModal,
   ExtraInfoContainer,
   CollectionItem,
-  CollectionIcon,
   SearchContainer,
   ActionsContainer 
 } from './CollectionModal.style';
