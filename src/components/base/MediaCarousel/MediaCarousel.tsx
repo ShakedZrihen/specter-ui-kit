@@ -1,6 +1,10 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { StyledMediaCarousel, MediaImage, MediaVideo } from './MediaCarousel.style';
+import {
+  StyledMediaCarousel,
+  MediaImage,
+  MediaVideo,
+} from './MediaCarousel.style';
 
 export interface MediaCarouselProps {
   items: {
@@ -13,7 +17,7 @@ export interface MediaCarouselProps {
 }
 
 export function MediaCarousel({ items }: MediaCarouselProps) {
-  const galleryItems = items.map((item) => ({
+  const galleryItems = items.map(item => ({
     original: item.original,
     thumbnail: item.thumbnail || item.original,
     description: item.description,

@@ -1,7 +1,5 @@
 import { alpha, styled } from '@mui/material/styles';
 
-
-
 export const PhotoOverlay = styled('div')(({ theme }) => ({
   position: 'absolute',
   top: 0,
@@ -18,8 +16,6 @@ export const PhotoOverlay = styled('div')(({ theme }) => ({
   borderRadius: '8px',
 }));
 
-
-
 export const StyledMediaViewer = styled('div')(() => ({
   width: '100%',
   display: 'flex',
@@ -28,34 +24,30 @@ export const StyledMediaViewer = styled('div')(() => ({
   padding: '5px',
 }));
 
-
 export const StyledVideo = styled('video')({
   width: '100%',
   height: '100%',
-  maxWidth: '500px', 
-  maxHeight: '500px', 
+  maxWidth: '500px',
+  maxHeight: '500px',
   objectFit: 'cover',
   borderRadius: '8px',
 });
 
-
-
 export const SingleMediaWrapper = styled('div')({
   width: '100%',
-  maxWidth: '500px',  
+  maxWidth: '500px',
   display: 'flex',
-  justifyContent: 'center',  
-  alignItems: 'center',    
+  justifyContent: 'center',
+  alignItems: 'center',
 });
-
 
 export const TwoMediaWrapper = styled('div')({
   display: 'flex',
   gap: '10px',
   width: '90%',
-  maxWidth: '1000px',  
+  maxWidth: '1000px',
   justifyContent: 'space-evenly',
-  alignItems: 'center', 
+  alignItems: 'center',
 });
 
 export const PhotoContainer = styled('div')(() => ({
@@ -63,12 +55,12 @@ export const PhotoContainer = styled('div')(() => ({
   width: '100%',
   height: '400px',
   display: 'flex',
-  justifyContent: 'center', 
+  justifyContent: 'center',
   alignItems: 'center',
   '& img, & video': {
     width: '100%',
     height: '100%',
-    objectFit: 'cover', 
+    objectFit: 'cover',
     borderRadius: '8px',
   },
 }));

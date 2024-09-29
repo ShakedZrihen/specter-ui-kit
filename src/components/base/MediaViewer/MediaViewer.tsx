@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   StyledMediaViewer,
   PhotoOverlay,
@@ -8,7 +8,6 @@ import {
   StyledVideo,
 } from './MediaViewer.style';
 import { Button, Typography } from '@mui/material';
-import ReactPlayer from 'react-player';
 
 export interface MediaItem {
   original: string;
@@ -24,7 +23,6 @@ export interface MediaViewerProps {
   setIsSinglePostOpen?: (isOpen: boolean) => void;
 }
 
-
 export function MediaViewer({
   items,
   isSinglePostOpen: isSinglePostOpenProp = false,
@@ -32,7 +30,8 @@ export function MediaViewer({
   setIsSinglePostOpen,
   ...props
 }: MediaViewerProps) {
-  const [isSinglePostOpen, setLocalIsSinglePostOpen] = useState<boolean>(isSinglePostOpenProp);
+  const [isSinglePostOpen, setLocalIsSinglePostOpen] =
+    useState<boolean>(isSinglePostOpenProp);
 
   useEffect(() => {
     setLocalIsSinglePostOpen(isSinglePostOpenProp);
@@ -48,20 +47,13 @@ export function MediaViewer({
     if (setIsSinglePostOpen) setIsSinglePostOpen(true);
   };
 
-
   const renderMedia = (item: {
     original: string;
     description?: string;
     type?: 'image' | 'video';
   }) => {
     if (item.type === 'video') {
-      return (
-        <StyledVideo
-          key={item.original}
-          controls
-          src={item.original}
-        />
-      );
+      return <StyledVideo key={item.original} controls src={item.original} />;
     }
     return (
       <img

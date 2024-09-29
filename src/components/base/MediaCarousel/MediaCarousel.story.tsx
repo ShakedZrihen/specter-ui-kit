@@ -1,7 +1,6 @@
 import { SpecterTheme } from '../../../context/theme/SpecterTheme';
 import { MediaCarousel } from './MediaCarousel';
 import type { Meta, StoryObj } from '@storybook/react';
-import ReactPlayer from 'react-player';
 
 interface MediaCarouselItem {
   original: string;
@@ -17,8 +16,7 @@ const meta: Meta<typeof MediaCarousel> = {
   component: MediaCarousel,
   argTypes: {},
   args: {
-    items: [
-    ] as MediaCarouselItem[], 
+    items: [] as MediaCarouselItem[],
   },
 };
 
