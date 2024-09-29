@@ -7,13 +7,17 @@ export const StyledMediaCarousel = styled(ImageGallery)``;
 export const MediaImage = styled('img')({
   width: '100%',
   height: 'auto',
-  maxHeight: '500px',
+  maxWidth: '600px', 
+  maxHeight: '400px', 
   objectFit: 'cover',
+  margin: '0 auto',  
 });
 
 export const MediaVideo = styled('video')({
   width: '100%',
   height: 'auto',
-  maxHeight: '500px',
+  maxWidth: '600px',  
+  maxHeight: '400px', 
   objectFit: 'cover',
+  margin: '0 auto',  
 });

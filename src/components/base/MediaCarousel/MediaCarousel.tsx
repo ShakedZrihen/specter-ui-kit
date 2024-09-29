@@ -32,7 +32,7 @@ export function MediaCarousel({ items }: MediaCarouselProps) {
   }));
 
   return (
-    <Box sx={{ maxWidth: '100%', overflow: 'hidden' }}>
+    <Box sx={{ maxWidth: '600px', margin: '0 auto', overflow: 'hidden' }}>
       <StyledMediaCarousel
         items={galleryItems}
         showPlayButton={false}
