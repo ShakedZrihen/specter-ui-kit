@@ -30,6 +30,7 @@ interface FiltersMenuProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   menuOverides?: any;
   className?: string;
+  variant?: 'persistent' | 'temporary' | 'permanent';
 }
 
 export function FiltersMenu({
@@ -37,6 +38,7 @@ export function FiltersMenu({
   onSave,
   menuOverides = {},
   className,
+  variant = 'persistent',
 }: FiltersMenuProps) {
   const [open, toggleDrawer] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState<{
@@ -77,7 +79,7 @@ export function FiltersMenu({
           <Title>פילטרים</Title>
         </FiltersControllerButton>
         <StyledDrawer
-          // variant='persistent'
+          variant={variant}
           open={open}
           onClose={() => toggleDrawer(false)}
           hideBackdrop={true}
