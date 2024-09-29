@@ -10,3 +10,5 @@ export { BasePagination } from './BasePagination';
 export { MediaCarousel } from './MediaCarousel';
 export { SystemChip } from './SystemChip';
 export { SmallNotification } from './SmallNotification';
+export { AutoComplete } from './AutoComplete';
+export { CreationTimeFilter } from './FiltersSection';

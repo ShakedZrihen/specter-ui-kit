@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyledMediaViewer,
-  StyledVideo,
   PhotoOverlay,
   TwoMediaWrapper,
   SingleMediaWrapper,
   PhotoContainer,
+  StyledVideo,
 } from './MediaViewer.style';
 import { Button, Typography } from '@mui/material';
+import ReactPlayer from 'react-player';
 
 export interface MediaItem {
   original: string;
@@ -23,6 +24,7 @@ export interface MediaViewerProps {
   setIsSinglePostOpen?: (isOpen: boolean) => void;
 }
 
+
 export function MediaViewer({
   items,
   isSinglePostOpen: isSinglePostOpenProp = false,
@@ -32,7 +34,7 @@ export function MediaViewer({
 }: MediaViewerProps) {
   const [isSinglePostOpen, setLocalIsSinglePostOpen] = useState<boolean>(isSinglePostOpenProp);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLocalIsSinglePostOpen(isSinglePostOpenProp);
   }, [isSinglePostOpenProp]);
 
@@ -43,16 +45,25 @@ export function MediaViewer({
   const handleViewMoreClick = () => {
     if (onViewMore) onViewMore();
     setLocalIsSinglePostOpen(true);
-    if (setIsSinglePostOpen) setIsSinglePostOpen(true); 
+    if (setIsSinglePostOpen) setIsSinglePostOpen(true);
   };
 
-  const renderMedia = (item: MediaItem) => {
+
+  const renderMedia = (item: {
+    original: string;
+    description?: string;
+    type?: 'image' | 'video';
+  }) => {
     if (item.type === 'video') {
       return (
-        <StyledVideo key={item.original} controls>
-          <source src={item.original} type="video/mp4" />
-          Your browser does not support the video tag.
-        </StyledVideo>
+        <ReactPlayer
+          key={item.original}
+          url={item.original}
+          controls
+          width="100%"
+          height="100%"
+          style={{ objectFit: 'cover' }}
+        />
       );
     }
     return (
@@ -65,7 +76,6 @@ export function MediaViewer({
     );
   };
 
-  
   return (
     <StyledMediaViewer {...props}>
       {items.length === 2 ? (

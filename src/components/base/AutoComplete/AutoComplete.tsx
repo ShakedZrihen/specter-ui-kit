@@ -41,7 +41,7 @@ export function AutoComplete({
         <TrashButton
           onClick={() => selectedValues.forEach(value => handleDelete(value))}
         >
-          <TrashIcon color='#1877F2' size={37} />
+          <TrashIcon color={colorPalette.link.color} size={35} />
         </TrashButton>
         <StyledAutoComplete
           multiple // Allow multiselect
