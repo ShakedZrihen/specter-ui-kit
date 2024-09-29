@@ -1,10 +1,10 @@
  import { SpecterTheme } from '../../../context/theme/SpecterTheme';
-import { ColletionModal } from './ColletionModal';
+import { CollectionModal } from './CollectionModal';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof ColletionModal> = {
+const meta: Meta<typeof CollectionModal> = {
   title: 'components\base/ColletionModal',
-  component: ColletionModal,
+  component: CollectionModal,
   argTypes: {},
   args: {
     isOpen: true,
@@ -67,13 +67,13 @@ const meta: Meta<typeof ColletionModal> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ColletionModal>;
+type Story = StoryObj<typeof CollectionModal>;
 
 export const Basic: Story = {
   render(props) {
     return (
       <SpecterTheme>
-        <ColletionModal {...props} />
+        <CollectionModal {...props} />
       </SpecterTheme>
     );
   },

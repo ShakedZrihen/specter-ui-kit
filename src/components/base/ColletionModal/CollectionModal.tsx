@@ -8,7 +8,7 @@ import {
   CollectionIcon,
   SearchContainer,
   ActionsContainer 
-} from './ColletionModal.style';
+} from './CollectionModal.style';
 import { colorPalette } from '../../../context/theme/lightMode';
 import { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
@@ -36,7 +36,7 @@ const handleCollectionClick = (
   }
 };
 
-export function ColletionModal({ collections, isOpen, onClose }: ColletionModalProps) {
+export function CollectionModal({ collections, isOpen, onClose }: ColletionModalProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCollections, setSelectedCollections] = useState<(number | string)[]>([]);
 
