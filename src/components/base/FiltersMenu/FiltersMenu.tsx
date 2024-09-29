@@ -25,7 +25,9 @@ export interface FilterSectionDefinition {
 }
 interface FiltersMenuProps {
   filters: FilterSectionDefinition[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onSave: (filters: any) => void; //TODO: Add type
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   menuOverides?: any;
   className?: string;
 }
@@ -75,7 +77,7 @@ export function FiltersMenu({
           <Title>פילטרים</Title>
         </FiltersControllerButton>
         <StyledDrawer
-          variant='persistent'
+          // variant='persistent'
           open={open}
           onClose={() => toggleDrawer(false)}
           hideBackdrop={true}

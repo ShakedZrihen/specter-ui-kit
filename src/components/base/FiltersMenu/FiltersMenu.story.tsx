@@ -18,6 +18,69 @@ const meta: Meta<typeof FiltersMenu> = {
           },
         ],
       },
+      {
+        filterSectionName: 'לפי זמן',
+        filterList: [
+          {
+            filterName: 'creationTime',
+            Component: CreationTimeFilter,
+          },
+        ],
+      },
+      {
+        filterSectionName: 'לפי זמן',
+        filterList: [
+          {
+            filterName: 'creationTime',
+            Component: CreationTimeFilter,
+          },
+        ],
+      },
+      {
+        filterSectionName: 'לפי זמן',
+        filterList: [
+          {
+            filterName: 'creationTime',
+            Component: CreationTimeFilter,
+          },
+        ],
+      },
+      {
+        filterSectionName: 'לפי זמן',
+        filterList: [
+          {
+            filterName: 'creationTime',
+            Component: CreationTimeFilter,
+          },
+        ],
+      },
+      {
+        filterSectionName: 'לפי זמן',
+        filterList: [
+          {
+            filterName: 'creationTime',
+            Component: CreationTimeFilter,
+          },
+        ],
+      },
+      {
+        filterSectionName: 'לפי זמן',
+        filterList: [
+          {
+            filterName: 'creationTime',
+            Component: CreationTimeFilter,
+          },
+        ],
+      },
+      {
+        filterSectionName: 'לפי זמן',
+        filterList: [
+          {
+            filterName: 'creationTime',
+            Component: CreationTimeFilter,
+          },
+        ],
+      },
     ],
   },
 };
