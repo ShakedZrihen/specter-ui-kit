@@ -1,41 +1,6 @@
 import { alpha, styled } from '@mui/material/styles';
 
-export const StyledMediaViewer = styled('div')(() => ({
-  width: '100%',
-  display: 'flex',
-  justifyContent: 'center',
-  padding: '5px',
-}));
 
-export const PhotoContainer = styled('div')(() => ({
-  position: 'relative',
-  width: '100%',
-  height: '100%',
-  '& img': {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    borderRadius: '8px',
-  },
-}));
-
-export const StyledVideo = styled('video')({
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-  borderRadius: '8px',
-});
-
-export const TwoMediaWrapper = styled('div')({
-  display: 'flex',
-  gap: '10px',
-  width: '90%',
-  justifyContent: 'space-evenly',
-});
-
-export const SingleMediaWrapper = styled('div')({
-  width: '100%',
-});
 
 export const PhotoOverlay = styled('div')(({ theme }) => ({
   position: 'absolute',
@@ -51,4 +16,59 @@ export const PhotoOverlay = styled('div')(({ theme }) => ({
   justifyContent: 'center',
   fontWeight: 'bold',
   borderRadius: '8px',
+}));
+
+
+
+export const StyledMediaViewer = styled('div')(() => ({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '5px',
+}));
+
+
+export const StyledVideo = styled('video')({
+  width: '100%',
+  height: '100%',
+  maxWidth: '500px', 
+  maxHeight: '500px', 
+  objectFit: 'cover',
+  borderRadius: '8px',
+});
+
+
+
+export const SingleMediaWrapper = styled('div')({
+  width: '100%',
+  maxWidth: '500px',  
+  display: 'flex',
+  justifyContent: 'center',  
+  alignItems: 'center',    
+});
+
+
+export const TwoMediaWrapper = styled('div')({
+  display: 'flex',
+  gap: '10px',
+  width: '90%',
+  maxWidth: '1000px',  
+  justifyContent: 'space-evenly',
+  alignItems: 'center', 
+});
+
+export const PhotoContainer = styled('div')(() => ({
+  position: 'relative',
+  width: '100%',
+  height: '400px',
+  display: 'flex',
+  justifyContent: 'center', 
+  alignItems: 'center',
+  '& img, & video': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover', 
+    borderRadius: '8px',
+  },
 }));

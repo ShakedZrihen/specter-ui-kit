@@ -32,7 +32,7 @@ const meta: Meta<typeof Post> = {
     mediaItems: [
       {
         original:
-          'https://pic1.calcalist.co.il/picserver3/crop_images/2023/11/22/SJpONDjNa/SJpONDjNa_0_0_1182_638_0_xx-large.jpg',
+          'https://pavise.palantirfoundry.com/foundry-data-proxy/api/web/dataproxy/datasets/ri.foundry.main.dataset.762f2766-ec93-4bbe-8780-95c276436de5/views/master/tw_v-c8b306257f89dca4fdae6a195d460f4e.jpg',
         type: 'image',
       },
       {

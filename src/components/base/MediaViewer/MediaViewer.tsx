@@ -56,13 +56,10 @@ export function MediaViewer({
   }) => {
     if (item.type === 'video') {
       return (
-        <ReactPlayer
+        <StyledVideo
           key={item.original}
-          url={item.original}
           controls
-          width="100%"
-          height="100%"
-          style={{ objectFit: 'cover' }}
+          src={item.original}
         />
       );
     }
@@ -71,11 +68,9 @@ export function MediaViewer({
         key={item.original}
         src={item.original}
         alt={item.description || 'Media'}
-        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
       />
     );
   };
-
   return (
     <StyledMediaViewer {...props}>
       {items.length === 2 ? (
