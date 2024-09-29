@@ -5,18 +5,20 @@ export const StyledColletionModal = styled(Modal)`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative; /* Ensures the close icon is positioned correctly */
 `;
 
 export const ModalViewContainer = styled('div')`
   display: flex;
   flex-direction: column;
-  height: 60vh;
+  height: 65vh;
   width: 70vw;
   margin: 6vh auto;
   background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
   padding: 1.3rem;
   border-radius: 0.5rem;
   overflow: hidden;
+  position: relative; /* Ensures the close icon stays within the modal */
 
   :focus {
     outline: none;
@@ -47,14 +49,14 @@ export const CollectionItem = styled('div')<{ isSelected: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 30px;
-  width: 110px;
-  border: 2px solid ${({ isSelected }) => (isSelected ? '#1976d2' : '#ccc')};
-  border-radius: 8px;
-  background-color: ${({ isSelected }) => (isSelected ? '#e3f2fd' : '#f5f5f5')};
+  height: 48px;
+  width: 155px;
+  border: ${({ isSelected }) => (isSelected ? '1px solid #1976d2' : '#FFFFFF')};
   cursor: pointer;
   transition: background-color 0.3s ease, border-color 0.3s ease;
   padding: 10px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
 
   &:hover {
     background-color: #e0e0e0;
@@ -76,8 +78,8 @@ export const CollectionItem = styled('div')<{ isSelected: boolean }>`
 
 export const CollectionIcon = styled(FolderIcon)`
   font-size: 24px;
-  color: ${({ theme }) => theme.colorPalette.colors.primary};
 `;
+
 
 export const ActionsContainer = styled('div')`
   display: flex;
@@ -85,5 +87,4 @@ export const ActionsContainer = styled('div')`
   gap: 10px;
   margin-top: auto;
   padding-top: 1rem;
-  border-top: 1px solid #ccc;
 `;

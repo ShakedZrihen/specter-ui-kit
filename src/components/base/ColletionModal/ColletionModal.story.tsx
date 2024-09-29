@@ -15,51 +15,51 @@ const meta: Meta<typeof ColletionModal> = {
     collections : [
       {
         id: '1',
-        name: 'Nablus48',
+        name: 'האוסף המיוחד שלי',
       },
       {
         id: '2',
-        name: 'Nablus50',
+        name: 'האוסף המיוחד שלי',
       },
       {
         id: '3',
-        name: 'Nablus70',
+        name: 'האוסף המיוחד שלי',
       },
       {
         id: '4',
-        name: 'Nablus48',
+        name: 'האוסף המיוחד שלי',
       },
       {
         id: '5',
-        name: 'Nablus50',
+        name: 'האוסף המיוחד שלי',
       },
       {
         id: '6',
-        name: 'Nablus70',
+        name: 'האוסף המיוחד שלי',
       },
       {
         id: '7',
-        name: 'Nablus48',
+        name: 'האוסף המיוחד שלי',
       },
       {
         id: '8',
-        name: 'Nablus50',
+        name: 'האוסף המיוחד שלי',
       },
       {
         id: '9',
-        name: 'Nablus70',
+        name: 'האוסף המיוחד שלי',
       },
       {
         id: '10',
-        name: 'Nablus48',
+        name: 'האוסף המיוחד שלי',
       },
       {
         id: '11',
-        name: 'Nablus50',
+        name: 'האוסף המיוחד שלי',
       },
       {
         id: '12',
-        name: 'Nablus70',
+        name: 'האוסף המיוחד שלי',
       }
      
     ]
