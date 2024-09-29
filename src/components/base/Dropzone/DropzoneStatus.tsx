@@ -1,12 +1,12 @@
-import React from "react";
-import { useDropzoneContext } from "./Dropzone.context";
+import React from 'react';
+import { useDropzoneContext } from './Dropzone.context';
 
 interface DropzoneStatusProps {
   children: React.ReactNode;
 }
 
 const createDropzoneStatus = (
-  status: keyof ReturnType<typeof useDropzoneContext>
+  status: keyof ReturnType<typeof useDropzoneContext>,
 ) => {
   const Component: React.FC<DropzoneStatusProps> = ({ children }) => {
     const ctx = useDropzoneContext();
@@ -22,6 +22,6 @@ const createDropzoneStatus = (
   return Component;
 };
 
-export const DropzoneAccept = createDropzoneStatus("accept");
-export const DropzoneReject = createDropzoneStatus("reject");
-export const DropzoneIdle = createDropzoneStatus("idle");
+export const DropzoneAccept = createDropzoneStatus('accept');
+export const DropzoneReject = createDropzoneStatus('reject');
+export const DropzoneIdle = createDropzoneStatus('idle');
