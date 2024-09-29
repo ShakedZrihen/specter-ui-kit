@@ -57,13 +57,16 @@ export const Basic: Story = {
   render(props) {
     const PostWithActions = () => {
       const [isRead, setIsRead] = useState(false);
+      const [isSlim, setIsSlim] = useState(false);
 
       return (
         <Post
           {...props}
           isRead={isRead}
+          slimView={isSlim}
           onUnread={() => setIsRead(false)}
           onRead={() => setIsRead(true)}
+          onMore={() => setIsSlim(true)}
         />
       );
     };

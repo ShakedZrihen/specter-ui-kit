@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import {
   Checkbox,
   FormControlLabel,
@@ -6,7 +5,6 @@ import {
   Link,
   Typography,
 } from '@mui/material';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { franc } from 'franc';
 import {
   PostAuthor,
@@ -24,7 +22,6 @@ import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
 import { IPost } from '../../../@types/post';
 import { MediaViewer } from '../../base/MediaViewer/MediaViewer';
-import { SinglePostView } from '../../custom';
 import { TextWithHighlights } from '../../base/TextWithHighlights';
 import { MediaCarousel } from '../../base';
 
@@ -35,7 +32,7 @@ export interface PostProps extends IPost {
   onUnread?: (id: string | number) => void;
   onSave?: (id: string | number) => void;
   onShare?: (id: string | number) => void;
-  onMore?: (id: string | number) => void;
+  onMore?: (id?: string | number) => void;
   mediaItems?: {
     original: string;
     thumbnail?: string;
@@ -62,16 +59,6 @@ export function Post(props: PostProps & { className?: string }) {
     mediaItems = [],
   } = props;
 
-  const [isSinglePostOpen, setIsSinglePostOpen] = useState(false);
-
-  const handleViewMore = () => {
-    setIsSinglePostOpen(true);
-  };
-
-  const closeSinglePostView = () => {
-    setIsSinglePostOpen(false);
-  };
-
   const cleanProtocol = (url: string) =>
     url.replace('https://', '').replace('http://', '');
 
@@ -87,13 +74,13 @@ export function Post(props: PostProps & { className?: string }) {
             {time} • {date}
           </PostDatetime>
           <PostSource>
-            <Link href={source.url} target="_blank">
+            <Link href={source.url} target='_blank'>
               {cleanProtocol(source.url)}
             </Link>
             {source.channelName ? (
               <>
                 •
-                <Link href={source.channelUrl} target="_blank">
+                <Link href={source.channelUrl} target='_blank'>
                   <ChannelName
                     direction={getTextDirection(franc(source.channelName))}
                   >
@@ -119,7 +106,7 @@ export function Post(props: PostProps & { className?: string }) {
                   }
                 />
               }
-              label="Mark as read"
+              label='Mark as read'
             />
           </PostReadIndicator>
         )}
@@ -136,10 +123,8 @@ export function Post(props: PostProps & { className?: string }) {
       {!slimView ? (
         <MediaViewer
           items={mediaItems}
-          isSinglePostOpen={isSinglePostOpen}
-          onViewMore={handleViewMore}
-          setIsSinglePostOpen={setIsSinglePostOpen} 
-
+          isSinglePostOpen={slimView}
+          onViewMore={onMore}
         />
       ) : (
         <MediaCarousel items={mediaItems} isSinglePostOpen={slimView} />
@@ -150,14 +135,6 @@ export function Post(props: PostProps & { className?: string }) {
         <SlimFooter onSave={onSave} onShare={onShare} id={id} />
       ) : (
         <Footer onMore={onMore} onSave={onSave} onShare={onShare} id={id} />
-      )}
-
-      {isSinglePostOpen && (
-        <SinglePostView
-          post={props}
-          isOpen={isSinglePostOpen}
-          onClose={closeSinglePostView}
-        />
       )}
     </StyledPost>
   );
