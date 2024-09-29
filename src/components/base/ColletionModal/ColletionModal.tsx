@@ -66,6 +66,7 @@ export function ColletionModal({ collections, isOpen, onClose }: ColletionModalP
               variant="outlined"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              
             />
           </SearchContainer>
           <ExtraInfoContainer>
