@@ -60,6 +60,7 @@ export const FiltersControllerButton = styled('div')`
 `;
 
 export const FiltersContainer = styled('div')`
+  margin: 0 auto;
   padding: 1rem;
   width: 18rem;
   overflow-y: auto;
