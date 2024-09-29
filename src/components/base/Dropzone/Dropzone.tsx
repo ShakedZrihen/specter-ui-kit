@@ -31,6 +31,12 @@ const StyledDropzone = styled(Box)(({ theme }) => ({
     borderColor: theme.palette.error.main,
     color: theme.palette.error.contrastText,
   },
+  '&[data-loading], &:not([data-activate-on-click])': {
+    cursor: 'default',
+  },
+  '&[data-disabled]': {
+    cursor: 'not-allowed',
+  },
 }));
 
 const StyledInner = styled('div')({
@@ -124,6 +130,7 @@ export const Dropzone = forwardRef<HTMLDivElement, DropzoneProps>(
           data-idle={isIdle || undefined}
           data-loading={loading || undefined}
           data-activate-on-click={activateOnClick || undefined}
+          data-disabled={disabled || undefined}
           {...other}
         >
           <LoadingOverlay visible={loading} />
