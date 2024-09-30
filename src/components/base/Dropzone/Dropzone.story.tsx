@@ -116,28 +116,24 @@ export const WithCustomButton: Story = {
 };
 
 export const WithStatusComponents: Story = {
+  args: {
+    ...Basic.args,
+    accept: [MIME_TYPES.png, MIME_TYPES.jpeg],
+  },
   render: args => {
-    const DropzoneWithStatusComponents = () => (
-      <Dropzone {...args}>
-        <Dropzone.Accept>
-          <Typography color='success.main'>Drop the files here ...</Typography>
-        </Dropzone.Accept>
-        <Dropzone.Reject>
-          <Typography color='error.main'>
-            File type not accepted, sorry!
-          </Typography>
-        </Dropzone.Reject>
-        <Dropzone.Idle>
-          <Typography>
-            Drag and drop files here or click to select files
-          </Typography>
-        </Dropzone.Idle>
-      </Dropzone>
-    );
-
     return (
       <SpecterTheme>
-        <DropzoneWithStatusComponents />
+        <Dropzone {...args}>
+          <Dropzone.Accept>
+            <Typography>הקובץ מתקבל</Typography>
+          </Dropzone.Accept>
+          <Dropzone.Reject>
+            <Typography>ניתן רק להוסיף תמונות</Typography>
+          </Dropzone.Reject>
+          <Dropzone.Idle>
+            <Typography>לחץ כאן או גרור ושחרר כדי להוסיף תמונות</Typography>
+          </Dropzone.Idle>
+        </Dropzone>
       </SpecterTheme>
     );
   },
@@ -159,7 +155,7 @@ export const WithFileList: Story = {
       };
 
       return (
-        <div>
+        <>
           <Dropzone onDrop={handleDrop}>
             <DropzoneContent />
           </Dropzone>
@@ -189,7 +185,7 @@ export const WithFileList: Story = {
               ))}
             </List>
           )}
-        </div>
+        </>
       );
     };
 
