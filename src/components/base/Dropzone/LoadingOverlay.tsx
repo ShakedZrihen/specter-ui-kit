@@ -1,5 +1,5 @@
 import React from 'react';
-import { CircularProgress, styled } from '@mui/material';
+import { CircularProgress, styled, alpha } from '@mui/material';
 
 const StyledBackdrop = styled('div')(({ theme }) => ({
   position: 'absolute',
@@ -7,12 +7,12 @@ const StyledBackdrop = styled('div')(({ theme }) => ({
   left: 0,
   right: 0,
   bottom: 0,
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  backgroundColor: alpha(theme.colorPalette.colors.spBlack, 0.5),
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   zIndex: theme.zIndex.drawer + 1,
-  color: '#fff',
+  color: theme.colorPalette.common.white,
 }));
 
 interface LoadingOverlayProps {
