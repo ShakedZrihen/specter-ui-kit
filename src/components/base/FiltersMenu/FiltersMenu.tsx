@@ -42,14 +42,16 @@ export function FiltersMenu({
 }: FiltersMenuProps) {
   const [open, toggleDrawer] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState<{
-    [filterSectionName: string]: { [filterName: string]: string };
+    [filterSectionName: string]: { [filterName: string]: string | string[] };
   }>({});
   const updateSelectedFilters = (
     filterSectionName: string,
     filterName: string,
-    selectedValue?: string | null,
+    selectedValue?: string | null | string[],
   ) => {
-    if (selectedValue) {
+    const isArray = Array.isArray(selectedValue);
+
+    if ((selectedValue && !isArray) || (isArray && selectedValue.length > 0)) {
       setSelectedFilters(prev => ({
         ...prev,
         [filterSectionName]: {

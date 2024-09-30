@@ -11,7 +11,7 @@ import { JSXElementConstructor, useState } from 'react';
 import { SelectedFiltersIndicator } from './SelectedFiltersIndicator';
 
 export interface SelectedFilters {
-  [key: string]: string | undefined;
+  [key: string]: string | string[] | undefined;
 }
 
 export interface FilterDefinition {

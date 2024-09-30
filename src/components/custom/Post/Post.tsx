@@ -120,14 +120,14 @@ export function Post(props: PostProps & { className?: string }) {
         />
       </PostContent>
 
-      {!slimView ? (
+      {slimView ? (
+        <MediaCarousel items={mediaItems} isSinglePostOpen={slimView} />
+      ) : (
         <MediaViewer
           items={mediaItems}
           isSinglePostOpen={slimView}
           onViewMore={onMore}
         />
-      ) : (
-        <MediaCarousel items={mediaItems} isSinglePostOpen={slimView} />
       )}
 
       {!slimView && <Divider />}

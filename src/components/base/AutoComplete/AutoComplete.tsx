@@ -39,7 +39,10 @@ export function AutoComplete({
       <StyledLabel>{label}</StyledLabel>{' '}
       <Wrapper>
         <TrashButton
-          onClick={() => selectedValues.forEach(value => handleDelete(value))}
+          onClick={() => {
+            selectedValues.forEach(value => handleDelete(value));
+            onChange?.([]);
+          }}
         >
           <TrashIcon color={colorPalette.link.color} size={35} />
         </TrashButton>

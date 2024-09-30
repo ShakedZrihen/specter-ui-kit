@@ -64,3 +64,7 @@ export const PhotoContainer = styled('div')(() => ({
     borderRadius: '8px',
   },
 }));
+
+export const StyledImage = styled('img')`
+  max-height: 25rem;
+`;

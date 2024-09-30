@@ -6,6 +6,7 @@ import {
   SingleMediaWrapper,
   PhotoContainer,
   StyledVideo,
+  StyledImage,
 } from './MediaViewer.style';
 import { Button, Typography } from '@mui/material';
 
@@ -56,7 +57,7 @@ export function MediaViewer({
       return <StyledVideo key={item.original} controls src={item.original} />;
     }
     return (
-      <img
+      <StyledImage
         key={item.original}
         src={item.original}
         alt={item.description || 'Media'}
