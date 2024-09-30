@@ -13,6 +13,7 @@ export const useAutocomplete = ({ onChange, defaultSelectedValues = [] }: UseAut
 
   const handleDelete = (optionToDelete: string) => {
     setSelectedValues(prev => prev.filter(option => option !== optionToDelete));
+    onChange?.(selectedValues.filter(option => option !== optionToDelete));
   };
   const icon = <CheckBoxOutlineBlankIcon fontSize='small' />;
   const checkedIcon = <CheckBoxIcon fontSize='small' />;
