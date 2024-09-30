@@ -5,41 +5,13 @@ import {
   FileRejection,
   FileWithPath,
 } from 'react-dropzone';
-import { styled, SxProps, Theme } from '@mui/material';
+import { SxProps, Theme } from '@mui/material';
 import { LoadingOverlay } from './LoadingOverlay';
 import { DropzoneProvider } from './Dropzone.context';
 import { DropzoneAccept, DropzoneIdle, DropzoneReject } from './DropzoneStatus';
 import { assignRef } from './utils/assignRef';
 import DropzoneInner from './DropzoneInner';
-
-const StyledDropzone = styled('div')(({ theme }) => ({
-  position: 'relative',
-  border: '1px dashed',
-  color: theme.palette.text.primary,
-  padding: theme.spacing(2),
-  borderRadius: theme.shape.borderRadius,
-  cursor: 'pointer',
-  userSelect: 'none',
-  transition: theme.transitions.create(['background-color', 'border-color'], {
-    duration: theme.transitions.duration.short,
-  }),
-  '&[data-accept]': {
-    backgroundColor: theme.palette.success.light,
-    borderColor: theme.palette.success.main,
-    color: theme.palette.success.contrastText,
-  },
-  '&[data-reject]': {
-    backgroundColor: theme.palette.error.light,
-    borderColor: theme.palette.error.main,
-    color: theme.palette.error.contrastText,
-  },
-  '&[data-loading], &:not([data-activate-on-click])': {
-    cursor: 'default',
-  },
-  '&[data-disabled]': {
-    cursor: 'not-allowed',
-  },
-}));
+import StyledDropzone from './Dropzone.style';
 
 export interface DropzoneProps {
   onDrop: (files: FileWithPath[]) => void;

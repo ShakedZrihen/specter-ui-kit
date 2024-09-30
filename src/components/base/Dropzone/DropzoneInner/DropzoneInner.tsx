@@ -1,10 +1,5 @@
-import styled from '@emotion/styled';
 import { forwardRef } from 'react';
-
-const StyledInner = styled('div')({
-  pointerEvents: 'none',
-  userSelect: 'none',
-});
+import StyledDropzoneInner from './DropzoneInner.style';
 
 const DropzoneInner = forwardRef<
   HTMLDivElement,
@@ -19,7 +14,7 @@ const DropzoneInner = forwardRef<
   };
 
   return (
-    <StyledInner
+    <StyledDropzoneInner
       data-enable-pointer-events={enablePointerEvents || undefined}
       ref={ref}
       onDragOver={handleDragEvents}
@@ -27,7 +22,7 @@ const DropzoneInner = forwardRef<
       onDragLeave={handleDragEvents}
     >
       {children}
-    </StyledInner>
+    </StyledDropzoneInner>
   );
 });
 
