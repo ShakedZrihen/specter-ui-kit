@@ -23,7 +23,7 @@ const meta: Meta<typeof Dropzone> = {
 export default meta;
 type Story = StoryObj<typeof Dropzone>;
 
-export const Default: Story = {
+export const Basic: Story = {
   args: {
     onDrop: files => console.log('Dropped files:', files),
     children: <DropzoneContent />,
@@ -37,7 +37,7 @@ export const Default: Story = {
 
 export const WithAcceptedFileTypes: Story = {
   args: {
-    ...Default.args,
+    ...Basic.args,
     accept: [MIME_TYPES.png, MIME_TYPES.jpeg, MIME_TYPES.pdf],
     children: (
       <div style={{ textAlign: 'center' }}>
@@ -57,7 +57,7 @@ export const WithAcceptedFileTypes: Story = {
 
 export const Loading: Story = {
   args: {
-    ...Default.args,
+    ...Basic.args,
     loading: true,
   },
   render: args => (
@@ -69,7 +69,7 @@ export const Loading: Story = {
 
 export const Disabled: Story = {
   args: {
-    ...Default.args,
+    ...Basic.args,
     disabled: true,
   },
   render: args => (
