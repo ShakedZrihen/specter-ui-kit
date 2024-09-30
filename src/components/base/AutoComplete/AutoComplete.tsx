@@ -13,6 +13,7 @@ import { useAutocomplete } from './useAutoComplete';
 
 export interface AutoCompleteProps {
   values: string[];
+  value?: string[];
   label: string;
   className?: string;
   onChange?: (value: string[]) => void;
@@ -23,6 +24,7 @@ export function AutoComplete({
   className,
   onChange,
   label,
+  value: defaultSelectedValues = [],
 }: AutoCompleteProps) {
   const {
     selectedValues,
@@ -32,7 +34,7 @@ export function AutoComplete({
     handleDelete,
     handleInputChange,
     handleChange,
-  } = useAutocomplete({ onChange });
+  } = useAutocomplete({ onChange, defaultSelectedValues });
 
   return (
     <StyledComponent>
