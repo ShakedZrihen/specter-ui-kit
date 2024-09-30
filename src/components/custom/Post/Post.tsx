@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Checkbox,
   FormControlLabel,
@@ -23,7 +24,7 @@ import { getTextDirection } from '../../../utils/textDirection';
 import { IPost } from '../../../@types/post';
 import { MediaViewer } from '../../base/MediaViewer/MediaViewer';
 import { TextWithHighlights } from '../../base/TextWithHighlights';
-import { MediaCarousel } from '../../base';
+import { CollectionModal, MediaCarousel } from '../../base';
 
 export interface PostProps extends IPost {
   slimView?: boolean;
@@ -58,6 +59,24 @@ export function Post(props: PostProps & { className?: string }) {
     onShare = () => {},
     mediaItems = [],
   } = props;
+
+
+  const [isCollectionModalOpen, setIsCollectionModalOpen] = useState(false);
+  const collections = [
+    { id: 1, name: 'Collection 1' },
+    { id: 2, name: 'Collection 2' },
+    { id: 3, name: 'Collection 3' },
+  ];
+
+
+  const handleSaveToCollection = (id: string | number) => {
+    setIsCollectionModalOpen(true);  
+  };
+
+  // Close modal handler
+  const handleCloseModal = () => {
+    setIsCollectionModalOpen(false);
+  };
 
   const cleanProtocol = (url: string) =>
     url.replace('https://', '').replace('http://', '');
@@ -131,11 +150,22 @@ export function Post(props: PostProps & { className?: string }) {
       )}
 
       {!slimView && <Divider />}
+
       {slimView ? (
-        <SlimFooter onSave={onSave} onShare={onShare} id={id} />
+        <SlimFooter onSave={handleSaveToCollection} onShare={onShare} id={id} />
       ) : (
-        <Footer onMore={onMore} onSave={onSave} onShare={onShare} id={id} />
+        <Footer
+          onMore={onMore}
+          onSave={handleSaveToCollection}
+          onShare={onShare}
+          id={id}
+        />
       )}
+      <CollectionModal
+        isOpen={isCollectionModalOpen}
+        onClose={handleCloseModal}
+        collections={collections}
+      />
     </StyledPost>
   );
 }

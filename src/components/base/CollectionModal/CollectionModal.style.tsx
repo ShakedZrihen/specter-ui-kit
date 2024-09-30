@@ -1,29 +1,32 @@
 import { Modal, styled } from '@mui/material';
-import FolderIcon from '@mui/icons-material/Folder';
+import { DocumetsIcon } from '../../icons';
+
 
 export const StyledColletionModal = styled(Modal)`
   display: flex;
   justify-content: center;
-  align-items: center;
-  position: relative; /* Ensures the close icon is positioned correctly */
+  align-items: center; 
+  overflow: auto; 
 `;
 
 export const ModalViewContainer = styled('div')`
   display: flex;
   flex-direction: column;
-  height: 65vh;
-  width: 70vw;
-  margin: 6vh auto;
+  height: 65vh; 
+  width: 70vw; 
+  max-width: 680px; 
+  margin: 6vh auto; 
   background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
   padding: 1.3rem;
   border-radius: 0.5rem;
   overflow: hidden;
-  position: relative; /* Ensures the close icon stays within the modal */
+  position: relative; 
 
   :focus {
     outline: none;
   }
 `;
+
 
 export const SingleContainerMetadataContainer = styled('div')`
   width: 90%;
@@ -36,13 +39,28 @@ export const SearchContainer = styled('div')`
   margin-bottom: 1rem;
 `;
 
+export const CollectionIcon = styled(DocumetsIcon)`
+  font-size: 24px;
+    color: ${({ theme }) => theme.colorPalette.colors.spBlue};
+`;
+
+
+export const ActionsContainer = styled('div')`
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 1rem;
+`;
+
 export const ExtraInfoContainer = styled('div')`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 30px; 
   padding: 1rem;
   max-height: 60vh;
   overflow-y: auto;
+  overflow-x: hidden; 
 `;
 
 export const CollectionItem = styled('div')<{ isSelected: boolean }>`
@@ -50,13 +68,14 @@ export const CollectionItem = styled('div')<{ isSelected: boolean }>`
   flex-direction: row;
   align-items: center;
   height: 48px;
-  width: 155px;
+  width: 100%;
   border: ${({ isSelected }) => (isSelected ? '1px solid #1976d2' : '#FFFFFF')};
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, border-color 0.3s ease;
-  padding: 10px;
+  padding: 10px; // Keep padding inside the item
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
+  background-color: #fff; 
 
   &:hover {
     background-color: #e0e0e0;
@@ -74,17 +93,4 @@ export const CollectionItem = styled('div')<{ isSelected: boolean }>`
     text-align: left;
     flex-grow: 1;
   }
-`;
-
-export const CollectionIcon = styled(FolderIcon)`
-  font-size: 24px;
-`;
-
-
-export const ActionsContainer = styled('div')`
-  display: flex;
-  justify-content: flex-start;
-  gap: 10px;
-  margin-top: auto;
-  padding-top: 1rem;
 `;

@@ -6,12 +6,12 @@ import {
   ExtraInfoContainer,
   CollectionItem,
   SearchContainer,
-  ActionsContainer 
+  ActionsContainer ,
+  CollectionIcon
 } from './CollectionModal.style';
 import { colorPalette } from '../../../context/theme/lightMode';
 import { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
-import imageFile from '../../icons/project_collection_modal.png'
 import { CloseIcon } from '../../icons';
 
 export interface ColletionModalProps {
@@ -85,7 +85,7 @@ export function CollectionModal({ collections, isOpen, onClose }: ColletionModal
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               sx={{ 
-                width: '60%',
+                width: '100%',
                 marginLeft: 'auto',
                 marginRight: '0',
                 display: 'flex',
@@ -119,8 +119,7 @@ export function CollectionModal({ collections, isOpen, onClose }: ColletionModal
                     fontWeight: 600,
                     lineHeight: '18px',
                     textAlign: 'center',
-                    padding: '6px'
-
+                    padding: '6px',
                   }}
                 >
                   {collection.name}
@@ -138,9 +137,8 @@ export function CollectionModal({ collections, isOpen, onClose }: ColletionModal
                   4d
                 </Typography>
                 </div>
-
                 </div>
-                <img src={imageFile}/>
+                <CollectionIcon />
               </CollectionItem>
             ))}
           </ExtraInfoContainer>
