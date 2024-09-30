@@ -5,12 +5,14 @@ import {
   FileRejection,
   FileWithPath,
 } from 'react-dropzone';
-import { Box, styled, SxProps, Theme } from '@mui/material';
+import { styled, SxProps, Theme } from '@mui/material';
 import { LoadingOverlay } from './LoadingOverlay';
 import { DropzoneProvider } from './Dropzone.context';
 import { DropzoneAccept, DropzoneIdle, DropzoneReject } from './DropzoneStatus';
+import { assignRef } from './utils/assignRef';
+import DropzoneInner from './DropzoneInner';
 
-const StyledDropzone = styled(Box)(({ theme }) => ({
+const StyledDropzone = styled('div')(({ theme }) => ({
   position: 'relative',
   border: '1px dashed',
   color: theme.palette.text.primary,
@@ -39,14 +41,6 @@ const StyledDropzone = styled(Box)(({ theme }) => ({
   },
 }));
 
-const StyledInner = styled('div')({
-  pointerEvents: 'none',
-  userSelect: 'none',
-  '&[data-enable-pointer-events]': {
-    pointerEvents: 'all',
-  },
-});
-
 export interface DropzoneProps {
   onDrop: (files: FileWithPath[]) => void;
   onDropAny?: (files: FileWithPath[], fileRejections: FileRejection[]) => void;
@@ -63,6 +57,7 @@ export interface DropzoneProps {
   dragEventsBubbling?: boolean;
   activateOnKeyboard?: boolean;
   useFsAccessApi?: boolean;
+  enablePointerEvents?: boolean;
   openRef?: React.ForwardedRef<() => void | undefined>;
   children?: React.ReactNode;
   sx?: SxProps<Theme>;
@@ -89,31 +84,38 @@ export const Dropzone = forwardRef<HTMLDivElement, DropzoneProps>(
       openRef,
       children,
       sx,
-      ...other
+      enablePointerEvents,
+      ...others
     },
     ref,
   ) => {
-    const { getRootProps, getInputProps, isDragAccept, isDragReject, open } =
-      useDropzone({
-        onDrop: onDropAny,
-        onDropAccepted: onDrop,
-        onDropRejected: onReject,
-        disabled: disabled || loading,
-        accept: Array.isArray(accept)
-          ? accept.reduce((r, key) => ({ ...r, [key]: [] }), {})
-          : accept,
-        multiple,
-        maxSize,
-        maxFiles,
-        autoFocus,
-        noClick: !activateOnClick,
-        noDrag: !activateOnDrag,
-        noDragEventsBubbling: !dragEventsBubbling,
-        noKeyboard: !activateOnKeyboard,
-        useFsAccessApi,
-      });
+    const {
+      getRootProps,
+      getInputProps,
+      isDragAccept,
+      isDragReject,
+      isFocused,
+      open,
+    } = useDropzone({
+      onDrop: onDropAny,
+      onDropAccepted: onDrop,
+      onDropRejected: onReject,
+      disabled: disabled || loading,
+      accept: Array.isArray(accept)
+        ? accept.reduce((r, key) => ({ ...r, [key]: [] }), {})
+        : accept,
+      multiple,
+      maxSize,
+      maxFiles,
+      autoFocus,
+      noClick: !activateOnClick,
+      noDrag: !activateOnDrag,
+      noDragEventsBubbling: dragEventsBubbling,
+      noKeyboard: !activateOnKeyboard,
+      useFsAccessApi,
+    });
 
-    React.useImperativeHandle(openRef, () => open);
+    assignRef(openRef, open);
 
     const isIdle = !isDragAccept && !isDragReject;
 
@@ -122,7 +124,8 @@ export const Dropzone = forwardRef<HTMLDivElement, DropzoneProps>(
         value={{ accept: isDragAccept, reject: isDragReject, idle: isIdle }}
       >
         <StyledDropzone
-          {...getRootProps()}
+          {...getRootProps({ isDragReject, isDragAccept, isFocused })}
+          {...others}
           ref={ref}
           sx={sx}
           data-accept={isDragAccept || undefined}
@@ -131,15 +134,12 @@ export const Dropzone = forwardRef<HTMLDivElement, DropzoneProps>(
           data-loading={loading || undefined}
           data-activate-on-click={activateOnClick || undefined}
           data-disabled={disabled || undefined}
-          {...other}
         >
-          <LoadingOverlay visible={loading} />
+          {loading && <LoadingOverlay visible={loading} />}
           <input {...getInputProps()} />
-          <StyledInner
-            data-enable-pointer-events={activateOnClick || undefined}
-          >
+          <DropzoneInner ref={ref} enablePointerEvents={enablePointerEvents}>
             {children}
-          </StyledInner>
+          </DropzoneInner>
         </StyledDropzone>
       </DropzoneProvider>
     );
