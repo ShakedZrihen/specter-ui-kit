@@ -1,113 +1,129 @@
-import React from 'react';
-import { SpecterTheme } from '../../../context/theme/SpecterTheme';
+import { useRef, useState } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
+import {
+  Button,
+  Typography,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from '@mui/material';
 import { Dropzone } from './Dropzone';
-import type { Meta, StoryObj } from '@storybook/react';
-import { Box, Typography } from '@mui/material';
-import { IMAGE_MIME_TYPE, PDF_MIME_TYPE } from './mime-types';
+import { MIME_TYPES } from './mime-types';
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
+import DropzoneContent from './utils/DropzoneContent';
 
 const meta: Meta<typeof Dropzone> = {
   title: 'Base/Dropzone',
   component: Dropzone,
-  argTypes: {
-    onDrop: { action: 'dropped' },
-    onDropAny: { action: 'dropped any' },
-    onReject: { action: 'rejected' },
-    disabled: { control: 'boolean' },
-    loading: { control: 'boolean' },
-    multiple: { control: 'boolean' },
-    maxSize: { control: 'number' },
-    maxFiles: { control: 'number' },
-    activateOnClick: { control: 'boolean' },
-    activateOnDrag: { control: 'boolean' },
-    activateOnKeyboard: { control: 'boolean' },
-  },
-  args: {
-    disabled: false,
-    loading: false,
-    multiple: true,
-    maxSize: Infinity,
-    activateOnClick: true,
-    activateOnDrag: true,
-    activateOnKeyboard: true,
-  },
+  tags: ['autodocs'],
 };
 
 export default meta;
 type Story = StoryObj<typeof Dropzone>;
 
-const DropzoneContent = () => (
-  <Box sx={{ textAlign: 'center' }}>
-    <Dropzone.Idle>
-      <Typography>Drag and drop files here or click to select files</Typography>
-    </Dropzone.Idle>
-    <Dropzone.Accept>
-      <Typography color='success.main'>Drop the files here</Typography>
-    </Dropzone.Accept>
-    <Dropzone.Reject>
-      <Typography color='error.main'>File type not accepted, sorry!</Typography>
-    </Dropzone.Reject>
-  </Box>
-);
-
-export const Basic: Story = {
-  render: args => (
-    <SpecterTheme>
-      <Dropzone {...args}>
-        <DropzoneContent />
-      </Dropzone>
-    </SpecterTheme>
-  ),
+export const Default: Story = {
+  args: {
+    onDrop: files => console.log('Dropped files:', files),
+    children: <DropzoneContent />,
+  },
 };
 
-export const ImagesOnly: Story = {
+export const WithAcceptedFileTypes: Story = {
   args: {
-    accept: IMAGE_MIME_TYPE,
+    ...Default.args,
+    accept: [MIME_TYPES.png, MIME_TYPES.jpeg, MIME_TYPES.pdf],
+    children: (
+      <div style={{ textAlign: 'center' }}>
+        <Typography variant='h6'>Drop image or PDF files</Typography>
+        <Typography variant='body2'>
+          Only .png, .jpg, and .pdf files are accepted
+        </Typography>
+      </div>
+    ),
   },
-  render: args => (
-    <SpecterTheme>
-      <Dropzone {...args}>
-        <DropzoneContent />
-      </Dropzone>
-    </SpecterTheme>
-  ),
-};
-
-export const PDFOnly: Story = {
-  args: {
-    accept: PDF_MIME_TYPE,
-    multiple: false,
-  },
-  render: args => (
-    <SpecterTheme>
-      <Dropzone {...args}>
-        <DropzoneContent />
-      </Dropzone>
-    </SpecterTheme>
-  ),
 };
 
 export const Loading: Story = {
   args: {
+    ...Default.args,
     loading: true,
   },
-  render: args => (
-    <SpecterTheme>
-      <Dropzone {...args}>
-        <DropzoneContent />
-      </Dropzone>
-    </SpecterTheme>
-  ),
 };
 
 export const Disabled: Story = {
   args: {
+    ...Default.args,
     disabled: true,
   },
-  render: args => (
-    <SpecterTheme>
-      <Dropzone {...args}>
-        <DropzoneContent />
+};
+
+export const WithCustomButton: Story = {
+  render: args => {
+    const openRef = useRef<() => void>(null);
+
+    return (
+      <Dropzone {...args} openRef={openRef}>
+        <div style={{ textAlign: 'center' }}>
+          <Typography variant='h6'>Drag and drop files here</Typography>
+          <Button variant='contained' onClick={() => openRef.current?.()}>
+            Select Files
+          </Button>
+        </div>
       </Dropzone>
-    </SpecterTheme>
+    );
+  },
+};
+
+export const WithStatusComponents: Story = {
+  render: args => (
+    <Dropzone {...args}>
+      <Dropzone.Accept>
+        <Typography color='success.main'>Drop the files here ...</Typography>
+      </Dropzone.Accept>
+      <Dropzone.Reject>
+        <Typography color='error.main'>
+          File type not accepted, sorry!
+        </Typography>
+      </Dropzone.Reject>
+      <Dropzone.Idle>
+        <Typography>
+          Drag and drop files here or click to select files
+        </Typography>
+      </Dropzone.Idle>
+    </Dropzone>
   ),
+};
+
+export const WithFileList: Story = {
+  render: () => {
+    const [files, setFiles] = useState<File[]>([]);
+
+    const handleDrop = (newFiles: File[]) => {
+      setFiles(prevFiles => [...prevFiles, ...newFiles]);
+    };
+
+    return (
+      <div>
+        <Dropzone onDrop={handleDrop}>
+          <DropzoneContent />
+        </Dropzone>
+        {files.length > 0 && (
+          <List>
+            {files.map((file, index) => (
+              <ListItem key={index}>
+                <ListItemIcon>
+                  <InsertDriveFileIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary={file.name}
+                  secondary={`${file.size} bytes`}
+                />
+              </ListItem>
+            ))}
+          </List>
+        )}
+      </div>
+    );
+  },
 };
