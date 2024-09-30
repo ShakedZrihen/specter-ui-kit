@@ -9,9 +9,9 @@ const meta: Meta<typeof SystemChip> = {
   argTypes: {},
   args: {
     bgColor: '#BFECB0',
-    label: "הסתיים",
+    label: 'הסתיים',
     onClick: () => null,
-    icon: <BellIcon color='black' size="1rem"/>
+    icon: <BellIcon color='black' size='1rem' />,
   },
 };
 

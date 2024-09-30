@@ -6,7 +6,6 @@ import {
   Typography,
 } from '@mui/material';
 import { franc } from 'franc';
-import { TextWithHighlights } from '../../base/TextWithHighlights';
 import {
   PostAuthor,
   PostAvatar,
@@ -23,6 +22,8 @@ import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
 import { IPost } from '../../../@types/post';
 import { MediaViewer } from '../../base/MediaViewer/MediaViewer';
+import { TextWithHighlights } from '../../base/TextWithHighlights';
+import { MediaCarousel } from '../../base';
 
 export interface PostProps extends IPost {
   slimView?: boolean;
@@ -31,7 +32,7 @@ export interface PostProps extends IPost {
   onUnread?: (id: string | number) => void;
   onSave?: (id: string | number) => void;
   onShare?: (id: string | number) => void;
-  onMore?: (id: string | number) => void;
+  onMore?: (id?: string | number) => void;
   mediaItems?: {
     original: string;
     thumbnail?: string;
@@ -85,7 +86,7 @@ export function Post(props: PostProps & { className?: string }) {
                   >
                     {source.channelName}
                   </ChannelName>
-                </Link>{' '}
+                </Link>
               </>
             ) : null}
             •{' '}
@@ -118,7 +119,17 @@ export function Post(props: PostProps & { className?: string }) {
           maxLines={5}
         />
       </PostContent>
-      <MediaViewer items={mediaItems} />
+
+      {slimView ? (
+        <MediaCarousel items={mediaItems} isSinglePostOpen={slimView} />
+      ) : (
+        <MediaViewer
+          items={mediaItems}
+          isSinglePostOpen={slimView}
+          onViewMore={onMore}
+        />
+      )}
+
       {!slimView && <Divider />}
       {slimView ? (
         <SlimFooter onSave={onSave} onShare={onShare} id={id} />

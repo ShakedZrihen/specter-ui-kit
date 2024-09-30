@@ -18,6 +18,69 @@ const meta: Meta<typeof FiltersMenu> = {
           },
         ],
       },
+      {
+        filterSectionName: 'לפי זמן',
+        filterList: [
+          {
+            filterName: 'creationTime',
+            Component: CreationTimeFilter,
+          },
+        ],
+      },
+      {
+        filterSectionName: 'לפי זמן',
+        filterList: [
+          {
+            filterName: 'creationTime',
+            Component: CreationTimeFilter,
+          },
+        ],
+      },
+      {
+        filterSectionName: 'לפי זמן',
+        filterList: [
+          {
+            filterName: 'creationTime',
+            Component: CreationTimeFilter,
+          },
+        ],
+      },
+      {
+        filterSectionName: 'לפי זמן',
+        filterList: [
+          {
+            filterName: 'creationTime',
+            Component: CreationTimeFilter,
+          },
+        ],
+      },
+      {
+        filterSectionName: 'לפי זמן',
+        filterList: [
+          {
+            filterName: 'creationTime',
+            Component: CreationTimeFilter,
+          },
+        ],
+      },
+      {
+        filterSectionName: 'לפי זמן',
+        filterList: [
+          {
+            filterName: 'creationTime',
+            Component: CreationTimeFilter,
+          },
+        ],
+      },
+      {
+        filterSectionName: 'לפי זמן',
+        filterList: [
+          {
+            filterName: 'creationTime',
+            Component: CreationTimeFilter,
+          },
+        ],
+      },
     ],
   },
 };
@@ -30,6 +93,12 @@ export const Basic: Story = {
     return (
       <SpecterTheme>
         <FiltersMenu {...props} />
+        <button
+          style={{ marginLeft: '500px' }}
+          onClick={() => alert('succeed')}
+        >
+          test click outside
+        </button>
       </SpecterTheme>
     );
   },

@@ -19,7 +19,7 @@ import {
   FiltersSection,
 } from '../FiltersSection/FiltersSection';
 
-interface FilterSectionDefinition {
+export interface FilterSectionDefinition {
   filterSectionName: string;
   filterList: FilterDefinition[];
 }
@@ -30,33 +30,28 @@ interface FiltersMenuProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   menuOverides?: any;
   className?: string;
+  variant?: 'persistent' | 'temporary' | 'permanent';
 }
 
-/**
- * TODO: document component functionality
- *
- * [Figma](https://https://www.figma.com/file/...)
- *
- * ```tsx
- * <FiltersMenu />
- * ```
- */
 export function FiltersMenu({
   filters,
   onSave,
   menuOverides = {},
   className,
+  variant = 'persistent',
 }: FiltersMenuProps) {
   const [open, toggleDrawer] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState<{
-    [filterSectionName: string]: { [filterName: string]: string };
+    [filterSectionName: string]: { [filterName: string]: string | string[] };
   }>({});
   const updateSelectedFilters = (
     filterSectionName: string,
     filterName: string,
-    selectedValue?: string | null,
+    selectedValue?: string | null | string[],
   ) => {
-    if (selectedValue) {
+    const isArray = Array.isArray(selectedValue);
+
+    if ((selectedValue && !isArray) || (isArray && selectedValue.length > 0)) {
       setSelectedFilters(prev => ({
         ...prev,
         [filterSectionName]: {
@@ -79,53 +74,56 @@ export function FiltersMenu({
   };
 
   return (
-    <StyledFiltersMenu className={className}>
-      <FiltersControllerButton onClick={() => toggleDrawer(true)}>
-        <FilterIcon color={colorPalette.common.icon} size={18} />
-        <Title>פילטרים</Title>
-      </FiltersControllerButton>
-      <StyledDrawer
-        open={open}
-        onClose={() => toggleDrawer(false)}
-        hideBackdrop={true}
-        sx={menuOverides}
-      >
-        <FiltersMenuContainer>
-          <FiltersHeader>
-            <FilterIcon color={colorPalette.common.icon} size={18} />
-            <Title>פילטרים</Title>
-            <CloseMenuContainer onClick={() => toggleDrawer(false)}>
-              <CloseIcon color={colorPalette.text.primary} size={25} />
-            </CloseMenuContainer>
-          </FiltersHeader>
-          <Divider />
-          <FiltersContainer>
-            {filters.map(({ filterSectionName, filterList }) => {
-              return (
-                <FiltersSection
-                  key={filterSectionName}
-                  filterName={filterSectionName}
-                  filterList={filterList}
-                  selectedFilters={selectedFilters[filterSectionName]}
-                  onChange={(filterName, selectedValue) => {
-                    updateSelectedFilters(
-                      filterSectionName,
-                      filterName,
-                      selectedValue,
-                    );
-                  }}
-                />
-              );
-            })}
-          </FiltersContainer>
-          <Divider />
-          <FiltersActionContainer>
-            <Link onClick={() => onSave(selectedFilters)}>
-              <StyledTypography>פילטור</StyledTypography>
-            </Link>
-          </FiltersActionContainer>
-        </FiltersMenuContainer>
-      </StyledDrawer>
-    </StyledFiltersMenu>
+    <>
+      <StyledFiltersMenu className={className}>
+        <FiltersControllerButton onClick={() => toggleDrawer(true)}>
+          <FilterIcon color={colorPalette.common.icon} size={18} />
+          <Title>פילטרים</Title>
+        </FiltersControllerButton>
+        <StyledDrawer
+          variant={variant}
+          open={open}
+          onClose={() => toggleDrawer(false)}
+          hideBackdrop={true}
+          sx={menuOverides}
+        >
+          <FiltersMenuContainer>
+            <FiltersHeader>
+              <FilterIcon color={colorPalette.common.icon} size={18} />
+              <Title>פילטרים</Title>
+              <CloseMenuContainer onClick={() => toggleDrawer(false)}>
+                <CloseIcon color={colorPalette.text.primary} size={25} />
+              </CloseMenuContainer>
+            </FiltersHeader>
+            <Divider />
+            <FiltersContainer>
+              {filters.map(({ filterSectionName, filterList }) => {
+                return (
+                  <FiltersSection
+                    key={filterSectionName}
+                    filterName={filterSectionName}
+                    filterList={filterList}
+                    selectedFilters={selectedFilters[filterSectionName]}
+                    onChange={(filterName, selectedValue) => {
+                      updateSelectedFilters(
+                        filterSectionName,
+                        filterName,
+                        selectedValue,
+                      );
+                    }}
+                  />
+                );
+              })}
+            </FiltersContainer>
+            <Divider />
+            <FiltersActionContainer>
+              <Link onClick={() => onSave(selectedFilters)}>
+                <StyledTypography>פילטור</StyledTypography>
+              </Link>
+            </FiltersActionContainer>
+          </FiltersMenuContainer>
+        </StyledDrawer>
+      </StyledFiltersMenu>
+    </>
   );
 }
