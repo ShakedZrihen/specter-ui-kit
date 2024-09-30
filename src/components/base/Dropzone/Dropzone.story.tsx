@@ -8,6 +8,7 @@ import {
   ListItemIcon,
   ListItemText,
   IconButton,
+  Stack,
 } from '@mui/material';
 import { Dropzone } from './Dropzone';
 import { MIME_TYPES } from './mime-types';
@@ -82,19 +83,27 @@ export const Disabled: Story = {
 };
 
 export const WithCustomButton: Story = {
+  args: {
+    onDrop: files => console.log('Dropped files:', files),
+  },
   render: args => {
     const DropzoneWithCustomButton = () => {
       const openRef = useRef<() => void>(null);
 
       return (
-        <Dropzone {...args} openRef={openRef}>
-          <div style={{ textAlign: 'center' }}>
-            <Typography variant='h6'>Drag and drop files here</Typography>
-            <Button variant='contained' onClick={() => openRef.current?.()}>
-              Select Files
-            </Button>
-          </div>
-        </Dropzone>
+        <Stack gap={2} alignItems='center'>
+          <Button variant='contained' onClick={() => openRef.current?.()}>
+            Select Files
+          </Button>
+          <Dropzone {...args} onDrop={args.onDrop} openRef={openRef}>
+            <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+              <Typography variant='h6'>Drag and drop files here</Typography>
+              <Typography variant='body2'>
+                or click the button above to select files
+              </Typography>
+            </div>
+          </Dropzone>
+        </Stack>
       );
     };
 
@@ -135,7 +144,7 @@ export const WithStatusComponents: Story = {
 };
 
 export const WithFileList: Story = {
-  render: () => {
+  render: args => {
     const DropzoneWithFileList = () => {
       const [files, setFiles] = useState<File[]>([]);
 
