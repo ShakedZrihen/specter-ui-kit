@@ -7,8 +7,13 @@ interface UseAutocompleteProps {
   defaultSelectedValues: string[];
 }
 
-export const useAutocomplete = ({ onChange, defaultSelectedValues = [] }: UseAutocompleteProps) => {
-  const [selectedValues, setSelectedValues] = useState<string[]>(defaultSelectedValues);
+export const useAutocomplete = ({
+  onChange,
+  defaultSelectedValues = [],
+}: UseAutocompleteProps) => {
+  const [selectedValues, setSelectedValues] = useState<string[]>(
+    defaultSelectedValues,
+  );
   const [inputValue, setInputValue] = useState<string>('');
 
   const handleDelete = (optionToDelete: string) => {

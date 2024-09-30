@@ -12,3 +12,4 @@ export { SystemChip } from './SystemChip';
 export { SmallNotification } from './SmallNotification';
 export { AutoComplete } from './AutoComplete';
 export { CreationTimeFilter } from './FiltersSection';
+export { CollectionModal } from './CollectionModal';
