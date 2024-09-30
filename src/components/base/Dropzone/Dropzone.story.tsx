@@ -38,6 +38,32 @@ export const Basic: Story = {
   ),
 };
 
+export const CustomStyles: Story = {
+  args: {
+    onDrop: files => console.log('Dropped files:', files),
+    children: <DropzoneContent />,
+    sx: {
+      border: '2px dotted',
+      borderColor: theme => theme.colorPalette.colors.spBlue,
+      backgroundColor: '#eee',
+      borderRadius: '10px',
+      '&[data-accept]': {
+        backgroundColor: 'DarkSeaGreen',
+        color: 'black',
+      },
+      '&[data-reject]': {
+        backgroundColor: 'IndianRed',
+        color: 'black',
+      },
+    },
+  },
+  render: args => (
+    <SpecterTheme>
+      <Dropzone {...args} />
+    </SpecterTheme>
+  ),
+};
+
 export const WithAcceptedFileTypes: Story = {
   args: {
     ...Basic.args,
@@ -104,6 +130,41 @@ export const WithCustomButton: Story = {
             </div>
           </Dropzone>
         </Stack>
+      );
+    };
+
+    return (
+      <SpecterTheme>
+        <DropzoneWithCustomButton />
+      </SpecterTheme>
+    );
+  },
+};
+
+export const WithCustomInternalButton: Story = {
+  args: {
+    onDrop: files => console.log('Dropped files:', files),
+  },
+  render: args => {
+    const DropzoneWithCustomButton = () => {
+      const openRef = useRef<() => void>(null);
+
+      return (
+        <Dropzone {...args} onDrop={args.onDrop} openRef={openRef}>
+          <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+            <Button
+              variant='contained'
+              onClick={() => openRef.current?.()}
+              sx={{ pointerEvents: 'all' }}
+            >
+              Select Files
+            </Button>
+            <Typography variant='h6'>Drag and drop files here</Typography>
+            <Typography variant='body2'>
+              or click the button above to select files
+            </Typography>
+          </div>
+        </Dropzone>
       );
     };
 
