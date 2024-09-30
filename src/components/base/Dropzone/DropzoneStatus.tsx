@@ -1,6 +1,7 @@
 import { cloneElement } from 'react';
 import { useDropzoneContext } from './Dropzone.context';
 import { isElement } from './utils/isElement';
+import { capitalize } from 'lodash';
 
 export interface DropzoneStatusProps {
   children: React.ReactNode;
@@ -26,7 +27,7 @@ function createDropzoneStatus(
     return null;
   };
 
-  Component.displayName = `Dropzone${status.charAt(0).toUpperCase() + status.slice(1)}`;
+  Component.displayName = `Dropzone${capitalize(status)}`;
 
   return Component;
 }
