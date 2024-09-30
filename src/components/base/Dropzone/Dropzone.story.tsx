@@ -217,7 +217,7 @@ export const WithFileList: Story = {
 
       return (
         <>
-          <Dropzone onDrop={handleDrop}>
+          <Dropzone {...args} onDrop={handleDrop}>
             <DropzoneContent />
           </Dropzone>
           {files.length > 0 && (
