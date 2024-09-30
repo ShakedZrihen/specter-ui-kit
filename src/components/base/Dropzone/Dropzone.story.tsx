@@ -12,6 +12,7 @@ import { Dropzone } from './Dropzone';
 import { MIME_TYPES } from './mime-types';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import DropzoneContent from './utils/DropzoneContent';
+import { SpecterTheme } from '../../../context/theme/SpecterTheme';
 
 const meta: Meta<typeof Dropzone> = {
   title: 'Base/Dropzone',
@@ -27,6 +28,11 @@ export const Default: Story = {
     onDrop: files => console.log('Dropped files:', files),
     children: <DropzoneContent />,
   },
+  render: args => (
+    <SpecterTheme>
+      <Dropzone {...args} />
+    </SpecterTheme>
+  ),
 };
 
 export const WithAcceptedFileTypes: Story = {
@@ -42,6 +48,11 @@ export const WithAcceptedFileTypes: Story = {
       </div>
     ),
   },
+  render: args => (
+    <SpecterTheme>
+      <Dropzone {...args} />
+    </SpecterTheme>
+  ),
 };
 
 export const Loading: Story = {
@@ -49,6 +60,11 @@ export const Loading: Story = {
     ...Default.args,
     loading: true,
   },
+  render: args => (
+    <SpecterTheme>
+      <Dropzone {...args} />
+    </SpecterTheme>
+  ),
 };
 
 export const Disabled: Story = {
@@ -56,74 +72,103 @@ export const Disabled: Story = {
     ...Default.args,
     disabled: true,
   },
+  render: args => (
+    <SpecterTheme>
+      <Dropzone {...args} />
+    </SpecterTheme>
+  ),
 };
 
 export const WithCustomButton: Story = {
   render: args => {
-    const openRef = useRef<() => void>(null);
+    const DropzoneWithCustomButton = () => {
+      const openRef = useRef<() => void>(null);
+
+      return (
+        <Dropzone {...args} openRef={openRef}>
+          <div style={{ textAlign: 'center' }}>
+            <Typography variant='h6'>Drag and drop files here</Typography>
+            <Button variant='contained' onClick={() => openRef.current?.()}>
+              Select Files
+            </Button>
+          </div>
+        </Dropzone>
+      );
+    };
 
     return (
-      <Dropzone {...args} openRef={openRef}>
-        <div style={{ textAlign: 'center' }}>
-          <Typography variant='h6'>Drag and drop files here</Typography>
-          <Button variant='contained' onClick={() => openRef.current?.()}>
-            Select Files
-          </Button>
-        </div>
-      </Dropzone>
+      <SpecterTheme>
+        <DropzoneWithCustomButton />
+      </SpecterTheme>
     );
   },
 };
 
 export const WithStatusComponents: Story = {
-  render: args => (
-    <Dropzone {...args}>
-      <Dropzone.Accept>
-        <Typography color='success.main'>Drop the files here ...</Typography>
-      </Dropzone.Accept>
-      <Dropzone.Reject>
-        <Typography color='error.main'>
-          File type not accepted, sorry!
-        </Typography>
-      </Dropzone.Reject>
-      <Dropzone.Idle>
-        <Typography>
-          Drag and drop files here or click to select files
-        </Typography>
-      </Dropzone.Idle>
-    </Dropzone>
-  ),
+  render: args => {
+    const DropzoneWithStatusComponents = () => (
+      <Dropzone {...args}>
+        <Dropzone.Accept>
+          <Typography color='success.main'>Drop the files here ...</Typography>
+        </Dropzone.Accept>
+        <Dropzone.Reject>
+          <Typography color='error.main'>
+            File type not accepted, sorry!
+          </Typography>
+        </Dropzone.Reject>
+        <Dropzone.Idle>
+          <Typography>
+            Drag and drop files here or click to select files
+          </Typography>
+        </Dropzone.Idle>
+      </Dropzone>
+    );
+
+    return (
+      <SpecterTheme>
+        <DropzoneWithStatusComponents />
+      </SpecterTheme>
+    );
+  },
 };
 
 export const WithFileList: Story = {
   render: () => {
-    const [files, setFiles] = useState<File[]>([]);
+    const DropzoneWithFileList = () => {
+      const [files, setFiles] = useState<File[]>([]);
 
-    const handleDrop = (newFiles: File[]) => {
-      setFiles(prevFiles => [...prevFiles, ...newFiles]);
+      const handleDrop = (newFiles: File[]) => {
+        setFiles(prevFiles => [...prevFiles, ...newFiles]);
+      };
+
+      return (
+        <div>
+          <Dropzone onDrop={handleDrop}>
+            <DropzoneContent />
+          </Dropzone>
+          {files.length > 0 && (
+            <List>
+              {files.map((file, index) => (
+                <ListItem key={index}>
+                  <ListItemIcon>
+                    <InsertDriveFileIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={file.name}
+                    secondary={`${file.size} bytes`}
+                  />
+                </ListItem>
+              ))}
+            </List>
+          )}
+        </div>
+      );
     };
 
     return (
-      <div>
-        <Dropzone onDrop={handleDrop}>
-          <DropzoneContent />
-        </Dropzone>
-        {files.length > 0 && (
-          <List>
-            {files.map((file, index) => (
-              <ListItem key={index}>
-                <ListItemIcon>
-                  <InsertDriveFileIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary={file.name}
-                  secondary={`${file.size} bytes`}
-                />
-              </ListItem>
-            ))}
-          </List>
-        )}
-      </div>
+      <SpecterTheme>
+        <DropzoneWithFileList />
+      </SpecterTheme>
     );
   },
 };
