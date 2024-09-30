@@ -7,10 +7,12 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  IconButton,
 } from '@mui/material';
 import { Dropzone } from './Dropzone';
 import { MIME_TYPES } from './mime-types';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
+import CloseIcon from '@mui/icons-material/Close';
 import DropzoneContent from './utils/DropzoneContent';
 import { SpecterTheme } from '../../../context/theme/SpecterTheme';
 
@@ -141,6 +143,12 @@ export const WithFileList: Story = {
         setFiles(prevFiles => [...prevFiles, ...newFiles]);
       };
 
+      const handleRemoveFile = (indexToRemove: number) => {
+        setFiles(prevFiles =>
+          prevFiles.filter((_, index) => index !== indexToRemove),
+        );
+      };
+
       return (
         <div>
           <Dropzone onDrop={handleDrop}>
@@ -149,7 +157,18 @@ export const WithFileList: Story = {
           {files.length > 0 && (
             <List>
               {files.map((file, index) => (
-                <ListItem key={index}>
+                <ListItem
+                  key={index}
+                  secondaryAction={
+                    <IconButton
+                      edge='end'
+                      aria-label='delete'
+                      onClick={() => handleRemoveFile(index)}
+                    >
+                      <CloseIcon />
+                    </IconButton>
+                  }
+                >
                   <ListItemIcon>
                     <InsertDriveFileIcon />
                   </ListItemIcon>
