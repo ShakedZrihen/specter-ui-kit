@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SearchType } from '../SearchSettings/SearchSettings.types';
 
 interface UseSearchProps {
@@ -16,6 +16,11 @@ export const useSearch = ({
   const [searchTerm, setSearchTerm] = useState(defaultSearchTerm);
   const [searchType, setSearchType] = useState<SearchType>(defaultSearchType);
   const searchInputRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setSearchTerm(defaultSearchTerm);
+    setSearchType(defaultSearchType);
+  }, [defaultSearchTerm, defaultSearchType]);
 
   const onSearchSettingsChange = (
     searchType: SearchType,

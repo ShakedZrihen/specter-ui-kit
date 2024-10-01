@@ -15,13 +15,14 @@ import { useEffect } from 'react';
 interface TimeFilterProps {
   onChange: (date: string | null | undefined) => void;
   value?: string;
+  defaultValue?: string;
   label: string;
 }
 
-export const TimeFilter = ({ label, onChange, value }: TimeFilterProps) => {
+export const TimeFilter = ({ label, onChange, value, defaultValue }: TimeFilterProps) => {
   useEffect(() => {
-    if (value) {
-      onChange?.(new Date(value.toString()).toISOString());
+    if (defaultValue) {
+      onChange?.(new Date(defaultValue.toString()).toISOString());
     }
   }, []);
 
