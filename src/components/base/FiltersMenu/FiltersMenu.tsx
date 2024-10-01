@@ -61,9 +61,13 @@ export function FiltersMenu({
       }));
     } else {
       setSelectedFilters(prev => {
+        if (!prev[filterSectionName]) {
+          return prev;
+        }
+        
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { [filterName]: toRemove, ...newFilterSection } =
-          prev[filterSectionName]; // Remove the filterName from the selectedFilters
+          prev[filterSectionName] ?? {}; // Remove the filterName from the selectedFilters
 
         return {
           ...prev,

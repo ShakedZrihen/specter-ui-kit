@@ -10,6 +10,7 @@ import {
 } from './TimeFilter.style';
 import { CalendarIcon } from '../../icons';
 import { colorPalette } from '../../../context/theme/lightMode';
+import { useEffect } from 'react';
 
 interface TimeFilterProps {
   onChange: (date: string | null | undefined) => void;
@@ -18,6 +19,12 @@ interface TimeFilterProps {
 }
 
 export const TimeFilter = ({ label, onChange, value }: TimeFilterProps) => {
+  useEffect(() => {
+    if (value) {
+      onChange?.(new Date(value.toString()).toISOString());
+    }
+  }, []);
+
   return (
     <StyledFilter>
       <StyledLabel>{label}</StyledLabel>{' '}

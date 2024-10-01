@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
@@ -7,8 +7,13 @@ interface UseAutocompleteProps {
   defaultSelectedValues: string[];
 }
 
-export const useAutocomplete = ({ onChange, defaultSelectedValues = [] }: UseAutocompleteProps) => {
-  const [selectedValues, setSelectedValues] = useState<string[]>(defaultSelectedValues);
+export const useAutocomplete = ({
+  onChange,
+  defaultSelectedValues = [],
+}: UseAutocompleteProps) => {
+  const [selectedValues, setSelectedValues] = useState<string[]>(
+    defaultSelectedValues,
+  );
   const [inputValue, setInputValue] = useState<string>('');
 
   const handleDelete = (optionToDelete: string) => {
@@ -39,6 +44,15 @@ export const useAutocomplete = ({ onChange, defaultSelectedValues = [] }: UseAut
       setInputValue(inputValue);
     }
   };
+
+  const memoizedDefaultSelectedValues = useMemo(
+    () => defaultSelectedValues.join(''),
+    [defaultSelectedValues],
+  );
+
+  useEffect(() => {
+    handleChange(null, defaultSelectedValues);
+  }, [memoizedDefaultSelectedValues]);
 
   return {
     selectedValues,
