@@ -2,5 +2,7 @@
   "save_button": "Save",
   "cancel_button": "Cancel",
   "filters": "Filters",
-  "originalContent": "Original"
+  "originalContent": "Original",
+  "content": "Content",
+  "system": "System"
 }

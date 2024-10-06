@@ -2,5 +2,7 @@
   "save_button": "שמור",
   "cancel_button": "בטל",
   "filters": "פילטרים",
-  "originalContent": "מקור"
+  "originalContent": "מקור",
+  "content": "תוכן",
+  "system": "מערכת"
 }
