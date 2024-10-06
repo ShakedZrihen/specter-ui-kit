@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import type { Preview } from '@storybook/react';
 import { SpecterTheme } from '../src/context/theme/SpecterTheme'; 
+import '../src/i18n';
 
 type ProviderProps = {
   children?: ReactNode;
