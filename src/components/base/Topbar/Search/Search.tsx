@@ -30,7 +30,7 @@ export const Search = ({
       </SearchIconWrapper>
       <StyledInputBase
         inputRef={searchInputRef}
-        placeholder={t('searchPlaceholder')}
+        placeholder={t('search')}
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
         onKeyDown={e => {
