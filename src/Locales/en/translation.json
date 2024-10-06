@@ -57,5 +57,8 @@
     "lineNotifyNewPosts": " New posts to read!",
     "lineLoading": "Loading...",
     "lineSeen": "You have seen it all",
-    "lineNothingToDisplay": "Nothing to display"
+    "lineNothingToDisplay": "Nothing to display",
+    "originalContent": "Original",
+    "content": "Content",
+    "system": "System"
 }

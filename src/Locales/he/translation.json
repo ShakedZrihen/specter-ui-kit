@@ -57,5 +57,8 @@
   "lineNotifyNewPosts": "פוסטים חדשים לקריאה!",
   "lineLoading": "טוען...",
   "lineSeen": "ראית כבר הכל",
-  "lineNothingToDisplay": "אין כלום להצגה"
+  "lineNothingToDisplay": "אין כלום להצגה",
+  "originalContent": "מקור",
+  "content": "תוכן",
+  "system": "מערכת"
 }
