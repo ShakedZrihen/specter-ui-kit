@@ -20,9 +20,4 @@ export const Basic: Story = {
       <TranslationButton {...props} />
     </SpecterTheme>
   ),
-  args: {
-    onLanguageChange: language =>
-      console.log(`Language changed to: ${language}`),
-    supportedLanguages: ['en', 'ar', 'he'],
-  },
 };

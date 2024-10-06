@@ -1,5 +1,8 @@
 {
   "save_button": "Save",
   "cancel_button": "Cancel",
-  "filters": "Filters"
+  "filters": "Filters",
+  "originalContent": "Original",
+  "content": "Content",
+  "system": "System"
 }
