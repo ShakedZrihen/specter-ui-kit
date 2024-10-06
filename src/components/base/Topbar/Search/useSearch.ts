@@ -1,15 +1,26 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SearchType } from '../SearchSettings/SearchSettings.types';
 
 interface UseSearchProps {
   onSearch?: (searchTerm: string, searchType: SearchType) => void;
+  defaultSearchTerm?: string;
+  defaultSearchType?: SearchType;
 }
 
-export const useSearch = ({ onSearch }: UseSearchProps) => {
+export const useSearch = ({
+  onSearch,
+  defaultSearchTerm = '',
+  defaultSearchType = SearchType.Exact,
+}: UseSearchProps) => {
   const [searchFocused, setSearchFocused] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [searchType, setSearchType] = useState<SearchType>(SearchType.Semantic);
+  const [searchTerm, setSearchTerm] = useState(defaultSearchTerm);
+  const [searchType, setSearchType] = useState<SearchType>(defaultSearchType);
   const searchInputRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setSearchTerm(defaultSearchTerm);
+    setSearchType(defaultSearchType);
+  }, [defaultSearchTerm, defaultSearchType]);
 
   const onSearchSettingsChange = (
     searchType: SearchType,

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
@@ -44,6 +44,15 @@ export const useAutocomplete = ({
       setInputValue(inputValue);
     }
   };
+
+  const memoizedDefaultSelectedValues = useMemo(
+    () => defaultSelectedValues.join(''),
+    [defaultSelectedValues],
+  );
+
+  useEffect(() => {
+    handleChange(null, defaultSelectedValues);
+  }, [memoizedDefaultSelectedValues]);
 
   return {
     selectedValues,

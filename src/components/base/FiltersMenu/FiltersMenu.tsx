@@ -38,7 +38,7 @@ export function FiltersMenu({
   onSave,
   menuOverides = {},
   className,
-  variant = 'persistent',
+  variant,
 }: FiltersMenuProps) {
   const [open, toggleDrawer] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState<{
@@ -51,8 +51,12 @@ export function FiltersMenu({
   ) => {
     const isArray = Array.isArray(selectedValue);
 
-    if ((selectedValue && !isArray) || (isArray && selectedValue.length > 0)) {
-      setSelectedFilters(prev => ({
+    if (
+      (!isArray && selectedValue !== undefined) ||
+      (isArray && selectedValue.length > 0)
+    ) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setSelectedFilters((prev: any) => ({
         ...prev,
         [filterSectionName]: {
           ...prev[filterSectionName],
@@ -60,10 +64,11 @@ export function FiltersMenu({
         },
       }));
     } else {
-      setSelectedFilters(prev => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setSelectedFilters((prev: any) => {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { [filterName]: toRemove, ...newFilterSection } =
-          prev[filterSectionName]; // Remove the filterName from the selectedFilters
+          prev[filterSectionName] ?? {}; // Remove the filterName from the selectedFilters
 
         return {
           ...prev,

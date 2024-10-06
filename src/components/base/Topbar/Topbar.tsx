@@ -32,6 +32,8 @@ export const Topbar = ({
   // search props
   withSearch,
   searchSettingsStyleOverrides,
+  defaultSearchTerm,
+  defaultSearchType,
   onSearch,
   onSearchFocus,
   onSearchBlur,
@@ -40,7 +42,7 @@ export const Topbar = ({
   supportedLanguages = ['עברית', 'English', 'שפת מקור'],
   onLanguageChange,
 }: TopbarProps) => {
-  const searchParams = useSearch({ onSearch });
+  const searchParams = useSearch({ onSearch, defaultSearchTerm, defaultSearchType });
 
   return (
     <TopbarWithSettingBar>
