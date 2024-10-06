@@ -4,5 +4,6 @@
   "filters": "Filters",
   "originalContent": "Original",
   "content": "Content",
-  "system": "System"
+  "system": "System",
+  "sourceLanguage": "Source language"
 }

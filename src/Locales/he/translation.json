@@ -4,5 +4,6 @@
   "filters": "פילטרים",
   "originalContent": "מקור",
   "content": "תוכן",
-  "system": "מערכת"
+  "system": "מערכת",
+  "sourceLanguage": "שפת המקור"
 }

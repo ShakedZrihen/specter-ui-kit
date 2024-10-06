@@ -17,6 +17,7 @@ import {
   PostSource,
   StyledPost,
   ChannelName,
+  OriginalContent
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
@@ -24,6 +25,9 @@ import { IPost } from '../../../@types/post';
 import { MediaViewer } from '../../base/MediaViewer/MediaViewer';
 import { TextWithHighlights } from '../../base/TextWithHighlights';
 import { MediaCarousel } from '../../base';
+import { LoopIcon } from '../../icons';
+import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 export interface PostProps extends IPost {
   slimView?: boolean;
@@ -59,10 +63,10 @@ export function Post(props: PostProps & { className?: string }) {
     mediaItems = [],
   } = props;
 
+  const [content, setContent] = useState<string>(selected || original);
+  const { t, i18n } = useTranslation();
   const cleanProtocol = (url: string) =>
     url.replace('https://', '').replace('http://', '');
-
-  const content = selected || original;
 
   return (
     <StyledPost className={className}>
@@ -129,7 +133,10 @@ export function Post(props: PostProps & { className?: string }) {
           onViewMore={onMore}
         />
       )}
-
+      <OriginalContent direction={i18n.resolvedLanguage === "en" ? "ltr" : "rtl"} onClick={() => setContent(original)}>
+        <LoopIcon color="#1877F2" size={14} />
+        {t("sourceLanguage")}
+      </OriginalContent>
       {!slimView && <Divider />}
       {slimView ? (
         <SlimFooter onSave={onSave} onShare={onShare} id={id} />
