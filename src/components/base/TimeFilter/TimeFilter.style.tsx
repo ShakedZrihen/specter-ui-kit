@@ -30,6 +30,7 @@ export const Trash = styled(TrashIcon)`
 
 export const StyledDesktopDateTimePicker = styled(DesktopDateTimePicker)`
   background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
+  max-width: 13rem;
 
   & *:focus {
     outline: none !important;
