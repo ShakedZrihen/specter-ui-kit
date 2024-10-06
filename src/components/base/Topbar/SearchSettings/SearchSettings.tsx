@@ -11,31 +11,24 @@ import {
 } from './SearchSettings.style';
 import { SearchType } from './SearchSettings.types';
 import { Divider } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 export interface SearchSettingsProps {
   searchSettingsStyleOverrides?: string;
   searchType?: SearchType;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChange?: (searchType: SearchType, extraInfo?: any) => void;
-  setSearchType?: (searchType: SearchType) => void;
   close: () => void;
 }
 
-/**
- * TODO: document component functionality
- *
- * [Figma](https://https://www.figma.com/file/...)
- *
- * ```tsx
- * <SearchSettings />
- * ```
- */
 export function SearchSettings({
   searchSettingsStyleOverrides,
   searchType,
   onChange,
   close,
 }: SearchSettingsProps) {
+  const { t } = useTranslation();
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSearchSettingsChange = (searchType: SearchType, extraInfo?: any) => {
     onChange?.(searchType, extraInfo);
@@ -50,25 +43,30 @@ export function SearchSettings({
       <SearchSettingsFiltersContainer>
         <StyledButton
           selected={searchType === SearchType.Semantic}
-          onClick={() => onSearchSettingsChange(SearchType.Semantic)}
+          onClick={() => {
+            onSearchSettingsChange(SearchType.Semantic);
+          }}
         >
-          חיפוש סמנטי
+          {t('lineSemanticsearch')} 
         </StyledButton>
         <StyledButton
           selected={searchType === SearchType.Exact}
-          onClick={() => onSearchSettingsChange(SearchType.Exact)}
+          onClick={() => {
+            onSearchSettingsChange(SearchType.Exact);
+          }}
         >
-          חיפוש מדויק
+          {t('lineExactsearch')} 
         </StyledButton>
         {searchType === SearchType.Exact && (
           <AdditionalSearchSettingContainer>
             <Divider />
             <AdditionalSearchSettingTitle>
-              לדיוק טיב החיפוש:
+              {t('lineSearchPrecision')} 
             </AdditionalSearchSettingTitle>
             <SearchOperatorContainer>
               {supportedOperators.map(operator => (
                 <SearchOperator
+                  key={operator}
                   onClick={() =>
                     onSearchSettingsChange(SearchType.Exact, { operator })
                   }

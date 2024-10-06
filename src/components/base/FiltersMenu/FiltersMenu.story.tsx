@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { SpecterTheme } from '../../../context/theme/SpecterTheme';
 import { CreationTimeFilter } from '../FiltersSection/Filters/CreationTimeFilter';
 import { FiltersMenu } from './FiltersMenu';
@@ -90,16 +91,26 @@ type Story = StoryObj<typeof FiltersMenu>;
 
 export const Basic: Story = {
   render(props) {
-    return (
-      <SpecterTheme>
-        <FiltersMenu {...props} />
-        <button
-          style={{ marginLeft: '500px' }}
-          onClick={() => alert('succeed')}
-        >
-          test click outside
-        </button>
-      </SpecterTheme>
-    );
+    const ControlledFiltersMenu = () => {
+      const [selectedFilters, setSelectedFilters] = useState({});
+
+      return (
+        <SpecterTheme>
+          <FiltersMenu
+            {...props}
+            selectedFilters={selectedFilters}
+            setSelectedFilters={setSelectedFilters}
+          />
+          <button
+            style={{ marginLeft: '500px' }}
+            onClick={() => alert('succeed')}
+          >
+            test click outside
+          </button>
+        </SpecterTheme>
+      );
+    };
+    
+    return <ControlledFiltersMenu />;
   },
 };

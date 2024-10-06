@@ -4,6 +4,7 @@ import {
   StyledInputBase,
   StyledSearch,
 } from './Search.style';
+import { useTranslation } from 'react-i18next';
 
 interface SearchProps {
   onSearch: (searchTerm: string) => void;
@@ -20,8 +21,7 @@ export const Search = ({
   onFocus,
   setSearchTerm,
 }: SearchProps) => {
-  // TODO: add support of multiple search terms
-  // add support for chips
+  const { t } = useTranslation();
 
   return (
     <StyledSearch>
@@ -30,7 +30,7 @@ export const Search = ({
       </SearchIconWrapper>
       <StyledInputBase
         inputRef={searchInputRef}
-        placeholder='חפש...'
+        placeholder={t('searchPlaceholder')}
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
         onKeyDown={e => {

@@ -1,28 +1,25 @@
+import { useState } from 'react';
 import { FiltersMenu } from '../../base';
 import { AutoComplete } from '../../base/AutoComplete';
 import { FilterSectionDefinition } from '../../base/FiltersMenu/FiltersMenu';
 import { CreationTimeFilter } from '../../base/FiltersSection/Filters/CreationTimeFilter';
+import { useTranslation } from 'react-i18next';
 
-/**
- * TODO: document component functionality
- *
- * [Figma](https://https://www.figma.com/file/...)
- *
- * ```tsx
- * <SpecterFiltersMenu />
- * ```
- */
 export function SpecterFiltersMenu() {
+  const { t } = useTranslation();
+  const [selectedFilters, setSelectedFilters] = useState<{
+    [filterSectionName: string]: { [filterName: string]: string | string[] };
+  }>({});
+
   const filters: FilterSectionDefinition[] = [
     {
-      filterSectionName: 'לפי סטים',
+      filterSectionName: t('bySets'),
       filterList: [
         {
           filterName: 'collections',
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           Component: props => (
             <AutoComplete
-              label='אוספים'
+              label={t('collections')}
               values={props.value ?? []}
               onChange={props.onChange}
             />
@@ -30,55 +27,9 @@ export function SpecterFiltersMenu() {
         },
         {
           filterName: 'savedFilters',
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          Component: props => {
-            return (
-              <AutoComplete
-                label='אוספים'
-                values={props.value ?? []}
-                onChange={props.onChange}
-              />
-            );
-          },
-        },
-      ],
-    },
-    {
-      filterSectionName: 'לפי זמן יצירה',
-      filterList: [
-        {
-          filterName: 'creationTimeStart',
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          Component: props => (
-            <CreationTimeFilter
-              onChange={props.onChange}
-              value={props.value}
-              label='התחלה'
-            />
-          ),
-        },
-        {
-          filterName: 'creationTimeEnd',
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          Component: props => (
-            <CreationTimeFilter
-              onChange={props.onChange}
-              value={props.value}
-              label='סיום'
-            />
-          ),
-        },
-      ],
-    },
-    {
-      filterSectionName: 'לפי מקור',
-      filterList: [
-        {
-          filterName: 'platformType',
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           Component: props => (
             <AutoComplete
-              label='פלטפורמה'
+              label={t('collections')}
               values={props.value ?? []}
               onChange={props.onChange}
             />
@@ -87,14 +38,53 @@ export function SpecterFiltersMenu() {
       ],
     },
     {
-      filterSectionName: 'לפי שדה',
+      filterSectionName: t('byCreationTime'),
+      filterList: [
+        {
+          filterName: 'creationTimeStart',
+          Component: props => (
+            <CreationTimeFilter
+              onChange={props.onChange}
+              value={props.value}
+              label={t('start')}
+            />
+          ),
+        },
+        {
+          filterName: 'creationTimeEnd',
+          Component: props => (
+            <CreationTimeFilter
+              onChange={props.onChange}
+              value={props.value}
+              label={t('end')}
+            />
+          ),
+        },
+      ],
+    },
+    {
+      filterSectionName: t('bySource'),
+      filterList: [
+        {
+          filterName: 'platformType',
+          Component: props => (
+            <AutoComplete
+              label={t('platform')}
+              values={props.value ?? []}
+              onChange={props.onChange}
+            />
+          ),
+        },
+      ],
+    },
+    {
+      filterSectionName: t('byField'),
       filterList: [
         {
           filterName: 'arena',
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           Component: props => (
             <AutoComplete
-              label='זירה'
+              label={t('arena')}
               values={props.value ?? []}
               onChange={props.onChange}
             />
@@ -102,10 +92,9 @@ export function SpecterFiltersMenu() {
         },
         {
           filterName: 'research',
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           Component: props => (
             <AutoComplete
-              label='נושאי מחקר'
+              label={t('researchTopics')}
               values={props.value ?? []}
               onChange={props.onChange}
             />
@@ -115,5 +104,12 @@ export function SpecterFiltersMenu() {
     },
   ];
 
-  return <FiltersMenu filters={filters} onSave={console.log} />;
+  return (
+    <FiltersMenu
+      filters={filters}
+      onSave={console.log}
+      selectedFilters={selectedFilters}
+      setSelectedFilters={setSelectedFilters}
+    />
+  );
 }

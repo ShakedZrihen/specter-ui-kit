@@ -60,5 +60,29 @@
     "lineNothingToDisplay": "Nothing to display",
     "originalContent": "Original",
     "content": "Content",
-    "system": "System"
-}
+    "system": "System",
+    "lineSearchPrecision": "Search Precision",
+    "additionalInfoAboutImage": "Additional info about the image from post",
+    "relatedEntities": "Related Entities",
+    "aiEnrichments": "AI Enrichments",
+    "operationalHistory": "Operational History",
+      "bySets": "By Sets",
+      "collections": "Collections",
+      "byCreationTime": "By Creation Time",
+      "start": "Start",
+      "end": "End",
+      "bySource": "By Source",
+      "platform": "Platform",
+      "byField": "By Field",
+      "arena": "Arena",
+      "researchTopics": "Research Topics",
+        "metadata": "Metadata",
+        "creationTime": "Creation Time:",
+        "harvestTime": "Harvest Time:",
+        "lastUpdate": "Last Update:",
+        "collectionSource": "Collection Source:",
+        "itemID": "Item ID:",
+        "additionalInfo": "Additional Info:",
+        "search": "Search..."   
+    }
+
