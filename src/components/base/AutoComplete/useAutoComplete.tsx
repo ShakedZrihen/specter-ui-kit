@@ -1,24 +1,20 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 interface UseAutocompleteProps {
   onChange?: (value: string[]) => void;
-  defaultSelectedValues: string[];
+  value: string[];
 }
 
 export const useAutocomplete = ({
   onChange,
-  defaultSelectedValues = [],
+  value = [],
 }: UseAutocompleteProps) => {
-  const [selectedValues, setSelectedValues] = useState<string[]>(
-    defaultSelectedValues,
-  );
   const [inputValue, setInputValue] = useState<string>('');
 
   const handleDelete = (optionToDelete: string) => {
-    setSelectedValues(prev => prev.filter(option => option !== optionToDelete));
-    onChange?.(selectedValues.filter(option => option !== optionToDelete));
+    onChange?.(value.filter(option => option !== optionToDelete));
   };
   const icon = <CheckBoxOutlineBlankIcon fontSize='small' />;
   const checkedIcon = <CheckBoxIcon fontSize='small' />;
@@ -37,7 +33,6 @@ export const useAutocomplete = ({
     newValue: unknown,
   ) => {
     const newValues = newValue as string[];
-    setSelectedValues(newValues);
     onChange?.(newValues);
 
     if (inputValue !== '') {
@@ -45,17 +40,7 @@ export const useAutocomplete = ({
     }
   };
 
-  const memoizedDefaultSelectedValues = useMemo(
-    () => defaultSelectedValues.join(''),
-    [defaultSelectedValues],
-  );
-
-  useEffect(() => {
-    handleChange(null, defaultSelectedValues);
-  }, [memoizedDefaultSelectedValues]);
-
   return {
-    selectedValues,
     inputValue,
     icon,
     checkedIcon,

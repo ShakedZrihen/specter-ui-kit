@@ -21,20 +21,19 @@ export interface AutoCompleteProps {
 
 export function AutoComplete({
   values,
+  value = [],
   className,
   onChange,
   label,
-  value: defaultSelectedValues = [],
 }: AutoCompleteProps) {
   const {
-    selectedValues,
     inputValue,
     icon,
     checkedIcon,
     handleDelete,
     handleInputChange,
     handleChange,
-  } = useAutocomplete({ onChange, defaultSelectedValues });
+  } = useAutocomplete({ onChange, value });
 
   return (
     <StyledComponent>
@@ -42,7 +41,6 @@ export function AutoComplete({
       <Wrapper>
         <TrashButton
           onClick={() => {
-            selectedValues.forEach(value => handleDelete(value));
             onChange?.([]);
           }}
         >
@@ -55,7 +53,7 @@ export function AutoComplete({
           className={className}
           options={values}
           inputValue={inputValue}
-          value={selectedValues}
+          value={value}
           onChange={handleChange}
           onInputChange={handleInputChange}
           forcePopupIcon={true} // Force the popupIcon to always appear

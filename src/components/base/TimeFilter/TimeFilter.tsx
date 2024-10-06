@@ -10,7 +10,6 @@ import {
 } from './TimeFilter.style';
 import { CalendarIcon } from '../../icons';
 import { colorPalette } from '../../../context/theme/lightMode';
-import { useEffect } from 'react';
 
 interface TimeFilterProps {
   onChange: (date: string | null | undefined) => void;
@@ -19,13 +18,12 @@ interface TimeFilterProps {
   label: string;
 }
 
-export const TimeFilter = ({ label, onChange, value, defaultValue }: TimeFilterProps) => {
-  useEffect(() => {
-    if (defaultValue) {
-      onChange?.(new Date(defaultValue.toString()).toISOString());
-    }
-  }, []);
-
+export const TimeFilter = ({
+  label,
+  onChange,
+  value,
+  defaultValue,
+}: TimeFilterProps) => {
   return (
     <StyledFilter>
       <StyledLabel>{label}</StyledLabel>{' '}
@@ -36,6 +34,7 @@ export const TimeFilter = ({ label, onChange, value, defaultValue }: TimeFilterP
             onChange={date => {
               onChange(date ? new Date(date.toString()).toISOString() : null);
             }}
+            defaultValue={defaultValue ? dayjs(defaultValue) : null}
             slots={{
               openPickerIcon: () => (
                 <CalendarIcon size={20} color={colorPalette.link.color} />
