@@ -4,7 +4,7 @@ import {
   StyledTranslateIcon,
 } from './TranslationButton.style';
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import { TranslateWithI18 } from '../../base/TranslateWithI18';
 
 export interface TranslationButtonProps {
   onLanguageChange: (language: string) => void;
@@ -12,8 +12,6 @@ export interface TranslationButtonProps {
 }
 
 export function TranslationButton({
-  onLanguageChange,
-  supportedLanguages = [],
 }: TranslationButtonProps) {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -28,10 +26,6 @@ export function TranslationButton({
     setAnchorEl(null);
   };
 
-  const handleLanguageChange = (language: string) => {
-    onLanguageChange(language);
-    handleClose();
-  };
 
   return (
     <>
@@ -48,18 +42,7 @@ export function TranslationButton({
         open={open}
         onClose={handleClose}
       >
-        {supportedLanguages.length > 0 ? (
-          supportedLanguages.map(language => (
-            <MenuItem
-              key={language}
-              onClick={() => handleLanguageChange(language)}
-            >
-              {language}
-            </MenuItem>
-          ))
-        ) : (
-          <MenuItem>שפות אינן זמינות</MenuItem>
-        )}
+        <TranslateWithI18 />
       </Menu>
     </>
   );

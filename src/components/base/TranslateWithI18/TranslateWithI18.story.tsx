@@ -1,10 +1,10 @@
 import { SpecterTheme } from '../../../context/theme/SpecterTheme';
-import { TranslateWitchI18 } from './TranslateWitchI18';
+import { TranslateWithI18 } from './TranslateWithI18';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof TranslateWitchI18> = {
+const meta: Meta<typeof TranslateWithI18> = {
   title: 'Components/TranslateWitchI18',
-  component: TranslateWitchI18,
+  component: TranslateWithI18,
   argTypes: {
     textKey: {
       control: {
@@ -23,7 +23,7 @@ const meta: Meta<typeof TranslateWitchI18> = {
 
 export default meta;
 
-type Story = StoryObj<typeof TranslateWitchI18>;
+type Story = StoryObj<typeof TranslateWithI18>;
 
 export const Basic: Story = {
   args: {
@@ -32,7 +32,7 @@ export const Basic: Story = {
   },
   render: (args) => (
     <SpecterTheme>
-      <TranslateWitchI18 {...args} />
+      <TranslateWithI18 {...args} />
     </SpecterTheme>
   ),
 };
