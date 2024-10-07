@@ -15,7 +15,7 @@ export interface TranslateWithI18Props {
 
 export function TranslateWithI18({ onLanguageChange, supportedLanguages }: TranslateWithI18Props) {
   const { t, i18n } = useTranslation();
-  const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'en');
+  const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'he');
 
   const onLanguageChane = (type: 'system' | 'content', langKey: string) => {
     setCurrentLanguage(langKey);
