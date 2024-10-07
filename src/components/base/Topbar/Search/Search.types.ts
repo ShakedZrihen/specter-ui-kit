@@ -1,4 +1,4 @@
-import { SearchType } from "../SearchSettings";
+import { SearchType } from '../SearchSettings';
 
 export interface SearchProps {
   onSearch?: (searchTerm: string, searchType: string) => void;

@@ -9,12 +9,19 @@ const meta: Meta<typeof TranslationButton> = {
     onLanguageChange: { action: 'languageChange' },
   },
   args: {
-    onLanguageChange: () => { },
+    onLanguageChange: () => {},
     supportedLanguages: {
-      content: [{langKey: "en", langName: "English"}, {langKey: "he", langName: "עברית"}, {langKey:"default", langName: ""}],
-      system: [{langKey: "en", langName: "English"}, {langKey: "he", langName: "עברית"}]
-    }
-  }
+      content: [
+        { langKey: 'en', langName: 'English' },
+        { langKey: 'he', langName: 'עברית' },
+        { langKey: 'default', langName: '' },
+      ],
+      system: [
+        { langKey: 'en', langName: 'English' },
+        { langKey: 'he', langName: 'עברית' },
+      ],
+    },
+  },
 };
 
 export default meta;

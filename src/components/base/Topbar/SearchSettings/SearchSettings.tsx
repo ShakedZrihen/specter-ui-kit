@@ -47,7 +47,7 @@ export function SearchSettings({
             onSearchSettingsChange(SearchType.Semantic);
           }}
         >
-          {t('lineSemanticsearch')} 
+          {t('lineSemanticsearch')}
         </StyledButton>
         <StyledButton
           selected={searchType === SearchType.Exact}
@@ -55,13 +55,13 @@ export function SearchSettings({
             onSearchSettingsChange(SearchType.Exact);
           }}
         >
-          {t('lineExactsearch')} 
+          {t('lineExactsearch')}
         </StyledButton>
         {searchType === SearchType.Exact && (
           <AdditionalSearchSettingContainer>
             <Divider />
             <AdditionalSearchSettingTitle>
-              {t('lineSearchPrecision')} 
+              {t('lineSearchPrecision')}
             </AdditionalSearchSettingTitle>
             <SearchOperatorContainer>
               {supportedOperators.map(operator => (

@@ -8,7 +8,9 @@ export const StyledPost = styled(Card)<{ isRawPost: boolean }>`
   direction: rtl;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
 
-  ${({ isRawPost }) => isRawPost && `
+  ${({ isRawPost }) =>
+    isRawPost &&
+    `
   border: 1px solid #e8bcbf;
   `}
 `;
@@ -129,7 +131,7 @@ export const SourceContent = styled('button')<{ direction: string }>`
   outline: none;
   width: fit-content;
   column-gap: 0.25rem;
-  font-size: 1.125rem; 
+  font-size: 1.125rem;
   line-height: 1.75rem;
   padding-left: 1rem;
   padding-right: 1rem;

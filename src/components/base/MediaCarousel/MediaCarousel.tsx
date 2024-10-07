@@ -5,7 +5,7 @@ import {
   MediaImage,
   MediaVideo,
 } from './MediaCarousel.style';
-import { useTranslation } from 'react-i18next'; 
+import { useTranslation } from 'react-i18next';
 
 export interface MediaCarouselProps {
   items: {
@@ -18,22 +18,22 @@ export interface MediaCarouselProps {
 }
 
 export function MediaCarousel({ items }: MediaCarouselProps) {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
 
   const galleryItems = items.map(item => ({
     original: item.original,
     thumbnail: item.thumbnail || item.original,
-    description: item.description ? t(item.description) : t('mediaItem'), 
+    description: item.description ? t(item.description) : t('mediaItem'),
     renderItem: () =>
       item.type === 'image' ? (
         <MediaImage
           src={item.original}
-          alt={item.description || t('mediaItem')} 
+          alt={item.description || t('mediaItem')}
         />
       ) : (
         <MediaVideo controls>
           <source src={item.original} />
-          {t('videoUnsupportedMessage')} 
+          {t('videoUnsupportedMessage')}
         </MediaVideo>
       ),
   }));

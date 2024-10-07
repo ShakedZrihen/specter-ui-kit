@@ -49,7 +49,7 @@ export function FiltersMenu({
   selectedFilters,
   setSelectedFilters,
 }: FiltersMenuProps) {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
   const [open, toggleDrawer] = useState(false);
 
   const updateSelectedFilters = (
@@ -90,7 +90,7 @@ export function FiltersMenu({
       <StyledFiltersMenu className={className}>
         <FiltersControllerButton onClick={() => toggleDrawer(true)}>
           <FilterIcon color={colorPalette.common.icon} size={18} />
-          <Title>{t('filters')}</Title> 
+          <Title>{t('filters')}</Title>
         </FiltersControllerButton>
         <StyledDrawer
           variant={variant}
@@ -102,7 +102,7 @@ export function FiltersMenu({
           <FiltersMenuContainer>
             <FiltersHeader>
               <FilterIcon color={colorPalette.common.icon} size={18} />
-              <Title>{t('filters')}</Title> 
+              <Title>{t('filters')}</Title>
               <CloseMenuContainer onClick={() => toggleDrawer(false)}>
                 <CloseIcon color={colorPalette.text.primary} size={25} />
               </CloseMenuContainer>
