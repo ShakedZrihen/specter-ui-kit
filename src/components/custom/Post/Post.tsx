@@ -53,6 +53,7 @@ export function Post(props: PostProps & { className?: string }) {
     source,
     content: { original, selected },
     isRead,
+    isRawPost,
     id,
     highlightedText = [],
     className,
@@ -81,7 +82,7 @@ export function Post(props: PostProps & { className?: string }) {
   }
 
   return (
-    <StyledPost className={className}>
+    <StyledPost isRawPost={isRawPost} className={className}>
       <PostHeader>
         <PostAvatar alt={author.name} src={author.avatar} />
         <PostHeaderContent>

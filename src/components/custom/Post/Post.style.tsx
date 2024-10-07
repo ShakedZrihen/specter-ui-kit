@@ -1,12 +1,16 @@
 import { Avatar, Card, styled, Typography } from '@mui/material';
 import { lighten } from '@mui/system';
 
-export const StyledPost = styled(Card)`
+export const StyledPost = styled(Card)<{ isRawPost: boolean }>`
   display: flex;
   border-radius: 8px;
   flex-direction: column;
   direction: rtl;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+
+  ${({ isRawPost }) => isRawPost && `
+  border: 1px solid #e8bcbf;
+  `}
 `;
 
 export const PostHeader = styled('div')`
