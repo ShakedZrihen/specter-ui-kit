@@ -6,6 +6,21 @@ const meta: Meta<typeof TranslateWithI18> = {
   title: 'Components/TranslateWitchI18',
   component: TranslateWithI18,
   argTypes: {},
+  args: {
+    contentLanguage: "he",
+    onLanguageChange: () => { },
+    supportedLanguages: {
+      content: [
+        { langKey: 'en', langName: 'English' },
+        { langKey: 'he', langName: 'עברית' },
+        { langKey: 'default', langName: '' },
+      ],
+      system: [
+        { langKey: 'en', langName: 'English' },
+        { langKey: 'he', langName: 'עברית' },
+      ],
+    },
+  }
 };
 
 export default meta;
