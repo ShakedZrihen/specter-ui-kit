@@ -7,8 +7,8 @@ const meta: Meta<typeof TranslateWithI18> = {
   component: TranslateWithI18,
   argTypes: {},
   args: {
-    contentLanguage: "he",
-    onLanguageChange: () => { },
+    contentLanguage: 'he',
+    onLanguageChange: () => {},
     supportedLanguages: {
       content: [
         { langKey: 'en', langName: 'English' },
@@ -20,7 +20,7 @@ const meta: Meta<typeof TranslateWithI18> = {
         { langKey: 'he', langName: 'עברית' },
       ],
     },
-  }
+  },
 };
 
 export default meta;

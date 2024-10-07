@@ -163,7 +163,9 @@ export function Post(props: PostProps & { className?: string }) {
           onClick={() => setPostContent()}
         >
           <LoopIcon color={colorPalette.colors.spBlue} size={14} />
-          <Typography>{isTranslated ? t('displayTranslate') : t('sourceLanguage')}</Typography>
+          <Typography>
+            {isTranslated ? t('displayTranslate') : t('sourceLanguage')}
+          </Typography>
         </SourceContent>
       ) : (
         ''

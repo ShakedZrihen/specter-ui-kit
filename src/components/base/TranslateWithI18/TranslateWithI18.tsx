@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Grid, MenuItem } from '@mui/material';
 import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
@@ -17,7 +16,7 @@ export interface TranslateWithI18Props {
 export function TranslateWithI18({
   supportedLanguages,
   onLanguageChange,
-  contentLanguage
+  contentLanguage,
 }: TranslateWithI18Props) {
   const { t, i18n } = useTranslation();
 
