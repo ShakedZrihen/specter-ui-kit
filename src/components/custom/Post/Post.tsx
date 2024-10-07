@@ -157,13 +157,13 @@ export function Post(props: PostProps & { className?: string }) {
           onViewMore={onMore}
         />
       )}
-      {content ? (
+      {content && original !== selected ? (
         <SourceContent
           direction={i18n.resolvedLanguage === 'en' ? 'ltr' : 'rtl'}
           onClick={() => setPostContent()}
         >
           <LoopIcon color={colorPalette.colors.spBlue} size={14} />
-          {isTranslated ? t('displayTranslate') : t('sourceLanguage')}
+          <Typography>{isTranslated ? t('displayTranslate') : t('sourceLanguage')}</Typography>
         </SourceContent>
       ) : (
         ''

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Grid, MenuItem } from '@mui/material';
 import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
@@ -15,8 +16,8 @@ export interface TranslateWithI18Props {
 
 export function TranslateWithI18({
   supportedLanguages,
-  contentLanguage: currentLanguage,
-  onLanguageChange
+  onLanguageChange,
+  contentLanguage
 }: TranslateWithI18Props) {
   const { t, i18n } = useTranslation();
 
@@ -31,7 +32,7 @@ export function TranslateWithI18({
           return (
             <MenuItem
               onClick={() => onLanguageChange('content', item.langKey)}
-              disabled={currentLanguage === item.langKey}
+              disabled={contentLanguage === item.langKey}
             >
               {item.langKey === 'default'
                 ? t('originalContent')
@@ -41,7 +42,7 @@ export function TranslateWithI18({
         })}
       </Grid>
       <Grid item>
-        <StyledTypography isReversed={i18n.resolvedLanguage === 'en'}>
+        <StyledTypography isReversed={i18n.resolvedLanguage === 'he'}>
           <SettingsIcon fontSize='small' />
           {t('system')}
         </StyledTypography>
