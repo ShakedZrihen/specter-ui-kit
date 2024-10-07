@@ -9,6 +9,13 @@ const meta: Meta<typeof TranslationButton> = {
   argTypes: {
     onLanguageChange: { action: 'languageChange' },
   },
+  args: {
+    onLanguageChange: () => { },
+    supportedLanguages: {
+      content: [{langKey: "en", langName: "English"}, {langKey: "he", langName: "עברית"}, {langKey:"default", langName: ""}],
+      system: [{langKey: "en", langName: "English"}, {langKey: "he", langName: "עברית"}]
+    }
+  }
 };
 
 export default meta;
