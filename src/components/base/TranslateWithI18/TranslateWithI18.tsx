@@ -48,7 +48,7 @@ export function TranslateWithI18({
         })}
       </Grid>
       <Grid item>
-        <StyledTypography isReversed={i18n.resolvedLanguage === 'en'}>
+        <StyledTypography isReversed={i18n.resolvedLanguage === 'he'}>
           <SettingsIcon fontSize='small' />
           {t('system')}
         </StyledTypography>
