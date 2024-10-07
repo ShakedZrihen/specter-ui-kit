@@ -1,4 +1,3 @@
-import React from 'react';
 import { SpecterTheme } from '../../../context/theme/SpecterTheme';
 import { TranslationButton } from './TranslationButton';
 import type { Meta, StoryObj } from '@storybook/react';

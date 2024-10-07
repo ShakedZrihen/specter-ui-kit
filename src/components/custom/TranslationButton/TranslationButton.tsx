@@ -34,7 +34,6 @@ export function TranslationButton({ onLanguageChange, supportedLanguages
     setAnchorEl(null);
   };
 
-
   return (
     <>
       <StyledTranslationButton
