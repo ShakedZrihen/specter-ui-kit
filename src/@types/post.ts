@@ -21,7 +21,7 @@ interface IPost {
   };
   medias?: PostMedia[];
   content: {
-    original: string;
+    original: string | undefined;
     translated?: string;
     translatedHebrew?: string;
     selected?: string;
