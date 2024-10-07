@@ -13,10 +13,13 @@ import { TranslationButton } from '../../custom/TranslationButton/TranslationBut
 import { SearchSettings } from './SearchSettings';
 import { useSearch } from './Search/useSearch';
 import { SearchProps } from './Search/Search.types';
-
+import { ILanguage } from '../../custom/TranslationButton/TranslationButton';
 interface TranslationProps {
   withTranslationButton?: boolean;
-  supportedLanguages?: string[];
+  supportedLanguages?: {
+    system: ILanguage[];
+    content: ILanguage[];
+  };
   onLanguageChange?: (language: string) => void;
 }
 interface TopbarProps extends SearchProps, TranslationProps {
@@ -39,7 +42,10 @@ export const Topbar = ({
   onSearchBlur,
   // translation props
   withTranslationButton,
-  supportedLanguages = ['עברית', 'English', 'שפת מקור'],
+  supportedLanguages = {
+    content: [{langKey: "en", langName: "English"}, {langKey: "he", langName: "עברית"}, {langKey:"default", langName: ""}],
+    system: [{langKey: "en", langName: "English"}, {langKey: "he", langName: "עברית"}]
+  },
   onLanguageChange,
 }: TopbarProps) => {
   const searchParams = useSearch({ onSearch, defaultSearchTerm, defaultSearchType });
