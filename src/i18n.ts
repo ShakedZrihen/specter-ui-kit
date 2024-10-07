@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   .init({
     lng: 'he',
-    fallbackLng: 'en', 
+    fallbackLng: 'he',
     debug: true,
     resources: {
       en: { translation: en },
@@ -24,3 +24,4 @@ i18n
   });
 
 export default i18n;
+export { i18n };

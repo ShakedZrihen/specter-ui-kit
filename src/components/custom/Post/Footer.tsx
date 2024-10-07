@@ -7,7 +7,7 @@ import { Button } from '../../base/Button';
 interface FooterProps {
   onSave: (id: number | string) => void;
   onShare: (id: number | string) => void;
-  onMore: (id: number | string) => void;
+  onMore?: (id: number | string) => void;
   id: number | string;
 }
 
@@ -28,10 +28,12 @@ export const Footer = ({ onSave, onShare, onMore, id }: FooterProps) => {
         <ShareIcon color={colorPalette.text.primary} size={20} />
         <Typography>שיתוף</Typography>
       </ActionButton>
-      <ActionButton onClick={() => onMore(id)}>
-        <MoreIcon color={colorPalette.text.primary} size={20} />
-        <Typography>מידע נוסף</Typography>
-      </ActionButton>
+      {onMore && (
+        <ActionButton onClick={() => onMore(id)}>
+          <MoreIcon color={colorPalette.text.primary} size={20} />
+          <Typography>מידע נוסף</Typography>
+        </ActionButton>
+      )}
     </PostFooter>
   );
 };
