@@ -25,7 +25,7 @@ export function TranslateWithI18({
   const changeLanguage = (type: 'system' | 'content', langKey: string) => {
     setCurrentLanguage(langKey);
     onLanguageChange(type, langKey);
-  }
+  };
 
   return (
     <StyledGrid container>
