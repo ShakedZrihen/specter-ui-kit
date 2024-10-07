@@ -9,6 +9,7 @@ const meta: Meta<typeof SinglePostView> = {
   args: {
     isOpen: true,
     post: {
+      isRawPost: false,
       id: '1',
       author: {
         name: 'Nablusarlrasas48',

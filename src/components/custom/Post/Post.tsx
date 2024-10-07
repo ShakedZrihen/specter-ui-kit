@@ -27,7 +27,7 @@ import { TextWithHighlights } from '../../base/TextWithHighlights';
 import { MediaCarousel } from '../../base';
 import { LoopIcon } from '../../icons';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { colorPalette } from '../../../context/theme/lightMode';
 export interface PostProps extends IPost {
   slimView?: boolean;
@@ -53,6 +53,7 @@ export function Post(props: PostProps & { className?: string }) {
     source,
     content: { original, selected },
     isRead,
+    isRawPost,
     id,
     highlightedText = [],
     className,
@@ -66,8 +67,11 @@ export function Post(props: PostProps & { className?: string }) {
   const [content, setContent] = useState<string | undefined>(
     selected || original,
   );
-  const [isTranslated, setIsTranslated] = useState<boolean>(false);
+  const [isTranslated, setIsTranslated] = useState<boolean>(
+    selected !== original,
+  );
   const { t, i18n } = useTranslation();
+
   const cleanProtocol = (url: string) =>
     url.replace('https://', '').replace('http://', '');
 
@@ -81,8 +85,12 @@ export function Post(props: PostProps & { className?: string }) {
     }
   };
 
+  useEffect(() => {
+    setContent(selected);
+  }, [selected]);
+
   return (
-    <StyledPost className={className}>
+    <StyledPost isRawPost={isRawPost} className={className}>
       <PostHeader>
         <PostAvatar alt={author.name} src={author.avatar} />
         <PostHeaderContent>
@@ -164,7 +172,12 @@ export function Post(props: PostProps & { className?: string }) {
       {slimView ? (
         <SlimFooter onSave={onSave} onShare={onShare} id={id} />
       ) : (
-        <Footer onMore={onMore} onSave={onSave} onShare={onShare} id={id} />
+        <Footer
+          onSave={onSave}
+          onShare={onShare}
+          id={id}
+          onMore={isRawPost ? undefined : onMore}
+        />
       )}
     </StyledPost>
   );
