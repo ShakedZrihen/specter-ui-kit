@@ -129,6 +129,6 @@ export const SourceContent = styled('button')<{ direction: string }>`
   line-height: 1.75rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  margin: 1.5rem 0.5rem
+  margin: 1.5rem 0.5rem;
   direction: ${({ direction }) => direction};
 `;
