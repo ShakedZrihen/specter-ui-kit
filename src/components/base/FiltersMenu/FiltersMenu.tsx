@@ -31,6 +31,12 @@ interface FiltersMenuProps {
   menuOverides?: any;
   className?: string;
   variant?: 'persistent' | 'temporary' | 'permanent';
+  selectedFilters: {
+    [filterSectionName: string]: { [filterName: string]: string | string[] };
+  };
+  setSelectedFilters: (filters: {
+    [filterSectionName: string]: { [filterName: string]: string | string[] };
+  }) => void;
 }
 
 export function FiltersMenu({
@@ -38,12 +44,12 @@ export function FiltersMenu({
   onSave,
   menuOverides = {},
   className,
-  variant = 'persistent',
+  variant,
+  selectedFilters,
+  setSelectedFilters,
 }: FiltersMenuProps) {
   const [open, toggleDrawer] = useState(false);
-  const [selectedFilters, setSelectedFilters] = useState<{
-    [filterSectionName: string]: { [filterName: string]: string | string[] };
-  }>({});
+
   const updateSelectedFilters = (
     filterSectionName: string,
     filterName: string,
@@ -51,24 +57,28 @@ export function FiltersMenu({
   ) => {
     const isArray = Array.isArray(selectedValue);
 
-    if ((selectedValue && !isArray) || (isArray && selectedValue.length > 0)) {
-      setSelectedFilters(prev => ({
-        ...prev,
+    if (
+      (!isArray && selectedValue !== undefined) ||
+      (isArray && selectedValue.length > 0)
+    ) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const newFilters: any = {
+        ...selectedFilters,
         [filterSectionName]: {
-          ...prev[filterSectionName],
+          ...selectedFilters[filterSectionName],
           [filterName]: selectedValue,
         },
-      }));
+      };
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setSelectedFilters(newFilters);
     } else {
-      setSelectedFilters(prev => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { [filterName]: toRemove, ...newFilterSection } =
-          prev[filterSectionName]; // Remove the filterName from the selectedFilters
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { [filterName]: toRemove, ...newFilterSection } =
+        selectedFilters[filterSectionName] ?? {};
 
-        return {
-          ...prev,
-          [filterSectionName]: newFilterSection,
-        };
+      setSelectedFilters({
+        ...selectedFilters,
+        [filterSectionName]: newFilterSection,
       });
     }
   };

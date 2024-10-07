@@ -10,6 +10,7 @@ export { BasePagination } from './BasePagination';
 export { MediaCarousel } from './MediaCarousel';
 export { SystemChip } from './SystemChip';
 export { SmallNotification } from './SmallNotification';
+export { Dropzone } from './Dropzone';
 export { AutoComplete } from './AutoComplete';
 export { CreationTimeFilter } from './FiltersSection';
 export { CollectionModal } from './CollectionModal';

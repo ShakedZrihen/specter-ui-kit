@@ -1,13 +1,23 @@
-import { Divider, Typography, TextField, Button, IconButton, InputAdornment } from '@mui/material';
-import { 
+import {
+  Divider,
+  Typography,
+  TextField,
+  Button,
+  IconButton,
+  InputAdornment,
+  Tabs,
+  Tab,
+} from '@mui/material';
+import {
   SingleContainerMetadataContainer,
   ModalViewContainer,
   StyledColletionModal,
   ExtraInfoContainer,
   CollectionItem,
+  PrivateCollectionIcon,
   SearchContainer,
-  ActionsContainer ,
-  CollectionIcon
+  ActionsContainer,
+  CollectionIcon,
 } from './CollectionModal.style';
 import { colorPalette } from '../../../context/theme/lightMode';
 import { useState } from 'react';
@@ -18,30 +28,56 @@ export interface ColletionModalProps {
   isOpen: boolean;
   onClose?: () => void;
   collections: {
-    id: number | string,
-    name: string,
+    id: number | string;
+    name: string;
+    private: boolean;
+    lastUpdate: Date;
   }[];
 }
 
 const handleCollectionClick = (
-  id: number | string, 
-  selectedCollections: (number | string)[], 
-  setSelectedCollections: (ids: (number | string)[]) => void
+  id: number | string,
+  selectedCollections: (number | string)[],
+  setSelectedCollections: (ids: (number | string)[]) => void,
 ) => {
   if (selectedCollections.includes(id)) {
-    setSelectedCollections(selectedCollections.filter(selectedId => selectedId !== id));
+    setSelectedCollections(
+      selectedCollections.filter(selectedId => selectedId !== id),
+    );
   } else {
     setSelectedCollections([...selectedCollections, id]);
   }
 };
 
-export function CollectionModal({ collections, isOpen, onClose }: ColletionModalProps) {
+export function CollectionModal({
+  collections,
+  isOpen,
+  onClose,
+}: ColletionModalProps) {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCollections, setSelectedCollections] = useState<(number | string)[]>([]);
+  const [selectedCollections, setSelectedCollections] = useState<
+    (number | string)[]
+  >([]);
+  const [activeTab, setActiveTab] = useState(3);
 
-  const filteredCollections = collections.filter(collection => 
-    collection.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    setActiveTab(newValue);
+  };
+
+  // Calculate the count for each type of collection
+  const allCollectionsCount = collections.length;
+  const privateCollectionsCount = collections.filter(collection => collection.private).length;
+  const publicCollectionsCount = collections.filter(collection => !collection.private).length;
+
+  // Filter collections based on the search term and active tab
+  const filteredCollections = collections.filter(collection => {
+    const matchesSearchTerm = collection.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    if (activeTab === 2) return matchesSearchTerm && collection.private;
+    if (activeTab === 1) return matchesSearchTerm && !collection.private; 
+    return matchesSearchTerm; // All collections
+  });
 
   const handleConfirm = () => {
     console.log('Selected Collections IDs:', selectedCollections);
@@ -53,7 +89,7 @@ export function CollectionModal({ collections, isOpen, onClose }: ColletionModal
     <StyledColletionModal open={isOpen} onClose={onClose}>
       <ModalViewContainer>
         <IconButton
-          aria-label="close"
+          aria-label='close'
           onClick={onClose}
           sx={{
             position: 'absolute',
@@ -62,29 +98,30 @@ export function CollectionModal({ collections, isOpen, onClose }: ColletionModal
             color: colorPalette.text.secondary,
           }}
         >
-          <CloseIcon color='black'/>
+          <CloseIcon color='black' />
         </IconButton>
 
         <SingleContainerMetadataContainer>
-          <Typography  style={{
-            fontSize: '21px',
-            fontWeight: 700,
-            lineHeight: '28px',
-            textAlign: 'right',
-            padding: '6px'
-          }} 
+          <Typography
+            style={{
+              fontSize: '21px',
+              fontWeight: 700,
+              lineHeight: '28px',
+              textAlign: 'right',
+              padding: '6px',
+            }}
           >
-            שמירה לאוספים
+            שמירה לאוסף
           </Typography>
 
           <SearchContainer>
-            <TextField 
+            <TextField
               fullWidth
-              placeholder="חפש אוסף..." 
-              variant="outlined"
+              placeholder='חפש אוסף...'
+              variant='outlined'
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              sx={{ 
+              onChange={e => setSearchTerm(e.target.value)}
+              sx={{
                 width: '100%',
                 marginLeft: 'auto',
                 marginRight: '0',
@@ -93,66 +130,97 @@ export function CollectionModal({ collections, isOpen, onClose }: ColletionModal
               }}
               InputProps={{
                 endAdornment: (
-                  <InputAdornment position="end">
+                  <InputAdornment position='end'>
                     <SearchIcon />
                   </InputAdornment>
                 ),
                 sx: {
                   borderRadius: '20px',
                   height: '40px',
-                }
+                },
               }}
             />
           </SearchContainer>
 
+          <Tabs
+          variant='fullWidth'
+            value={activeTab}
+            onChange={handleTabChange}
+            textColor='primary'
+            indicatorColor='primary'
+            aria-label='collection type tabs'
+            sx={{
+              marginBottom: '16px',
+              justifyContent: 'space-between', 
+              direction: 'rtl', 
+              display: 'flex',
+              '& .MuiTab-root': {
+                fontWeight:'bold',
+                fontSize:'17px', 
+              },
+            }}
+          >
+            <Tab label={`כל האוספים (${allCollectionsCount})`} />
+            <Tab label={`אוספים ציבוריים (${publicCollectionsCount})`} />
+            <Tab label={`אוספים אישיים (${privateCollectionsCount})`} />
+          </Tabs>
+
           <ExtraInfoContainer>
-            {filteredCollections.map((collection) => (
-              <CollectionItem
-                key={collection.id}
-                onClick={() => handleCollectionClick(collection.id, selectedCollections, setSelectedCollections)}
-                isSelected={selectedCollections.includes(collection.id)}
-              >
-                <div className="collection-text">
-                <Typography 
-                  style={{
-                    fontSize: '14px',
-                    fontWeight: 600,
-                    lineHeight: '18px',
-                    textAlign: 'center',
-                    padding: '6px',
-                  }}
-                >
-                  {collection.name}
-                </Typography>
-                <div>
-                <Typography 
-                  style={{
-                    fontSize: '14px',
-                    fontWeight: 600,
-                    lineHeight: '18px',
-                    textAlign: 'center',
-                    color: '#6E747F'
-                  }}
-                >
-                  4d
-                </Typography>
-                </div>
-                </div>
-                <CollectionIcon />
-              </CollectionItem>
-            ))}
-          </ExtraInfoContainer>
+  {filteredCollections.map(collection => (
+    <CollectionItem
+      key={collection.id}
+      onClick={() =>
+        handleCollectionClick(
+          collection.id,
+          selectedCollections,
+          setSelectedCollections,
+        )
+      }
+      isSelected={selectedCollections.includes(collection.id)}
+    >
+      <div className='collection-text'>
+        <Typography
+          style={{
+            fontSize: '14px',
+            fontWeight: 600,
+            lineHeight: '18px',
+            textAlign: 'center',
+            padding: '6px',
+          }}
+        >
+          {collection.name}
+        </Typography>
+        <div>
+          <Typography
+            style={{
+              fontSize: '16px',
+              fontWeight: 600,
+              lineHeight: '18px',
+              textAlign: 'center',
+              color: '#6E747F',
+            }}
+          >
+            {collection.lastUpdate.toLocaleDateString('he-IL')}
+          </Typography>
+        </div>
+      </div>
+      
+      {collection.private ? <PrivateCollectionIcon /> : <CollectionIcon />}
+    </CollectionItem>
+  ))}
+</ExtraInfoContainer>
+
         </SingleContainerMetadataContainer>
 
         <ActionsContainer>
-          <Button 
-            variant="outlined" 
+          <Button
+            variant='outlined'
             onClick={onClose}
             sx={{ borderRadius: '20px' }}
           >
             ביטול
           </Button>
-          <Button 
+          <Button onClick={handleConfirm}
             sx={{
               borderRadius: '20px',
               backgroundColor: '#2860A8',

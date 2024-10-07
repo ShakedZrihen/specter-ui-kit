@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FiltersMenu } from '../../base';
 import { AutoComplete } from '../../base/AutoComplete';
 import { FilterSectionDefinition } from '../../base/FiltersMenu/FiltersMenu';
@@ -13,6 +14,10 @@ import { CreationTimeFilter } from '../../base/FiltersSection/Filters/CreationTi
  * ```
  */
 export function SpecterFiltersMenu() {
+  const [selectedFilters, setSelectedFilters] = useState<{
+    [filterSectionName: string]: { [filterName: string]: string | string[] };
+  }>({});
+
   const filters: FilterSectionDefinition[] = [
     {
       filterSectionName: 'לפי סטים',
@@ -115,5 +120,12 @@ export function SpecterFiltersMenu() {
     },
   ];
 
-  return <FiltersMenu filters={filters} onSave={console.log} />;
+  return (
+    <FiltersMenu
+      filters={filters}
+      onSave={console.log}
+      selectedFilters={selectedFilters}
+      setSelectedFilters={setSelectedFilters}
+    />
+  );
 }

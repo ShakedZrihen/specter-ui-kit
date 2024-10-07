@@ -23,3 +23,5 @@ export { LoopIcon } from './LoopIcon';
 export { OrderByIcon } from './OrderByIcon';
 export { ChevronLeftIcon } from './ChevronLeftIcon';
 export { ChevronDownIcon } from './ChevronDownIcon';
+export { PersonalCollectionIcon } from './PersonalCollectionIcon';
+

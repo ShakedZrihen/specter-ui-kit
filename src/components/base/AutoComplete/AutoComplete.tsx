@@ -13,7 +13,6 @@ import { useAutocomplete } from './useAutoComplete';
 
 export interface AutoCompleteProps {
   values: string[];
-  value?: string[];
   label: string;
   className?: string;
   onChange?: (value: string[]) => void;
@@ -24,7 +23,6 @@ export function AutoComplete({
   className,
   onChange,
   label,
-  value: defaultSelectedValues = [],
 }: AutoCompleteProps) {
   const {
     selectedValues,
@@ -34,19 +32,16 @@ export function AutoComplete({
     handleDelete,
     handleInputChange,
     handleChange,
-  } = useAutocomplete({ onChange, defaultSelectedValues });
+  } = useAutocomplete({ onChange });
 
   return (
     <StyledComponent>
       <StyledLabel>{label}</StyledLabel>{' '}
       <Wrapper>
         <TrashButton
-          onClick={() => {
-            selectedValues.forEach(value => handleDelete(value));
-            onChange?.([]);
-          }}
+          onClick={() => selectedValues.forEach(value => handleDelete(value))}
         >
-          <TrashIcon color={colorPalette.link.color} size={35} />
+          <TrashIcon color='#1877F2' size={37} />
         </TrashButton>
         <StyledAutoComplete
           multiple // Allow multiselect

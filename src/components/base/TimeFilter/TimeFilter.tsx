@@ -14,10 +14,16 @@ import { colorPalette } from '../../../context/theme/lightMode';
 interface TimeFilterProps {
   onChange: (date: string | null | undefined) => void;
   value?: string;
+  defaultValue?: string;
   label: string;
 }
 
-export const TimeFilter = ({ label, onChange, value }: TimeFilterProps) => {
+export const TimeFilter = ({
+  label,
+  onChange,
+  value,
+  defaultValue,
+}: TimeFilterProps) => {
   return (
     <StyledFilter>
       <StyledLabel>{label}</StyledLabel>{' '}
@@ -28,6 +34,7 @@ export const TimeFilter = ({ label, onChange, value }: TimeFilterProps) => {
             onChange={date => {
               onChange(date ? new Date(date.toString()).toISOString() : null);
             }}
+            defaultValue={defaultValue ? dayjs(defaultValue) : null}
             slots={{
               openPickerIcon: () => (
                 <CalendarIcon size={20} color={colorPalette.link.color} />

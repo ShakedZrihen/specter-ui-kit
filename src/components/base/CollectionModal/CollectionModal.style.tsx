@@ -1,5 +1,7 @@
 import { Modal, styled } from '@mui/material';
 import { DocumetsIcon } from '../../icons';
+import { PersonalCollectionIcon } from '../../icons/PersonalCollectionIcon';
+
 
 
 export const StyledColletionModal = styled(Modal)`
@@ -7,13 +9,14 @@ export const StyledColletionModal = styled(Modal)`
   justify-content: center;
   align-items: center; 
   overflow: auto; 
+  width: 100%;
+  border-radius: 12px;
 `;
 
 export const ModalViewContainer = styled('div')`
   display: flex;
   flex-direction: column;
   height: 65vh; 
-  width: 70vw; 
   max-width: 680px; 
   margin: 6vh auto; 
   background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
@@ -45,6 +48,12 @@ export const CollectionIcon = styled(DocumetsIcon)`
 `;
 
 
+export const PrivateCollectionIcon = styled(PersonalCollectionIcon)`
+  font-size: 24px;
+`;
+
+
+
 export const ActionsContainer = styled('div')`
   display: flex;
   justify-content: flex-start;
@@ -69,18 +78,14 @@ export const CollectionItem = styled('div')<{ isSelected: boolean }>`
   align-items: center;
   height: 48px;
   width: 100%;
-  border: ${({ isSelected }) => (isSelected ? '1px solid #1976d2' : '#FFFFFF')};
+  border: none; 
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-  padding: 10px; // Keep padding inside the item
+  transition: background-color 0.3s ease, border-color 0.01s ease;
+  padding: 10px; 
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  background-color: #fff; 
-
-  &:hover {
-    background-color: #e0e0e0;
-  }
-
+  background-color: ${({ isSelected }) => (isSelected ? '#e3f2fd' : '#fff')}; 
+  
   &:active {
     background-color: #d0d0d0;
   }

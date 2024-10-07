@@ -12,15 +12,6 @@ export interface FilterByChipsProps {
   onDeleteFilter?: (filter: string) => void;
 }
 
-/**
- * TODO: document component functionality
- *
- * [Figma](https://https://www.figma.com/file/...)
- *
- * ```tsx
- * <FilterByChips />
- * ```
- */
 export function FilterByChips({
   onClearFilters,
   onDeleteFilter,
