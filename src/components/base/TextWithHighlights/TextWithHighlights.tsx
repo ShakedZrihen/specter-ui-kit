@@ -29,7 +29,7 @@ export function TextWithHighlights({
   direction,
   maxLines = 5,
 }: TextWithHighlightsProps) {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
 
   const { elipsisContent, hasMore } = useMemo(
     () => elipsis(text, maxLines),
@@ -63,7 +63,7 @@ export function TextWithHighlights({
       {hasMore && !showMore && '...'}
       {hasMore && (
         <ShowMoreButton onClick={() => setShowMore(prevState => !prevState)}>
-          {showMore ? t('showLess') : t('showMore')} 
+          {showMore ? t('showLess') : t('showMore')}
         </ShowMoreButton>
       )}
     </StyledTextWithHighlights>

@@ -1,10 +1,10 @@
 import { styled, Grid, Typography } from '@mui/material';
 
 export const StyledGrid = styled(Grid)`
-padding: 0.5rem;
-border-right-width: 0px;
-border-left-width: 2px;
-column-gap: 0.75rem;
+  padding: 0.5rem;
+  border-right-width: 0px;
+  border-left-width: 2px;
+  column-gap: 0.75rem;
 `;
 
 export const StyledTypography = styled(Typography)<{ isReversed: boolean }>`

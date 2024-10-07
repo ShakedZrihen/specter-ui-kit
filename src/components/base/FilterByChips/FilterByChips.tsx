@@ -5,7 +5,7 @@ import {
   FilterChip,
   StyledFilterByChips,
 } from './FilterByChips.style';
-import { useTranslation } from 'react-i18next'; 
+import { useTranslation } from 'react-i18next';
 
 export interface FilterByChipsProps {
   appliedFilters: string[];
@@ -18,7 +18,7 @@ export interface FilterByChipsProps {
  *
  * Usage:
  * ```tsx
- * <FilterByChips 
+ * <FilterByChips
  *   appliedFilters={['filter1', 'filter2']}
  *   onDeleteFilter={(filter) => console.log(filter)}
  *   onClearFilters={() => console.log('Cleared')}
@@ -30,25 +30,25 @@ export function FilterByChips({
   onDeleteFilter,
   appliedFilters = [],
 }: FilterByChipsProps) {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
 
   return (
     <StyledFilterByChips>
-      <Typography>{t('filteredBy')}:</Typography> 
+      <Typography>{t('filteredBy')}:</Typography>
       <ChipContainer>
         {appliedFilters.map((filter: string, index: number) => (
           <FilterChip
-            key={index} 
+            key={index}
             label={filter}
-            variant="outlined"
+            variant='outlined'
             onDelete={() => onDeleteFilter?.(filter)}
           />
         ))}
       </ChipContainer>
       {appliedFilters.length > 0 ? (
         <ClearFilters
-          label={t('clearFilters')} 
-          variant="outlined"
+          label={t('clearFilters')}
+          variant='outlined'
           onClick={onClearFilters}
         />
       ) : null}

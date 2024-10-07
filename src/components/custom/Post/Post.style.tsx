@@ -125,7 +125,7 @@ export const SourceContent = styled('button')<{ direction: string }>`
   outline: none;
   width: fit-content;
   column-gap: 0.25rem;
-  font-size: 1.125rem; 
+  font-size: 1.125rem;
   line-height: 1.75rem;
   padding-left: 1rem;
   padding-right: 1rem;

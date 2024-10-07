@@ -12,10 +12,10 @@ interface CreationTimeFilterProps {
 export const CreationTimeFilter = ({
   onChange,
   value,
-  label = 'זמן יצירה', 
-  defaultValue
+  label = 'זמן יצירה',
+  defaultValue,
 }: CreationTimeFilterProps) => {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
 
   return (
     <TimeFilter

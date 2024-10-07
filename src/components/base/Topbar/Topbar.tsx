@@ -42,7 +42,11 @@ export const Topbar = ({
   supportedLanguages = ['עברית', 'English', 'שפת מקור'],
   onLanguageChange,
 }: TopbarProps) => {
-  const searchParams = useSearch({ onSearch, defaultSearchTerm, defaultSearchType });
+  const searchParams = useSearch({
+    onSearch,
+    defaultSearchTerm,
+    defaultSearchType,
+  });
 
   return (
     <TopbarWithSettingBar>

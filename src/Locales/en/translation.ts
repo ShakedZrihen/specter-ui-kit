@@ -101,4 +101,6 @@ export const en = {
   videoUnsupportedMessage: 'Your browser does not support the video tag.',
   showMore: 'Show more',
   showLess: 'Show less',
+  sourceLanguage: 'Source language',
+  displayTranslate: 'Display translate'
 };

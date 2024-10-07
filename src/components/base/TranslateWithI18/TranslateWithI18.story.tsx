@@ -28,9 +28,9 @@ type Story = StoryObj<typeof TranslateWithI18>;
 export const Basic: Story = {
   args: {
     textKey: 'filters',
-    language: 'he', 
+    language: 'he',
   },
-  render: (args) => (
+  render: args => (
     <SpecterTheme>
       <TranslateWithI18 {...args} />
     </SpecterTheme>
