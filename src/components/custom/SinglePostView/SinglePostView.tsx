@@ -13,6 +13,7 @@ import {
 import { colorPalette } from '../../../context/theme/lightMode';
 import { DescriptionAccordion } from '../DescriptionAccordion';
 import { IPost } from '../../../@types/post';
+import { useTranslation } from 'react-i18next';
 
 export interface SinglePostViewProps {
   post: IPost & { isSlimView?: boolean; highlightedText?: string[] };
@@ -31,6 +32,7 @@ export interface SinglePostViewProps {
  */
 export function SinglePostView({ post, isOpen, onClose }: SinglePostViewProps) {
   const { enrichments } = post;
+  const { t } = useTranslation();
 
   return (
     <StyledSinglePostView open={isOpen}>
@@ -52,23 +54,23 @@ export function SinglePostView({ post, isOpen, onClose }: SinglePostViewProps) {
                 color: colorPalette.text.secondary,
               }}
             >
-              מידע נוסף על תמונה מתוך פוסט
+              {t('additionalInfoAboutImage')}
             </Typography>
             <ExtraInfoContainer>
               <DescriptionAccordion
-                descriptionName='מטא-דאטה'
+                descriptionName={t('metadata')}
                 descriptionAttributes={enrichments?.metadata ?? {}}
               />
               <DescriptionAccordion
-                descriptionName='ישויות מקושרות'
+                descriptionName={t('relatedEntities')}
                 descriptionAttributes={enrichments?.relatedEntities ?? {}}
               />
               <DescriptionAccordion
-                descriptionName='העשרה מ-ai'
+                descriptionName={t('aiEnrichments')}
                 descriptionAttributes={enrichments?.ai ?? {}}
               />
               <DescriptionAccordion
-                descriptionName='הסטוריה תפעולית'
+                descriptionName={t('operationalHistory')}
                 descriptionAttributes={enrichments?.operationalHistory ?? {}}
               />
             </ExtraInfoContainer>

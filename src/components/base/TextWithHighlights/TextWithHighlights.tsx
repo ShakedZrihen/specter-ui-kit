@@ -5,6 +5,7 @@ import {
   ShowMoreButton,
   StyledTextWithHighlights,
 } from './TextWithHighlights.style';
+import { useTranslation } from 'react-i18next';
 
 export interface TextWithHighlightsProps {
   text: string;
@@ -16,7 +17,7 @@ export interface TextWithHighlightsProps {
 /**
  * TODO: document component functionality
  *
- * [Figma](https://https://www.figma.com/file/...)
+ * [Figma](https://www.figma.com/file/...);
  *
  * ```tsx
  * <TextWithHighlights />
@@ -28,6 +29,8 @@ export function TextWithHighlights({
   direction,
   maxLines = 5,
 }: TextWithHighlightsProps) {
+  const { t } = useTranslation(); 
+
   const { elipsisContent, hasMore } = useMemo(
     () => elipsis(text, maxLines),
     [text, maxLines],
@@ -60,7 +63,7 @@ export function TextWithHighlights({
       {hasMore && !showMore && '...'}
       {hasMore && (
         <ShowMoreButton onClick={() => setShowMore(prevState => !prevState)}>
-          {showMore ? 'הצג פחות' : 'הצג עוד'}
+          {showMore ? t('showLess') : t('showMore')} 
         </ShowMoreButton>
       )}
     </StyledTextWithHighlights>
