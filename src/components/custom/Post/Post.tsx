@@ -67,6 +67,7 @@ export function Post(props: PostProps & { className?: string }) {
   const [content, setContent] = useState<string | undefined>(selected || original);
   const [isTranslated, setIsTranslated] = useState<boolean>(false);
   const { t, i18n } = useTranslation();
+  
   const cleanProtocol = (url: string) =>
     url.replace('https://', '').replace('http://', '');
 
