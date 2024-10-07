@@ -18,6 +18,7 @@ import {
   StyledPost,
   ChannelName,
   SourceContent,
+  LinkSite
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
@@ -99,9 +100,9 @@ export function Post(props: PostProps & { className?: string }) {
             {time} • {date}
           </PostDatetime>
           <PostSource>
-            <Link href={source.url} target='_blank'>
+            <LinkSite href={source.url} target='_blank'>
               {cleanProtocol(source.url)}
-            </Link>
+            </LinkSite>
             {source.channelName ? (
               <>
                 •

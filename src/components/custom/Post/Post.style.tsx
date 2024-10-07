@@ -1,4 +1,4 @@
-import { Avatar, Card, styled, Typography } from '@mui/material';
+import { Avatar, Card, styled, Typography, Link } from '@mui/material';
 import { lighten } from '@mui/system';
 
 export const StyledPost = styled(Card)<{ isRawPost: boolean }>`
@@ -137,4 +137,12 @@ export const SourceContent = styled('button')<{ direction: string }>`
   padding-right: 1rem;
   margin: 1.5rem 0.5rem;
   direction: ${({ direction }) => direction};
+`;
+
+export const LinkSite = styled(Link)`
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+width: 15rem;
+direction: ltr;
 `;
