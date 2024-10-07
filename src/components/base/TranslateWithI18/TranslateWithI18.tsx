@@ -16,16 +16,10 @@ export interface TranslateWithI18Props {
 
 export function TranslateWithI18({
   supportedLanguages,
-  contentLanguage,
   onLanguageChange,
+  contentLanguage
 }: TranslateWithI18Props) {
   const { t, i18n } = useTranslation();
-  const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'en');
-
-  const changeLanguage = (type: 'system' | 'content', langKey: string) => {
-    setCurrentLanguage(langKey);
-    onLanguageChange(type, langKey);
-  };
 
   return (
     <StyledGrid container>
@@ -37,8 +31,8 @@ export function TranslateWithI18({
         {supportedLanguages.content.map(item => {
           return (
             <MenuItem
-              onClick={() => changeLanguage('content', item.langKey)}
-              disabled={currentLanguage === item.langKey}
+              onClick={() => onLanguageChange('content', item.langKey)}
+              disabled={contentLanguage === item.langKey}
             >
               {item.langKey === 'default'
                 ? t('originalContent')
@@ -55,7 +49,7 @@ export function TranslateWithI18({
         {supportedLanguages.system.map(item => {
           return (
             <MenuItem
-              onClick={() => changeLanguage('system', item.langKey)}
+              onClick={() => onLanguageChange('system', item.langKey)}
               disabled={i18n.resolvedLanguage === item.langKey}
             >
               {item.langName}
