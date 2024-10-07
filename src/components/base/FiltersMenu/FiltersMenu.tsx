@@ -18,7 +18,7 @@ import {
   FilterDefinition,
   FiltersSection,
 } from '../FiltersSection/FiltersSection';
-import { useTranslation } from 'react-i18next'; // Импортируйте useTranslation
+import { useTranslation } from 'react-i18next';
 
 export interface FilterSectionDefinition {
   filterSectionName: string;
