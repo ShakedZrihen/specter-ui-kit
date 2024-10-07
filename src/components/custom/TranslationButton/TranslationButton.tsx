@@ -6,7 +6,7 @@ import {
 import Menu from '@mui/material/Menu';
 import { TranslateWithI18 } from '../../base/TranslateWithI18';
 
-export interface ILanguage { 
+export interface ILanguage {
   langKey: string;
   langName: string;
 }
@@ -16,10 +16,14 @@ export interface TranslationButtonProps {
   supportedLanguages: {
     system: ILanguage[];
     content: ILanguage[];
-  }
+  };
+  contentLanguage: string;
 }
 
-export function TranslationButton({ onLanguageChange, supportedLanguages
+export function TranslationButton({
+  onLanguageChange,
+  supportedLanguages,
+  contentLanguage,
 }: TranslationButtonProps) {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -49,7 +53,11 @@ export function TranslationButton({ onLanguageChange, supportedLanguages
         open={open}
         onClose={handleClose}
       >
-        <TranslateWithI18 onLanguageChange={onLanguageChange} supportedLanguages={supportedLanguages} />
+        <TranslateWithI18
+          onLanguageChange={onLanguageChange}
+          supportedLanguages={supportedLanguages}
+          contentLanguage={contentLanguage}
+        />
       </Menu>
     </>
   );

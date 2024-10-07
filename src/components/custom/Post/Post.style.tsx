@@ -1,12 +1,18 @@
 import { Avatar, Card, styled, Typography } from '@mui/material';
 import { lighten } from '@mui/system';
 
-export const StyledPost = styled(Card)`
+export const StyledPost = styled(Card)<{ isRawPost: boolean }>`
   display: flex;
   border-radius: 8px;
   flex-direction: column;
   direction: rtl;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+
+  ${({ isRawPost }) =>
+    isRawPost &&
+    `
+  border: 1px solid #e8bcbf;
+  `}
 `;
 
 export const PostHeader = styled('div')`
@@ -77,7 +83,7 @@ export const PostContent = styled(Typography)<{ direction: string }>`
 
 export const PostFooter = styled('div')`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 3rem;
   padding: 0 3rem;
   align-items: center;
@@ -125,7 +131,7 @@ export const SourceContent = styled('button')<{ direction: string }>`
   outline: none;
   width: fit-content;
   column-gap: 0.25rem;
-  font-size: 1.125rem; 
+  font-size: 1.125rem;
   line-height: 1.75rem;
   padding-left: 1rem;
   padding-right: 1rem;

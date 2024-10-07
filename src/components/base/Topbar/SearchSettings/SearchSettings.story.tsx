@@ -10,7 +10,6 @@ const meta: Meta<typeof SearchSettings> = {
   args: {
     onChange: (searchType: string) => console.log(searchType),
     searchType: SearchType.Semantic,
-    setSearchType: (searchType: SearchType) => console.log(searchType),
   },
 };
 

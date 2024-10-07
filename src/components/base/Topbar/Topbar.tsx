@@ -20,7 +20,8 @@ interface TranslationProps {
     system: ILanguage[];
     content: ILanguage[];
   };
-  onLanguageChange?: (language: string) => void;
+  onLanguageChange?: (type: 'system' | 'content', language: string) => void;
+  contentLanguage?: string;
 }
 interface TopbarProps extends SearchProps, TranslationProps {
   appName: string;
@@ -43,12 +44,24 @@ export const Topbar = ({
   // translation props
   withTranslationButton,
   supportedLanguages = {
-    content: [{langKey: "en", langName: "English"}, {langKey: "he", langName: "עברית"}, {langKey:"default", langName: ""}],
-    system: [{langKey: "en", langName: "English"}, {langKey: "he", langName: "עברית"}]
+    content: [
+      { langKey: 'en', langName: 'English' },
+      { langKey: 'he', langName: 'עברית' },
+      { langKey: 'default', langName: '' },
+    ],
+    system: [
+      { langKey: 'en', langName: 'English' },
+      { langKey: 'he', langName: 'עברית' },
+    ],
   },
+  contentLanguage,
   onLanguageChange,
 }: TopbarProps) => {
-  const searchParams = useSearch({ onSearch, defaultSearchTerm, defaultSearchType });
+  const searchParams = useSearch({
+    onSearch,
+    defaultSearchTerm,
+    defaultSearchType,
+  });
 
   return (
     <TopbarWithSettingBar>
@@ -77,6 +90,7 @@ export const Topbar = ({
               <TranslationButton
                 onLanguageChange={onLanguageChange}
                 supportedLanguages={supportedLanguages}
+                contentLanguage={contentLanguage ?? 'original'}
               />
             )}
           </TopbarUserContextContainer>
@@ -87,7 +101,6 @@ export const Topbar = ({
           searchSettingsStyleOverrides={searchSettingsStyleOverrides}
           onChange={searchParams.onSearchSettingsChange}
           searchType={searchParams.searchType}
-          setSearchType={searchParams.setSearchType}
           close={() => {
             searchParams.closeSearchSettings();
             onSearchBlur?.();
