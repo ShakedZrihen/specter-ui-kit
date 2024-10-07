@@ -20,7 +20,7 @@ interface TranslationProps {
     system: ILanguage[];
     content: ILanguage[];
   };
-  onLanguageChange?: (language: string) => void;
+  onLanguageChange?: (type: 'system' | 'content', language: string) => void;
 }
 interface TopbarProps extends SearchProps, TranslationProps {
   appName: string;
