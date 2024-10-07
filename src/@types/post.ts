@@ -27,6 +27,7 @@ interface IPost {
     selected?: string;
   };
   isRead: boolean;
+  isRawPost: boolean;
   enrichments?: {
     metadata?: Record<string, string>;
     ai?: Record<string, string>;

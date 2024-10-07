@@ -5,6 +5,7 @@ import {
   FilterChip,
   StyledFilterByChips,
 } from './FilterByChips.style';
+import { useTranslation } from 'react-i18next';
 
 export interface FilterByChipsProps {
   appliedFilters: string[];
@@ -12,17 +13,32 @@ export interface FilterByChipsProps {
   onDeleteFilter?: (filter: string) => void;
 }
 
+/**
+ * FilterByChips component displays applied filters with options to delete them or clear all.
+ *
+ * Usage:
+ * ```tsx
+ * <FilterByChips
+ *   appliedFilters={['filter1', 'filter2']}
+ *   onDeleteFilter={(filter) => console.log(filter)}
+ *   onClearFilters={() => console.log('Cleared')}
+ * />
+ * ```
+ */
 export function FilterByChips({
   onClearFilters,
   onDeleteFilter,
   appliedFilters = [],
 }: FilterByChipsProps) {
+  const { t } = useTranslation();
+
   return (
     <StyledFilterByChips>
-      <Typography>מפולטר לפי:</Typography>
+      <Typography>{t('filteredBy')}:</Typography>
       <ChipContainer>
-        {appliedFilters.map((filter: string) => (
+        {appliedFilters.map((filter: string, index: number) => (
           <FilterChip
+            key={index}
             label={filter}
             variant='outlined'
             onDelete={() => onDeleteFilter?.(filter)}
@@ -31,9 +47,9 @@ export function FilterByChips({
       </ChipContainer>
       {appliedFilters.length > 0 ? (
         <ClearFilters
-          label='ניקוי פילטרים'
+          label={t('clearFilters')}
           variant='outlined'
-          onClick={() => onClearFilters?.()}
+          onClick={onClearFilters}
         />
       ) : null}
     </StyledFilterByChips>

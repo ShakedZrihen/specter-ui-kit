@@ -13,11 +13,15 @@ import { TranslationButton } from '../../custom/TranslationButton/TranslationBut
 import { SearchSettings } from './SearchSettings';
 import { useSearch } from './Search/useSearch';
 import { SearchProps } from './Search/Search.types';
-
+import { ILanguage } from '../../custom/TranslationButton/TranslationButton';
 interface TranslationProps {
   withTranslationButton?: boolean;
-  supportedLanguages?: string[];
-  onLanguageChange?: (language: string) => void;
+  supportedLanguages?: {
+    system: ILanguage[];
+    content: ILanguage[];
+  };
+  onLanguageChange?: (type: 'system' | 'content', language: string) => void;
+  contentLanguage?: string;
 }
 interface TopbarProps extends SearchProps, TranslationProps {
   appName: string;
@@ -39,10 +43,25 @@ export const Topbar = ({
   onSearchBlur,
   // translation props
   withTranslationButton,
-  supportedLanguages = ['עברית', 'English', 'שפת מקור'],
+  supportedLanguages = {
+    content: [
+      { langKey: 'en', langName: 'English' },
+      { langKey: 'he', langName: 'עברית' },
+      { langKey: 'default', langName: '' },
+    ],
+    system: [
+      { langKey: 'en', langName: 'English' },
+      { langKey: 'he', langName: 'עברית' },
+    ],
+  },
+  contentLanguage,
   onLanguageChange,
 }: TopbarProps) => {
-  const searchParams = useSearch({ onSearch, defaultSearchTerm, defaultSearchType });
+  const searchParams = useSearch({
+    onSearch,
+    defaultSearchTerm,
+    defaultSearchType,
+  });
 
   return (
     <TopbarWithSettingBar>
@@ -71,6 +90,7 @@ export const Topbar = ({
               <TranslationButton
                 onLanguageChange={onLanguageChange}
                 supportedLanguages={supportedLanguages}
+                contentLanguage={contentLanguage ?? 'original'}
               />
             )}
           </TopbarUserContextContainer>
@@ -81,7 +101,6 @@ export const Topbar = ({
           searchSettingsStyleOverrides={searchSettingsStyleOverrides}
           onChange={searchParams.onSearchSettingsChange}
           searchType={searchParams.searchType}
-          setSearchType={searchParams.setSearchType}
           close={() => {
             searchParams.closeSearchSettings();
             onSearchBlur?.();

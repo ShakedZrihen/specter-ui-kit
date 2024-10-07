@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   Checkbox,
   FormControlLabel,
@@ -18,7 +17,8 @@ import {
   PostSource,
   StyledPost,
   ChannelName,
-  SourceContent
+  SourceContent,
+  LinkSite
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
@@ -28,6 +28,7 @@ import { TextWithHighlights } from '../../base/TextWithHighlights';
 import { CollectionModal, MediaCarousel } from '../../base';
 import { LoopIcon } from '../../icons';
 import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
 import { colorPalette } from '../../../context/theme/lightMode';
 export interface PostProps extends IPost {
   slimView?: boolean;
@@ -53,6 +54,7 @@ export function Post(props: PostProps & { className?: string }) {
     source,
     content: { original, selected },
     isRead,
+    isRawPost,
     id,
     highlightedText = [],
     className,
@@ -66,9 +68,9 @@ export function Post(props: PostProps & { className?: string }) {
 
   const [isCollectionModalOpen, setIsCollectionModalOpen] = useState(false);
   const collections = [
-    { id: 1, name: 'Collection 1' },
-    { id: 2, name: 'Collection 2' },
-    { id: 3, name: 'Collection 3' },
+    { id: 1, name: 'Collection 1', private: true, lastUpdate: new Date() },
+    { id: 2, name: 'Collection 2', private: false, lastUpdate: new Date() },
+    { id: 3, name: 'Collection 3', private: true, lastUpdate: new Date() },
   ];
 
 
@@ -84,22 +86,26 @@ export function Post(props: PostProps & { className?: string }) {
   const [content, setContent] = useState<string | undefined>(selected || original);
   const [isTranslated, setIsTranslated] = useState<boolean>(false);
   const { t, i18n } = useTranslation();
+
   const cleanProtocol = (url: string) =>
     url.replace('https://', '').replace('http://', '');
 
   const setPostContent = () => {
-    if(isTranslated) {
+    if (isTranslated) {
       setContent(selected || original);
       setIsTranslated(false);
-    }
-    else {
+    } else {
       setContent(original);
       setIsTranslated(true);
     }
-  }
+  };
+
+  useEffect(() => {
+    setContent(selected);
+  }, [selected]);
 
   return (
-    <StyledPost className={className}>
+    <StyledPost isRawPost={isRawPost} className={className}>
       <PostHeader>
         <PostAvatar alt={author.name} src={author.avatar} />
         <PostHeaderContent>
@@ -108,9 +114,9 @@ export function Post(props: PostProps & { className?: string }) {
             {time} • {date}
           </PostDatetime>
           <PostSource>
-            <Link href={source.url} target='_blank'>
+            <LinkSite href={source.url} target='_blank'>
               {cleanProtocol(source.url)}
-            </Link>
+            </LinkSite>
             {source.channelName ? (
               <>
                 •
@@ -145,14 +151,18 @@ export function Post(props: PostProps & { className?: string }) {
           </PostReadIndicator>
         )}
       </PostHeader>
-      {content ? (<PostContent direction={getTextDirection(franc(content))}>
-        <TextWithHighlights
-          text={content}
-          highlightedText={highlightedText}
-          direction={getTextDirection(franc(content))}
-          maxLines={5}
-        />
-      </PostContent>) : ""}
+      {content ? (
+        <PostContent direction={getTextDirection(franc(content))}>
+          <TextWithHighlights
+            text={content}
+            highlightedText={highlightedText}
+            direction={getTextDirection(franc(content))}
+            maxLines={5}
+          />
+        </PostContent>
+      ) : (
+        ''
+      )}
       {slimView ? (
         <MediaCarousel items={mediaItems} isSinglePostOpen={slimView} />
       ) : (
@@ -162,22 +172,29 @@ export function Post(props: PostProps & { className?: string }) {
           onViewMore={onMore}
         />
       )}
-      {content ? (
-              <SourceContent direction={i18n.resolvedLanguage === "en" ? "ltr" : "rtl"} onClick={() => setPostContent()}>
-              <LoopIcon color={colorPalette.colors.spBlue} size={14} />
-              {isTranslated ? t("displayTranslate") : t("sourceLanguage")}
-            </SourceContent>
-      ) : ""}
+      {content && original !== selected ? (
+        <SourceContent
+          direction={i18n.resolvedLanguage === 'en' ? 'ltr' : 'rtl'}
+          onClick={() => setPostContent()}
+        >
+          <LoopIcon color={colorPalette.colors.spBlue} size={14} />
+          <Typography>
+            {isTranslated ? t('displayTranslate') : t('sourceLanguage')}
+          </Typography>
+        </SourceContent>
+      ) : (
+        ''
+      )}
       {!slimView && <Divider />}
 
       {slimView ? (
         <SlimFooter onSave={handleSaveToCollection} onShare={onShare} id={id} />
       ) : (
         <Footer
-          onMore={onMore}
-          onSave={handleSaveToCollection}
+          onSave={onSave}
           onShare={onShare}
           id={id}
+          onMore={isRawPost ? undefined : onMore}
         />
       )}
       <CollectionModal

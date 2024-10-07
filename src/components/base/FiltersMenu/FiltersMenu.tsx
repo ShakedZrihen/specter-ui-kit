@@ -18,6 +18,7 @@ import {
   FilterDefinition,
   FiltersSection,
 } from '../FiltersSection/FiltersSection';
+import { useTranslation } from 'react-i18next';
 
 export interface FilterSectionDefinition {
   filterSectionName: string;
@@ -48,6 +49,7 @@ export function FiltersMenu({
   selectedFilters,
   setSelectedFilters,
 }: FiltersMenuProps) {
+  const { t } = useTranslation();
   const [open, toggleDrawer] = useState(false);
 
   const updateSelectedFilters = (
@@ -88,7 +90,7 @@ export function FiltersMenu({
       <StyledFiltersMenu className={className}>
         <FiltersControllerButton onClick={() => toggleDrawer(true)}>
           <FilterIcon color={colorPalette.common.icon} size={18} />
-          <Title>פילטרים</Title>
+          <Title>{t('filters')}</Title>
         </FiltersControllerButton>
         <StyledDrawer
           variant={variant}
@@ -100,7 +102,7 @@ export function FiltersMenu({
           <FiltersMenuContainer>
             <FiltersHeader>
               <FilterIcon color={colorPalette.common.icon} size={18} />
-              <Title>פילטרים</Title>
+              <Title>{t('filters')}</Title>
               <CloseMenuContainer onClick={() => toggleDrawer(false)}>
                 <CloseIcon color={colorPalette.text.primary} size={25} />
               </CloseMenuContainer>
@@ -128,7 +130,7 @@ export function FiltersMenu({
             <Divider />
             <FiltersActionContainer>
               <Link onClick={() => onSave(selectedFilters)}>
-                <StyledTypography>פילטור</StyledTypography>
+                <StyledTypography>{t('applyFilters')}</StyledTypography>
               </Link>
             </FiltersActionContainer>
           </FiltersMenuContainer>

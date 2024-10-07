@@ -110,7 +110,7 @@ export const Basic: Story = {
         </SpecterTheme>
       );
     };
-    
+
     return <ControlledFiltersMenu />;
   },
 };
