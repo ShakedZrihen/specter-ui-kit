@@ -113,3 +113,22 @@ export const ChannelName = styled(Typography)<{ direction: string }>`
   direction: ${({ direction }) => direction};
   width: 5rem;
 `;
+
+export const SourceContent = styled('button')<{ direction: string }>`
+  background: none;
+  border: none;
+  color: ${({ theme }) => theme.colorPalette.colors.spBlue};
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  width: fit-content;
+  column-gap: 0.25rem;
+  font-size: 1.125rem; 
+  line-height: 1.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 1.5rem 0.5rem;
+  direction: ${({ direction }) => direction};
+`;

@@ -17,6 +17,7 @@ import {
   PostSource,
   StyledPost,
   ChannelName,
+  SourceContent
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
@@ -24,7 +25,10 @@ import { IPost } from '../../../@types/post';
 import { MediaViewer } from '../../base/MediaViewer/MediaViewer';
 import { TextWithHighlights } from '../../base/TextWithHighlights';
 import { MediaCarousel } from '../../base';
-
+import { LoopIcon } from '../../icons';
+import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
+import { colorPalette } from '../../../context/theme/lightMode';
 export interface PostProps extends IPost {
   slimView?: boolean;
   highlightedText?: string[];
@@ -59,10 +63,22 @@ export function Post(props: PostProps & { className?: string }) {
     mediaItems = [],
   } = props;
 
+  const [content, setContent] = useState<string | undefined>(selected || original);
+  const [isTranslated, setIsTranslated] = useState<boolean>(false);
+  const { t, i18n } = useTranslation();
   const cleanProtocol = (url: string) =>
     url.replace('https://', '').replace('http://', '');
 
-  const content = selected || original;
+  const setPostContent = () => {
+    if(isTranslated) {
+      setContent(selected || original);
+      setIsTranslated(false);
+    }
+    else {
+      setContent(original);
+      setIsTranslated(true);
+    }
+  }
 
   return (
     <StyledPost className={className}>
@@ -111,15 +127,14 @@ export function Post(props: PostProps & { className?: string }) {
           </PostReadIndicator>
         )}
       </PostHeader>
-      <PostContent direction={getTextDirection(franc(content))}>
+      {content ? (<PostContent direction={getTextDirection(franc(content))}>
         <TextWithHighlights
           text={content}
           highlightedText={highlightedText}
           direction={getTextDirection(franc(content))}
           maxLines={5}
         />
-      </PostContent>
-
+      </PostContent>) : ""}
       {slimView ? (
         <MediaCarousel items={mediaItems} isSinglePostOpen={slimView} />
       ) : (
@@ -129,7 +144,12 @@ export function Post(props: PostProps & { className?: string }) {
           onViewMore={onMore}
         />
       )}
-
+      {content ? (
+              <SourceContent direction={i18n.resolvedLanguage === "en" ? "ltr" : "rtl"} onClick={() => setPostContent()}>
+              <LoopIcon color={colorPalette.colors.spBlue} size={14} />
+              {isTranslated ? t("displayTranslate") : t("sourceLanguage")}
+            </SourceContent>
+      ) : ""}
       {!slimView && <Divider />}
       {slimView ? (
         <SlimFooter onSave={onSave} onShare={onShare} id={id} />
