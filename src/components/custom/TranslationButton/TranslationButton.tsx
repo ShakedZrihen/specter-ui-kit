@@ -11,8 +11,7 @@ export interface TranslationButtonProps {
   supportedLanguages: string[];
 }
 
-export function TranslationButton({
-}: TranslationButtonProps) {
+export function TranslationButton() {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -25,7 +24,6 @@ export function TranslationButton({
     setOpen(false);
     setAnchorEl(null);
   };
-
 
   return (
     <>
