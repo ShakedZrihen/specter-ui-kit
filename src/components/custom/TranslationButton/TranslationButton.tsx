@@ -17,11 +17,13 @@ export interface TranslationButtonProps {
     system: ILanguage[];
     content: ILanguage[];
   };
+  contentLanguage: string;
 }
 
 export function TranslationButton({
   onLanguageChange,
   supportedLanguages,
+  contentLanguage,
 }: TranslationButtonProps) {
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -54,6 +56,7 @@ export function TranslationButton({
         <TranslateWithI18
           onLanguageChange={onLanguageChange}
           supportedLanguages={supportedLanguages}
+          contentLanguage={contentLanguage}
         />
       </Menu>
     </>

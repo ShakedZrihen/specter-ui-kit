@@ -21,6 +21,7 @@ interface TranslationProps {
     content: ILanguage[];
   };
   onLanguageChange?: (type: 'system' | 'content', language: string) => void;
+  contentLanguage?: string;
 }
 interface TopbarProps extends SearchProps, TranslationProps {
   appName: string;
@@ -53,6 +54,7 @@ export const Topbar = ({
       { langKey: 'he', langName: 'עברית' },
     ],
   },
+  contentLanguage,
   onLanguageChange,
 }: TopbarProps) => {
   const searchParams = useSearch({
@@ -88,6 +90,7 @@ export const Topbar = ({
               <TranslationButton
                 onLanguageChange={onLanguageChange}
                 supportedLanguages={supportedLanguages}
+                contentLanguage={contentLanguage ?? 'original'}
               />
             )}
           </TopbarUserContextContainer>

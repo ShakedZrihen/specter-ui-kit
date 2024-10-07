@@ -27,7 +27,7 @@ import { TextWithHighlights } from '../../base/TextWithHighlights';
 import { MediaCarousel } from '../../base';
 import { LoopIcon } from '../../icons';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { colorPalette } from '../../../context/theme/lightMode';
 export interface PostProps extends IPost {
   slimView?: boolean;
@@ -67,7 +67,9 @@ export function Post(props: PostProps & { className?: string }) {
   const [content, setContent] = useState<string | undefined>(
     selected || original,
   );
-  const [isTranslated, setIsTranslated] = useState<boolean>(false);
+  const [isTranslated, setIsTranslated] = useState<boolean>(
+    selected !== original,
+  );
   const { t, i18n } = useTranslation();
 
   const cleanProtocol = (url: string) =>
@@ -82,6 +84,10 @@ export function Post(props: PostProps & { className?: string }) {
       setIsTranslated(true);
     }
   };
+
+  useEffect(() => {
+    setContent(selected);
+  }, [selected]);
 
   return (
     <StyledPost isRawPost={isRawPost} className={className}>

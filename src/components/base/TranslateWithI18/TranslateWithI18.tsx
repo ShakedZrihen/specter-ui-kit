@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Grid, MenuItem } from '@mui/material';
 import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
@@ -11,19 +10,15 @@ export interface TranslateWithI18Props {
     system: ILanguage[];
     content: ILanguage[];
   };
+  contentLanguage: string;
 }
 
 export function TranslateWithI18({
-  onLanguageChange,
   supportedLanguages,
+  contentLanguage: currentLanguage,
+  onLanguageChange
 }: TranslateWithI18Props) {
   const { t, i18n } = useTranslation();
-  const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'he');
-
-  const onLanguageChane = (type: 'system' | 'content', langKey: string) => {
-    setCurrentLanguage(langKey);
-    onLanguageChange(type, langKey);
-  };
 
   return (
     <StyledGrid container>
@@ -35,7 +30,7 @@ export function TranslateWithI18({
         {supportedLanguages.content.map(item => {
           return (
             <MenuItem
-              onClick={() => onLanguageChane('content', item.langKey)}
+              onClick={() => onLanguageChange('content', item.langKey)}
               disabled={currentLanguage === item.langKey}
             >
               {item.langKey === 'default'
@@ -53,7 +48,7 @@ export function TranslateWithI18({
         {supportedLanguages.system.map(item => {
           return (
             <MenuItem
-              onClick={() => onLanguageChane('system', item.langKey)}
+              onClick={() => onLanguageChange('system', item.langKey)}
               disabled={i18n.resolvedLanguage === item.langKey}
             >
               {item.langName}
