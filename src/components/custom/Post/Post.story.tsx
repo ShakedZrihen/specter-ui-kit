@@ -18,7 +18,7 @@ const meta: Meta<typeof Post> = {
     time: '12:58:01',
     date: '19.8.2024',
     source: {
-      url: 'https://www.google.com',
+      url: 'https://www.figma.com/design/7b8uxI78aIwjH2uzcP58g9/Specter-(Copy)?node-id=2557-397128&node-type=frame&t=6m525d4KrkA2uZiH-0',
       channelName: 'Channel Name',
       channelUrl: 'https://www.google.com',
       sourceName: 'Twitter',
