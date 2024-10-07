@@ -101,4 +101,6 @@ export const he = {
   videoUnsupportedMessage: 'הדפדפן שלך אינו תומך בתג הווידיאו.',
   showMore: 'הצג עוד',
   showLess: 'הצג פחות',
+  sourceLanguage: 'שפת המקור',
+  displayTranslate: 'הצג תרגום'
 };
