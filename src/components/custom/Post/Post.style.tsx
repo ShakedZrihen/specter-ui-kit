@@ -81,7 +81,7 @@ export const PostContent = styled(Typography)<{ direction: string }>`
 
 export const PostFooter = styled('div')`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 3rem;
   padding: 0 3rem;
   align-items: center;
