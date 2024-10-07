@@ -19,12 +19,7 @@ export function TranslateWithI18({ onLanguageChange, supportedLanguages }: Trans
 
   const onLanguageChane = (type: 'system' | 'content', langKey: string) => {
     setCurrentLanguage(langKey);
-    if(type === 'content') { 
-      onLanguageChange('content' ,langKey);
-    }
-    else {
-      i18n.changeLanguage(langKey)
-    }
+   onLanguageChange(type ,langKey);
   }
 
   return (
