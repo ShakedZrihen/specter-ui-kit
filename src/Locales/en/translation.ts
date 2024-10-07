@@ -1,4 +1,4 @@
-{
+export default {
     "save_button": "Save",
     "cancel_button": "Cancel",
     "lineFilters": "Filters",
@@ -83,6 +83,22 @@
         "collectionSource": "Collection Source:",
         "itemID": "Item ID:",
         "additionalInfo": "Additional Info:",
-        "search": "Search..."   
+        "search": "Search...",
+        "selectFilter": "Select a filter...",
+        "irrelevantDetails": "Irrelevant Details",  
+        "saveToCollections": "Save to Collections",
+        "dragAndDrop": "Drag and drop files here",
+    "clickToSelect": "or click to select files",
+    "entranceTime": "Entrance Time",
+    "clearFilters": "Clear Filters",
+     "login_time": "Login Time",
+  "creation_time": "Creation Time",
+   "filteredBy": "Filtered By",
+   "filters": "Filters",
+  "applyFilters": "Apply Filters",
+   "mediaItem": "Media item",
+  "videoUnsupportedMessage": "Your browser does not support the video tag.",
+  "showMore": "Show more",
+  "showLess": "Show less"
     }
 

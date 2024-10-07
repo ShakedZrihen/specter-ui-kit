@@ -1,4 +1,5 @@
 import { TimeFilter } from '../../TimeFilter';
+import { useTranslation } from 'react-i18next'; // Импортируйте useTranslation
 
 interface CreationTimeFilterProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,8 +12,17 @@ interface CreationTimeFilterProps {
 export const CreationTimeFilter = ({
   onChange,
   value,
-  label = 'זמן יצירה',
+  label = 'זמן יצירה', 
   defaultValue
 }: CreationTimeFilterProps) => {
-  return <TimeFilter onChange={onChange} defaultValue={defaultValue} value={value} label={label} />;
+  const { t } = useTranslation(); 
+
+  return (
+    <TimeFilter
+      onChange={onChange}
+      defaultValue={defaultValue}
+      value={value}
+      label={t(label)}
+    />
+  );
 };

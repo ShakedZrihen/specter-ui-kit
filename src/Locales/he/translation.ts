@@ -1,4 +1,4 @@
-{
+export default {
   "save_button": "שמור",
   "cancel_button": "בטל",
   "lineFilters": "פילטרים",
@@ -83,5 +83,21 @@
       "collectionSource": "מקור איסוף:",
       "itemID": "מספר פריט:",
       "additionalInfo": "מידע נוסף:",
-      "search": "חפש..."
-  }
+      "search": "חפש...",
+       "selectFilter": "בחר פילטר...",
+       "irrelevantDetails": "פרטים לא רלוונטים",
+       "saveToCollections": "שמירה לאוספים",
+       "dragAndDrop": "גרור ושחרר קבצים כאן",
+    "clickToSelect": "או לחץ כדי לבחור קבצים",
+    "entranceTime": "זמן כניסה למערכת",
+     "login_time": "זמן כניסה",
+  "creation_time": "זמן יצירה",
+   "filteredBy": "מפולטר לפי",
+  "clearFilters": "ניקוי פילטרים",
+   "filters": "פילטרים",
+  "applyFilters": "פילטור",
+  "mediaItem": "פריט מדיה",
+  "videoUnsupportedMessage": "הדפדפן שלך אינו תומך בתג הווידיאו.",
+  "showMore": "הצג עוד",
+  "showLess": "הצג פחות"
+}
