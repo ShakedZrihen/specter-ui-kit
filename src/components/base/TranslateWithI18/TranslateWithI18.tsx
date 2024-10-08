@@ -17,7 +17,7 @@ export interface TranslateWithI18Props {
 export function TranslateWithI18({
   supportedLanguages,
   onLanguageChange,
-  contentLanguage
+  contentLanguage,
 }: TranslateWithI18Props) {
   const { t, i18n } = useTranslation();
 

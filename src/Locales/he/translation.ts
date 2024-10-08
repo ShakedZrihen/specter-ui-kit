@@ -102,5 +102,7 @@ export const he = {
   showMore: 'הצג עוד',
   showLess: 'הצג פחות',
   sourceLanguage: 'שפת המקור',
-  displayTranslate: 'הצג תרגום'
+  displayTranslate: 'הצג תרגום',
+  newPosts: "פוסטים חדשים",
+  refresh: "ריענון"
 };

@@ -18,7 +18,7 @@ import {
   StyledPost,
   ChannelName,
   SourceContent,
-  LinkSite
+  LinkSite,
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
@@ -164,7 +164,9 @@ export function Post(props: PostProps & { className?: string }) {
           onClick={() => setPostContent()}
         >
           <LoopIcon color={colorPalette.colors.spBlue} size={14} />
-          <Typography>{isTranslated ? t('displayTranslate') : t('sourceLanguage')}</Typography>
+          <Typography>
+            {isTranslated ? t('displayTranslate') : t('sourceLanguage')}
+          </Typography>
         </SourceContent>
       ) : (
         ''

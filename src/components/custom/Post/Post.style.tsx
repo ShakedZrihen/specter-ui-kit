@@ -140,9 +140,9 @@ export const SourceContent = styled('button')<{ direction: string }>`
 `;
 
 export const LinkSite = styled(Link)`
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
-width: 15rem;
-direction: ltr;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 15rem;
+  direction: ltr;
 `;

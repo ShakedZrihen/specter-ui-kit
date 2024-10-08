@@ -28,6 +28,12 @@ export const colorPalette = {
     highlight: '#FFDF5F',
     icon: '#2860A8',
   },
+  notifilcation: {
+    navyBlue: '#55596F',
+  },
+  refresh: {
+    color: "#A8CAFF"
+  },
   colors: {
     primary: '#474E72',
     secondary: '#1B1E2D',

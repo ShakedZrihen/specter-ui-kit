@@ -13,3 +13,4 @@ export { SmallNotification } from './SmallNotification';
 export { Dropzone } from './Dropzone';
 export { AutoComplete } from './AutoComplete';
 export { CreationTimeFilter } from './FiltersSection';
+export { MinimizedToast } from './MinimizedToast';

@@ -102,5 +102,6 @@ export const en = {
   showMore: 'Show more',
   showLess: 'Show less',
   sourceLanguage: 'Source language',
-  displayTranslate: 'Display translate'
+  displayTranslate: 'Display translate',
+  newPosts: "New posts"
 };
