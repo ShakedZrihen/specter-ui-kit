@@ -10,10 +10,19 @@ export default {
 
 type Story = StoryObj<typeof Topbar>;
 
+const Logo = (
+  <SpectorLogo
+    style={{
+      width: '1.6rem',
+      height: '1.6rem',
+    }}
+  />
+);
+
 export const Primary: Story = {
   render: () => (
     <SpecterTheme>
-      <Topbar appName='ספקטר' appIcon={<SpectorLogo />} />
+      <Topbar appName='ספקטר' appIcon={Logo} />
     </SpecterTheme>
   ),
 };
@@ -23,7 +32,7 @@ export const WithSearch: Story = {
     <SpecterTheme>
       <Topbar
         appName='ספקטר'
-        appIcon={<SpectorLogo />}
+        appIcon={Logo}
         withSearch
         onSearch={console.log}
       />
@@ -36,7 +45,7 @@ export const WithTranslationButton: Story = {
     <SpecterTheme>
       <Topbar
         appName='ספקטר'
-        appIcon={<SpectorLogo />}
+        appIcon={Logo}
         withTranslationButton
         onLanguageChange={console.log}
       />
@@ -49,7 +58,7 @@ export const WithSearchAndTranslationButton: Story = {
     <SpecterTheme>
       <Topbar
         appName='ספקטר'
-        appIcon={<SpectorLogo />}
+        appIcon={Logo}
         withSearch
         withTranslationButton
         onSearch={console.log}
