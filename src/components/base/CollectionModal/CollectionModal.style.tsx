@@ -13,24 +13,6 @@ export const StyledColletionModal = styled(Modal)`
   border-radius: 12px;
 `;
 
-export const ModalViewContainer = styled('div')`
-  display: flex;
-  flex-direction: column;
-  height: 65vh; 
-  max-width: 680px; 
-  margin: 6vh auto; 
-  background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
-  padding: 1.3rem;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  position: relative; 
-
-  :focus {
-    outline: none;
-  }
-`;
-
-
 export const SingleContainerMetadataContainer = styled('div')`
   width: 90%;
   margin: 0 auto;
@@ -62,10 +44,27 @@ export const ActionsContainer = styled('div')`
   padding-top: 1rem;
 `;
 
+export const ModalViewContainer = styled('div')`
+  display: flex;
+  flex-direction: column;
+  height: 40vh; 
+  width: 750px; 
+  margin: 6vh auto; 
+  background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
+  padding: 1.3rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative; 
+
+  :focus {
+    outline: none;
+  }
+`;
+
 export const ExtraInfoContainer = styled('div')`
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 30px; 
+  display: flex;
+  gap: 15px; 
   padding: 1rem;
   max-height: 60vh;
   overflow-y: auto;
@@ -77,7 +76,7 @@ export const CollectionItem = styled('div')<{ isSelected: boolean }>`
   flex-direction: row;
   align-items: center;
   height: 48px;
-  width: 100%;
+  width: 30%;
   border: none; 
   border-radius: 8px;
   cursor: pointer;
