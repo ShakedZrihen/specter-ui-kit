@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Grid, MenuItem } from '@mui/material';
 import FormatColorTextIcon from '@mui/icons-material/FormatColorText';

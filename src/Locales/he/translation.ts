@@ -103,5 +103,4 @@ export const he = {
   showLess: 'הצג פחות',
   sourceLanguage: 'שפת המקור',
   displayTranslate: 'הצג תרגום',
-  refresh: "ריענון"
 };
