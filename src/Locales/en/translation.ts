@@ -103,5 +103,5 @@ export const en = {
   showLess: 'Show less',
   sourceLanguage: 'Source language',
   displayTranslate: 'Display translate',
-  newPosts: "New posts"
+  refresh: "Refresh"
 };

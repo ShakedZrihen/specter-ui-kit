@@ -9,6 +9,7 @@ const meta: Meta<typeof MinimizedToast> = {
   args: {
     amount: 4246,
     onClick: () => { alert('refreshed') },
+    text: "פוסטים חדשים"
   },
 };
 
