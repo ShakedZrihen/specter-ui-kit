@@ -14,7 +14,7 @@ export const StyledSearch = styled('div')`
   }
   margin-left: 0;
   width: 20rem;
-  height: 1rem;
+  height: 0.75rem;
 `;
 
 export const SearchIconWrapper = styled('div')`
@@ -24,9 +24,15 @@ export const SearchIconWrapper = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  & .MuiSvgIcon-root {
+    width: 1rem;
+    height: 1rem;
+  }
 `;
 
 export const StyledInputBase = styled(InputBase)`
   color: inherit;
   width: 100%;
+  font-size: 1rem;
 `;

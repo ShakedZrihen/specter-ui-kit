@@ -3,10 +3,14 @@ import { AppBar, styled, Toolbar, Typography } from '@mui/material';
 export const StyledAppBar = styled(AppBar)`
   position: static;
   direction: rtl;
-  height: 4rem;
+  height: 3rem;
   background-color: ${({ theme }) => theme.colorPalette.header.background};
   box-shadow: none !important;
   border-bottom: 1px solid ${({ theme }) => theme.colorPalette.colors.primary};
+
+  & .MuiToolbar-root {
+    min-height: 3rem;
+  }
 `;
 
 export const TopbarAppDetailsContainer = styled('div')`
