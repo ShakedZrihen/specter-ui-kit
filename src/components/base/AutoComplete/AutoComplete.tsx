@@ -13,6 +13,7 @@ import { useAutocomplete } from './useAutoComplete';
 
 export interface AutoCompleteProps {
   values: string[];
+  value?: string[];
   label: string;
   className?: string;
   onChange?: (value: string[]) => void;
@@ -20,28 +21,30 @@ export interface AutoCompleteProps {
 
 export function AutoComplete({
   values,
+  value = [],
   className,
   onChange,
   label,
 }: AutoCompleteProps) {
   const {
-    selectedValues,
     inputValue,
     icon,
     checkedIcon,
     handleDelete,
     handleInputChange,
     handleChange,
-  } = useAutocomplete({ onChange });
+  } = useAutocomplete({ onChange, value });
 
   return (
     <StyledComponent>
       <StyledLabel>{label}</StyledLabel>{' '}
       <Wrapper>
         <TrashButton
-          onClick={() => selectedValues.forEach(value => handleDelete(value))}
+          onClick={() => {
+            onChange?.([]);
+          }}
         >
-          <TrashIcon color='#1877F2' size={37} />
+          <TrashIcon color={colorPalette.link.color} size={35} />
         </TrashButton>
         <StyledAutoComplete
           multiple // Allow multiselect
@@ -50,7 +53,7 @@ export function AutoComplete({
           className={className}
           options={values}
           inputValue={inputValue}
-          value={selectedValues}
+          value={value}
           onChange={handleChange}
           onInputChange={handleInputChange}
           forcePopupIcon={true} // Force the popupIcon to always appear
