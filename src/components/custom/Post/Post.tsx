@@ -18,7 +18,7 @@ import {
   StyledPost,
   ChannelName,
   SourceContent,
-  LinkSite
+  LinkSite,
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
@@ -84,25 +84,19 @@ export function Post(props: PostProps & { className?: string }) {
   };
 
   const [content, setContent] = useState<string | undefined>(selected || original);
-  const [isTranslated, setIsTranslated] = useState<boolean>(false);
+
+  const [isTranslated, setIsTranslated] = useState<boolean>(
+    selected !== original,
+  );
   const { t, i18n } = useTranslation();
 
   const cleanProtocol = (url: string) =>
     url.replace('https://', '').replace('http://', '');
 
-  const setPostContent = () => {
-    if (isTranslated) {
-      setContent(selected || original);
-      setIsTranslated(false);
-    } else {
-      setContent(original);
-      setIsTranslated(true);
-    }
-  };
-
   useEffect(() => {
-    setContent(selected);
-  }, [selected]);
+    setIsTranslated(selected !== original);
+  }, [selected, original]);
+
 
   return (
     <StyledPost isRawPost={isRawPost} className={className}>
@@ -175,11 +169,11 @@ export function Post(props: PostProps & { className?: string }) {
       {content && original !== selected ? (
         <SourceContent
           direction={i18n.resolvedLanguage === 'en' ? 'ltr' : 'rtl'}
-          onClick={() => setPostContent()}
+          onClick={() => setIsTranslated(prev => !prev)}
         >
           <LoopIcon color={colorPalette.colors.spBlue} size={14} />
           <Typography>
-            {isTranslated ? t('displayTranslate') : t('sourceLanguage')}
+            {isTranslated ? t('sourceLanguage') : t('displayTranslate')}
           </Typography>
         </SourceContent>
       ) : (
