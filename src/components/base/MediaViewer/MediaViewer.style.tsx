@@ -54,6 +54,7 @@ export const PhotoContainer = styled('div')(() => ({
   position: 'relative',
   width: '100%',
   height: '400px',
+  maxHeight: '500px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',

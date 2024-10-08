@@ -31,6 +31,7 @@ export const PostAvatar = styled(Avatar)`
 export const PostHeaderContent = styled(Typography)`
   display: flex;
   flex-direction: column;
+  width: 100%;
   direction: rtl;
   flex-grow: 1;
 `;
