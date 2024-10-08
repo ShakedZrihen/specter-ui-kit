@@ -48,7 +48,7 @@ export const AppNameTypography = styled(Typography)`
   font-weight: 600;
   direction: rtl;
   flex-grow: 1;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   color: ${({ theme }) => theme.colorPalette.header.text};
 `;
 

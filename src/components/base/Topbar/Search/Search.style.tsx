@@ -4,7 +4,7 @@ export const StyledSearch = styled('div')`
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  padding: 0.5rem 0.8rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 50px;
   background-color: ${({ theme }) =>
     alpha(theme.colorPalette.colors.spWhite, 0.15)};
