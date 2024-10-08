@@ -188,15 +188,20 @@ export function Post(props: PostProps & { className?: string }) {
       {!slimView && <Divider />}
 
       {slimView ? (
-        <SlimFooter onSave={handleSaveToCollection} onShare={onShare} id={id} />
+        <SlimFooter
+          onSave={handleSaveToCollection} 
+          onShare={onShare}
+          id={id}
+        />
       ) : (
         <Footer
-          onSave={onSave}
+          onSave={handleSaveToCollection} 
           onShare={onShare}
           id={id}
           onMore={isRawPost ? undefined : onMore}
         />
       )}
+
       <CollectionModal
         isOpen={isCollectionModalOpen}
         onClose={handleCloseModal}

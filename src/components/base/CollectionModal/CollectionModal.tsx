@@ -88,18 +88,19 @@ export function CollectionModal({
   return (
     <StyledColletionModal open={isOpen} onClose={onClose}>
       <ModalViewContainer>
-        <IconButton
-          aria-label='close'
-          onClick={onClose}
-          sx={{
-            position: 'absolute',
-            top: 8,
-            left: 8,
-            color: colorPalette.text.secondary,
-          }}
-        >
-          <CloseIcon color='black' />
-        </IconButton>
+      <IconButton
+  aria-label='close'
+  onClick={onClose} 
+  sx={{
+    position: 'absolute',
+    top: 8,
+    left: 8,
+    color: colorPalette.text.secondary,
+  }}
+>
+  <CloseIcon color='black' />
+</IconButton>
+
 
         <SingleContainerMetadataContainer>
           <Typography
