@@ -31,10 +31,16 @@ export const PostAvatar = styled(Avatar)`
 export const PostHeaderContent = styled(Typography)`
   display: flex;
   flex-direction: column;
-  width: 100%;
   direction: rtl;
   flex-grow: 1;
 `;
+
+export const DetailesRow = styled('div')`
+  display: flex;
+  flex-direction: row;
+  direction: rtl;
+`;
+
 
 export const PostDatetime = styled(Typography)`
   font-weight: 600;
@@ -135,15 +141,18 @@ export const SourceContent = styled('button')<{ direction: string }>`
   font-size: 1.125rem;
   line-height: 1.75rem;
   padding-left: 1rem;
-  padding-right: 1rem;
-  margin: 1.5rem 0.5rem;
-  direction: ${({ direction }) => direction};
-`;
-
-export const LinkSite = styled(Link)`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 15rem;
   direction: ltr;
+;
+`;
+
+export const LinkSite = styled(Link)`
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+width: 15rem;
+direction: ltr;
 `;

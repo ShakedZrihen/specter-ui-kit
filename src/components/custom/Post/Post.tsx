@@ -19,6 +19,7 @@ import {
   ChannelName,
   SourceContent,
   LinkSite,
+  DetailesRow
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
@@ -85,6 +86,7 @@ export function Post(props: PostProps & { className?: string }) {
         <PostAvatar alt={author.name} src={author.avatar} />
         <PostHeaderContent>
           <PostAuthor>{author.name}</PostAuthor>
+          <DetailesRow>
           <PostDatetime>
             {time} • {date}
           </PostDatetime>
@@ -109,6 +111,7 @@ export function Post(props: PostProps & { className?: string }) {
               {source.sourceName}
             </Typography>
           </PostSource>
+          </DetailesRow>
         </PostHeaderContent>
         {!slimView && (
           <PostReadIndicator>
