@@ -25,6 +25,12 @@ declare module '@mui/material/styles' {
       highlight: string;
       icon: string;
     };
+    notifilcation: {
+      navyBlue: string;
+    };
+    refresh: {
+      color: string;
+    };
     colors: {
       primary: string;
       secondary: string;
