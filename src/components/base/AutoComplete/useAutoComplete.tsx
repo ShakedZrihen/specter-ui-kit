@@ -4,14 +4,17 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 interface UseAutocompleteProps {
   onChange?: (value: string[]) => void;
+  value: string[];
 }
 
-export const useAutocomplete = ({ onChange }: UseAutocompleteProps) => {
-  const [selectedValues, setSelectedValues] = useState<string[]>([]);
+export const useAutocomplete = ({
+  onChange,
+  value = [],
+}: UseAutocompleteProps) => {
   const [inputValue, setInputValue] = useState<string>('');
 
   const handleDelete = (optionToDelete: string) => {
-    setSelectedValues(prev => prev.filter(option => option !== optionToDelete));
+    onChange?.(value.filter(option => option !== optionToDelete));
   };
   const icon = <CheckBoxOutlineBlankIcon fontSize='small' />;
   const checkedIcon = <CheckBoxIcon fontSize='small' />;
@@ -30,7 +33,6 @@ export const useAutocomplete = ({ onChange }: UseAutocompleteProps) => {
     newValue: unknown,
   ) => {
     const newValues = newValue as string[];
-    setSelectedValues(newValues);
     onChange?.(newValues);
 
     if (inputValue !== '') {
@@ -39,7 +41,6 @@ export const useAutocomplete = ({ onChange }: UseAutocompleteProps) => {
   };
 
   return {
-    selectedValues,
     inputValue,
     icon,
     checkedIcon,
