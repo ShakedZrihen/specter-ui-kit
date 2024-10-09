@@ -32,7 +32,7 @@ export const colorPalette = {
     navyBlue: '#55596F',
   },
   refresh: {
-    color: "#A8CAFF"
+    color: '#A8CAFF',
   },
   colors: {
     primary: '#474E72',

@@ -74,7 +74,9 @@ export function MediaViewer({
         </TwoMediaWrapper>
       ) : items.length > 2 ? (
         <TwoMediaWrapper>
-          <PhotoContainer style={{ position: 'relative' }}>{renderMedia(items[0])}</PhotoContainer>
+          <PhotoContainer style={{ position: 'relative' }}>
+            {renderMedia(items[0])}
+          </PhotoContainer>
           <PhotoContainer style={{ position: 'relative' }}>
             {renderMedia(items[1])}
             {!isSinglePostOpen && remainingPhotosCount > 0 && (
