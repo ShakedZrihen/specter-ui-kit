@@ -155,10 +155,10 @@ export function Post(props: PostProps & { className?: string }) {
           direction={i18n.resolvedLanguage === 'en' ? 'ltr' : 'rtl'}
           onClick={() => setIsTranslated(prev => !prev)}
         >
-          <LoopIcon color={colorPalette.colors.spBlue} size={14} />
           <Typography>
             {isTranslated ? t('sourceLanguage') : t('displayTranslate')}
           </Typography>
+          <LoopIcon color={colorPalette.colors.spBlue} size={14} />
         </SourceContent>
       ) : (
         ''
