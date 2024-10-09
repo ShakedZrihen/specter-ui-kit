@@ -14,7 +14,7 @@ export function TwitterXIcon(props: IconProps) {
         xmlns='http://www.w3.org/2000/svg'
         className={className}
       >
-        <g clip-path='url(#clip0_2035_3981)'>
+        <g clipPath='url(#clip0_2035_3981)'>
           <mask
             id='mask0_2035_3981'
             maskUnits='userSpaceOnUse'

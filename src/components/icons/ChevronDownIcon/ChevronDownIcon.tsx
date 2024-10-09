@@ -15,8 +15,8 @@ export function ChevronDownIcon(props: IconProps) {
         className={className}
       >
         <path
-          fill-rule='evenodd'
-          clip-rule='evenodd'
+          fillRule='evenodd'
+          clipRule='evenodd'
           d='M8.14523 9.14102C8.34049 8.94576 8.65707 8.94576 8.85233 9.14102L12.5001 12.787L16.1467 9.14102C16.342 8.94576 16.6585 8.94576 16.8538 9.14102C17.0491 9.33628 17.0491 9.65287 16.8538 9.84813L12.5001 14.2012L8.14523 9.84813C7.94996 9.65287 7.94996 9.33628 8.14523 9.14102Z'
           fill={color}
         />

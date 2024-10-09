@@ -14,7 +14,7 @@ export function TranslateIcon(props: IconProps) {
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
       >
-        <g clip-path='url(#clip0_2035_23278)'>
+        <g clipPath='url(#clip0_2035_23278)'>
           <path
             d='M26.613 27H24.219L19.788 20.301L17.709 27H15.588L17.898 19.776L18.486 18.306L16.554 15.198H18.822L20.607 18.054L22.371 20.7L22.896 18.873L23.967 15.198H26.109L23.673 22.632L26.613 27Z'
             fill={color}
