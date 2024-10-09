@@ -10,7 +10,7 @@ const meta: Meta<typeof TimeFilter> = {
     label: 'זמן כניסה למערכת',
     value: undefined,
     onChange: (date: string | null | undefined) => {
-      console.log(date);
+      alert(date);
     },
   },
 };
