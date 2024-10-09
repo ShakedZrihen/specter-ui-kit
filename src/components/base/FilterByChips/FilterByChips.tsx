@@ -7,6 +7,7 @@ import {
 } from './FilterByChips.style';
 import { useTranslation } from 'react-i18next';
 import CloseIcon from '@mui/icons-material/Close';
+import { colorPalette } from '../../../context/theme/lightMode';
 
 export interface FilterByChipsProps {
   appliedFilters: string[];
@@ -44,7 +45,13 @@ export function FilterByChips({
             variant='outlined'
             onDelete={() => onDeleteFilter?.(filter)}
             deleteIcon={
-              <CloseIcon sx={{ width: '0.8rem', height: '0.8rem' }} />
+              <CloseIcon
+                sx={{
+                  width: '0.8rem',
+                  height: '0.8rem',
+                  color: `${colorPalette.colors.spBlack} !important`,
+                }}
+              />
             }
           />
         ))}
