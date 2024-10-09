@@ -103,4 +103,7 @@ export const he = {
   showLess: 'הצג פחות',
   sourceLanguage: 'שפת המקור',
   displayTranslate: 'הצג תרגום',
+  saveToCollection: 'שמירה לאוספים',
+  share: 'שיתוף',
+  moreInfo: 'מידע נוסף',
 };

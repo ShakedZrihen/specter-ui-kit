@@ -1,8 +1,10 @@
-import { styled, Typography } from '@mui/material';
+import { lighten, styled, Typography } from '@mui/material';
 import { colorPalette } from '../../../context/theme/lightMode';
 import { DocumetsIcon, FavoriteIcon, MoreIcon, ShareIcon } from '../../icons';
-import { ActionButton, PostFooter, PostSlimFooter } from './Post.style';
+import { ActionButton, PostFooter, PostSlimFooter, ShareButton } from './Post.style';
 import { Button } from '../../base/Button';
+import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 interface FooterProps {
   onSave: (id: number | string) => void;
@@ -18,20 +20,24 @@ interface SlimFooterProps {
 }
 
 export const Footer = ({ onSave, onShare, onMore, id }: FooterProps) => {
+  const { t } = useTranslation();
+  const [disableShare, setDisableShare] = useState<boolean>(true);
+  //TODO: set disable to false later when product will approve...
+
   return (
     <PostFooter>
       <ActionButton onClick={() => onSave(id)}>
         <FavoriteIcon color={colorPalette.text.primary} size={20} />
-        <Typography>שמירה לאוספים</Typography>
+        <Typography>{t("saveToCollection")}</Typography>
       </ActionButton>
-      <ActionButton onClick={() => onShare(id)}>
-        <ShareIcon color={colorPalette.text.primary} size={20} />
-        <Typography>שיתוף</Typography>
-      </ActionButton>
+      <ShareButton onClick={() => onShare(id)} disable={disableShare}>
+        <ShareIcon color={disableShare ? lighten(colorPalette.text.primary, 0.6) : colorPalette.text.primary} size={20} />
+        <Typography>{t("share")}</Typography>
+      </ShareButton>
       {onMore && (
         <ActionButton onClick={() => onMore(id)}>
           <MoreIcon color={colorPalette.text.primary} size={20} />
-          <Typography>מידע נוסף</Typography>
+          <Typography>{t("moreInfo")}</Typography>
         </ActionButton>
       )}
     </PostFooter>
@@ -39,6 +45,8 @@ export const Footer = ({ onSave, onShare, onMore, id }: FooterProps) => {
 };
 
 export const SlimFooter = ({ onSave, onShare, id }: SlimFooterProps) => {
+  const { t } = useTranslation();
+
   const StyledButton = styled(Button)`
     height: 2rem;
     color: ${({ theme }) => theme.colorPalette.common.icon};
@@ -52,14 +60,14 @@ export const SlimFooter = ({ onSave, onShare, id }: SlimFooterProps) => {
         variant='outlined'
         startIcon={<DocumetsIcon color={colorPalette.common.icon} size={20} />}
       >
-        שמירה לאוספים
+        {t("saveToCollection")}
       </StyledButton>
       <StyledButton
         onClick={() => onShare(id)}
         variant='outlined'
         startIcon={<ShareIcon color={colorPalette.common.icon} size={20} />}
       >
-        שיתוף
+        {t("share")}
       </StyledButton>
     </PostSlimFooter>
   );

@@ -115,7 +115,26 @@ export const ActionButton = styled('div')`
 
   :hover {
     cursor: pointer;
-    color: ${({ theme }) => lighten(theme.colorPalette.text.primary, 0.6)};
+    background-color: #E7F0FF;
+    opacity: 0.85;
+    width: 9.625rem;
+    height: 1.875rem; 
+    border-radius: 2rem;
+    justify-content: center;
+  }
+`;
+
+export const ShareButton = styled('div')<{ disable: boolean }>`
+  display: flex;
+  align-items: center;
+  height: 100%;
+  p {
+    margin-right: 0.5rem;
+  }
+  color: ${({ disable, theme }) => disable ? lighten(theme.colorPalette.text.primary, 0.6) : theme.colorPalette.text.primary};
+
+  :hover {
+    cursor: pointer;
   }
 `;
 
