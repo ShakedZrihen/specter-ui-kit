@@ -167,12 +167,7 @@ export function Post(props: PostProps & { className?: string }) {
       {slimView ? (
         <SlimFooter onSave={onSave} onShare={onShare} id={id} />
       ) : (
-        <Footer
-          onSave={onSave}
-          onShare={onShare}
-          id={id}
-          onMore={onMore}
-        />
+        <Footer onSave={onSave} onShare={onShare} id={id} onMore={onMore} />
       )}
     </StyledPost>
   );
