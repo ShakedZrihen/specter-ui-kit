@@ -167,7 +167,7 @@ export function Post(props: PostProps & { className?: string }) {
           onSave={onSave}
           onShare={onShare}
           id={id}
-          onMore={isRawPost ? undefined : onMore}
+          onMore={onMore}
         />
       )}
     </StyledPost>

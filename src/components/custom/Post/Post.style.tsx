@@ -106,9 +106,9 @@ export const PostSlimFooter = styled('div')`
 export const ActionButton = styled('div')`
   display: flex;
   align-items: center;
-  height: 1.875rem; 
+  height: 1.875rem;
   color: ${({ theme }) => theme.colorPalette.text.primary};
-  padding: 0.375rem 1.125rem; 
+  padding: 0.375rem 1.125rem;
 
   p {
     margin-right: 0.5rem;
