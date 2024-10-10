@@ -7,12 +7,6 @@ export const StyledPost = styled(Card)<{ isRawPost: boolean }>`
   flex-direction: column;
   direction: rtl;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
-
-  ${({ isRawPost }) =>
-    isRawPost &&
-    `
-  border: 1px solid #e8bcbf;
-  `}
 `;
 
 export const PostHeader = styled('div')`
@@ -106,9 +100,9 @@ export const PostSlimFooter = styled('div')`
 export const ActionButton = styled('div')`
   display: flex;
   align-items: center;
-  height: 1.875rem; 
+  height: 1.875rem;
   color: ${({ theme }) => theme.colorPalette.text.primary};
-  padding: 0.375rem 1.125rem; 
+  padding: 0.375rem 1.125rem;
 
   p {
     margin-right: 0.5rem;
