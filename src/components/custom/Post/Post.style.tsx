@@ -7,11 +7,6 @@ export const StyledPost = styled(Card)<{ isRawPost: boolean }>`
   flex-direction: column;
   direction: rtl;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
-
-  ${({ isRawPost }) =>
-    isRawPost &&
-    `
-  `}
 `;
 
 export const PostHeader = styled('div')`
