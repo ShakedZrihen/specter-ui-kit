@@ -90,7 +90,7 @@ export const StyledTypography = styled(Typography)`
 `;
 
 export const Circle = styled('div')`
-  width: 1.3rem;  
+  width: 1.3rem;
   height: 1.3rem;
   background-color: ${({ theme }) => theme.colorPalette.common.icon};
   border-radius: 50%;
@@ -101,4 +101,3 @@ export const Circle = styled('div')`
   line-height: 1.3rem;
   font-size: 0.75rem;
 `;
-

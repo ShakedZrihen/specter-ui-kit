@@ -41,7 +41,6 @@ export const DetailesRow = styled('div')`
   direction: rtl;
 `;
 
-
 export const PostDatetime = styled(Typography)`
   font-weight: 600;
   color: ${({ theme }) => theme.colorPalette.text.secondary};
@@ -107,8 +106,10 @@ export const PostSlimFooter = styled('div')`
 export const ActionButton = styled('div')`
   display: flex;
   align-items: center;
-  height: 100%;
+  height: 1.875rem; 
   color: ${({ theme }) => theme.colorPalette.text.primary};
+  padding: 0.375rem 1.125rem; 
+
   p {
     margin-right: 0.5rem;
   }
@@ -117,8 +118,6 @@ export const ActionButton = styled('div')`
     cursor: pointer;
     background-color: ${({ theme }) => theme.colorPalette.colors.lightBlue};
     opacity: 0.85;
-    width: 9.625rem;
-    height: 1.875rem; 
     border-radius: 2rem;
     justify-content: center;
   }
@@ -131,7 +130,10 @@ export const ShareButton = styled('div')<{ disable: boolean }>`
   p {
     margin-right: 0.5rem;
   }
-  color: ${({ disable, theme }) => disable ? lighten(theme.colorPalette.text.primary, 0.6) : theme.colorPalette.text.primary};
+  color: ${({ disable, theme }) =>
+    disable
+      ? lighten(theme.colorPalette.text.primary, 0.6)
+      : theme.colorPalette.text.primary};
 
   :hover {
     cursor: pointer;
@@ -165,13 +167,13 @@ export const SourceContent = styled('button')<{ direction: string }>`
   white-space: nowrap;
   width: 15rem;
   direction: ltr;
-;
 `;
 
 export const LinkSite = styled(Link)`
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
-width: 15rem;
-direction: ltr;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 9rem;
+  direction: ltr;
+  text-align: center;
 `;

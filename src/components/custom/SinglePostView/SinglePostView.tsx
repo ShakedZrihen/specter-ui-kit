@@ -20,16 +20,6 @@ export interface SinglePostViewProps {
   isOpen: boolean;
   onClose?: () => void;
 }
-
-/**
- * TODO: document component functionality
- *
- * [Figma](https://https://www.figma.com/file/...)
- *
- * ```tsx
- * <SinglePostView />
- * ```
- */
 export function SinglePostView({ post, isOpen, onClose }: SinglePostViewProps) {
   const { enrichments } = post;
   const { t } = useTranslation();
