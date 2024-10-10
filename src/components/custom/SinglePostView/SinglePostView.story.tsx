@@ -7,6 +7,7 @@ const meta: Meta<typeof SinglePostView> = {
   component: SinglePostView,
   argTypes: {},
   args: {
+    isLoading: true,
     isOpen: true,
     post: {
       isRawPost: false,
