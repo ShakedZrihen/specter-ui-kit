@@ -1,4 +1,5 @@
 import { alpha, styled } from '@mui/material/styles';
+import ReactPanZoom from 'react-image-pan-zoom-rotate';
 
 export const PhotoOverlay = styled('div')(({ theme }) => ({
   position: 'absolute',
@@ -21,7 +22,7 @@ export const StyledMediaViewer = styled('div')(() => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  padding: '5px',
+  padding: "0.5rem"
 }));
 
 export const StyledVideo = styled('video')({
@@ -66,6 +67,6 @@ export const PhotoContainer = styled('div')(() => ({
   },
 }));
 
-export const StyledImage = styled('img')`
+export const StyledImage = styled(ReactPanZoom)`
   max-height: 25rem;
 `;

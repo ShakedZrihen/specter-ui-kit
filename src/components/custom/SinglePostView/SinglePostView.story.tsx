@@ -9,6 +9,17 @@ const meta: Meta<typeof SinglePostView> = {
   args: {
     isOpen: true,
     post: {
+      mediaItems: [
+        {
+          original: 'https://samplelib.com/lib/preview/mp4/sample-5s.mp4',
+          type: "video"
+        },
+        {
+          original: 'https://images5.alphacoders.com/134/1344515.png',
+          type: "image"
+        }
+      ],
+      isSlimView: true,
       isRawPost: false,
       id: '1',
       author: {

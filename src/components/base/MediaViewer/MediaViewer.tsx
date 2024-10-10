@@ -59,7 +59,7 @@ export function MediaViewer({
     return (
       <StyledImage
         key={item.original}
-        src={item.original}
+        image={item.original}
         alt={item.description || 'Media'}
       />
     );
