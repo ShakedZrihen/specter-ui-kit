@@ -103,4 +103,7 @@ export const en = {
   showLess: 'Show less',
   sourceLanguage: 'Source language',
   displayTranslate: 'Display translate',
+  saveToCollection: 'Save to collection',
+  share: 'share',
+  moreInfo: 'More info',
 };

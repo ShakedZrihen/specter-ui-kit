@@ -46,6 +46,7 @@ export const colorPalette = {
     spOrange_50: '#FA9349',
     spBlue: '#1877F2',
     spBlue_20: '#D6E6FE',
+    lightBlue: "#E7F0FF"
   },
   filters: {
     headers: {
