@@ -89,3 +89,17 @@ export const FiltersActionContainer = styled('div')`
 export const StyledTypography = styled(Typography)`
   font-weight: 500;
 `;
+
+export const Circle = styled('div')`
+  width: 1.3rem;  
+  height: 1.3rem;
+  background-color: ${({ theme }) => theme.colorPalette.common.icon};
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${({ theme }) => theme.colorPalette.common.white};
+  line-height: 1.3rem;
+  font-size: 0.75rem;
+`;
+
