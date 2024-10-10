@@ -115,7 +115,7 @@ export const ActionButton = styled('div')`
 
   :hover {
     cursor: pointer;
-    background-color: #E7F0FF;
+    background-color: ${({ theme }) => theme.colorPalette.colors.lightBlue};
     opacity: 0.85;
     width: 9.625rem;
     height: 1.875rem; 
