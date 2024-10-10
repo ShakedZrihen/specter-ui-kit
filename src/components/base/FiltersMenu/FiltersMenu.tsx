@@ -95,12 +95,10 @@ export function FiltersMenu({
           <FilterIcon color={colorPalette.common.icon} size={18} />
           <Title>{t('filters')}</Title>
           {propertyCount ? (
-              <Circle>
-              <Typography>
-                {propertyCount}
-              </Typography>
-              </Circle> 
-          ): (
+            <Circle>
+              <Typography>{propertyCount}</Typography>
+            </Circle>
+          ) : (
             <ChevronLeftIcon color={colorPalette.common.icon} />
           )}
         </FiltersControllerButton>

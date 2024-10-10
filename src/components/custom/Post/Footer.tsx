@@ -1,7 +1,12 @@
 import { lighten, styled, Typography } from '@mui/material';
 import { colorPalette } from '../../../context/theme/lightMode';
 import { DocumetsIcon, FavoriteIcon, MoreIcon, ShareIcon } from '../../icons';
-import { ActionButton, PostFooter, PostSlimFooter, ShareButton } from './Post.style';
+import {
+  ActionButton,
+  PostFooter,
+  PostSlimFooter,
+  ShareButton,
+} from './Post.style';
 import { Button } from '../../base/Button';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
@@ -28,16 +33,23 @@ export const Footer = ({ onSave, onShare, onMore, id }: FooterProps) => {
     <PostFooter>
       <ActionButton onClick={() => onSave(id)}>
         <FavoriteIcon color={colorPalette.text.primary} size={20} />
-        <Typography>{t("saveToCollection")}</Typography>
+        <Typography>{t('saveToCollection')}</Typography>
       </ActionButton>
       <ShareButton onClick={() => onShare(id)} disable={disableShare}>
-        <ShareIcon color={disableShare ? lighten(colorPalette.text.primary, 0.6) : colorPalette.text.primary} size={20} />
-        <Typography>{t("share")}</Typography>
+        <ShareIcon
+          color={
+            disableShare
+              ? lighten(colorPalette.text.primary, 0.6)
+              : colorPalette.text.primary
+          }
+          size={20}
+        />
+        <Typography>{t('share')}</Typography>
       </ShareButton>
       {onMore && (
         <ActionButton onClick={() => onMore(id)}>
           <MoreIcon color={colorPalette.text.primary} size={20} />
-          <Typography>{t("moreInfo")}</Typography>
+          <Typography>{t('moreInfo')}</Typography>
         </ActionButton>
       )}
     </PostFooter>
@@ -60,14 +72,14 @@ export const SlimFooter = ({ onSave, onShare, id }: SlimFooterProps) => {
         variant='outlined'
         startIcon={<DocumetsIcon color={colorPalette.common.icon} size={20} />}
       >
-        {t("saveToCollection")}
+        {t('saveToCollection')}
       </StyledButton>
       <StyledButton
         onClick={() => onShare(id)}
         variant='outlined'
         startIcon={<ShareIcon color={colorPalette.common.icon} size={20} />}
       >
-        {t("share")}
+        {t('share')}
       </StyledButton>
     </PostSlimFooter>
   );

@@ -19,7 +19,7 @@ import {
   ChannelName,
   SourceContent,
   LinkSite,
-  DetailesRow
+  DetailesRow,
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
@@ -87,30 +87,30 @@ export function Post(props: PostProps & { className?: string }) {
         <PostHeaderContent>
           <PostAuthor>{author.name}</PostAuthor>
           <DetailesRow>
-          <PostDatetime>
-            {time} • {date}
-          </PostDatetime>
-          <PostSource>
-            <LinkSite href={source.url} target='_blank'>
-              {cleanProtocol(source.url)}
-            </LinkSite>
-            {source.channelName ? (
-              <>
-                •
-                <Link href={source.channelUrl} target='_blank'>
-                  <ChannelName
-                    direction={getTextDirection(franc(source.channelName))}
-                  >
-                    {source.channelName}
-                  </ChannelName>
-                </Link>
-              </>
-            ) : null}
-            •{' '}
-            <Typography style={{ paddingRight: '0.2rem' }}>
-              {source.sourceName}
-            </Typography>
-          </PostSource>
+            <PostDatetime>
+              {time} • {date} •
+            </PostDatetime>
+            <PostSource>
+              <LinkSite href={source.url} target='_blank'>
+                {cleanProtocol(source.url)}
+              </LinkSite>
+              {source.channelName ? (
+                <>
+                  •
+                  <Link href={source.channelUrl} target='_blank'>
+                    <ChannelName
+                      direction={getTextDirection(franc(source.channelName))}
+                    >
+                      {source.channelName}
+                    </ChannelName>
+                  </Link>
+                </>
+              ) : null}
+              •{' '}
+              <Typography style={{ paddingRight: '0.2rem' }}>
+                {source.sourceName}
+              </Typography>
+            </PostSource>
           </DetailesRow>
         </PostHeaderContent>
         {!slimView && (
