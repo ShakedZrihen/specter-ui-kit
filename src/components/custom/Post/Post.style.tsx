@@ -8,11 +8,6 @@ export const StyledPost = styled(Card)<{ isRawPost: boolean }>`
   flex-direction: column;
   direction: rtl;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
-  ${({ isRawPost }) =>
-    isRawPost &&
-    `
-  border: 1px solid #e8bcbf;
-  `}
 `;
 
 export const PostHeader = styled('div')`
@@ -177,6 +172,6 @@ export const LinkSite = styled(Link)`
 `;
 
 export const Loop = styled(LoopIcon)`
-padding-top: 0.2rem;
-padding-left: 0.2rem
-`
+  padding-top: 0.2rem;
+  padding-left: 0.2rem;
+`;

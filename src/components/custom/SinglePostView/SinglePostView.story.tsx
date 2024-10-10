@@ -12,12 +12,12 @@ const meta: Meta<typeof SinglePostView> = {
       mediaItems: [
         {
           original: 'https://samplelib.com/lib/preview/mp4/sample-5s.mp4',
-          type: "video"
+          type: 'video',
         },
         {
           original: 'https://images5.alphacoders.com/134/1344515.png',
-          type: "image"
-        }
+          type: 'image',
+        },
       ],
       isSlimView: true,
       isRawPost: false,

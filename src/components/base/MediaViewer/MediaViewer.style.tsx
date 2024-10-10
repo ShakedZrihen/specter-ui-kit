@@ -22,7 +22,7 @@ export const StyledMediaViewer = styled('div')(() => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  padding: "0.5rem"
+  padding: '0.5rem',
 }));
 
 export const StyledVideo = styled('video')({

@@ -85,11 +85,11 @@ export function Post(props: PostProps & { className?: string }) {
               {time} • {date} •
             </PostDatetime>
             <PostSource>
-            {source.url ? (
-              <LinkSite href={source.url} target='_blank'>
-                {cleanProtocol(source.url)}
-              </LinkSite>
-            ) : null}
+              {source.url ? (
+                <LinkSite href={source.url} target='_blank'>
+                  {cleanProtocol(source.url)}
+                </LinkSite>
+              ) : null}
               {source.channelName ? (
                 <>
                   •
@@ -163,12 +163,7 @@ export function Post(props: PostProps & { className?: string }) {
       {slimView ? (
         <SlimFooter onSave={onSave} onShare={onShare} id={id} />
       ) : (
-        <Footer
-          onSave={onSave}
-          onShare={onShare}
-          id={id}
-          onMore={onMore}
-        />
+        <Footer onSave={onSave} onShare={onShare} id={id} onMore={onMore} />
       )}
     </StyledPost>
   );
