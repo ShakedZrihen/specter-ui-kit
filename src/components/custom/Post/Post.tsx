@@ -31,6 +31,7 @@ import { MediaCarousel } from '../../base';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { colorPalette } from '../../../context/theme/lightMode';
+
 export interface PostProps extends IPost {
   slimView?: boolean;
   highlightedText?: string[];
