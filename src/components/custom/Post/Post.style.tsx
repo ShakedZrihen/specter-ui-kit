@@ -1,5 +1,6 @@
 import { Avatar, Card, styled, Typography, Link } from '@mui/material';
 import { lighten } from '@mui/system';
+import { LoopIcon } from '../../icons';
 
 export const StyledPost = styled(Card)<{ isRawPost: boolean }>`
   display: flex;
@@ -147,20 +148,18 @@ export const SourceContent = styled('button')<{ direction: string }>`
   border: none;
   color: ${({ theme }) => theme.colorPalette.colors.spBlue};
   display: inline-flex;
-  align-items: center;
   cursor: pointer;
   padding: 0;
   outline: none;
-  width: fit-content;
   column-gap: 0.25rem;
   font-size: 1.125rem;
   line-height: 1.75rem;
-  padding-left: 1rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 15rem;
+  width: fit-content;
   direction: ltr;
+  padding: 1rem;
 `;
 
 export const LinkSite = styled(Link)`
@@ -170,4 +169,9 @@ export const LinkSite = styled(Link)`
   width: 9rem;
   direction: ltr;
   text-align: center;
+`;
+
+export const Loop = styled(LoopIcon)`
+  padding-top: 0.2rem;
+  padding-left: 0.2rem;
 `;
