@@ -1,5 +1,4 @@
 import {
-  Divider,
   Typography,
   TextField,
   Button,
@@ -18,11 +17,13 @@ import {
   SearchContainer,
   ActionsContainer,
   CollectionIcon,
+  StyledTypography,
 } from './CollectionModal.style';
 import { colorPalette } from '../../../context/theme/lightMode';
 import { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { CloseIcon } from '../../icons';
+import { t } from 'i18next';
 
 export interface ColletionModalProps {
   isOpen: boolean;
@@ -36,19 +37,11 @@ export interface ColletionModalProps {
   }[];
 }
 
-const handleCollectionClick = (
-  id: number | string,
-  selectedCollections: (number | string)[],
-  setSelectedCollections: (ids: (number | string)[]) => void,
-) => {
-  if (selectedCollections.includes(id)) {
-    setSelectedCollections(
-      selectedCollections.filter(selectedId => selectedId !== id),
-    );
-  } else {
-    setSelectedCollections([...selectedCollections, id]);
-  }
-};
+enum TabsNames {
+  AllCollection = 0,
+  SharedCollections = 1,
+  UserCollections = 2,
+}
 
 export function CollectionModal({
   collections,
@@ -66,34 +59,53 @@ export function CollectionModal({
     setActiveTab(newValue);
   };
 
+  const handleCollectionClick = (
+    id: number | string,
+    selectedCollections: (number | string)[],
+    setSelectedCollections: (ids: (number | string)[]) => void
+  ) => {
+    if (selectedCollections.includes(id)) {
+      setSelectedCollections(
+        selectedCollections.filter((selectedId) => selectedId !== id)
+      );
+    } else {
+      setSelectedCollections([...selectedCollections, id]);
+    }
+  };
+
   const allCollectionsCount = collections.length;
   const privateCollectionsCount = collections.filter(
-    collection => collection.private,
+    (collection) => collection.private
   ).length;
   const publicCollectionsCount = collections.filter(
-    collection => !collection.private,
+    (collection) => !collection.private
   ).length;
 
-  const filteredCollections = collections.filter(collection => {
+  const filteredCollections = collections.filter((collection) => {
     const matchesSearchTerm = collection.name
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
-    if (activeTab === 2) return matchesSearchTerm && collection.private;
-    if (activeTab === 1) return matchesSearchTerm && !collection.private;
+    if (activeTab === TabsNames.UserCollections) {
+      return matchesSearchTerm && collection.private;
+    }
+    if (activeTab === TabsNames.SharedCollections) {
+      return matchesSearchTerm && !collection.private;
+    }
     return matchesSearchTerm;
   });
 
   const handleConfirm = () => {
-    console.log('Selected Collections IDs:', selectedCollections);
     setSelectedCollections([]);
-    if (onClose) onClose();
+    if (onClose) {
+      onClose();
+    }
   };
 
   return (
     <StyledColletionModal open={isOpen} onClose={onClose}>
       <ModalViewContainer>
         <IconButton
-          aria-label='close'
+          aria-label="close"
           onClick={onClose}
           sx={{
             position: 'absolute',
@@ -102,7 +114,7 @@ export function CollectionModal({
             color: colorPalette.text.secondary,
           }}
         >
-          <CloseIcon color='black' />
+          <CloseIcon color="black" />
         </IconButton>
 
         <SingleContainerMetadataContainer>
@@ -121,10 +133,10 @@ export function CollectionModal({
           <SearchContainer>
             <TextField
               fullWidth
-              placeholder='חפש אוסף...'
-              variant='outlined'
+              placeholder="חפש אוסף..."
+              variant="outlined"
               value={searchTerm}
-              onChange={e => setSearchTerm(e.target.value)}
+              onChange={(e) => setSearchTerm(e.target.value)}
               sx={{
                 width: '100%',
                 marginLeft: 'auto',
@@ -134,25 +146,25 @@ export function CollectionModal({
               }}
               InputProps={{
                 endAdornment: (
-                  <InputAdornment position='end'>
+                  <InputAdornment position="end">
                     <SearchIcon />
                   </InputAdornment>
                 ),
                 sx: {
-                  borderRadius: '20px',
-                  height: '40px',
+                  borderRadius: '1.5rem',
+                  height: '3.075rem',
                 },
               }}
             />
           </SearchContainer>
 
           <Tabs
-            variant='fullWidth'
+            variant="fullWidth"
             value={activeTab}
             onChange={handleTabChange}
-            textColor='primary'
-            indicatorColor='primary'
-            aria-label='collection type tabs'
+            textColor="primary"
+            indicatorColor="primary"
+            aria-label="collection type tabs"
             sx={{
               marginBottom: '16px',
               justifyContent: 'space-between',
@@ -170,19 +182,19 @@ export function CollectionModal({
           </Tabs>
 
           <ExtraInfoContainer>
-            {filteredCollections.map(collection => (
+            {filteredCollections.map((collection) => (
               <CollectionItem
                 key={collection.id}
                 onClick={() =>
                   handleCollectionClick(
                     collection.id,
                     selectedCollections,
-                    setSelectedCollections,
+                    setSelectedCollections
                   )
                 }
                 isSelected={selectedCollections.includes(collection.id)}
               >
-                <div className='collection-text'>
+                <div className="collection-text">
                   <Typography
                     style={{
                       fontSize: '14px',
@@ -221,11 +233,11 @@ export function CollectionModal({
 
         <ActionsContainer>
           <Button
-            variant='outlined'
+            variant="outlined"
             onClick={onClose}
             sx={{ borderRadius: '20px' }}
           >
-            ביטול
+          <StyledTypography>{t('Cancel')}</StyledTypography>
           </Button>
           <Button
             onClick={handleConfirm}
@@ -237,8 +249,7 @@ export function CollectionModal({
                 backgroundColor: '#1E4A82',
               },
             }}
-          >
-            שמירה לאוסף זה
+          ><StyledTypography>{t('saveToCollectionPopup')}</StyledTypography>
           </Button>
         </ActionsContainer>
       </ModalViewContainer>

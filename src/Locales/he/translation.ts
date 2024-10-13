@@ -1,6 +1,9 @@
+
+
 export const he = {
   save_button: 'שמור',
   cancel_button: 'בטל',
+  Cancel: 'ביטול',
   lineFilters: 'פילטרים',
   lineByTime: 'לפי זמן',
   lineLoginTime: 'זמן כניסה למערכת',
@@ -104,6 +107,7 @@ export const he = {
   sourceLanguage: 'שפת המקור',
   displayTranslate: 'הצג תרגום',
   saveToCollection: 'שמירה לאוספים',
+  saveToCollectionPopup: 'שמור לאוסף זה',
   share: 'שיתוף',
   moreInfo: 'מידע נוסף',
 };

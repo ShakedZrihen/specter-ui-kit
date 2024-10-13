@@ -1,5 +1,6 @@
 export const en = {
   save_button: 'Save',
+  Cancel:'Cancel',
   cancel_button: 'Cancel',
   lineFilters: 'Filters',
   lineByTime: 'By time',
@@ -104,6 +105,7 @@ export const en = {
   sourceLanguage: 'Source language',
   displayTranslate: 'Display translate',
   saveToCollection: 'Save to collection',
+  saveToCollectionPopup: 'Save to collection/s',
   share: 'share',
   moreInfo: 'More info',
 };
