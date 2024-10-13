@@ -63,21 +63,24 @@ export function Post(props: PostProps & { className?: string }) {
     className,
     slimView = false,
     onMore = () => {},
-    onSave = () => {},
     onShare = () => {},
     mediaItems = [],
   } = props;
 
-
   const [isCollectionModalOpen, setIsCollectionModalOpen] = useState(false);
 
-
   const handleSaveToCollection = (id: string | number) => {
-    setIsCollectionModalOpen(true);  
+    setIsCollectionModalOpen(true);
   };
 
   
   const [content, setContent] = useState<string | undefined>(selected || original);
+  // Close modal handler
+  const handleCloseModal = () => {
+    setIsCollectionModalOpen(false);
+  };
+
+
 
   const [isTranslated, setIsTranslated] = useState<boolean>(
     selected !== original,
@@ -91,7 +94,6 @@ export function Post(props: PostProps & { className?: string }) {
     setIsTranslated(selected !== original);
   }, [selected, original]);
 
-
   return (
     <StyledPost isRawPost={isRawPost} className={className}>
       <PostHeader>
@@ -103,7 +105,7 @@ export function Post(props: PostProps & { className?: string }) {
               {time} • {date} •
             </PostDatetime>
             <PostSource>
-            {source.url ? (
+              {source.url ? (
                 <LinkSite href={source.url} target='_blank'>
                   {cleanProtocol(source.url)}
                 </LinkSite>
@@ -180,14 +182,10 @@ export function Post(props: PostProps & { className?: string }) {
       {!slimView && <Divider />}
 
       {slimView ? (
-        <SlimFooter
-          onSave={handleSaveToCollection} 
-          onShare={onShare}
-          id={id}
-        />
+        <SlimFooter onSave={handleSaveToCollection} onShare={onShare} id={id} />
       ) : (
         <Footer
-          onSave={handleSaveToCollection} 
+          onSave={handleSaveToCollection}
           onShare={onShare}
           id={id}
           onMore={isRawPost ? undefined : onMore}
