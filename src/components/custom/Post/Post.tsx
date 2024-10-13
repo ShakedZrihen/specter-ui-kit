@@ -20,6 +20,7 @@ import {
   SourceContent,
   LinkSite,
   DetailesRow,
+  Loop,
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
@@ -27,7 +28,6 @@ import { IPost } from '../../../@types/post';
 import { MediaViewer } from '../../base/MediaViewer/MediaViewer';
 import { TextWithHighlights } from '../../base/TextWithHighlights';
 import { MediaCarousel } from '../../base';
-import { LoopIcon } from '../../icons';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { colorPalette } from '../../../context/theme/lightMode';
@@ -92,9 +92,11 @@ export function Post(props: PostProps & { className?: string }) {
               {time} • {date} •
             </PostDatetime>
             <PostSource>
-              <LinkSite href={source.url} target='_blank'>
-                {cleanProtocol(source.url)}
-              </LinkSite>
+            {source.url ? (
+                <LinkSite href={source.url} target='_blank'>
+                  {cleanProtocol(source.url)}
+                </LinkSite>
+              ) : null}
               {source.channelName ? (
                 <>
                   •
@@ -151,7 +153,7 @@ export function Post(props: PostProps & { className?: string }) {
           onViewMore={onMore}
         />
       )}
-      {content && original !== selected ? (
+      {original && content && original !== selected ? (
         <SourceContent
           direction={i18n.resolvedLanguage === 'en' ? 'ltr' : 'rtl'}
           onClick={() => setIsTranslated(prev => !prev)}
@@ -159,7 +161,7 @@ export function Post(props: PostProps & { className?: string }) {
           <Typography>
             {isTranslated ? t('sourceLanguage') : t('displayTranslate')}
           </Typography>
-          <LoopIcon color={colorPalette.colors.spBlue} size={14} />
+          <Loop color={colorPalette.colors.spBlue} size={16} />
         </SourceContent>
       ) : (
         ''
