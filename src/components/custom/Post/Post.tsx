@@ -20,6 +20,7 @@ import {
   SourceContent,
   LinkSite,
   DetailesRow,
+  Loop,
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
@@ -27,7 +28,6 @@ import { IPost } from '../../../@types/post';
 import { MediaViewer } from '../../base/MediaViewer/MediaViewer';
 import { TextWithHighlights } from '../../base/TextWithHighlights';
 import { CollectionModal, MediaCarousel } from '../../base';
-import { LoopIcon } from '../../icons';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { colorPalette } from '../../../context/theme/lightMode';
@@ -62,11 +62,9 @@ export function Post(props: PostProps & { className?: string }) {
     className,
     slimView = false,
     onMore = () => {},
-    onSave = () => {},
     onShare = () => {},
     mediaItems = [],
   } = props;
-
 
   const [isCollectionModalOpen, setIsCollectionModalOpen] = useState(false);
   const collections = [
@@ -76,9 +74,8 @@ export function Post(props: PostProps & { className?: string }) {
     { id: 4, name: 'Collection 4', private: true, lastUpdate: new Date() },
   ];
 
-
   const handleSaveToCollection = (id: string | number) => {
-    setIsCollectionModalOpen(true);  
+    setIsCollectionModalOpen(true);
   };
 
   // Close modal handler
@@ -86,7 +83,7 @@ export function Post(props: PostProps & { className?: string }) {
     setIsCollectionModalOpen(false);
   };
 
-  const [content, setContent] = useState<string | undefined>(selected || original);
+  const [content] = useState<string | undefined>(selected || original);
 
   const [isTranslated, setIsTranslated] = useState<boolean>(
     selected !== original,
@@ -100,7 +97,6 @@ export function Post(props: PostProps & { className?: string }) {
     setIsTranslated(selected !== original);
   }, [selected, original]);
 
-
   return (
     <StyledPost isRawPost={isRawPost} className={className}>
       <PostHeader>
@@ -112,9 +108,11 @@ export function Post(props: PostProps & { className?: string }) {
               {time} • {date} •
             </PostDatetime>
             <PostSource>
-              <LinkSite href={source.url} target='_blank'>
-                {cleanProtocol(source.url)}
-              </LinkSite>
+              {source.url ? (
+                <LinkSite href={source.url} target='_blank'>
+                  {cleanProtocol(source.url)}
+                </LinkSite>
+              ) : null}
               {source.channelName ? (
                 <>
                   •
@@ -171,7 +169,7 @@ export function Post(props: PostProps & { className?: string }) {
           onViewMore={onMore}
         />
       )}
-      {content && original !== selected ? (
+      {original && content && original !== selected ? (
         <SourceContent
           direction={i18n.resolvedLanguage === 'en' ? 'ltr' : 'rtl'}
           onClick={() => setIsTranslated(prev => !prev)}
@@ -179,7 +177,7 @@ export function Post(props: PostProps & { className?: string }) {
           <Typography>
             {isTranslated ? t('sourceLanguage') : t('displayTranslate')}
           </Typography>
-          <LoopIcon color={colorPalette.colors.spBlue} size={14} />
+          <Loop color={colorPalette.colors.spBlue} size={16} />
         </SourceContent>
       ) : (
         ''
@@ -187,14 +185,10 @@ export function Post(props: PostProps & { className?: string }) {
       {!slimView && <Divider />}
 
       {slimView ? (
-        <SlimFooter
-          onSave={handleSaveToCollection} 
-          onShare={onShare}
-          id={id}
-        />
+        <SlimFooter onSave={handleSaveToCollection} onShare={onShare} id={id} />
       ) : (
         <Footer
-          onSave={handleSaveToCollection} 
+          onSave={handleSaveToCollection}
           onShare={onShare}
           id={id}
           onMore={isRawPost ? undefined : onMore}
