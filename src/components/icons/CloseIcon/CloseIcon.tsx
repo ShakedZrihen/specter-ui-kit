@@ -15,8 +15,8 @@ export function CloseIcon(props: IconProps) {
         className={className}
       >
         <path
-          fill-rule='evenodd'
-          clip-rule='evenodd'
+          fillRule='evenodd'
+          clipRule='evenodd'
           d='M19.8 9L15 13.8L10.2 9L9.15 10.05L13.95 15L9 19.95L10.05 21L15 16.05L19.95 21L21 19.95L16.05 15L20.85 10.05L19.8 9Z'
           fill={color}
         />

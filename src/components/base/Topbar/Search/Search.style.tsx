@@ -4,7 +4,7 @@ export const StyledSearch = styled('div')`
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  padding: 0.5rem 0.8rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 50px;
   background-color: ${({ theme }) =>
     alpha(theme.colorPalette.colors.spWhite, 0.15)};
@@ -14,7 +14,7 @@ export const StyledSearch = styled('div')`
   }
   margin-left: 0;
   width: 20rem;
-  height: 1rem;
+  height: 0.75rem;
 `;
 
 export const SearchIconWrapper = styled('div')`
@@ -24,9 +24,15 @@ export const SearchIconWrapper = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  & .MuiSvgIcon-root {
+    width: 1rem;
+    height: 1rem;
+  }
 `;
 
 export const StyledInputBase = styled(InputBase)`
   color: inherit;
   width: 100%;
+  font-size: 1rem;
 `;

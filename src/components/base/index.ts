@@ -14,3 +14,4 @@ export { Dropzone } from './Dropzone';
 export { AutoComplete } from './AutoComplete';
 export { CreationTimeFilter } from './FiltersSection';
 export { CollectionModal } from './CollectionModal';
+export { MinimizedToast } from './MinimizedToast';

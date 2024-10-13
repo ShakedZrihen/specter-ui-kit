@@ -25,6 +25,12 @@ declare module '@mui/material/styles' {
       highlight: string;
       icon: string;
     };
+    notifilcation: {
+      navyBlue: string;
+    };
+    refresh: {
+      color: string;
+    };
     colors: {
       primary: string;
       secondary: string;
@@ -37,6 +43,7 @@ declare module '@mui/material/styles' {
       spLightGray_50: string;
       spLightGray_40: string;
       spBlue_20: string;
+      lightBlue: string;
     };
     filters: {
       headers: {

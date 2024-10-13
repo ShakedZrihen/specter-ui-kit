@@ -231,7 +231,7 @@ export function CollectionModal({
               },
             }}
           >
-            אישור
+       שמירה לאוסף זה
           </Button>
         </ActionsContainer>
       </ModalViewContainer>

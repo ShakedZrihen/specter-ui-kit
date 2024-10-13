@@ -1,4 +1,4 @@
-import { Divider, Link } from '@mui/material';
+import { Divider, Link, Typography } from '@mui/material';
 import {
   FiltersHeader,
   StyledFiltersMenu,
@@ -10,9 +10,10 @@ import {
   FiltersMenuContainer,
   FiltersActionContainer,
   StyledTypography,
+  Circle,
 } from './FiltersMenu.style';
 import { useState } from 'react';
-import { CloseIcon, FilterIcon } from '../../icons';
+import { CloseIcon, FilterIcon, ChevronLeftIcon } from '../../icons';
 import { colorPalette } from '../../../context/theme/lightMode';
 import {
   FilterDefinition,
@@ -85,12 +86,23 @@ export function FiltersMenu({
     }
   };
 
+  const propertyCount = Object.entries(selectedFilters).reduce((count, [section, filters]) => {
+    return count + Object.keys(filters).length;
+  }, 0);
+
   return (
     <>
       <StyledFiltersMenu className={className}>
         <FiltersControllerButton onClick={() => toggleDrawer(true)}>
           <FilterIcon color={colorPalette.common.icon} size={18} />
           <Title>{t('filters')}</Title>
+          {propertyCount ? (
+            <Circle>
+              <Typography>{propertyCount}</Typography>
+            </Circle>
+          ) : (
+            <ChevronLeftIcon color={colorPalette.common.icon} />
+          )}
         </FiltersControllerButton>
         <StyledDrawer
           variant={variant}

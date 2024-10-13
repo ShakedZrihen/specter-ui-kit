@@ -31,9 +31,10 @@ export const TimeFilter = ({
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <StyledDesktopDateTimePicker
             value={value ? dayjs(value) : null}
-            onChange={date => {
+            onAccept={date => {
               onChange(date ? new Date(date.toString()).toISOString() : null);
             }}
+            format='DD/MM/YYYY hh:mm A'
             defaultValue={defaultValue ? dayjs(defaultValue) : null}
             slots={{
               openPickerIcon: () => (

@@ -1,8 +1,9 @@
-import { Divider, Typography } from '@mui/material';
+import { Divider, Typography, CircularProgress } from '@mui/material';
 import {
   ExtraInfoContainer,
   SinglePostContentContainer,
   SinglePostLeftSideContainer,
+  SinglePostLoadingIndiactorContainer,
   SinglePostMetadataContainer,
   SinglePostViewActionsContainer,
   SinglePostViewContainer,
@@ -19,20 +20,26 @@ export interface SinglePostViewProps {
   post: IPost & { isSlimView?: boolean; highlightedText?: string[] };
   isOpen: boolean;
   onClose?: () => void;
+  isLoading?: boolean;
 }
-
-/**
- * TODO: document component functionality
- *
- * [Figma](https://https://www.figma.com/file/...)
- *
- * ```tsx
- * <SinglePostView />
- * ```
- */
-export function SinglePostView({ post, isOpen, onClose }: SinglePostViewProps) {
+export function SinglePostView({
+  post,
+  isOpen,
+  onClose,
+  isLoading,
+}: SinglePostViewProps) {
   const { enrichments } = post;
   const { t } = useTranslation();
+
+  if (isLoading) {
+    return (
+      <SinglePostViewContainer>
+        <SinglePostLoadingIndiactorContainer>
+          <CircularProgress />
+        </SinglePostLoadingIndiactorContainer>
+      </SinglePostViewContainer>
+    );
+  }
 
   return (
     <StyledSinglePostView open={isOpen}>

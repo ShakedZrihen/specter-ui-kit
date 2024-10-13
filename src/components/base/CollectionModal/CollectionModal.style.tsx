@@ -60,10 +60,9 @@ export const ModalViewContainer = styled('div')`
     outline: none;
   }
 `;
-
 export const ExtraInfoContainer = styled('div')`
-  display: grid;
-  display: flex;
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); /* Ensure three items per row */
   gap: 15px; 
   padding: 1rem;
   max-height: 60vh;
@@ -76,7 +75,6 @@ export const CollectionItem = styled('div')<{ isSelected: boolean }>`
   flex-direction: row;
   align-items: center;
   height: 48px;
-  width: 30%;
   border: none; 
   border-radius: 8px;
   cursor: pointer;
@@ -84,7 +82,7 @@ export const CollectionItem = styled('div')<{ isSelected: boolean }>`
   padding: 10px; 
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background-color: ${({ isSelected }) => (isSelected ? '#e3f2fd' : '#fff')}; 
-  
+
   &:active {
     background-color: #d0d0d0;
   }

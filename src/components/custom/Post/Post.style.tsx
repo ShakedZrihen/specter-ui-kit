@@ -7,12 +7,6 @@ export const StyledPost = styled(Card)<{ isRawPost: boolean }>`
   flex-direction: column;
   direction: rtl;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
-
-  ${({ isRawPost }) =>
-    isRawPost &&
-    `
-  border: 1px solid #e8bcbf;
-  `}
 `;
 
 export const PostHeader = styled('div')`
@@ -33,6 +27,12 @@ export const PostHeaderContent = styled(Typography)`
   flex-direction: column;
   direction: rtl;
   flex-grow: 1;
+`;
+
+export const DetailesRow = styled('div')`
+  display: flex;
+  flex-direction: row;
+  direction: rtl;
 `;
 
 export const PostDatetime = styled(Typography)`
@@ -100,15 +100,37 @@ export const PostSlimFooter = styled('div')`
 export const ActionButton = styled('div')`
   display: flex;
   align-items: center;
-  height: 100%;
+  height: 1.875rem;
   color: ${({ theme }) => theme.colorPalette.text.primary};
+  padding: 0.375rem 1.125rem;
+
   p {
     margin-right: 0.5rem;
   }
 
   :hover {
     cursor: pointer;
-    color: ${({ theme }) => lighten(theme.colorPalette.text.primary, 0.6)};
+    background-color: ${({ theme }) => theme.colorPalette.colors.lightBlue};
+    opacity: 0.85;
+    border-radius: 2rem;
+    justify-content: center;
+  }
+`;
+
+export const ShareButton = styled('div')<{ disable: boolean }>`
+  display: flex;
+  align-items: center;
+  height: 100%;
+  p {
+    margin-right: 0.5rem;
+  }
+  color: ${({ disable, theme }) =>
+    disable
+      ? lighten(theme.colorPalette.text.primary, 0.6)
+      : theme.colorPalette.text.primary};
+
+  :hover {
+    cursor: pointer;
   }
 `;
 
@@ -134,15 +156,18 @@ export const SourceContent = styled('button')<{ direction: string }>`
   font-size: 1.125rem;
   line-height: 1.75rem;
   padding-left: 1rem;
-  padding-right: 1rem;
-  margin: 1.5rem 0.5rem;
-  direction: ${({ direction }) => direction};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 15rem;
+  direction: ltr;
 `;
 
 export const LinkSite = styled(Link)`
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
-width: 15rem;
-direction: ltr;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 9rem;
+  direction: ltr;
+  text-align: center;
 `;

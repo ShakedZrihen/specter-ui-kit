@@ -19,6 +19,7 @@ import {
   ChannelName,
   SourceContent,
   LinkSite,
+  DetailesRow,
 } from './Post.style';
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
@@ -30,6 +31,7 @@ import { LoopIcon } from '../../icons';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { colorPalette } from '../../../context/theme/lightMode';
+
 export interface PostProps extends IPost {
   slimView?: boolean;
   highlightedText?: string[];
@@ -71,6 +73,7 @@ export function Post(props: PostProps & { className?: string }) {
     { id: 1, name: 'Collection 1', private: true, lastUpdate: new Date() },
     { id: 2, name: 'Collection 2', private: false, lastUpdate: new Date() },
     { id: 3, name: 'Collection 3', private: true, lastUpdate: new Date() },
+    { id: 4, name: 'Collection 4', private: true, lastUpdate: new Date() },
   ];
 
 
@@ -104,30 +107,32 @@ export function Post(props: PostProps & { className?: string }) {
         <PostAvatar alt={author.name} src={author.avatar} />
         <PostHeaderContent>
           <PostAuthor>{author.name}</PostAuthor>
-          <PostDatetime>
-            {time} • {date}
-          </PostDatetime>
-          <PostSource>
-            <LinkSite href={source.url} target='_blank'>
-              {cleanProtocol(source.url)}
-            </LinkSite>
-            {source.channelName ? (
-              <>
-                •
-                <Link href={source.channelUrl} target='_blank'>
-                  <ChannelName
-                    direction={getTextDirection(franc(source.channelName))}
-                  >
-                    {source.channelName}
-                  </ChannelName>
-                </Link>
-              </>
-            ) : null}
-            •{' '}
-            <Typography style={{ paddingRight: '0.2rem' }}>
-              {source.sourceName}
-            </Typography>
-          </PostSource>
+          <DetailesRow>
+            <PostDatetime>
+              {time} • {date} •
+            </PostDatetime>
+            <PostSource>
+              <LinkSite href={source.url} target='_blank'>
+                {cleanProtocol(source.url)}
+              </LinkSite>
+              {source.channelName ? (
+                <>
+                  •
+                  <Link href={source.channelUrl} target='_blank'>
+                    <ChannelName
+                      direction={getTextDirection(franc(source.channelName))}
+                    >
+                      {source.channelName}
+                    </ChannelName>
+                  </Link>
+                </>
+              ) : null}
+              •{' '}
+              <Typography style={{ paddingRight: '0.2rem' }}>
+                {source.sourceName}
+              </Typography>
+            </PostSource>
+          </DetailesRow>
         </PostHeaderContent>
         {!slimView && (
           <PostReadIndicator>
@@ -171,10 +176,10 @@ export function Post(props: PostProps & { className?: string }) {
           direction={i18n.resolvedLanguage === 'en' ? 'ltr' : 'rtl'}
           onClick={() => setIsTranslated(prev => !prev)}
         >
-          <LoopIcon color={colorPalette.colors.spBlue} size={14} />
           <Typography>
             {isTranslated ? t('sourceLanguage') : t('displayTranslate')}
           </Typography>
+          <LoopIcon color={colorPalette.colors.spBlue} size={14} />
         </SourceContent>
       ) : (
         ''

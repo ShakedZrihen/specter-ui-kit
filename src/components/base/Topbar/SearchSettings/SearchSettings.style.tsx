@@ -3,7 +3,7 @@ import { styled, Typography } from '@mui/material';
 export const StyledSearchSettings = styled('div')<{
   searchSettingsStyleOverrides?: string;
 }>`
-  height: 2.8rem;
+  height: 2.1rem;
   padding-right: 1rem;
   background-color: ${({ theme }) => theme.colorPalette.header.background};
   ${({ searchSettingsStyleOverrides }) => searchSettingsStyleOverrides ?? ''}
