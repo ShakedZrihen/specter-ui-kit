@@ -27,6 +27,7 @@ import { CloseIcon } from '../../icons';
 export interface ColletionModalProps {
   isOpen: boolean;
   onClose?: () => void;
+  postId?: string;
   collections: {
     id: number | string;
     name: string;
@@ -53,6 +54,7 @@ export function CollectionModal({
   collections,
   isOpen,
   onClose,
+  postId,
 }: ColletionModalProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCollections, setSelectedCollections] = useState<
@@ -64,19 +66,21 @@ export function CollectionModal({
     setActiveTab(newValue);
   };
 
-  // Calculate the count for each type of collection
   const allCollectionsCount = collections.length;
-  const privateCollectionsCount = collections.filter(collection => collection.private).length;
-  const publicCollectionsCount = collections.filter(collection => !collection.private).length;
+  const privateCollectionsCount = collections.filter(
+    collection => collection.private,
+  ).length;
+  const publicCollectionsCount = collections.filter(
+    collection => !collection.private,
+  ).length;
 
-  // Filter collections based on the search term and active tab
   const filteredCollections = collections.filter(collection => {
     const matchesSearchTerm = collection.name
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
     if (activeTab === 2) return matchesSearchTerm && collection.private;
-    if (activeTab === 1) return matchesSearchTerm && !collection.private; 
-    return matchesSearchTerm; // All collections
+    if (activeTab === 1) return matchesSearchTerm && !collection.private;
+    return matchesSearchTerm;
   });
 
   const handleConfirm = () => {
@@ -88,19 +92,18 @@ export function CollectionModal({
   return (
     <StyledColletionModal open={isOpen} onClose={onClose}>
       <ModalViewContainer>
-      <IconButton
-  aria-label='close'
-  onClick={onClose} 
-  sx={{
-    position: 'absolute',
-    top: 8,
-    left: 8,
-    color: colorPalette.text.secondary,
-  }}
->
-  <CloseIcon color='black' />
-</IconButton>
-
+        <IconButton
+          aria-label='close'
+          onClick={onClose}
+          sx={{
+            position: 'absolute',
+            top: 8,
+            left: 8,
+            color: colorPalette.text.secondary,
+          }}
+        >
+          <CloseIcon color='black' />
+        </IconButton>
 
         <SingleContainerMetadataContainer>
           <Typography
@@ -144,7 +147,7 @@ export function CollectionModal({
           </SearchContainer>
 
           <Tabs
-          variant='fullWidth'
+            variant='fullWidth'
             value={activeTab}
             onChange={handleTabChange}
             textColor='primary'
@@ -152,12 +155,12 @@ export function CollectionModal({
             aria-label='collection type tabs'
             sx={{
               marginBottom: '16px',
-              justifyContent: 'space-between', 
-              direction: 'rtl', 
+              justifyContent: 'space-between',
+              direction: 'rtl',
               display: 'flex',
               '& .MuiTab-root': {
-                fontWeight:'bold',
-                fontSize:'17px', 
+                fontWeight: 'bold',
+                fontSize: '17px',
               },
             }}
           >
@@ -167,50 +170,53 @@ export function CollectionModal({
           </Tabs>
 
           <ExtraInfoContainer>
-  {filteredCollections.map(collection => (
-    <CollectionItem
-      key={collection.id}
-      onClick={() =>
-        handleCollectionClick(
-          collection.id,
-          selectedCollections,
-          setSelectedCollections,
-        )
-      }
-      isSelected={selectedCollections.includes(collection.id)}
-    >
-      <div className='collection-text'>
-        <Typography
-          style={{
-            fontSize: '14px',
-            fontWeight: 600,
-            lineHeight: '18px',
-            textAlign: 'center',
-            padding: '6px',
-          }}
-        >
-          {collection.name}
-        </Typography>
-        <div>
-          <Typography
-            style={{
-              fontSize: '16px',
-              fontWeight: 600,
-              lineHeight: '18px',
-              textAlign: 'center',
-              color: '#6E747F',
-            }}
-          >
-            {collection.lastUpdate.toLocaleDateString('he-IL')}
-          </Typography>
-        </div>
-      </div>
-      
-      {collection.private ? <PrivateCollectionIcon /> : <CollectionIcon />}
-    </CollectionItem>
-  ))}
-</ExtraInfoContainer>
+            {filteredCollections.map(collection => (
+              <CollectionItem
+                key={collection.id}
+                onClick={() =>
+                  handleCollectionClick(
+                    collection.id,
+                    selectedCollections,
+                    setSelectedCollections,
+                  )
+                }
+                isSelected={selectedCollections.includes(collection.id)}
+              >
+                <div className='collection-text'>
+                  <Typography
+                    style={{
+                      fontSize: '14px',
+                      fontWeight: 600,
+                      lineHeight: '18px',
+                      textAlign: 'center',
+                      padding: '6px',
+                    }}
+                  >
+                    {collection.name}
+                  </Typography>
+                  <div>
+                    <Typography
+                      style={{
+                        fontSize: '16px',
+                        fontWeight: 600,
+                        lineHeight: '18px',
+                        textAlign: 'center',
+                        color: '#6E747F',
+                      }}
+                    >
+                      {collection.lastUpdate.toLocaleDateString('he-IL')}
+                    </Typography>
+                  </div>
+                </div>
 
+                {collection.private ? (
+                  <PrivateCollectionIcon />
+                ) : (
+                  <CollectionIcon />
+                )}
+              </CollectionItem>
+            ))}
+          </ExtraInfoContainer>
         </SingleContainerMetadataContainer>
 
         <ActionsContainer>
@@ -221,7 +227,8 @@ export function CollectionModal({
           >
             ביטול
           </Button>
-          <Button onClick={handleConfirm}
+          <Button
+            onClick={handleConfirm}
             sx={{
               borderRadius: '20px',
               backgroundColor: '#2860A8',
@@ -231,7 +238,7 @@ export function CollectionModal({
               },
             }}
           >
-       שמירה לאוסף זה
+            שמירה לאוסף זה
           </Button>
         </ActionsContainer>
       </ModalViewContainer>

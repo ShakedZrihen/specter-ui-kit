@@ -69,23 +69,13 @@ export function Post(props: PostProps & { className?: string }) {
 
 
   const [isCollectionModalOpen, setIsCollectionModalOpen] = useState(false);
-  const collections = [
-    { id: 1, name: 'Collection 1', private: true, lastUpdate: new Date() },
-    { id: 2, name: 'Collection 2', private: false, lastUpdate: new Date() },
-    { id: 3, name: 'Collection 3', private: true, lastUpdate: new Date() },
-    { id: 4, name: 'Collection 4', private: true, lastUpdate: new Date() },
-  ];
 
 
   const handleSaveToCollection = (id: string | number) => {
     setIsCollectionModalOpen(true);  
   };
 
-  // Close modal handler
-  const handleCloseModal = () => {
-    setIsCollectionModalOpen(false);
-  };
-
+  
   const [content, setContent] = useState<string | undefined>(selected || original);
 
   const [isTranslated, setIsTranslated] = useState<boolean>(
@@ -200,12 +190,6 @@ export function Post(props: PostProps & { className?: string }) {
           onMore={isRawPost ? undefined : onMore}
         />
       )}
-
-      <CollectionModal
-        isOpen={isCollectionModalOpen}
-        onClose={handleCloseModal}
-        collections={collections}
-      />
     </StyledPost>
   );
 }
