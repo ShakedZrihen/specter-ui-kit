@@ -31,6 +31,7 @@ import { LoopIcon } from '../../icons';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { colorPalette } from '../../../context/theme/lightMode';
+
 export interface PostProps extends IPost {
   slimView?: boolean;
   highlightedText?: string[];
@@ -167,12 +168,7 @@ export function Post(props: PostProps & { className?: string }) {
       {slimView ? (
         <SlimFooter onSave={onSave} onShare={onShare} id={id} />
       ) : (
-        <Footer
-          onSave={onSave}
-          onShare={onShare}
-          id={id}
-          onMore={onMore}
-        />
+        <Footer onSave={onSave} onShare={onShare} id={id} onMore={onMore} />
       )}
     </StyledPost>
   );
