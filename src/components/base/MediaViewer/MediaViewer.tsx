@@ -7,8 +7,21 @@ import {
   PhotoContainer,
   StyledVideo,
   StyledImage,
+  ButtonContainer,
+  ActionButton,
+  Divider,
+  SimiliarButton,
 } from './MediaViewer.style';
 import { Button, Typography } from '@mui/material';
+import {
+  ZoomInIcon,
+  ExpandIcon,
+  ZoomOutIcon,
+  SimiliarPostsIcon,
+  CloseCircleIcon,
+  RotateIcon
+} from '../../icons';
+import { colorPalette } from '../../../context/theme/lightMode';
 
 export interface MediaItem {
   original: string;
@@ -33,6 +46,9 @@ export function MediaViewer({
 }: MediaViewerProps) {
   const [isSinglePostOpen, setLocalIsSinglePostOpen] =
     useState<boolean>(isSinglePostOpenProp);
+  const [zoomScale, setZoomScale] = useState<number>(1);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [rotate, setRotate] = useState<number>(0);
 
   useEffect(() => {
     setLocalIsSinglePostOpen(isSinglePostOpenProp);
@@ -48,20 +64,90 @@ export function MediaViewer({
     if (setIsSinglePostOpen) setIsSinglePostOpen(true);
   };
 
-  const renderMedia = (item: {
-    original: string;
-    description?: string;
-    type?: 'image' | 'video';
-  }) => {
-    if (item.type === 'video') {
-      return <StyledVideo key={item.original} controls src={item.original} />;
-    }
+  const handleZoomIn = () => {
+    setZoomScale(prevScale =>
+      Math.min(Math.round((prevScale + 0.1) * 10) / 10, 2),
+    );
+  };
+
+  const handleZoomOut = () => {
+    setZoomScale(prevScale =>
+      Math.max(Math.round((prevScale - 0.1) * 10) / 10, 0.5),
+    );
+  };
+
+  const handleExpandClick = () => {
+    setIsExpanded(prev => !prev);
+  };
+
+  const handleRotate = () => {
+    setRotate(prev => {
+      const result = prev + 90;
+      if(result === 360) return 0;
+      return result;
+    })
+  }
+
+  const renderMedia = (item: MediaItem) => {
     return (
-      <StyledImage
-        key={item.original}
-        src={item.original}
-        alt={item.description || 'Media'}
-      />
+      <PhotoContainer key={item.original}>
+        {item.type === 'video' ? (
+          <StyledVideo controls src={item.original} />
+        ) : (
+          <StyledImage
+            src={item.original}
+            alt={item.description || 'Media'}
+            scale={zoomScale}
+            isExpanded={isExpanded}
+            rotate={rotate}
+          />
+        )}
+        <SimiliarButton>
+          <SimiliarPostsIcon color={colorPalette.colors.spBlack} />
+        </SimiliarButton>
+        <ButtonContainer>
+          {isExpanded ? (
+            <ActionButton onClick={handleExpandClick}>
+            <CloseCircleIcon
+              color={colorPalette.colors.spBlack} size={18}
+            />
+          </ActionButton>
+          ) : 
+          (
+            <ActionButton onClick={handleExpandClick}>
+            <ExpandIcon
+              color={colorPalette.colors.spBlack} size={18}
+            />
+          </ActionButton>
+          )}
+          <Divider isExpanded={isExpanded} />
+          <ActionButton onClick={handleZoomIn}>
+            <ZoomInIcon
+              color={
+                zoomScale > 1
+                  ? colorPalette.link.color
+                  : colorPalette.colors.spBlack
+              }
+              size={18}
+            />
+          </ActionButton>
+          <ActionButton onClick={handleZoomOut}>
+            <ZoomOutIcon
+              color={
+                zoomScale < 1
+                  ? colorPalette.link.color
+                  : colorPalette.colors.spBlack
+              }
+              size={18}
+            />
+          </ActionButton>
+          {isExpanded ? (
+            <ActionButton onClick={handleRotate}>
+              <RotateIcon color={rotate > 0 ? colorPalette.link.color: colorPalette.colors.spBlack} size={18} />
+            </ActionButton>
+            ) : null}
+        </ButtonContainer>
+      </PhotoContainer>
     );
   };
   return (

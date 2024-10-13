@@ -52,9 +52,10 @@ export const TwoMediaWrapper = styled('div')({
 
 export const PhotoContainer = styled('div')(() => ({
   position: 'relative',
+  overflow: 'hidden',
   width: '100%',
   height: '400px',
-  maxHeight: '500px',
+  maxHeight: '380px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -66,6 +67,72 @@ export const PhotoContainer = styled('div')(() => ({
   },
 }));
 
-export const StyledImage = styled('img')`
-  max-height: 25rem;
+export const StyledImage = styled('img')<{
+  scale: number;
+  isExpanded: boolean;
+  rotate: number;
+}>`
+  max-height: ${({ isExpanded }) => (isExpanded ? '100%' : '25rem')};
+  max-width: ${({ isExpanded }) => (isExpanded ? '100%' : 'auto')};
+  transition:
+  transform 0.3s,
+  max-height 0.3s,
+  max-width 0.3s;
+  transform: ${({ scale, isExpanded }) =>
+    isExpanded ? 'none' : `scale(${scale})`};
+  object-fit: ${({ isExpanded }) => (isExpanded ? 'contain' : 'cover')};
+  transform: ${({ rotate }) => `rotate(${rotate}deg)`};
 `;
+
+export const ButtonContainer = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  top: '0.6rem',
+  right: '0.6rem',
+  display: 'flex',
+  flexDirection: 'row',
+  background: theme.colorPalette.common.white,
+  justifyContent: 'normal',
+  boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.12)',
+  padding: '0.25rem',
+  borderRadius: '1.2rem',
+  gap: '0.2rem',
+}));
+
+export const ActionButton = styled('button')(() => ({
+  backgroundColor: 'transparent',
+  border: 'none',
+  padding: '0.5rem',
+  margin: '0',
+  gap: '0',
+  cursor: 'pointer',
+  height: '2rem',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+export const Divider = styled('div')<{ isExpanded: boolean; }>`
+  border: 1px solid #CED0D4;
+  width: 1.2rem;
+  height: 0px;
+  gap: 0px;
+  transform: rotate(-90deg);
+  transition: opacity 0.3s ease-in-out;
+  position: absolute;
+  left: ${({ isExpanded }) => (isExpanded ? "70%" : "60%")};
+  top: 50%;
+`;
+
+
+export const SimiliarButton = styled('button')(({ theme }) => ({
+  position: 'absolute',
+  top: '0.6rem',
+  left: '0.6rem',
+  background: theme.colorPalette.common.white,
+  boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.12)',
+  borderRadius: '9999px',
+  border: 'none',
+  gap: '1rem',
+  padding: '0.5rem',
+  cursor: 'pointer',
+}));

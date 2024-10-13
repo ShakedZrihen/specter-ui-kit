@@ -145,7 +145,11 @@ export function Post(props: PostProps & { className?: string }) {
         ''
       )}
       {slimView ? (
-        <MediaCarousel items={mediaItems} isSinglePostOpen={slimView} />
+        <MediaViewer
+          items={mediaItems}
+          isSinglePostOpen={slimView}
+          onViewMore={onMore}
+        />
       ) : (
         <MediaViewer
           items={mediaItems}
