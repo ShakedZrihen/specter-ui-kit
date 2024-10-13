@@ -33,11 +33,13 @@ export function SinglePostView({
 
   if (isLoading) {
     return (
-      <SinglePostViewContainer>
-        <SinglePostLoadingIndiactorContainer>
-          <CircularProgress />
-        </SinglePostLoadingIndiactorContainer>
-      </SinglePostViewContainer>
+      <StyledSinglePostView open={isOpen}>
+        <SinglePostViewContainer>
+          <SinglePostLoadingIndiactorContainer>
+            <CircularProgress />
+          </SinglePostLoadingIndiactorContainer>
+        </SinglePostViewContainer>
+      </StyledSinglePostView>
     );
   }
 
