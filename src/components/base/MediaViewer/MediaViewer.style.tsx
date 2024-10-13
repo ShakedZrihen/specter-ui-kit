@@ -78,10 +78,13 @@ export const StyledImage = styled('img')<{
   transform 0.3s,
   max-height 0.3s,
   max-width 0.3s;
-  transform: ${({ scale, isExpanded }) =>
-    isExpanded ? 'none' : `scale(${scale})`};
+ transform: ${({ scale, isExpanded, rotate }) => {
+    if (isExpanded) {
+      return rotate ? `rotate(${rotate}deg)` : 'none';
+    } 
+    return rotate ? `rotate(${rotate}deg) scale(${scale})` : `scale(${scale})`;
+  }};
   object-fit: ${({ isExpanded }) => (isExpanded ? 'contain' : 'cover')};
-  transform: ${({ rotate }) => `rotate(${rotate}deg)`};
 `;
 
 export const ButtonContainer = styled('div')(({ theme }) => ({
@@ -93,7 +96,6 @@ export const ButtonContainer = styled('div')(({ theme }) => ({
   background: theme.colorPalette.common.white,
   justifyContent: 'normal',
   boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.12)',
-  padding: '0.25rem',
   borderRadius: '1.2rem',
   gap: '0.2rem',
 }));
@@ -111,18 +113,17 @@ export const ActionButton = styled('button')(() => ({
   justifyContent: 'center',
 }));
 
-export const Divider = styled('div')<{ isExpanded: boolean; }>`
-  border: 1px solid #CED0D4;
+export const Divider = styled('div')<{ isExpanded: boolean }>`
+  border: 1px solid #ced0d4;
   width: 1.2rem;
   height: 0px;
   gap: 0px;
   transform: rotate(-90deg);
   transition: opacity 0.3s ease-in-out;
   position: absolute;
-  left: ${({ isExpanded }) => (isExpanded ? "70%" : "60%")};
+  left: ${({ isExpanded }) => (isExpanded ? '70%' : '60%')};
   top: 50%;
 `;
-
 
 export const SimiliarButton = styled('button')(({ theme }) => ({
   position: 'absolute',

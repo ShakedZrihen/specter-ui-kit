@@ -19,7 +19,7 @@ import {
   ZoomOutIcon,
   SimiliarPostsIcon,
   CloseCircleIcon,
-  RotateIcon
+  RotateIcon,
 } from '../../icons';
 import { colorPalette } from '../../../context/theme/lightMode';
 
@@ -34,6 +34,7 @@ export interface MediaViewerProps {
   items: MediaItem[];
   isSinglePostOpen?: boolean;
   onViewMore?: () => void;
+  onFindSimiliar?: () => void;
   setIsSinglePostOpen?: (isOpen: boolean) => void;
 }
 
@@ -41,6 +42,7 @@ export function MediaViewer({
   items,
   isSinglePostOpen: isSinglePostOpenProp = false,
   onViewMore,
+  onFindSimiliar,
   setIsSinglePostOpen,
   ...props
 }: MediaViewerProps) {
@@ -78,15 +80,19 @@ export function MediaViewer({
 
   const handleExpandClick = () => {
     setIsExpanded(prev => !prev);
+    if(isExpanded) {
+      setRotate(0);
+      setZoomScale(1);
+    }
   };
 
   const handleRotate = () => {
     setRotate(prev => {
       const result = prev + 90;
-      if(result === 360) return 0;
+      if (result === 360) return 0;
       return result;
-    })
-  }
+    });
+  };
 
   const renderMedia = (item: MediaItem) => {
     return (
@@ -102,23 +108,18 @@ export function MediaViewer({
             rotate={rotate}
           />
         )}
-        <SimiliarButton>
-          <SimiliarPostsIcon color={colorPalette.colors.spBlack} />
+        <SimiliarButton onClick={onFindSimiliar}>
+          <SimiliarPostsIcon color={colorPalette.text.secondary} size={16} />
         </SimiliarButton>
         <ButtonContainer>
           {isExpanded ? (
             <ActionButton onClick={handleExpandClick}>
-            <CloseCircleIcon
-              color={colorPalette.colors.spBlack} size={18}
-            />
-          </ActionButton>
-          ) : 
-          (
+              <CloseCircleIcon color={colorPalette.colors.spBlack} size={16} />
+            </ActionButton>
+          ) : (
             <ActionButton onClick={handleExpandClick}>
-            <ExpandIcon
-              color={colorPalette.colors.spBlack} size={18}
-            />
-          </ActionButton>
+              <ExpandIcon color={colorPalette.colors.spBlack} size={16} />
+            </ActionButton>
           )}
           <Divider isExpanded={isExpanded} />
           <ActionButton onClick={handleZoomIn}>
@@ -128,7 +129,7 @@ export function MediaViewer({
                   ? colorPalette.link.color
                   : colorPalette.colors.spBlack
               }
-              size={18}
+              size={16}
             />
           </ActionButton>
           <ActionButton onClick={handleZoomOut}>
@@ -138,14 +139,21 @@ export function MediaViewer({
                   ? colorPalette.link.color
                   : colorPalette.colors.spBlack
               }
-              size={18}
+              size={16}
             />
           </ActionButton>
           {isExpanded ? (
             <ActionButton onClick={handleRotate}>
-              <RotateIcon color={rotate > 0 ? colorPalette.link.color: colorPalette.colors.spBlack} size={18} />
+              <RotateIcon
+                color={
+                  rotate > 0
+                    ? colorPalette.link.color
+                    : colorPalette.colors.spBlack
+                }
+                size={16}
+              />
             </ActionButton>
-            ) : null}
+          ) : null}
         </ButtonContainer>
       </PhotoContainer>
     );
