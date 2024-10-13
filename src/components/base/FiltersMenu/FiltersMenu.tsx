@@ -86,9 +86,12 @@ export function FiltersMenu({
     }
   };
 
-  const propertyCount = Object.entries(selectedFilters).reduce((count, [section, filters]) => {
-    return count + Object.keys(filters).length;
-  }, 0);
+  const propertyCount = Object.entries(selectedFilters).reduce(
+    (count, [section, filters]) => {
+      return count + Object.keys(filters).length;
+    },
+    0,
+  );
 
   return (
     <>
