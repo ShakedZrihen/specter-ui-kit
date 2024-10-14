@@ -12,6 +12,7 @@ export const colorPalette = {
   text: {
     secondary: '#6E747F',
     primary: '#050505',
+    disabled: '#868AA5',
   },
   checkbox: {
     border: '#116DFF',
@@ -27,6 +28,9 @@ export const colorPalette = {
     white: '#FFFFFF',
     highlight: '#FFDF5F',
     icon: '#2860A8',
+  },
+  icon: {
+    color: '#2860A8',
   },
   notifilcation: {
     navyBlue: '#55596F',

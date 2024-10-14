@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-interface Collection {
-  id: number | string;
+export interface Collection {
+  id: string;
   name: string;
   private: boolean;
   lastUpdate: Date;
@@ -10,6 +10,7 @@ interface Collection {
 export interface CollectionModalProps {
   isOpen: boolean;
   onClose?: () => void;
+  onSave?: (collectionIds: string[]) => void;
   postId?: string;
   collections: Collection[];
 }
@@ -23,19 +24,18 @@ export enum Tabs {
 export const useCollectionModal = ({
   collections,
   onClose,
+  onSave,
   ...rest
 }: CollectionModalProps) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCollections, setSelectedCollections] = useState<
-    (number | string)[]
-  >([]);
+  const [selectedCollections, setSelectedCollections] = useState<string[]>([]);
   const [activeTab, setActiveTab] = useState(Tabs.AllCollection);
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
   };
 
-  const handleCollectionClick = (id: number | string) => {
+  const handleCollectionClick = (id: string) => {
     if (selectedCollections.includes(id)) {
       setSelectedCollections(
         selectedCollections.filter(selectedId => selectedId !== id),
@@ -69,8 +69,9 @@ export const useCollectionModal = ({
   });
 
   const handleConfirm = () => {
-    onClose?.();
+    onSave?.(selectedCollections);
     setSelectedCollections([]);
+    onClose?.();
   };
 
   return {

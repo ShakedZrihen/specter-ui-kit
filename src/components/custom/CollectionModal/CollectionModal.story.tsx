@@ -3,7 +3,7 @@ import { CollectionModal } from './CollectionModal';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof CollectionModal> = {
-  title: 'components\base/ColletionModal',
+  title: 'custom/CollectionModal',
   component: CollectionModal,
   argTypes: {},
   args: {

@@ -1,7 +1,6 @@
-import { Modal, styled } from '@mui/material';
-import { DocumetsIcon } from '../../icons';
-import { PersonalCollectionIcon } from '../../icons/PersonalCollectionIcon';
+import { alpha, Modal, styled } from '@mui/material';
 import { Typography } from '@mui/material';
+import { colorPalette } from '../../../context/theme/lightMode';
 
 export const StyledColletionModal = styled(Modal)`
   display: flex;
@@ -23,40 +22,23 @@ export const SearchContainer = styled('div')`
   margin-bottom: 1rem;
 `;
 
-export const CollectionIcon = styled(DocumetsIcon)`
-  font-size: 24px;
-  color: ${({ theme }) => theme.colorPalette.colors.spBlue};
-`;
-
-export const PrivateCollectionIcon = styled(PersonalCollectionIcon)`
-  font-size: 24px;
-`;
-
 export const ActionsContainer = styled('div')`
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid #e0e0e0;
-  background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
-  width: calc(100% - 2rem);
+  padding: 0.6rem 0.5rem 0;
+  gap: 0.5rem;
+  margin-top: auto;
 `;
 
 export const ModalViewContainer = styled('div')`
   display: flex;
   flex-direction: column;
-  height: 60vh; /* Increase height to make room for content */
-  width: 750px;
-  margin: 6vh auto;
+  width: 45rem;
+  min-height: 30rem;
   background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
-  padding: 1.3rem;
-  border-radius: 0.5rem;
+  padding: 1.4rem;
+  border-radius: 1rem;
   overflow: hidden;
-  position: relative;
 
   :focus {
     outline: none;
@@ -67,30 +49,27 @@ export const ExtraInfoContainer = styled('div')`
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Three items per row */
   gap: 15px;
+  direction: rtl;
   padding: 1rem;
-  flex-grow: 1; /* This ensures the list takes the remaining space */
-  max-height: 40vh; /* Limit the height to avoid overflow */
-  overflow-y: auto; /* Enable vertical scrolling */
+  flex-grow: 1;
+  max-height: 15rem;
+  overflow-y: auto;
   overflow-x: hidden;
+  width: -webkit-fill-available;
 `;
 
-export const CollectionItem = styled('div')<{ isSelected: boolean }>`
+export const StyledCollectionItem = styled('div')<{ isSelected: boolean }>`
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 48px;
-  border: none;
-  border-radius: 8px;
+  flex-direction: column;
+  border-radius: 0.8rem;
+  padding: 0.6rem 1rem;
   cursor: pointer;
-  transition:
-    background-color 0.3s ease,
-    border-color 0.01s ease;
-  padding: 10px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
+  box-shadow: ${({ isSelected, theme }) =>
+      isSelected ? `inset 0 0 0 1.5px ${theme.colorPalette.icon.color}, ` : ``}
+    0px 0px 5px ${alpha(colorPalette.colors.spBlack, 0.12)};
   background-color: ${({ isSelected, theme }) =>
     isSelected
-      ? theme.colorPalette.colors.spBlue_20
+      ? theme.colorPalette.colors.lightBlue
       : theme.colorPalette.colors.spWhite};
 
   &:active {
@@ -98,7 +77,7 @@ export const CollectionItem = styled('div')<{ isSelected: boolean }>`
   }
 
   .collection-icon {
-    margin-right: 8px;
+    margin-right: 0.6rem;
   }
 
   .collection-text {
