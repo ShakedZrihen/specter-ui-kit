@@ -32,11 +32,6 @@ const meta: Meta<typeof Post> = {
     highlightedText: ['חמאס'],
     mediaItems: [
       {
-        original:
-          'https://pavise.palantirfoundry.com/foundry-data-proxy/api/web/dataproxy/datasets/ri.foundry.main.dataset.762f2766-ec93-4bbe-8780-95c276436de5/views/master/tw_v-c8b306257f89dca4fdae6a195d460f4e.jpg',
-        type: 'image',
-      },
-      {
         original: 'https://samplelib.com/lib/preview/mp4/sample-5s.mp4',
         type: 'video',
       },
@@ -47,6 +42,7 @@ const meta: Meta<typeof Post> = {
       },
     ],
     onSave: () => alert('saved'),
+    onFindSimiliar: () => alert('found'),
     enrichments: {},
   },
 };

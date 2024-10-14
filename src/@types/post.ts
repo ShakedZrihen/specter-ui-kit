@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface PostMedia {
-  type: 'image' | 'video';
-  url: string;
-  thumbnail: string;
-  extraInfo?: Record<string, string>;
+  original: string;
+  thumbnail?: string;
+  description?: string;
+  type?: 'image' | 'video';
 }
 
 interface IPost {
@@ -19,7 +20,7 @@ interface IPost {
     channelUrl: string;
     sourceName: string;
   };
-  medias?: PostMedia[];
+  mediaItems?: PostMedia[];
   content: {
     original: string | undefined;
     translated?: string;
@@ -29,10 +30,10 @@ interface IPost {
   isRead: boolean;
   isRawPost: boolean;
   enrichments?: {
-    metadata?: Record<string, string>;
-    ai?: Record<string, string>;
-    operationalHistory?: Record<string, string>;
-    relatedEntities?: Record<string, string>;
+    metadata?: Record<string, any>;
+    ai?: Record<string, any>;
+    operationalHistory?: Record<string, any>;
+    relatedEntities?: Record<string, any>;
   };
 }
 

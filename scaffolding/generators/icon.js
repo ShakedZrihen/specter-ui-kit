@@ -22,11 +22,6 @@ export default {
       templateFile: 'scaffolding/templates/Icon/index.ts.hbs',
     },
     {
-      type: 'add',
-      path: 'src/components/icons/{{normalizeIconName iconName}}Icon/{{normalizeIconName iconName}}Icon.test.tsx',
-      templateFile: 'scaffolding/templates/Icon/Icon.test.tsx.hbs',
-    },
-    {
       type: 'append',
       path: 'src/components/icons/index.ts',
       force: true,
