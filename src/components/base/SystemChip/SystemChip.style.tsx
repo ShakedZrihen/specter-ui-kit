@@ -9,7 +9,7 @@ export const StatusChip = styled('button')`
   justify-content: center;
   border-style: none;
   gap: 0.5rem;
-  width: 4rem;
+  min-width: 4rem;
   height: 2rem;
   cursor: pointer;
 `;
@@ -20,7 +20,7 @@ export const InfoChip = styled('button')`
   justify-content: center;
   border-style: none;
   gap: 0.5rem;
-  width: 5rem;
+  min-width: 5rem;
   height: 2rem;
   flex-direction: row;
   border-radius: 0.5rem;
