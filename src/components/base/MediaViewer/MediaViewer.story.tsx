@@ -17,6 +17,7 @@ const meta: Meta<typeof MediaViewer> = {
   component: MediaViewer,
   argTypes: {},
   args: {
+    onFindSimiliar: () => alert('find similiar'),
     items: [
       {
         original: 'https://picsum.photos/id/1018/1000/600/',
@@ -46,11 +47,11 @@ type Story = StoryObj<typeof MediaViewer>;
 
 export const Basic: Story = {
   render(props) {
-    const { items } = props;
+    const { items, onFindSimiliar } = props;
 
     return (
       <SpecterTheme>
-        <MediaViewer items={items} />
+        <MediaViewer items={items} onFindSimiliar={onFindSimiliar} />
       </SpecterTheme>
     );
   },

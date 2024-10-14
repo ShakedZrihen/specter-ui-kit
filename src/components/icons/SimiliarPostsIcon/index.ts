@@ -1,0 +1,1 @@
+export { SimiliarPostsIcon } from './SimiliarPostsIcon';
