@@ -73,14 +73,13 @@ export function Post(props: PostProps & { className?: string }) {
     setIsCollectionModalOpen(true);
   };
 
-  
-  const [content, setContent] = useState<string | undefined>(selected || original);
+  const [content, setContent] = useState<string | undefined>(
+    selected || original,
+  );
   // Close modal handler
   const handleCloseModal = () => {
     setIsCollectionModalOpen(false);
   };
-
-
 
   const [isTranslated, setIsTranslated] = useState<boolean>(
     selected !== original,

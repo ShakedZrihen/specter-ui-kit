@@ -1,15 +1,15 @@
 import { Modal, styled } from '@mui/material';
 import { DocumetsIcon } from '../../icons';
 import { PersonalCollectionIcon } from '../../icons/PersonalCollectionIcon';
-import { Typography} from '@mui/material';
+import { Typography } from '@mui/material';
 
 export const StyledColletionModal = styled(Modal)`
   display: flex;
   justify-content: center;
-  align-items: center; 
-  overflow: auto; 
+  align-items: center;
+  overflow: auto;
   width: 100%;
-  border-radius: 0.8rem ;
+  border-radius: 0.8rem;
 `;
 
 export const SingleContainerMetadataContainer = styled('div')`
@@ -25,29 +25,26 @@ export const SearchContainer = styled('div')`
 
 export const CollectionIcon = styled(DocumetsIcon)`
   font-size: 24px;
-    color: ${({ theme }) => theme.colorPalette.colors.spBlue};
+  color: ${({ theme }) => theme.colorPalette.colors.spBlue};
 `;
-
 
 export const PrivateCollectionIcon = styled(PersonalCollectionIcon)`
   font-size: 24px;
 `;
 
-
-
 export const ActionsContainer = styled('div')`
   display: flex;
-  justify-content: flex-start; 
-  align-items: center; 
+  justify-content: flex-start;
+  align-items: center;
   gap: 10px;
-  position: absolute; 
-  bottom: 1rem; 
+  position: absolute;
+  bottom: 1rem;
   left: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #e0e0e0; 
+  border-top: 1px solid #e0e0e0;
   background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
-  width: calc(100% - 2rem);`;
-
+  width: calc(100% - 2rem);
+`;
 
 export const ModalViewContainer = styled('div')`
   display: flex;
@@ -82,20 +79,23 @@ export const CollectionItem = styled('div')<{ isSelected: boolean }>`
   flex-direction: row;
   align-items: center;
   height: 48px;
-  border: none; 
+  border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.01s ease;
-  padding: 10px; 
+  transition:
+    background-color 0.3s ease,
+    border-color 0.01s ease;
+  padding: 10px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
   background-color: ${({ isSelected, theme }) =>
-    isSelected ? theme.colorPalette.colors.spBlue_20 : theme.colorPalette.colors.spWhite};
+    isSelected
+      ? theme.colorPalette.colors.spBlue_20
+      : theme.colorPalette.colors.spWhite};
 
   &:active {
     background-color: ${({ theme }) => theme.colorPalette.colors.spGray_10};
   }
-
 
   .collection-icon {
     margin-right: 8px;

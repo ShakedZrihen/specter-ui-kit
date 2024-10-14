@@ -1,4 +1,4 @@
-import { Icon, styled } from "@mui/material";
+import { Icon, styled } from '@mui/material';
 
 export const StyledCloseIcon = styled(Icon)`
   color: black;

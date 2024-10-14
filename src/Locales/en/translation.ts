@@ -1,6 +1,6 @@
 export const en = {
   save_button: 'Save',
-  Cancel:'Cancel',
+  Cancel: 'Cancel',
   cancel_button: 'Cancel',
   lineFilters: 'Filters',
   lineByTime: 'By time',

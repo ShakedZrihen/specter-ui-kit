@@ -1,5 +1,3 @@
-
-
 export const he = {
   save_button: 'שמור',
   cancel_button: 'בטל',

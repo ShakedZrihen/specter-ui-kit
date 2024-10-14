@@ -8,15 +8,21 @@ export function PersonalCollectionIcon(props: IconProps) {
     <StyledIcon
       data-testid='specter-personal-collection-icon-icon'
       className={className}
-      style={{ width: size, height: size, color:'white' }}
+      style={{ width: size, height: size, color: 'white' }}
     >
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- viewBox="0 0 614.000000 623.000000"
- preserveAspectRatio="xMidYMid meet">
-
-<g transform="translate(0.000000,623.000000) scale(0.100000,-0.100000)"
- fill={color} stroke="none">
-<path d="M3620 6180 c-588 -43 -1116 -284 -1525 -695 -352 -354 -586 -811
+      <svg
+        version='1.0'
+        xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 614.000000 623.000000'
+        preserveAspectRatio='xMidYMid meet'
+      >
+        <g
+          transform='translate(0.000000,623.000000) scale(0.100000,-0.100000)'
+          fill={color}
+          stroke='none'
+        >
+          <path
+            d='M3620 6180 c-588 -43 -1116 -284 -1525 -695 -352 -354 -586 -811
 -660 -1290 -22 -142 -28 -155 -62 -155 -36 0 -174 -43 -298 -92 -291 -116
 -565 -302 -731 -496 -294 -345 -373 -692 -272 -1202 23 -118 310 -1146 358
 -1285 46 -132 142 -326 218 -440 76 -115 235 -280 331 -345 84 -56 197 -112
@@ -38,12 +44,15 @@ m1635 -80 c136 -91 293 -158 468 -197 115 -27 385 -25 510 3 218 49 414 148
 580 294 l65 57 98 -48 c284 -142 453 -324 472 -507 17 -161 -88 -368 -285
 -563 -275 -272 -630 -437 -1036 -481 -477 -51 -1006 136 -1350 478 -256 254
 -342 499 -245 697 67 135 236 281 440 381 l93 45 59 -55 c33 -31 92 -77 131
--104z"/>
-<path d="M1772 1620 c-194 -82 -369 -159 -388 -170 -43 -27 -82 -93 -90 -151
+-104z'
+          />
+          <path
+            d='M1772 1620 c-194 -82 -369 -159 -388 -170 -43 -27 -82 -93 -90 -151
 -12 -84 30 -170 99 -205 65 -34 99 -25 492 141 328 137 374 160 406 194 94
-104 73 266 -43 327 -64 33 -102 22 -476 -136z"/>
-</g>
-</svg>
+104 73 266 -43 327 -64 33 -102 22 -476 -136z'
+          />
+        </g>
+      </svg>
     </StyledIcon>
   );
 }
