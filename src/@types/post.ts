@@ -29,10 +29,10 @@ interface IPost {
   isRead: boolean;
   isRawPost: boolean;
   enrichments?: {
-    metadata?: Record<string, string>;
-    ai?: Record<string, string>;
-    operationalHistory?: Record<string, string>;
-    relatedEntities?: Record<string, string>;
+    metadata?: Record<string, any>;
+    ai?: Record<string, any>;
+    operationalHistory?: Record<string, any>;
+    relatedEntities?: Record<string, any>;
   };
 }
 

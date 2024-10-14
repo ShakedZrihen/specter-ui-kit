@@ -7,7 +7,7 @@ const meta: Meta<typeof SinglePostView> = {
   component: SinglePostView,
   argTypes: {},
   args: {
-    isLoading: true,
+    isLoading: false,
     isOpen: true,
     post: {
       isRawPost: false,
@@ -32,7 +32,7 @@ const meta: Meta<typeof SinglePostView> = {
       isRead: false,
       enrichments: {
         metadata: {
-          מקור: 'חדשות 12',
+          מקור: <div style={{ color: 'red' }}>חדשות 12</div>,
           זמן: '12:58:01',
           תאריך: '19.8.2024',
         },
