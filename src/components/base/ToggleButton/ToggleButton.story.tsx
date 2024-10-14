@@ -11,7 +11,8 @@ const meta: Meta<typeof ToggleButton> = {
     active:true,
     inactiveLabel: "Off",
     activeLabel: "On",
-    onToggle: (newIsActive) => {console.log({newIsActive})}
+    onToggle: (newIsActive) => {console.log({newIsActive})},
+    isReadOnly: false,
   },
 };
 

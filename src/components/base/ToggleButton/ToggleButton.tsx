@@ -8,6 +8,7 @@ export interface ToggleButtonProps {
   onToggle: (isActive: boolean) => void;
   activeLabel?: string;
   inactiveLabel?: string;
+  isReadOnly?: boolean;
 }
 
 export function ToggleButton({
@@ -15,13 +16,16 @@ export function ToggleButton({
   onToggle,
   activeLabel,
   inactiveLabel,
+  isReadOnly,
 }: ToggleButtonProps) {
   const [isActive, setIsActive] = useState(active);
 
   const handleToggle = () => {
-    const newIsActiveValue = !isActive;
-    setIsActive(newIsActiveValue);
-    onToggle(newIsActiveValue);
+    if (!isReadOnly) {
+      const newIsActiveValue = !isActive;
+      setIsActive(newIsActiveValue);
+      onToggle(newIsActiveValue);
+    }
   };
 
   useEffect(() => {
