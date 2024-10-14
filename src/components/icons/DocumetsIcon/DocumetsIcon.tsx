@@ -2,7 +2,7 @@ import { IconProps } from '../IconProps';
 import { StyledIcon } from '../StyledIcon';
 
 export function DocumetsIcon(props: IconProps) {
-  const { size = 30, color = 'darkblue', className } = props;
+  const { size = 30, color = 'white', className } = props;
 
   return (
     <StyledIcon color={color} data-testid='specter-documets-icon'>
