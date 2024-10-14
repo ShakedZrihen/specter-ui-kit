@@ -47,6 +47,7 @@ const meta: Meta<typeof Post> = {
       },
     ],
     onSave: () => alert('saved'),
+    onFindSimiliar: () => alert('found'),
     enrichments: {},
   },
 };

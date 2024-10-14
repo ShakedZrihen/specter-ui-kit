@@ -80,7 +80,7 @@ export function MediaViewer({
 
   const handleExpandClick = () => {
     setIsExpanded(prev => !prev);
-    if(isExpanded) {
+    if (isExpanded) {
       setRotate(0);
       setZoomScale(1);
     }
@@ -111,7 +111,7 @@ export function MediaViewer({
         <SimiliarButton onClick={onFindSimiliar}>
           <SimiliarPostsIcon color={colorPalette.text.secondary} size={16} />
         </SimiliarButton>
-        <ButtonContainer>
+        <ButtonContainer isExpanded={isExpanded}>
           {isExpanded ? (
             <ActionButton onClick={handleExpandClick}>
               <CloseCircleIcon color={colorPalette.colors.spBlack} size={16} />
