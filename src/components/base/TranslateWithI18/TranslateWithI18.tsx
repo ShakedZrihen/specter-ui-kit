@@ -3,7 +3,7 @@ import { Grid, MenuItem } from '@mui/material';
 import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { StyledGrid, StyledTypography } from './TranslateWithI18.style';
-import { ILanguage } from '../../custom/TranslationButton/TranslationButton';
+import { ILanguage } from '../TranslationButton/TranslationButton';
 export interface TranslateWithI18Props {
   onLanguageChange: (type: 'system' | 'content', language: string) => void;
   supportedLanguages: {

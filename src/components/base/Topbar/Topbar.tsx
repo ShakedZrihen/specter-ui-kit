@@ -9,11 +9,11 @@ import {
   TopbarWithSettingBar,
 } from './Topbar.style';
 import { Search } from './Search/Search';
-import { TranslationButton } from '../../custom/TranslationButton/TranslationButton';
+import { TranslationButton } from '../TranslationButton/TranslationButton';
 import { SearchSettings } from './SearchSettings';
 import { useSearch } from './Search/useSearch';
 import { SearchProps } from './Search/Search.types';
-import { ILanguage } from '../../custom/TranslationButton/TranslationButton';
+import { ILanguage } from '../TranslationButton/TranslationButton';
 interface TranslationProps {
   withTranslationButton?: boolean;
   supportedLanguages?: {

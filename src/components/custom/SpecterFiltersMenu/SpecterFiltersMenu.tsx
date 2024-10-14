@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { FiltersMenu } from '../../base';
+import { FiltersMenu } from '../../custom';
 import { AutoComplete } from '../../base/AutoComplete';
-import { FilterSectionDefinition } from '../../base/FiltersMenu/FiltersMenu';
-import { CreationTimeFilter } from '../../base/FiltersSection/Filters/CreationTimeFilter';
+import { FilterSectionDefinition } from '../FiltersMenu/FiltersMenu';
+import { CreationTimeFilter } from '../FiltersSection/Filters/CreationTimeFilter';
 import { useTranslation } from 'react-i18next';
 
 export function SpecterFiltersMenu() {

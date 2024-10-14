@@ -25,7 +25,7 @@ import {
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
 import { IPost } from '../../../@types/post';
-import { MediaItem, MediaViewer } from '../../base/MediaViewer/MediaViewer';
+import { MediaItem, MediaViewer } from '../MediaViewer/MediaViewer';
 import { TextWithHighlights } from '../../base/TextWithHighlights';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
