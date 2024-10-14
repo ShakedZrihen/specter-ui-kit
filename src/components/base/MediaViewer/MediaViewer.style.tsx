@@ -152,15 +152,16 @@ export const Divider = styled('div')<{ isExpanded: boolean }>`
   top: 50%;
 `;
 
-export const SimiliarButton = styled('button')(({ theme }) => ({
-  position: 'absolute',
-  top: '0.6rem',
-  left: '0.6rem',
-  background: theme.colorPalette.common.white,
-  boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.12)',
-  borderRadius: '9999px',
-  border: 'none',
-  gap: '1rem',
-  padding: '0.5rem',
-  cursor: 'pointer',
-}));
+export const SimiliarButton = styled('button')<{ visibilty: boolean }>`
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  background: ${({ theme }) => theme.colorPalette.common.white};
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 9999px;
+  border: none;
+  gap: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  visibility: ${({ visibilty }) => (visibilty ? 'hidden' : 'visible')};
+`;

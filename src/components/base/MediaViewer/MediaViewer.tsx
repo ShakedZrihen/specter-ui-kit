@@ -108,53 +108,66 @@ export function MediaViewer({
             rotate={rotate}
           />
         )}
-        <SimiliarButton onClick={onFindSimiliar}>
-          <SimiliarPostsIcon color={colorPalette.text.secondary} size={16} />
-        </SimiliarButton>
-        <ButtonContainer isExpanded={isExpanded}>
-          {isExpanded ? (
-            <ActionButton onClick={handleExpandClick}>
-              <CloseCircleIcon color={colorPalette.colors.spBlack} size={16} />
-            </ActionButton>
-          ) : (
-            <ActionButton onClick={handleExpandClick}>
-              <ExpandIcon color={colorPalette.colors.spBlack} size={16} />
-            </ActionButton>
-          )}
-          <Divider isExpanded={isExpanded} />
-          <ActionButton onClick={handleZoomIn}>
-            <ZoomInIcon
-              color={
-                zoomScale > 1
-                  ? colorPalette.link.color
-                  : colorPalette.colors.spBlack
-              }
-              size={16}
-            />
-          </ActionButton>
-          <ActionButton onClick={handleZoomOut}>
-            <ZoomOutIcon
-              color={
-                zoomScale < 1
-                  ? colorPalette.link.color
-                  : colorPalette.colors.spBlack
-              }
-              size={16}
-            />
-          </ActionButton>
-          {isExpanded ? (
-            <ActionButton onClick={handleRotate}>
-              <RotateIcon
-                color={
-                  rotate > 0
-                    ? colorPalette.link.color
-                    : colorPalette.colors.spBlack
-                }
+        {item.type === 'image' && (
+          <>
+            <SimiliarButton
+              onClick={onFindSimiliar}
+              visibilty={!isSinglePostOpen}
+            >
+              <SimiliarPostsIcon
+                color={colorPalette.text.secondary}
                 size={16}
               />
-            </ActionButton>
-          ) : null}
-        </ButtonContainer>
+            </SimiliarButton>
+            <ButtonContainer isExpanded={isExpanded}>
+              {isExpanded ? (
+                <ActionButton onClick={handleExpandClick}>
+                  <CloseCircleIcon
+                    color={colorPalette.colors.spBlack}
+                    size={16}
+                  />
+                </ActionButton>
+              ) : (
+                <ActionButton onClick={handleExpandClick}>
+                  <ExpandIcon color={colorPalette.colors.spBlack} size={16} />
+                </ActionButton>
+              )}
+              <Divider isExpanded={isExpanded} />
+              <ActionButton onClick={handleZoomIn}>
+                <ZoomInIcon
+                  color={
+                    zoomScale > 1
+                      ? colorPalette.link.color
+                      : colorPalette.colors.spBlack
+                  }
+                  size={16}
+                />
+              </ActionButton>
+              <ActionButton onClick={handleZoomOut}>
+                <ZoomOutIcon
+                  color={
+                    zoomScale < 1
+                      ? colorPalette.link.color
+                      : colorPalette.colors.spBlack
+                  }
+                  size={16}
+                />
+              </ActionButton>
+              {isExpanded ? (
+                <ActionButton onClick={handleRotate}>
+                  <RotateIcon
+                    color={
+                      rotate > 0
+                        ? colorPalette.link.color
+                        : colorPalette.colors.spBlack
+                    }
+                    size={16}
+                  />
+                </ActionButton>
+              ) : null}
+            </ButtonContainer>
+          </>
+        )}
       </PhotoContainer>
     );
   };
