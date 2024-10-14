@@ -141,7 +141,7 @@ export const ActionButton = styled('button')(() => ({
 }));
 
 export const Divider = styled('div')<{ isExpanded: boolean }>`
-  border: 1px solid #ced0d4;
+  border: 1px solid ${({ theme }) => theme.colorPalette.divider.color};
   width: 1.2rem;
   height: 0px;
   gap: 0px;
