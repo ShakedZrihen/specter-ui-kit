@@ -108,4 +108,7 @@ export const en = {
   saveToCollectionPopup: 'Save to collection/s',
   share: 'share',
   moreInfo: 'More info',
+  privateCollections:'Private Collections',
+  publicCollections:'Public Collections',
+  allCollections:'All Collections',
 };

@@ -176,9 +176,9 @@ export function CollectionModal({
               },
             }}
           >
-            <Tab label={`כל האוספים (${allCollectionsCount})`} />
-            <Tab label={`אוספים ציבוריים (${publicCollectionsCount})`} />
-            <Tab label={`אוספים אישיים (${privateCollectionsCount})`} />
+          <Tab label={`${t('allCollections')} (${allCollectionsCount})`} />
+          <Tab label={`${t('publicCollections')} (${publicCollectionsCount})`} />
+          <Tab label={`${t('privateCollections')} (${privateCollectionsCount})`} />
           </Tabs>
 
           <ExtraInfoContainer>
