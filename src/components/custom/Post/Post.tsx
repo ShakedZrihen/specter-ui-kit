@@ -25,7 +25,7 @@ import {
 import { Footer, SlimFooter } from './Footer';
 import { getTextDirection } from '../../../utils/textDirection';
 import { IPost } from '../../../@types/post';
-import { MediaViewer } from '../../base/MediaViewer/MediaViewer';
+import { MediaItem, MediaViewer } from '../../base/MediaViewer/MediaViewer';
 import { TextWithHighlights } from '../../base/TextWithHighlights';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
@@ -40,12 +40,7 @@ export interface PostProps extends IPost {
   onSave?: (id: string | number) => void;
   onShare?: (id: string | number) => void;
   onMore?: (id?: string | number) => void;
-  mediaItems?: {
-    original: string;
-    thumbnail?: string;
-    description?: string;
-    type?: 'image' | 'video';
-  }[];
+  mediaItems?: MediaItem[];
 }
 
 export function Post(props: PostProps & { className?: string }) {

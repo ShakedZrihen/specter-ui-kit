@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface PostMedia {
-  type: 'image' | 'video';
-  url: string;
-  thumbnail: string;
-  extraInfo?: Record<string, string>;
+  original: string;
+  thumbnail?: string;
+  description?: string;
+  type?: 'image' | 'video';
 }
 
 interface IPost {
@@ -19,7 +20,7 @@ interface IPost {
     channelUrl: string;
     sourceName: string;
   };
-  medias?: PostMedia[];
+  mediaItems?: PostMedia[];
   content: {
     original: string | undefined;
     translated?: string;
