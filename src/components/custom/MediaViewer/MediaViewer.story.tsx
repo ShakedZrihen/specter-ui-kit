@@ -13,7 +13,7 @@ interface MediaItem {
 }
 
 const meta: Meta<typeof MediaViewer> = {
-  title: 'base/MediaViewer',
+  title: 'custom/MediaViewer',
   component: MediaViewer,
   argTypes: {},
   args: {

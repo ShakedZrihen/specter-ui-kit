@@ -4,7 +4,7 @@ import {
   StyledTranslateIcon,
 } from './TranslationButton.style';
 import Menu from '@mui/material/Menu';
-import { TranslateWithI18 } from '../../base/TranslateWithI18';
+import { TranslateWithI18 } from '../TranslateWithI18';
 
 export interface ILanguage {
   langKey: string;

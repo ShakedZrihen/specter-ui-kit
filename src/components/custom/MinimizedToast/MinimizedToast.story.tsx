@@ -3,7 +3,7 @@ import { MinimizedToast } from './MinimizedToast';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof MinimizedToast> = {
-  title: 'components\base/MinimizedToast',
+  title: 'custom/MinimizedToast',
   component: MinimizedToast,
   argTypes: {},
   args: {

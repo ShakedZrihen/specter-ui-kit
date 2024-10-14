@@ -12,7 +12,7 @@ interface MediaCarouselItem {
 }
 
 const meta: Meta<typeof MediaCarousel> = {
-  title: 'base/MediaCarousel',
+  title: 'custom/MediaCarousel',
   component: MediaCarousel,
   argTypes: {},
   args: {

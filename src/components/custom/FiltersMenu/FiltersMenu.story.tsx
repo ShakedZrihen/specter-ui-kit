@@ -5,7 +5,7 @@ import { FiltersMenu } from './FiltersMenu';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof FiltersMenu> = {
-  title: 'base/FiltersMenu',
+  title: 'custom/FiltersMenu',
   component: FiltersMenu,
   argTypes: {},
   args: {

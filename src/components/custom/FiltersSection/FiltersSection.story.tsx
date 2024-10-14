@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { omit } from 'lodash';
 
 const meta: Meta<typeof FiltersSection> = {
-  title: 'base/FiltersSection',
+  title: 'custom/FiltersSection',
   component: FiltersSection,
   argTypes: {},
   args: {

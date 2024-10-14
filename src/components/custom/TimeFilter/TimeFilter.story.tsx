@@ -3,7 +3,7 @@ import { TimeFilter } from './TimeFilter';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof TimeFilter> = {
-  title: 'base/TimeFilter',
+  title: 'custom/TimeFilter',
   component: TimeFilter,
   argTypes: {},
   args: {
