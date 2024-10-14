@@ -32,7 +32,7 @@ const meta: Meta<typeof SinglePostView> = {
       isRead: false,
       enrichments: {
         metadata: {
-          מקור: <div style={{color: 'red'}}>חדשות 12</div>,
+          מקור: <div style={{ color: 'red' }}>חדשות 12</div>,
           זמן: '12:58:01',
           תאריך: '19.8.2024',
         },
