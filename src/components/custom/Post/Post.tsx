@@ -92,7 +92,7 @@ export function Post(props: PostProps & { className?: string }) {
               {time} • {date} •
             </PostDatetime>
             <PostSource>
-            {source.url ? (
+              {source.url ? (
                 <LinkSite href={source.url} target='_blank'>
                   {cleanProtocol(source.url)}
                 </LinkSite>

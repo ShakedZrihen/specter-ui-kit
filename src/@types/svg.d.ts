@@ -7,7 +7,7 @@ declare module '*.svg' {
 /**
  * Raw images
  */
-declare module '*.svg?skipsvgr' {
-  const SVG: string;
-  export default SVG;
+declare module '*.svg' {
+  const content: unknown;
+  export default content;
 }
