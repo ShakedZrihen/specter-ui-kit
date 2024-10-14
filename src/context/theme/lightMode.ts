@@ -47,6 +47,8 @@ export const colorPalette = {
     spBlue: '#1877F2',
     spBlue_20: '#D6E6FE',
     lightBlue: '#E7F0FF',
+    toggledOnGreen: '#32a828',
+    toggledOffGray: '#878787'
   },
   filters: {
     headers: {

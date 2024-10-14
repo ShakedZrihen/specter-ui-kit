@@ -1,4 +1,5 @@
 import { styled, } from '@mui/material';
+import { colorPalette } from '../../../context/theme/lightMode';
 
 interface StyledToggleButtonProps {
   isActive: boolean;
@@ -36,9 +37,9 @@ export const StyledToggleButton = styled('button')<StyledToggleButtonProps>`
     margin-left: 6px;
     }
   &.active {
-    background: #32a828;
+    background: ${colorPalette.colors.toggledOnGreen};
   }
   &.inactive {
-    background: #878787;
+    background: ${colorPalette.colors.toggledOffGray};
   }
 `;
