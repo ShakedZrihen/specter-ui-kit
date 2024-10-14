@@ -20,86 +20,27 @@ import {
   StyledTypography,
 } from './CollectionModal.style';
 import { colorPalette } from '../../../context/theme/lightMode';
-import { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { CloseIcon } from '../../icons';
 import { t } from 'i18next';
+import { CollectionModalProps, useCollectionModal } from './useCollectionModal';
 
-export interface ColletionModalProps {
-  isOpen: boolean;
-  onClose?: () => void;
-  postId?: string;
-  collections: {
-    id: number | string;
-    name: string;
-    private: boolean;
-    lastUpdate: Date;
-  }[];
-}
-
-enum TabsNames {
-  AllCollection = 0,
-  SharedCollections = 1,
-  UserCollections = 2,
-}
-
-export function CollectionModal({
-  collections,
-  isOpen,
-  onClose,
-  postId,
-}: ColletionModalProps) {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCollections, setSelectedCollections] = useState<
-    (number | string)[]
-  >([]);
-  const [activeTab, setActiveTab] = useState(3);
-
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
-    setActiveTab(newValue);
-  };
-
-  const handleCollectionClick = (
-    id: number | string,
-    selectedCollections: (number | string)[],
-    setSelectedCollections: (ids: (number | string)[]) => void,
-  ) => {
-    if (selectedCollections.includes(id)) {
-      setSelectedCollections(
-        selectedCollections.filter(selectedId => selectedId !== id),
-      );
-    } else {
-      setSelectedCollections([...selectedCollections, id]);
-    }
-  };
-
-  const allCollectionsCount = collections.length;
-  const privateCollectionsCount = collections.filter(
-    collection => collection.private,
-  ).length;
-  const publicCollectionsCount = collections.filter(
-    collection => !collection.private,
-  ).length;
-
-  const filteredCollections = collections.filter(collection => {
-    const matchesSearchTerm = collection.name
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase());
-    if (activeTab === TabsNames.UserCollections) {
-      return matchesSearchTerm && collection.private;
-    }
-    if (activeTab === TabsNames.SharedCollections) {
-      return matchesSearchTerm && !collection.private;
-    }
-    return matchesSearchTerm;
-  });
-
-  const handleConfirm = () => {
-    setSelectedCollections([]);
-    if (onClose) {
-      onClose();
-    }
-  };
+export function CollectionModal(props: CollectionModalProps) {
+  const {
+    isOpen,
+    handleConfirm,
+    searchTerm,
+    setSearchTerm,
+    activeTab,
+    handleTabChange,
+    allCollectionsCount,
+    publicCollectionsCount,
+    privateCollectionsCount,
+    filteredCollections,
+    selectedCollections,
+    handleCollectionClick,
+    onClose,
+  } = useCollectionModal(props);
 
   return (
     <StyledColletionModal open={isOpen} onClose={onClose}>
@@ -176,22 +117,20 @@ export function CollectionModal({
               },
             }}
           >
-          <Tab label={`${t('allCollections')} (${allCollectionsCount})`} />
-          <Tab label={`${t('publicCollections')} (${publicCollectionsCount})`} />
-          <Tab label={`${t('privateCollections')} (${privateCollectionsCount})`} />
+            <Tab label={`${t('allCollections')} (${allCollectionsCount})`} />
+            <Tab
+              label={`${t('publicCollections')} (${publicCollectionsCount})`}
+            />
+            <Tab
+              label={`${t('privateCollections')} (${privateCollectionsCount})`}
+            />
           </Tabs>
 
           <ExtraInfoContainer>
             {filteredCollections.map(collection => (
               <CollectionItem
                 key={collection.id}
-                onClick={() =>
-                  handleCollectionClick(
-                    collection.id,
-                    selectedCollections,
-                    setSelectedCollections,
-                  )
-                }
+                onClick={() => handleCollectionClick(collection.id)}
                 isSelected={selectedCollections.includes(collection.id)}
               >
                 <div className='collection-text'>

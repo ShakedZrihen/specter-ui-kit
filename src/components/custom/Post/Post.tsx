@@ -27,8 +27,7 @@ import { getTextDirection } from '../../../utils/textDirection';
 import { IPost } from '../../../@types/post';
 import { MediaViewer } from '../../base/MediaViewer/MediaViewer';
 import { TextWithHighlights } from '../../base/TextWithHighlights';
-import { CollectionModal, MediaCarousel } from '../../base';
-import { LoopIcon } from '../../icons';
+import { MediaCarousel } from '../../base';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { colorPalette } from '../../../context/theme/lightMode';
@@ -64,22 +63,9 @@ export function Post(props: PostProps & { className?: string }) {
     slimView = false,
     onMore = () => {},
     onShare = () => {},
+    onSave = () => {},
     mediaItems = [],
   } = props;
-
-  const [isCollectionModalOpen, setIsCollectionModalOpen] = useState(false);
-
-  const handleSaveToCollection = (id: string | number) => {
-    setIsCollectionModalOpen(true);
-  };
-
-  const [content, setContent] = useState<string | undefined>(
-    selected || original,
-  );
-  // Close modal handler
-  const handleCloseModal = () => {
-    setIsCollectionModalOpen(false);
-  };
 
   const [isTranslated, setIsTranslated] = useState<boolean>(
     selected !== original,
@@ -92,6 +78,8 @@ export function Post(props: PostProps & { className?: string }) {
   useEffect(() => {
     setIsTranslated(selected !== original);
   }, [selected, original]);
+
+  const content = isTranslated ? selected : original;
 
   return (
     <StyledPost isRawPost={isRawPost} className={className}>
@@ -181,14 +169,9 @@ export function Post(props: PostProps & { className?: string }) {
       {!slimView && <Divider />}
 
       {slimView ? (
-        <SlimFooter onSave={handleSaveToCollection} onShare={onShare} id={id} />
+        <SlimFooter onSave={onSave} onShare={onShare} id={id} />
       ) : (
-        <Footer
-          onSave={handleSaveToCollection}
-          onShare={onShare}
-          id={id}
-          onMore={isRawPost ? undefined : onMore}
-        />
+        <Footer onSave={onSave} onShare={onShare} id={id} onMore={onMore} />
       )}
     </StyledPost>
   );
