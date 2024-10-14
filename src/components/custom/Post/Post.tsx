@@ -27,7 +27,6 @@ import { getTextDirection } from '../../../utils/textDirection';
 import { IPost } from '../../../@types/post';
 import { MediaViewer } from '../../base/MediaViewer/MediaViewer';
 import { TextWithHighlights } from '../../base/TextWithHighlights';
-import { MediaCarousel } from '../../base';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { colorPalette } from '../../../context/theme/lightMode';
@@ -36,6 +35,7 @@ export interface PostProps extends IPost {
   slimView?: boolean;
   highlightedText?: string[];
   onRead?: (id: string | number) => void;
+  onFindSimiliar?: () => void;
   onUnread?: (id: string | number) => void;
   onSave?: (id: string | number) => void;
   onShare?: (id: string | number) => void;
@@ -65,6 +65,7 @@ export function Post(props: PostProps & { className?: string }) {
     onSave = () => {},
     onShare = () => {},
     mediaItems = [],
+    onFindSimiliar = () => {},
   } = props;
 
   const [isTranslated, setIsTranslated] = useState<boolean>(
@@ -145,12 +146,18 @@ export function Post(props: PostProps & { className?: string }) {
         ''
       )}
       {slimView ? (
-        <MediaCarousel items={mediaItems} isSinglePostOpen={slimView} />
+        <MediaViewer
+          items={mediaItems}
+          isSinglePostOpen={slimView}
+          onViewMore={onMore}
+          onFindSimiliar={onFindSimiliar}
+        />
       ) : (
         <MediaViewer
           items={mediaItems}
           isSinglePostOpen={slimView}
           onViewMore={onMore}
+          onFindSimiliar={onFindSimiliar}
         />
       )}
       {original && content && original !== selected ? (

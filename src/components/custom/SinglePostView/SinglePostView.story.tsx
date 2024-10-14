@@ -11,6 +11,12 @@ const meta: Meta<typeof SinglePostView> = {
     isOpen: true,
     post: {
       isRawPost: false,
+      mediaItems: [
+        {
+          original: 'https://images5.alphacoders.com/134/1344515.png',
+          type: 'image',
+        },
+      ],
       id: '1',
       author: {
         name: 'Nablusarlrasas48',

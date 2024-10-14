@@ -52,9 +52,10 @@ export const TwoMediaWrapper = styled('div')({
 
 export const PhotoContainer = styled('div')(() => ({
   position: 'relative',
+  overflow: 'hidden',
   width: '100%',
   height: '400px',
-  maxHeight: '500px',
+  maxHeight: '380px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -66,6 +67,101 @@ export const PhotoContainer = styled('div')(() => ({
   },
 }));
 
-export const StyledImage = styled('img')`
-  max-height: 25rem;
+export const StyledImage = styled('img')<{
+  scale: number;
+  isExpanded: boolean;
+  rotate: number;
+}>`
+  max-height: ${({ isExpanded, rotate }) =>
+    (rotate === 90 || rotate === 270) && isExpanded
+      ? '100vw'
+      : isExpanded
+        ? '100vh'
+        : '25rem'};
+  max-width: ${({ isExpanded, rotate }) =>
+    (rotate === 90 || rotate === 270) && isExpanded
+      ? '100vh'
+      : isExpanded
+        ? '100vw'
+        : 'auto'};
+
+  transition:
+    transform 0.3s,
+    max-height 0.3s,
+    max-width 0.3s,
+    top 0.3s,
+    left 0.3s,
+    right 0.3s,
+    bottom 0.3s;
+
+  position: ${({ isExpanded }) => (isExpanded ? 'fixed' : 'relative')};
+  top: ${({ isExpanded }) => (isExpanded ? '50%' : 'auto')};
+  left: ${({ isExpanded }) => (isExpanded ? '50%' : 'auto')};
+  transform-origin: center;
+
+  /* Center the image only when expanded and rotated */
+  transform: ${({ scale, isExpanded, rotate }) => {
+    if (isExpanded) {
+      return `translate(-50%, -50%) scale(${scale})${rotate ? ` rotate(${rotate}deg)` : ''}`;
+    }
+    return rotate ? `rotate(${rotate}deg) scale(${scale})` : `scale(${scale})`;
+  }};
+
+  z-index: ${({ isExpanded }) => (isExpanded ? '9999' : 'auto')};
+
+  object-fit: contain;
+`;
+
+export const ButtonContainer = styled('div')<{ isExpanded: boolean }>`
+  display: flex;
+  flex-direction: row;
+  background: ${({ theme }) => theme.colorPalette.common.white};
+  justify-content: normal;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 1.2rem;
+  gap: 0.2rem;
+  direction: rtl;
+  position: ${({ isExpanded }) => (isExpanded ? 'fixed' : 'absolute')};
+  top: ${({ isExpanded }) => (isExpanded ? '0.3rem' : '0.6rem')};
+  right: ${({ isExpanded }) => (isExpanded ? '0.3rem' : '0.6rem')};
+  z-index: ${({ isExpanded }) => (isExpanded ? '9999' : 'auto')};
+`;
+
+export const ActionButton = styled('button')(() => ({
+  backgroundColor: 'transparent',
+  border: 'none',
+  padding: '0.5rem',
+  margin: '0',
+  gap: '0',
+  cursor: 'pointer',
+  height: '2rem',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+export const Divider = styled('div')<{ isExpanded: boolean }>`
+  border: 1px solid ${({ theme }) => theme.colorPalette.divider.color};
+  width: 1.2rem;
+  height: 0px;
+  gap: 0px;
+  transform: rotate(-90deg);
+  transition: opacity 0.3s ease-in-out;
+  position: absolute;
+  left: ${({ isExpanded }) => (isExpanded ? '70%' : '60%')};
+  top: 50%;
+`;
+
+export const SimiliarButton = styled('button')<{ visibilty: boolean }>`
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  background: ${({ theme }) => theme.colorPalette.common.white};
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 9999px;
+  border: none;
+  gap: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  visibility: ${({ visibilty }) => (visibilty ? 'hidden' : 'visible')};
 `;
