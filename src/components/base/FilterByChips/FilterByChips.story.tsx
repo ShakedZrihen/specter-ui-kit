@@ -4,7 +4,7 @@ import { FilterByChips } from './FilterByChips';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof FilterByChips> = {
-  title: 'base/FilterByChips',
+  title: 'custom/FilterByChips',
   component: FilterByChips,
   argTypes: {},
   args: {

@@ -3,7 +3,7 @@ import { SmallNotification } from './SmallNotification';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof SmallNotification> = {
-  title: 'components\base/SmallNotification',
+  title: 'custom/SmallNotification',
   component: SmallNotification,
   argTypes: {},
   args: {

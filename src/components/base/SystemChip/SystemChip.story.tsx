@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { BellIcon } from '../../icons';
 
 const meta: Meta<typeof SystemChip> = {
-  title: 'components\base/SystemChip',
+  title: 'base/SystemChip',
   component: SystemChip,
   argTypes: {},
   args: {

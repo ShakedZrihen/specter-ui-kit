@@ -3,7 +3,7 @@ import { TranslateWithI18 } from './TranslateWithI18';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof TranslateWithI18> = {
-  title: 'Components/TranslateWitchI18',
+  title: 'base/TranslateWitchI18',
   component: TranslateWithI18,
   argTypes: {},
   args: {
