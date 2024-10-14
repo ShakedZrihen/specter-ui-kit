@@ -1,0 +1,1 @@
+export { TelegramIconIcon } from './TelegramIconIcon';
