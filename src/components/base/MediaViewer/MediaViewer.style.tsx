@@ -72,18 +72,26 @@ export const StyledImage = styled('img')<{
   isExpanded: boolean;
   rotate: number;
 }>`
-  max-height: ${({ isExpanded, rotate }) => 
-    (rotate === 90 || rotate === 270) && isExpanded ? '100vw' : isExpanded ? '100vh' : '25rem'};
-  max-width: ${({ isExpanded, rotate }) => 
-    (rotate === 90 || rotate === 270) && isExpanded ? '100vh' : isExpanded ? '100vw' : 'auto'};
+  max-height: ${({ isExpanded, rotate }) =>
+    (rotate === 90 || rotate === 270) && isExpanded
+      ? '100vw'
+      : isExpanded
+        ? '100vh'
+        : '25rem'};
+  max-width: ${({ isExpanded, rotate }) =>
+    (rotate === 90 || rotate === 270) && isExpanded
+      ? '100vh'
+      : isExpanded
+        ? '100vw'
+        : 'auto'};
 
-  transition: 
-    transform 0.3s, 
-    max-height 0.3s, 
-    max-width 0.3s, 
-    top 0.3s, 
-    left 0.3s, 
-    right 0.3s, 
+  transition:
+    transform 0.3s,
+    max-height 0.3s,
+    max-width 0.3s,
+    top 0.3s,
+    left 0.3s,
+    right 0.3s,
     bottom 0.3s;
 
   position: ${({ isExpanded }) => (isExpanded ? 'fixed' : 'relative')};
@@ -96,9 +104,7 @@ export const StyledImage = styled('img')<{
     if (isExpanded) {
       return `translate(-50%, -50%) scale(${scale})${rotate ? ` rotate(${rotate}deg)` : ''}`;
     }
-    return rotate 
-      ? `rotate(${rotate}deg) scale(${scale})` 
-      : `scale(${scale})`; 
+    return rotate ? `rotate(${rotate}deg) scale(${scale})` : `scale(${scale})`;
   }};
 
   z-index: ${({ isExpanded }) => (isExpanded ? '9999' : 'auto')};
