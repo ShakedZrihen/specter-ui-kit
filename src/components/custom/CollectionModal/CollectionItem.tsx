@@ -3,6 +3,7 @@ import { StyledCollectionItem } from './CollectionModal.style';
 import { Collection } from './useCollectionModal';
 import { DocumetsIcon, PersonalCollectionIcon } from '../../icons';
 import { colorPalette } from '../../../context/theme/lightMode';
+import { useTranslation } from 'react-i18next';
 
 const CollectionTitle = styled(Typography)`
   fontsize: 1rem;
@@ -34,6 +35,8 @@ export const CollectionItem = ({
   onClick,
   isSelected,
 }: CollectionItemProps) => {
+  const { t } = useTranslation();
+
   return (
     <StyledCollectionItem
       key={collection.id}
@@ -57,7 +60,8 @@ export const CollectionItem = ({
         <CollectionTitle>{collection.name}</CollectionTitle>
       </CollectionHeader>
       <CollectionLastUpdate>
-        הוספת אייטם אחרון: {collection.lastUpdate.toLocaleDateString('he-IL')}{' '}
+        {t('lastCollectionItem')}{' '}
+        {collection.lastUpdate.toLocaleDateString('he-IL')}{' '}
       </CollectionLastUpdate>
     </StyledCollectionItem>
   );

@@ -8,6 +8,7 @@ export const en = {
   lineFinished: 'Finished',
   lineMetaData: 'Metabata',
   lineSemanticsearch: 'Semantic search',
+  lastCollectionItem: 'last item added:',
   lineExactsearch: 'Exact search',
   lineRefreshment: 'Refreshment',
   linePayAttention: 'Pay attention',

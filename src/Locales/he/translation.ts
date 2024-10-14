@@ -8,6 +8,7 @@ export const he = {
   lineFinished: 'הסתיים',
   lineMetaData: 'מטא-דאטה',
   lineSemanticsearch: 'חיפוש סמנטי',
+  lastCollectionItem: 'הוספת אייטם אחרון:',
   lineExactsearch: 'חיפוש מדויק',
   lineRefreshment: 'ריענון',
   linePayAttention: 'שימו לב',
