@@ -1,7 +1,7 @@
 import { styled, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { SvgIcon } from '@mui/material';
-import { StyledToggleButton } from './ToggleButton.style';
+import { StyledToggleButton, ToggleTextualIndicator } from './ToggleButton.style';
 
 export interface ToggleButtonProps {
   active: boolean;
@@ -34,9 +34,9 @@ export function ToggleButton({
 
   return (
     <div style={{ display: 'flex', alignItems: 'center' }}>
-      <Typography variant='body1' style={{ marginRight: 8 }}>
+      <ToggleTextualIndicator variant='body1'>
         {isActive ? activeLabel || '' : inactiveLabel || ''}
-      </Typography>
+      </ToggleTextualIndicator>
       <StyledToggleButton
         className={isActive ? 'active' : 'inactive'}
         isActive={isActive}

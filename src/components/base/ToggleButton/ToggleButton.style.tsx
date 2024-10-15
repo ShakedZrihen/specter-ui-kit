@@ -1,4 +1,4 @@
-import { styled } from '@mui/material';
+import { styled, Typography } from '@mui/material';
 import { colorPalette } from '../../../context/theme/lightMode';
 
 interface StyledToggleButtonProps {
@@ -42,4 +42,8 @@ export const StyledToggleButton = styled('button')<StyledToggleButtonProps>`
   &.inactive {
     background: ${colorPalette.colors.toggledOffGray};
   }
+`;
+export const ToggleTextualIndicator = styled(Typography)`
+  margin-right: 8px;
+  margin-left: 8px;
 `;
