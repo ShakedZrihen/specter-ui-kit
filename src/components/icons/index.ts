@@ -32,3 +32,4 @@ export { CloseCircleIcon } from './CloseCircleIcon';
 export { RotateIcon } from './RotateIcon';
 export { TelegramIcon } from './TelegramIcon';
 export { FacebookIcon } from './FacebookIcon';
+export { InstagramIcon } from './InstagramIcon';
