@@ -38,6 +38,11 @@ export const colorPalette = {
   refresh: {
     color: '#A8CAFF',
   },
+  systemChip: {
+    greenBg: '#BFECB0',
+    orangeBg: '#FFE7C2',
+    redBg: '#FFC2C2'
+  },
   colors: {
     primary: '#474E72',
     secondary: '#1B1E2D',
