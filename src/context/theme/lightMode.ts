@@ -34,6 +34,11 @@ export const colorPalette = {
   refresh: {
     color: '#A8CAFF',
   },
+  systemChip: {
+    greenBg: '#BFECB0',
+    orangeBg: '#FFE7C2',
+    redBg: '#FFC2C2'
+  },
   colors: {
     primary: '#474E72',
     secondary: '#1B1E2D',
@@ -48,7 +53,7 @@ export const colorPalette = {
     spBlue_20: '#D6E6FE',
     lightBlue: '#E7F0FF',
     toggledOnGreen: '#32a828',
-    toggledOffGray: '#878787'
+    toggledOffGray: '#878787',
   },
   filters: {
     headers: {
