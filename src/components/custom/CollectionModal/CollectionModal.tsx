@@ -27,7 +27,11 @@ export function CollectionModal(props: CollectionModalProps) {
   return (
     <StyledColletionModal open={isOpen} onClose={onClose}>
       <ModalViewContainer>
-        <ModalHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <ModalHeader
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          onClose={onClose}
+        />
         <ModalContent
           activeTab={activeTab}
           handleTabChange={handleTabChange}
