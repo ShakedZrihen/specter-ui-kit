@@ -1,6 +1,6 @@
 import { Divider, styled, Tab, Tabs } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { ExtraInfoContainer } from './CollectionModal.style';
+import { StyledGrid } from './CollectionModal.style';
 import { Collection } from './useCollectionModal';
 import { CollectionItem } from './CollectionItem';
 
@@ -76,7 +76,7 @@ export const ModalContent = ({
         />
       </StyledTabs>
       <StyledDivider />
-      <ExtraInfoContainer>
+      <StyledGrid>
         {filteredCollections.map((collection: Collection) => (
           <CollectionItem
             collection={collection}
@@ -84,7 +84,7 @@ export const ModalContent = ({
             onClick={handleCollectionClick}
           />
         ))}
-      </ExtraInfoContainer>
+      </StyledGrid>
     </StyledModalContent>
   );
 };

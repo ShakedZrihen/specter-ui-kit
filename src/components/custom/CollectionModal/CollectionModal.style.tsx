@@ -33,8 +33,8 @@ export const ActionsContainer = styled('div')`
 export const ModalViewContainer = styled('div')`
   display: flex;
   flex-direction: column;
-  width: 45rem;
-  min-height: 30rem;
+  width: 55rem;
+  min-height: 35srem;
   background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
   padding: 1.4rem;
   border-radius: 1rem;
@@ -45,21 +45,9 @@ export const ModalViewContainer = styled('div')`
   }
 `;
 
-export const ExtraInfoContainer = styled('div')`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Three items per row */
-  gap: 15px;
-  direction: rtl;
-  padding: 1rem;
-  flex-grow: 1;
-  max-height: 15rem;
-  overflow-y: auto;
-  overflow-x: hidden;
-  width: -webkit-fill-available;
-`;
-
 export const StyledCollectionItem = styled('div')<{ isSelected: boolean }>`
   display: flex;
+  direction: rtl;
   flex-direction: column;
   border-radius: 0.8rem;
   padding: 0.6rem 1rem;
@@ -92,4 +80,20 @@ export const StyledTypography = styled(Typography)`
   line-height: 28px;
   text-align: right;
   padding: 6px;
+`;
+
+export const StyledGrid = styled('div')`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Create 3 equal-width columns */
+  gap: 1rem; /* Space between the grid items */
+  grid-auto-rows: 5rem; /* Set a fixed height for each row */
+  padding: 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 20rem;
+  height: 20rem;
+  box-sizing: border-box;
+  width: 100%;
+  align-items: end;
+  direction: rtl;
 `;
