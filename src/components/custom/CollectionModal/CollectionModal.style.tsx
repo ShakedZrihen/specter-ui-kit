@@ -86,7 +86,7 @@ export const StyledGrid = styled('div')`
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Create 3 equal-width columns */
   gap: 1rem; /* Space between the grid items */
-  grid-auto-rows: 5rem; /* Set a fixed height for each row */
+  grid-auto-rows: 4.4rem; /* Set a fixed height for each row */
   padding: 1rem;
   overflow-y: auto;
   overflow-x: hidden;
