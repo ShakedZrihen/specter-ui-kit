@@ -6,3 +6,4 @@ export { SystemChip } from './SystemChip';
 export { SmallNotification } from './SmallNotification';
 export { Dropzone } from './Dropzone';
 export { AutoComplete } from './AutoComplete';
+export { ToggleButton } from './ToggleButton';
