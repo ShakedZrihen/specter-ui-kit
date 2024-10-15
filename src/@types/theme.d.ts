@@ -18,12 +18,16 @@ declare module '@mui/material/styles' {
     text: {
       secondary: string;
       primary: string;
+      disabled: string;
     };
     common: {
       // deprecated white color
       white: string;
       highlight: string;
       icon: string;
+    };
+    icon: {
+      color: string;
     };
     notifilcation: {
       navyBlue: string;

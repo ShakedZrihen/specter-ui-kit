@@ -10,3 +10,4 @@ export { TimeFilter } from './TimeFilter';
 export { MediaCarousel } from './MediaCarousel';
 export { CreationTimeFilter } from './FiltersSection';
 export { MinimizedToast } from './MinimizedToast';
+export { CollectionModal } from './CollectionModal';

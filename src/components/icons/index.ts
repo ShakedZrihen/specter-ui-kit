@@ -23,6 +23,7 @@ export { LoopIcon } from './LoopIcon';
 export { OrderByIcon } from './OrderByIcon';
 export { ChevronLeftIcon } from './ChevronLeftIcon';
 export { ChevronDownIcon } from './ChevronDownIcon';
+export { PersonalCollectionIcon } from './PersonalCollectionIcon';
 export { ZoomInIcon } from './ZoomInIcon';
 export { ZoomOutIcon } from './ZoomOutIcon';
 export { ExpandIcon } from './ExpandIcon';

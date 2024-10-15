@@ -1,5 +1,6 @@
 export const en = {
   save_button: 'Save',
+  Cancel: 'Cancel',
   cancel_button: 'Cancel',
   lineFilters: 'Filters',
   lineByTime: 'By time',
@@ -7,6 +8,7 @@ export const en = {
   lineFinished: 'Finished',
   lineMetaData: 'Metabata',
   lineSemanticsearch: 'Semantic search',
+  lastCollectionItem: 'last item added:',
   lineExactsearch: 'Exact search',
   lineRefreshment: 'Refreshment',
   linePayAttention: 'Pay attention',
@@ -104,6 +106,10 @@ export const en = {
   sourceLanguage: 'Source language',
   displayTranslate: 'Display translate',
   saveToCollection: 'Save to collection',
+  saveToCollectionPopup: 'Save to collection/s',
   share: 'share',
   moreInfo: 'More info',
+  privateCollections:'Private Collections',
+  publicCollections:'Public Collections',
+  allCollections:'All Collections',
 };

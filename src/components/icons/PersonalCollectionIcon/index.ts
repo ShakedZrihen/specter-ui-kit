@@ -1,0 +1,1 @@
+export { PersonalCollectionIcon } from './PersonalCollectionIcon';

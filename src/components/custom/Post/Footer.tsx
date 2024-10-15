@@ -23,7 +23,6 @@ interface SlimFooterProps {
   onShare: (id: number | string) => void;
   id: number | string;
 }
-
 export const Footer = ({ onSave, onShare, onMore, id }: FooterProps) => {
   const { t } = useTranslation();
   const [disableShare, setDisableShare] = useState<boolean>(true);

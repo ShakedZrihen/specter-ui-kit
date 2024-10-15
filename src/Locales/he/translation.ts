@@ -1,12 +1,14 @@
 export const he = {
   save_button: 'שמור',
   cancel_button: 'בטל',
+  Cancel: 'ביטול',
   lineFilters: 'פילטרים',
   lineByTime: 'לפי זמן',
   lineLoginTime: 'זמן כניסה למערכת',
   lineFinished: 'הסתיים',
   lineMetaData: 'מטא-דאטה',
   lineSemanticsearch: 'חיפוש סמנטי',
+  lastCollectionItem: 'הוספת אייטם אחרון:',
   lineExactsearch: 'חיפוש מדויק',
   lineRefreshment: 'ריענון',
   linePayAttention: 'שימו לב',
@@ -104,6 +106,10 @@ export const he = {
   sourceLanguage: 'שפת המקור',
   displayTranslate: 'הצג תרגום',
   saveToCollection: 'שמירה לאוספים',
+  saveToCollectionPopup: 'שמור לאוסף זה',
   share: 'שיתוף',
   moreInfo: 'מידע נוסף',
+  privateCollections:'אוספים פרטיים',
+  publicCollections:'אוספים ציבוריים',
+  allCollections:'כל האוספים'
 };

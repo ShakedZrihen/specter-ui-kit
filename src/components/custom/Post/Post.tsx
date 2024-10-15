@@ -57,8 +57,8 @@ export function Post(props: PostProps & { className?: string }) {
     className,
     slimView = false,
     onMore = () => {},
-    onSave = () => {},
     onShare = () => {},
+    onSave = () => {},
     mediaItems = [],
     onFindSimiliar = () => {},
   } = props;
@@ -169,6 +169,7 @@ export function Post(props: PostProps & { className?: string }) {
         ''
       )}
       {!slimView && <Divider />}
+
       {slimView ? (
         <SlimFooter onSave={onSave} onShare={onShare} id={id} />
       ) : (
