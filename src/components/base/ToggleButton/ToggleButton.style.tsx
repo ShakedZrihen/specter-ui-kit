@@ -43,7 +43,6 @@ export const StyledToggleButton = styled('button')<StyledToggleButtonProps>`
     background: ${colorPalette.colors.toggledOffGray};
   }
 `;
-
 export const ToggleTextualIndicator = styled(Typography)`
   margin-right: 8px;
   margin-left: 8px;

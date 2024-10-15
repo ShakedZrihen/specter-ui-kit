@@ -1,4 +1,3 @@
-
 import { SpecterTheme } from '../../../context/theme/SpecterTheme';
 import { ToggleButton } from './ToggleButton';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -8,10 +7,12 @@ const meta: Meta<typeof ToggleButton> = {
   component: ToggleButton,
   argTypes: {},
   args: {
-    active:true,
-    inactiveLabel: "Off",
-    activeLabel: "On",
-    onToggle: (newIsActive) => {console.log({newIsActive})},
+    active: true,
+    inactiveLabel: 'Off',
+    activeLabel: 'On',
+    onToggle: newIsActive => {
+      console.log({ newIsActive });
+    },
     isReadOnly: false,
   },
 };
