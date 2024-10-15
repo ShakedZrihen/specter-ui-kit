@@ -1,4 +1,4 @@
-import { styled, } from '@mui/material';
+import { styled } from '@mui/material';
 import { colorPalette } from '../../../context/theme/lightMode';
 
 interface StyledToggleButtonProps {
@@ -31,11 +31,11 @@ export const StyledToggleButton = styled('button')<StyledToggleButtonProps>`
     justify-content: center;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-  };
-    .indocator-icon{
+  }
+  .indocator-icon {
     margin-top: 7px;
     margin-left: 6px;
-    }
+  }
   &.active {
     background: ${colorPalette.colors.toggledOnGreen};
   }
