@@ -15,6 +15,7 @@ import { colorPalette } from '../../../context/theme/lightMode';
 import { DescriptionAccordion } from '../DescriptionAccordion';
 import { IPost } from '../../../@types/post';
 import { useTranslation } from 'react-i18next';
+import { useEffect, useRef } from 'react';
 
 export interface SinglePostViewProps {
   post: IPost & { isSlimView?: boolean; highlightedText?: string[] };
@@ -31,10 +32,30 @@ export function SinglePostView({
   const { enrichments } = post;
   const { t } = useTranslation();
 
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const handleOutsideClick = (event: MouseEvent) => {
+    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+      if (onClose) onClose(); 
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('mousedown', handleOutsideClick);
+    } else {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, [isOpen]);
+
   if (isLoading) {
     return (
       <StyledSinglePostView open={isOpen}>
-        <SinglePostViewContainer>
+        <SinglePostViewContainer ref={modalRef}>
           <SinglePostLoadingIndiactorContainer>
             <CircularProgress />
           </SinglePostLoadingIndiactorContainer>
@@ -45,11 +66,11 @@ export function SinglePostView({
 
   return (
     <StyledSinglePostView open={isOpen}>
-      <SinglePostViewContainer>
+      <SinglePostViewContainer ref={modalRef}>
         <SinglePostContentContainer>
           <StyledSinglePost {...post} slimView={true} />
         </SinglePostContentContainer>
-        <Divider orientation='vertical' flexItem />
+        <Divider orientation="vertical" flexItem />
         <SinglePostLeftSideContainer>
           <SinglePostViewActionsContainer>
             <div onClick={onClose}>
