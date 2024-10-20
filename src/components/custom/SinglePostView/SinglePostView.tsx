@@ -32,30 +32,10 @@ export function SinglePostView({
   const { enrichments } = post;
   const { t } = useTranslation();
 
-  const modalRef = useRef<HTMLDivElement>(null);
-
-  const handleOutsideClick = (event: MouseEvent) => {
-    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-      if (onClose) onClose();
-    }
-  };
-
-  useEffect(() => {
-    if (isOpen) {
-      document.addEventListener('mousedown', handleOutsideClick);
-    } else {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, [isOpen]);
-
   if (isLoading) {
     return (
-      <StyledSinglePostView open={isOpen}>
-        <SinglePostViewContainer ref={modalRef}>
+      <StyledSinglePostView open={isOpen} onClose={onClose}>
+        <SinglePostViewContainer>
           <SinglePostLoadingIndiactorContainer>
             <CircularProgress />
           </SinglePostLoadingIndiactorContainer>
@@ -65,8 +45,8 @@ export function SinglePostView({
   }
 
   return (
-    <StyledSinglePostView open={isOpen}>
-      <SinglePostViewContainer ref={modalRef}>
+    <StyledSinglePostView open={isOpen} onClose={onClose}>
+      <SinglePostViewContainer >
         <SinglePostContentContainer>
           <StyledSinglePost {...post} slimView={true} />
         </SinglePostContentContainer>
