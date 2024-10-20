@@ -36,7 +36,7 @@ export function SinglePostView({
 
   const handleOutsideClick = (event: MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-      if (onClose) onClose(); 
+      if (onClose) onClose();
     }
   };
 
@@ -70,7 +70,7 @@ export function SinglePostView({
         <SinglePostContentContainer>
           <StyledSinglePost {...post} slimView={true} />
         </SinglePostContentContainer>
-        <Divider orientation="vertical" flexItem />
+        <Divider orientation='vertical' flexItem />
         <SinglePostLeftSideContainer>
           <SinglePostViewActionsContainer>
             <div onClick={onClose}>
