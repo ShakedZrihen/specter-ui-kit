@@ -62,7 +62,8 @@ export const PhotoContainer = styled('div')<{ isSingleView: boolean }>`
   justify-content: center;
   align-items: center;
 
-  & img, & video {
+  & img,
+  & video {
     width: 100%;
     object-fit: ${({ isSingleView }) => (isSingleView ? '' : 'cover')};
     height: 100%;

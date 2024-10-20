@@ -179,15 +179,23 @@ export function MediaViewer({
       {items.length === 2 ? (
         <TwoMediaWrapper>
           {items.slice(0, 2).map((item, index) => (
-            <PhotoContainer isSingleView={isSinglePostOpen} key={index}>{renderMedia(item)}</PhotoContainer>
+            <PhotoContainer isSingleView={isSinglePostOpen} key={index}>
+              {renderMedia(item)}
+            </PhotoContainer>
           ))}
         </TwoMediaWrapper>
       ) : items.length > 2 ? (
         <TwoMediaWrapper>
-          <PhotoContainer isSingleView={isSinglePostOpen} style={{ position: 'relative' }}>
+          <PhotoContainer
+            isSingleView={isSinglePostOpen}
+            style={{ position: 'relative' }}
+          >
             {renderMedia(items[0])}
           </PhotoContainer>
-          <PhotoContainer isSingleView={isSinglePostOpen} style={{ position: 'relative' }}>
+          <PhotoContainer
+            isSingleView={isSinglePostOpen}
+            style={{ position: 'relative' }}
+          >
             {renderMedia(items[1])}
             {!isSinglePostOpen && remainingPhotosCount > 0 && (
               <PhotoOverlay>
