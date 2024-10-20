@@ -112,7 +112,7 @@ export function MediaViewer({
           <>
             <SimiliarButton
               onClick={onFindSimiliar}
-              visibilty={!isSinglePostOpen}
+              isHidden={!isSinglePostOpen}
             >
               <SimiliarPostsIcon
                 color={colorPalette.text.secondary}
@@ -121,7 +121,7 @@ export function MediaViewer({
             </SimiliarButton>
             <ButtonContainer
               isExpanded={isExpanded}
-              visibilty={!isSinglePostOpen}
+              isHidden={!isSinglePostOpen}
             >
               {isExpanded ? (
                 <ActionButton onClick={handleExpandClick}>

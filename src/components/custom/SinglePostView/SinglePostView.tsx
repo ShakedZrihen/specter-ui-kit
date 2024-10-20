@@ -15,7 +15,6 @@ import { colorPalette } from '../../../context/theme/lightMode';
 import { DescriptionAccordion } from '../DescriptionAccordion';
 import { IPost } from '../../../@types/post';
 import { useTranslation } from 'react-i18next';
-import { useEffect, useRef } from 'react';
 
 export interface SinglePostViewProps {
   post: IPost & { isSlimView?: boolean; highlightedText?: string[] };
