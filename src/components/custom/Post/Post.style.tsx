@@ -132,7 +132,7 @@ export const ShareButton = styled('div')<{ disable: boolean }>`
       : theme.colorPalette.text.primary};
 
   :hover {
-    cursor: pointer;
+    cursor: ${({ disable }) => disable ? "" : "pointer"};
   }
 `;
 
