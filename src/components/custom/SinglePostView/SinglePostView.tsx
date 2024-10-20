@@ -46,7 +46,7 @@ export function SinglePostView({
 
   return (
     <StyledSinglePostView open={isOpen} onClose={onClose}>
-      <SinglePostViewContainer >
+      <SinglePostViewContainer>
         <SinglePostContentContainer>
           <StyledSinglePost {...post} slimView={true} />
         </SinglePostContentContainer>
