@@ -186,14 +186,10 @@ export function MediaViewer({
         </TwoMediaWrapper>
       ) : items.length > 2 ? (
         <TwoMediaWrapper>
-          <PhotoContainer
-            isSingleView={isSinglePostOpen}
-          >
+          <PhotoContainer isSingleView={isSinglePostOpen}>
             {renderMedia(items[0])}
           </PhotoContainer>
-          <PhotoContainer
-            isSingleView={isSinglePostOpen}
-          >
+          <PhotoContainer isSingleView={isSinglePostOpen}>
             {renderMedia(items[1])}
             {!isSinglePostOpen && remainingPhotosCount > 0 && (
               <PhotoOverlay>
