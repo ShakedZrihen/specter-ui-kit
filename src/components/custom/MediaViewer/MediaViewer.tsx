@@ -96,7 +96,7 @@ export function MediaViewer({
 
   const renderMedia = (item: MediaItem) => {
     return (
-      <PhotoContainer key={item.original}>
+      <PhotoContainer isSingleView={isSinglePostOpen} key={item.original}>
         {item.type === 'video' ? (
           <StyledVideo controls src={item.original} />
         ) : (
@@ -119,7 +119,10 @@ export function MediaViewer({
                 size={16}
               />
             </SimiliarButton>
-            <ButtonContainer isExpanded={isExpanded}>
+            <ButtonContainer
+              isExpanded={isExpanded}
+              visibilty={!isSinglePostOpen}
+            >
               {isExpanded ? (
                 <ActionButton onClick={handleExpandClick}>
                   <CloseCircleIcon
@@ -176,15 +179,23 @@ export function MediaViewer({
       {items.length === 2 ? (
         <TwoMediaWrapper>
           {items.slice(0, 2).map((item, index) => (
-            <PhotoContainer key={index}>{renderMedia(item)}</PhotoContainer>
+            <PhotoContainer isSingleView={isSinglePostOpen} key={index}>
+              {renderMedia(item)}
+            </PhotoContainer>
           ))}
         </TwoMediaWrapper>
       ) : items.length > 2 ? (
         <TwoMediaWrapper>
-          <PhotoContainer style={{ position: 'relative' }}>
+          <PhotoContainer
+            isSingleView={isSinglePostOpen}
+            style={{ position: 'relative' }}
+          >
             {renderMedia(items[0])}
           </PhotoContainer>
-          <PhotoContainer style={{ position: 'relative' }}>
+          <PhotoContainer
+            isSingleView={isSinglePostOpen}
+            style={{ position: 'relative' }}
+          >
             {renderMedia(items[1])}
             {!isSinglePostOpen && remainingPhotosCount > 0 && (
               <PhotoOverlay>

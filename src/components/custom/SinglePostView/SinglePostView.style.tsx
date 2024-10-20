@@ -7,12 +7,13 @@ export const StyledSinglePostView = styled(Modal)``;
 export const SinglePostViewContainer = styled('div')`
   display: flex;
   direction: rtl;
-  height: 80vh;
-  width: 90vw;
+  height: 67.5vh;
+  width: 80vw;
   margin: 6vh auto;
   background-color: ${({ theme }) => theme.colorPalette.colors.spWhite};
-  padding: 1.3rem;
+  padding: 1rem;
   border-radius: 0.5rem;
+  overflow: hidden;
 
   :focus {
     outline: none;
@@ -20,10 +21,15 @@ export const SinglePostViewContainer = styled('div')`
 `;
 
 export const SinglePostContentContainer = styled('div')`
+  flex: 1;
   width: 60%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
 `;
 
 export const SinglePostLeftSideContainer = styled('div')`
+  flex: 1;
   width: 40%;
   display: flex;
   flex-direction: column;

@@ -140,21 +140,12 @@ export function Post(props: PostProps & { className?: string }) {
       ) : (
         ''
       )}
-      {slimView ? (
-        <MediaViewer
-          items={mediaItems}
-          isSinglePostOpen={slimView}
-          onViewMore={onMore}
-          onFindSimiliar={onFindSimiliar}
-        />
-      ) : (
-        <MediaViewer
-          items={mediaItems}
-          isSinglePostOpen={slimView}
-          onViewMore={onMore}
-          onFindSimiliar={onFindSimiliar}
-        />
-      )}
+      <MediaViewer
+        items={mediaItems}
+        isSinglePostOpen={slimView}
+        onViewMore={onMore}
+        onFindSimiliar={onFindSimiliar}
+      />
       {original && content && original !== selected ? (
         <SourceContent
           direction={i18n.resolvedLanguage === 'en' ? 'ltr' : 'rtl'}

@@ -96,6 +96,7 @@ export const PostSlimFooter = styled('div')`
   align-items: center;
   gap: 1rem;
   padding-right: 0.8rem;
+  margin-right: 2rem;
 `;
 
 export const ActionButton = styled('div')`
@@ -131,7 +132,7 @@ export const ShareButton = styled('div')<{ disable: boolean }>`
       : theme.colorPalette.text.primary};
 
   :hover {
-    cursor: pointer;
+    cursor: ${({ disable }) => (disable ? '' : 'pointer')};
   }
 `;
 
