@@ -109,7 +109,7 @@ export const he = {
   saveToCollectionPopup: 'שמור לאוסף זה',
   share: 'שיתוף',
   moreInfo: 'מידע נוסף',
-  privateCollections:'אוספים פרטיים',
-  publicCollections:'אוספים ציבוריים',
-  allCollections:'כל האוספים'
+  privateCollections: 'אוספים פרטיים',
+  publicCollections: 'אוספים ציבוריים',
+  allCollections: 'כל האוספים',
 };

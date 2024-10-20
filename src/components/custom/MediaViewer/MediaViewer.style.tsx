@@ -53,6 +53,8 @@ export const TwoMediaWrapper = styled('div')({
 export const PhotoContainer = styled('div')(() => ({
   position: 'relative',
   overflow: 'hidden',
+  paddingTop: '1rem',
+  paddingBottom: '0.5rem',
   width: '100%',
   height: '400px',
   maxHeight: '380px',
@@ -62,7 +64,6 @@ export const PhotoContainer = styled('div')(() => ({
   '& img, & video': {
     width: '100%',
     height: '100%',
-    objectFit: 'cover',
     borderRadius: '8px',
   },
 }));
@@ -112,7 +113,10 @@ export const StyledImage = styled('img')<{
   object-fit: contain;
 `;
 
-export const ButtonContainer = styled('div')<{ isExpanded: boolean }>`
+export const ButtonContainer = styled('div')<{
+  isExpanded: boolean;
+  visibilty: boolean;
+}>`
   display: flex;
   flex-direction: row;
   background: ${({ theme }) => theme.colorPalette.common.white};
@@ -125,6 +129,7 @@ export const ButtonContainer = styled('div')<{ isExpanded: boolean }>`
   top: ${({ isExpanded }) => (isExpanded ? '0.3rem' : '0.6rem')};
   right: ${({ isExpanded }) => (isExpanded ? '0.3rem' : '0.6rem')};
   z-index: ${({ isExpanded }) => (isExpanded ? '9999' : 'auto')};
+  visibility: ${({ visibilty }) => (visibilty ? 'hidden' : 'visible')};
 `;
 
 export const ActionButton = styled('button')(() => ({

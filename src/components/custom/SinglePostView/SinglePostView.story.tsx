@@ -13,7 +13,8 @@ const meta: Meta<typeof SinglePostView> = {
       isRawPost: false,
       mediaItems: [
         {
-          original: 'https://images5.alphacoders.com/134/1344515.png',
+          original:
+            'https://i.pinimg.com/236x/54/84/e2/5484e289c5af5c3414a30cb14a768ea8.jpg',
           type: 'image',
         },
       ],

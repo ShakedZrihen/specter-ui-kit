@@ -96,6 +96,7 @@ export const PostSlimFooter = styled('div')`
   align-items: center;
   gap: 1rem;
   padding-right: 0.8rem;
+  margin-right: 2rem;
 `;
 
 export const ActionButton = styled('div')`

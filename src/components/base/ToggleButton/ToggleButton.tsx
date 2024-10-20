@@ -1,7 +1,10 @@
 import { styled, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { SvgIcon } from '@mui/material';
-import { StyledToggleButton, ToggleTextualIndicator } from './ToggleButton.style';
+import {
+  StyledToggleButton,
+  ToggleTextualIndicator,
+} from './ToggleButton.style';
 
 export interface ToggleButtonProps {
   active: boolean;

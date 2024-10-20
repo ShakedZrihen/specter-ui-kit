@@ -119,7 +119,10 @@ export function MediaViewer({
                 size={16}
               />
             </SimiliarButton>
-            <ButtonContainer isExpanded={isExpanded}>
+            <ButtonContainer
+              isExpanded={isExpanded}
+              visibilty={!isSinglePostOpen}
+            >
               {isExpanded ? (
                 <ActionButton onClick={handleExpandClick}>
                   <CloseCircleIcon

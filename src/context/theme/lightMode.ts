@@ -41,7 +41,7 @@ export const colorPalette = {
   systemChip: {
     greenBg: '#BFECB0',
     orangeBg: '#FFE7C2',
-    redBg: '#FFC2C2'
+    redBg: '#FFC2C2',
   },
   colors: {
     primary: '#474E72',
