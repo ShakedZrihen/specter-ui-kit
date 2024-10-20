@@ -118,7 +118,7 @@ export const StyledImage = styled('img')<{
 
 export const ButtonContainer = styled('div')<{
   isExpanded: boolean;
-  visibilty: boolean;
+  isVisible: boolean;
 }>`
   display: flex;
   flex-direction: row;
@@ -132,7 +132,7 @@ export const ButtonContainer = styled('div')<{
   top: ${({ isExpanded }) => (isExpanded ? '0.3rem' : '0.6rem')};
   right: ${({ isExpanded }) => (isExpanded ? '0.3rem' : '0.6rem')};
   z-index: ${({ isExpanded }) => (isExpanded ? '9999' : 'auto')};
-  visibility: ${({ visibilty }) => (visibilty ? 'hidden' : 'visible')};
+  visibility: ${({ isVisible }) => (isVisible ? 'hidden' : 'visible')};
 `;
 
 export const ActionButton = styled('button')(() => ({
@@ -160,7 +160,7 @@ export const Divider = styled('div')<{ isExpanded: boolean }>`
   top: 50%;
 `;
 
-export const SimiliarButton = styled('button')<{ visibilty: boolean }>`
+export const SimiliarButton = styled('button')<{ isVisible: boolean }>`
   position: absolute;
   top: 0.6rem;
   left: 0.6rem;
@@ -171,5 +171,5 @@ export const SimiliarButton = styled('button')<{ visibilty: boolean }>`
   gap: 1rem;
   padding: 0.5rem;
   cursor: pointer;
-  visibility: ${({ visibilty }) => (visibilty ? 'hidden' : 'visible')};
+  visibility: ${({ isVisible }) => (isVisible ? 'hidden' : 'visible')};
 `;

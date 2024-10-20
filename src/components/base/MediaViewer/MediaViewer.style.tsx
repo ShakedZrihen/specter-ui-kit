@@ -152,7 +152,7 @@ export const Divider = styled('div')<{ isExpanded: boolean }>`
   top: 50%;
 `;
 
-export const SimiliarButton = styled('button')<{ visibilty: boolean }>`
+export const SimiliarButton = styled('button')<{ isVisible: boolean }>`
   position: absolute;
   top: 0.6rem;
   left: 0.6rem;
@@ -163,5 +163,5 @@ export const SimiliarButton = styled('button')<{ visibilty: boolean }>`
   gap: 1rem;
   padding: 0.5rem;
   cursor: pointer;
-  visibility: ${({ visibilty }) => (visibilty ? 'hidden' : 'visible')};
+  visibility: ${({ isVisible }) => (isVisible ? 'hidden' : 'visible')};
 `;

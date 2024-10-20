@@ -112,7 +112,7 @@ export function MediaViewer({
           <>
             <SimiliarButton
               onClick={onFindSimiliar}
-              visibilty={!isSinglePostOpen}
+              isVisible={!isSinglePostOpen}
             >
               <SimiliarPostsIcon
                 color={colorPalette.text.secondary}
@@ -121,7 +121,7 @@ export function MediaViewer({
             </SimiliarButton>
             <ButtonContainer
               isExpanded={isExpanded}
-              visibilty={!isSinglePostOpen}
+              isVisible={!isSinglePostOpen}
             >
               {isExpanded ? (
                 <ActionButton onClick={handleExpandClick}>
@@ -188,13 +188,11 @@ export function MediaViewer({
         <TwoMediaWrapper>
           <PhotoContainer
             isSingleView={isSinglePostOpen}
-            style={{ position: 'relative' }}
           >
             {renderMedia(items[0])}
           </PhotoContainer>
           <PhotoContainer
             isSingleView={isSinglePostOpen}
-            style={{ position: 'relative' }}
           >
             {renderMedia(items[1])}
             {!isSinglePostOpen && remainingPhotosCount > 0 && (
