@@ -112,4 +112,6 @@ export const en = {
   privateCollections: 'Private Collections',
   publicCollections: 'Public Collections',
   allCollections: 'All Collections',
+  errorLine1: 'Oops.. we have a problem with the system.',
+  errorLine2: 'Try to interpret or come back in a few minutes...',
 };

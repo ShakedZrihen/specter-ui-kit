@@ -112,4 +112,6 @@ export const he = {
   privateCollections: 'אוספים פרטיים',
   publicCollections: 'אוספים ציבוריים',
   allCollections: 'כל האוספים',
+  errorLine1: 'אופס.. יש לנו בעיה במערכת.',
+  errorLine2: "נסו לרפרש או לחזור בעוד מספר דקות...",
 };
