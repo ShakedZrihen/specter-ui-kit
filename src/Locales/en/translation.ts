@@ -114,4 +114,8 @@ export const en = {
   allCollections: 'All Collections',
   errorLine1: 'Oops.. we have a problem with the system.',
   errorLine2: 'Try to interpret or come back in a few minutes...',
+  infoLine1: "No items matching the selected filter were found.",
+  infoLine2: "Try removing filters to find relevant items.",
+  infoLine3: "No items matching the search were found.",
+  infoLine4: "Try searching for similar terms to find results in the system."
 };

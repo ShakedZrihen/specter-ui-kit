@@ -10,6 +10,5 @@ export const StyledErrorState = styled('div')({
 });
 
 export const StyledErrorIcon = styled(ErrorIcon)({
-    paddingBottom: "1rem",
-
-})
+  paddingBottom: '1rem',
+});
