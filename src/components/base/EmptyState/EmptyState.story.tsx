@@ -7,7 +7,7 @@ const meta: Meta<typeof EmptyState> = {
   component: EmptyState,
   argTypes: {},
   args: {
-    label: "מצב הרעב בעזה"
+    label: 'מצב הרעב בעזה',
   },
 };
 
