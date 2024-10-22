@@ -10,8 +10,8 @@ const meta: Meta<typeof FilterByChips> = {
   argTypes: {},
   args: {
     appliedFilters: {
-      creationTimeStart: "2024-10-16T21:00:00.000Z",
-      platformType: ['facebook', 'instagram']
+      creationTimeStart: '2024-10-16T21:00:00.000Z',
+      platformType: ['facebook', 'instagram'],
     },
   },
 };
@@ -32,15 +32,17 @@ export const Basic: Story = {
             return [`מתאריך: ${format(new Date(value), 'dd/MM/yyyy')}`];
           }
           return Array.isArray(value) ? value : [value.toString()];
-        })
+        }),
       );
-      
+
       return (
         <FilterByChips
           {...props}
           appliedFilters={appliedFilters}
           onDeleteFilter={filterName => {
-          setAppliedFilters((prevFilters) => prevFilters.filter(filter => filter !== filterName));
+            setAppliedFilters(prevFilters =>
+              prevFilters.filter(filter => filter !== filterName),
+            );
           }}
           onClearFilters={() => setAppliedFilters([])}
         />
