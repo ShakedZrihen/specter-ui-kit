@@ -106,7 +106,7 @@ export const en = {
   sourceLanguage: 'Source language',
   displayTranslate: 'Display translate',
   saveToCollection: 'Save to collection',
-  saveToCollectionPopup: 'Save to collection/s',
+  saveToCollectionPopup: 'Apply changes',
   share: 'share',
   moreInfo: 'More info',
   privateCollections: 'Private Collections',

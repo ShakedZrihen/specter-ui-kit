@@ -106,7 +106,7 @@ export const he = {
   sourceLanguage: 'שפת המקור',
   displayTranslate: 'הצג תרגום',
   saveToCollection: 'שמירה לאוספים',
-  saveToCollectionPopup: 'שמור לאוסף זה',
+  saveToCollectionPopup: 'שמור שינויים',
   share: 'שיתוף',
   moreInfo: 'מידע נוסף',
   privateCollections: 'אוספים פרטיים',

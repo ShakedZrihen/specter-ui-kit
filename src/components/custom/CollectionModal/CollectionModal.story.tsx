@@ -9,7 +9,7 @@ const meta: Meta<typeof CollectionModal> = {
   args: {
     isOpen: true,
     onClose: () => {
-      // alert('closed');
+      alert('closed');
     },
     defaultSelectedCollections: ['1'],
     collections: [

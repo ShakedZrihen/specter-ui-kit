@@ -56,7 +56,9 @@ export const ModalHeader = ({
 }: ModalHeaderProps) => {
   return (
     <StyledModalHeader>
-      <StyledCloseIcon color={colorPalette.text.primary} onClick={onClose} />
+      <div onClick={onClose}>
+        <StyledCloseIcon color={colorPalette.text.primary} onClick={onClose} />
+      </div>
       <StyledTitle>שמירה לאוסף</StyledTitle>
       <SearchContainer>
         <StyledSearchBar
