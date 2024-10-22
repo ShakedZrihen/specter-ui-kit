@@ -117,5 +117,6 @@ export const en = {
   InfoHeader: 'No items matching the selected filter were found.',
   InfoBody: 'Try removing filters to find relevant items.',
   InfoHeaderSearchQuery: 'No items matching the search were found.',
-  infoBodySearchQuery: 'Try searching for similar terms to find results in the system.',
+  infoBodySearchQuery:
+    'Try searching for similar terms to find results in the system.',
 };

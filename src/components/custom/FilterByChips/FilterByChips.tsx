@@ -37,11 +37,13 @@ export function FilterByChips({
   const [values, setValues] = useState<string[]>([]);
 
   useEffect(() => {
-    const filterValues: string[] = Object.entries(appliedFilters).flatMap(([key, value]) => {
-      return Array.isArray(value) ? value : [value];
-    });
+    const filterValues: string[] = Object.entries(appliedFilters).flatMap(
+      ([key, value]) => {
+        return Array.isArray(value) ? value : [value];
+      },
+    );
     setValues(filterValues);
-  }, [appliedFilters])
+  }, [appliedFilters]);
 
   return (
     <StyledFilterByChips>
