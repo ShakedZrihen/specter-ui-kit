@@ -11,7 +11,7 @@ const meta: Meta<typeof CollectionModal> = {
     onClose: () => {
       // alert('closed');
     },
-
+    defaultSelectedCollections: ['1'],
     collections: [
       {
         id: '1',
