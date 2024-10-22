@@ -10,9 +10,16 @@ export interface Collection {
 export interface CollectionModalProps {
   isOpen: boolean;
   onClose?: () => void;
-  onSave?: (collectionIds: string[]) => void;
+  onSave?: ({
+    collectionsToAdd,
+    collectionsToDelete,
+  }: {
+    collectionsToAdd: string[];
+    collectionsToDelete: string[];
+  }) => void;
   postId?: string;
   collections: Collection[];
+  defaultSelectedCollections?: string[];
 }
 
 export enum Tabs {
@@ -25,23 +32,45 @@ export const useCollectionModal = ({
   collections,
   onClose,
   onSave,
+  defaultSelectedCollections = [],
   ...rest
 }: CollectionModalProps) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCollections, setSelectedCollections] = useState<string[]>([]);
+  const [selectedCollections, setSelectedCollections] = useState<string[]>(
+    defaultSelectedCollections,
+  );
+  const [collectionsToDelete, setCollectionsToDelete] = useState<string[]>([]);
   const [activeTab, setActiveTab] = useState(Tabs.AllCollection);
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
   };
 
+  const unselectCollection = (id: string) => {
+    // remove from selected
+    setSelectedCollections(
+      selectedCollections.filter(selectedId => selectedId !== id),
+    );
+    // if it was pre-selected - mark as to delete
+    if (defaultSelectedCollections.includes(id)) {
+      setCollectionsToDelete([...collectionsToDelete, id]);
+    }
+  };
+
+  const selectCollection = (id: string) => {
+    // add to selected
+    setSelectedCollections([...selectedCollections, id]);
+    // remove from to delete list
+    setCollectionsToDelete(
+      collectionsToDelete.filter(selectedId => selectedId !== id),
+    );
+  };
+
   const handleCollectionClick = (id: string) => {
     if (selectedCollections.includes(id)) {
-      setSelectedCollections(
-        selectedCollections.filter(selectedId => selectedId !== id),
-      );
+      unselectCollection(id);
     } else {
-      setSelectedCollections([...selectedCollections, id]);
+      selectCollection(id);
     }
   };
 
@@ -69,7 +98,7 @@ export const useCollectionModal = ({
   });
 
   const handleConfirm = () => {
-    onSave?.(selectedCollections);
+    onSave?.({ collectionsToAdd: selectedCollections, collectionsToDelete });
     setSelectedCollections([]);
     onClose?.();
   };
