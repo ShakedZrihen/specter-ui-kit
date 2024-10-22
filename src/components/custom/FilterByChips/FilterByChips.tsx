@@ -8,9 +8,10 @@ import {
 import { useTranslation } from 'react-i18next';
 import CloseIcon from '@mui/icons-material/Close';
 import { colorPalette } from '../../../context/theme/lightMode';
-
+import { useEffect, useState } from 'react';
+import { format } from 'date-fns';
 export interface FilterByChipsProps {
-  appliedFilters: string[];
+  appliedFilters: Object;
   onClearFilters?: () => void;
   onDeleteFilter?: (filter: string) => void;
 }
@@ -33,12 +34,23 @@ export function FilterByChips({
   appliedFilters = [],
 }: FilterByChipsProps) {
   const { t } = useTranslation();
+  const [values, setValues] = useState<string[]>([]);
+
+  useEffect(() => {
+    const filterValues: string[] = Object.entries(appliedFilters).flatMap(([key, value]) => {
+      if (key === 'creationTimeStart' || key === 'creationTimeEnd') {
+        return [`מתאריך: ${format(new Date(value), 'dd/MM/yyyy')}`];
+      }
+      return Array.isArray(value) ? value : [value.toString()];
+    });
+    setValues(filterValues);
+  }, [appliedFilters])
 
   return (
     <StyledFilterByChips>
       <Typography>{t('filteredBy')}:</Typography>
       <ChipContainer>
-        {appliedFilters.map((filter: string, index: number) => (
+        {values.map((filter: string, index: number) => (
           <FilterChip
             key={index}
             label={filter}
@@ -56,7 +68,7 @@ export function FilterByChips({
           />
         ))}
       </ChipContainer>
-      {appliedFilters.length > 0 ? (
+      {values.length > 0 ? (
         <ClearFilters
           label={t('clearFilters')}
           variant='outlined'
