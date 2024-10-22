@@ -4,25 +4,26 @@ import { useTranslation } from 'react-i18next';
 
 export interface EmptyStateProps {
   label?: string;
+  className?: string;
 }
 
-export function EmptyState({ label }: EmptyStateProps) {
+export function EmptyState({ label, className }: EmptyStateProps) {
   const { t } = useTranslation();
 
   return (
-    <StyledEmptyState>
+    <StyledEmptyState className={className}>
       <StyledEmptyIcon size={150} />
       {label ? (
         <>
           <Typography>
-            {t('infoLine3')} <b>"{label}".</b>
+            {t('InfoHeaderSearchQuery')} <b>"{label}".</b>
           </Typography>
-          <Typography>{t('infoLine4')}</Typography>
+          <Typography>{t('infoBodySearchQuery')}</Typography>
         </>
       ) : (
         <>
-          <Typography>{t('infoLine1')}</Typography>
-          <Typography>{t('infoLine2')}</Typography>
+          <Typography>{t('InfoHeader')}</Typography>
+          <Typography>{t('InfoBody')}</Typography>
         </>
       )}
     </StyledEmptyState>

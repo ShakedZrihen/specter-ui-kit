@@ -1,14 +1,13 @@
 import { styled } from '@mui/material';
-import { ErrorIcon } from '../../icons';
+import { EmptyStateIcon } from '../../icons';
 
-export const StyledErrorState = styled('div')({
+export const StyledEmptyState = styled('div')({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  height: '100vh',
 });
 
-export const StyledErrorIcon = styled(ErrorIcon)({
+export const StyledEmptyIcon = styled(EmptyStateIcon)({
   paddingBottom: '1rem',
 });

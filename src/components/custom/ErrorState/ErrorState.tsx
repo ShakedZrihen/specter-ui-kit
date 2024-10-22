@@ -2,14 +2,18 @@ import { StyledErrorState, StyledErrorIcon } from './ErrorState.style';
 import { useTranslation } from 'react-i18next';
 import { Typography } from '@mui/material';
 
-export function ErrorState() {
+export interface ErrorStateProps {
+  className?: string;
+}
+
+export function ErrorState({ className }: ErrorStateProps) {
   const { t } = useTranslation();
 
   return (
-    <StyledErrorState>
+    <StyledErrorState className={className}>
       <StyledErrorIcon size={150} />
-      <Typography>{t('errorLine1')}</Typography>
-      <Typography>{t('errorLine2')}</Typography>
+      <Typography>{t('errorHeader')}</Typography>
+      <Typography>{t('errorInfo')}</Typography>
     </StyledErrorState>
   );
 }

@@ -37,16 +37,11 @@ export function FilterByChips({
   const [values, setValues] = useState<string[]>([]);
 
   useEffect(() => {
-    const filterValues: string[] = Object.entries(appliedFilters).flatMap(
-      ([key, value]) => {
-        if (key === 'creationTimeStart' || key === 'creationTimeEnd') {
-          return [`מתאריך: ${format(new Date(value), 'dd/MM/yyyy')}`];
-        }
-        return Array.isArray(value) ? value : [value.toString()];
-      },
-    );
+    const filterValues: string[] = Object.entries(appliedFilters).flatMap(([key, value]) => {
+      return Array.isArray(value) ? value : [value];
+    });
     setValues(filterValues);
-  }, [appliedFilters]);
+  }, [appliedFilters])
 
   return (
     <StyledFilterByChips>

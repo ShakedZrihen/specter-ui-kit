@@ -7,5 +7,5 @@ export { SmallNotification } from './SmallNotification';
 export { Dropzone } from './Dropzone';
 export { AutoComplete } from './AutoComplete';
 export { ToggleButton } from './ToggleButton';
-export { ErrorState } from './ErrorState';
-export { EmptyState } from './EmptyState';
+export { ErrorState } from '../custom/ErrorState';
+export { EmptyState } from '../custom/EmptyState';
