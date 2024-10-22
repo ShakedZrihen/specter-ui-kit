@@ -33,3 +33,5 @@ export { RotateIcon } from './RotateIcon';
 export { TelegramIcon } from './TelegramIcon';
 export { FacebookIcon } from './FacebookIcon';
 export { InstagramIcon } from './InstagramIcon';
+export { ErrorIcon } from './ErrorIcon';
+export { EmptyStateIcon } from './EmptyStateIcon';

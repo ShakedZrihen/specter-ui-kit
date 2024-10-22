@@ -8,7 +8,10 @@ const meta: Meta<typeof FilterByChips> = {
   component: FilterByChips,
   argTypes: {},
   args: {
-    appliedFilters: ['זמן כניסה למערכת', 'זמן יצירה'],
+    appliedFilters: {
+      creationTimeStart: '2024-10-16T21:00:00.000Z',
+      platformType: ['facebook', 'instagram'],
+    },
   },
 };
 
@@ -20,10 +23,12 @@ export const Basic: Story = {
     const FilterByChipsControlled = ({
       appliedFilters: defaultAppliedFilters,
     }: {
-      appliedFilters: string[];
+      appliedFilters: Object;
     }) => {
       const [appliedFilters, setAppliedFilters] = useState<string[]>(
-        defaultAppliedFilters,
+        Object.entries(defaultAppliedFilters).flatMap(([key, value]) => {
+          return Array.isArray(value) ? value : [value];
+        }),
       );
 
       return (
@@ -31,9 +36,8 @@ export const Basic: Story = {
           {...props}
           appliedFilters={appliedFilters}
           onDeleteFilter={filterName => {
-            console.log({ filterName, defaultAppliedFilters });
-            setAppliedFilters(
-              appliedFilters.filter(filter => filter != filterName),
+            setAppliedFilters(prevFilters =>
+              prevFilters.filter(filter => filter !== filterName),
             );
           }}
           onClearFilters={() => setAppliedFilters([])}

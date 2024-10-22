@@ -112,4 +112,10 @@ export const he = {
   privateCollections: 'אוספים פרטיים',
   publicCollections: 'אוספים ציבוריים',
   allCollections: 'כל האוספים',
+  errorHeader: 'אופס.. יש לנו בעיה במערכת.',
+  errorInfo: 'נסו לרפרש או לחזור בעוד מספר דקות...',
+  InfoHeader: 'לא נמצאו פריטים התואמים לפילטור הנבחר.',
+  InfoBody: 'נסו להוריד פילטרים על מנת למצוא פריטים רלוונטים.',
+  InfoHeaderSearchQuery: 'לא נמצאו פריטים התואמים לחיפוש',
+  infoBodySearchQuery: 'נסו לחפש ערכים דומים על מנת למצוא תוצאות במערכת.',
 };

@@ -112,4 +112,11 @@ export const en = {
   privateCollections: 'Private Collections',
   publicCollections: 'Public Collections',
   allCollections: 'All Collections',
+  errorHeader: 'Oops.. we have a problem with the system.',
+  errorInfo: 'Try to interpret or come back in a few minutes...',
+  InfoHeader: 'No items matching the selected filter were found.',
+  InfoBody: 'Try removing filters to find relevant items.',
+  InfoHeaderSearchQuery: 'No items matching the search were found.',
+  infoBodySearchQuery:
+    'Try searching for similar terms to find results in the system.',
 };
