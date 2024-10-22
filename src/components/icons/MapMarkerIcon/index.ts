@@ -1,0 +1,1 @@
+export { MapMarkerIcon } from './MapMarkerIcon';
