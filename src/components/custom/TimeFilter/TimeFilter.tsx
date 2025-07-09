@@ -1,6 +1,5 @@
 import React from 'react';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { StyledDesktopDateTimePicker } from './StyledDesktopDateTimePicker';
+import { LocalizationProvider, DesktopDateTimePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
 
@@ -28,7 +27,7 @@ const TimeFilter: React.FC<TimeFilterProps> = ({
 
   return (
     <LocalizationProvider dateAdapter={dateAdapter}>
-      <StyledDesktopDateTimePicker
+      <DesktopDateTimePicker
         label={label}
         value={parsedValue}
         onAccept={(date) => {
