@@ -1,73 +1,54 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { TimeFilter } from '../TimeFilter';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { render, fireEvent } from '@testing-library/react';
+import TimeFilter from '../TimeFilter';
 import dayjs from 'dayjs';
 
 describe('TimeFilter Component', () => {
-  const mockOnChange = jest.fn();
-
-  it('renders correctly with default props', () => {
-    render(
-      <TimeFilter
-        label="Select Date"
-        onChange={mockOnChange}
-        dateAdapter={AdapterDayjs}
-      />
+  it('renders without crashing', () => {
+    const { getByLabelText } = render(
+      <TimeFilter value={null} onChange={() => {}} />
     );
-
-    expect(screen.getByText('Select Date')).toBeInTheDocument();
+    expect(getByLabelText(/date/i)).toBeInTheDocument();
   });
 
-  it('calls onChange with correct date format', () => {
-    render(
-      <TimeFilter
-        label="Select Date"
-        onChange={mockOnChange}
-        value={dayjs().toISOString()}
-        dateAdapter={AdapterDayjs}
-      />
+  it('accepts and formats a date string correctly', () => {
+    const handleChange = jest.fn();
+    const { getByLabelText } = render(
+      <TimeFilter value="2023-10-01T12:00:00Z" onChange={handleChange} />
     );
 
-    const calendarIcon = screen.getByRole('button');
-    fireEvent.click(calendarIcon);
-
-    // Simulate date selection
-    const date = dayjs().add(1, 'day');
-    fireEvent.click(screen.getByText(date.format('DD')));
-
-    expect(mockOnChange).toHaveBeenCalledWith(date.toISOString());
+    const input = getByLabelText(/date/i);
+    fireEvent.change(input, { target: { value: '01/10/2023 12:00 PM' } });
+    expect(handleChange).toHaveBeenCalledWith('2023-10-01T12:00:00.000Z');
   });
 
-  it('handles null value correctly', () => {
-    render(
+  it('uses custom date parser if provided', () => {
+    const customParser = (date: string | Date | null) =>
+      date ? dayjs(date).add(1, 'day') : null;
+    const handleChange = jest.fn();
+    const { getByLabelText } = render(
       <TimeFilter
-        label="Select Date"
-        onChange={mockOnChange}
-        dateAdapter={AdapterDayjs}
+        value="2023-10-01T12:00:00Z"
+        onChange={handleChange}
+        dateParser={customParser}
       />
     );
 
-    const trashIcon = screen.getByRole('button', { name: /trash/i });
-    fireEvent.click(trashIcon);
-
-    expect(mockOnChange).toHaveBeenCalledWith(null);
+    const input = getByLabelText(/date/i);
+    fireEvent.change(input, { target: { value: '02/10/2023 12:00 PM' } });
+    expect(handleChange).toHaveBeenCalledWith('2023-10-02T12:00:00.000Z');
   });
 
-  it('supports custom date parser', () => {
-    const customDateParser = (date: string | Date) =>
-      typeof date === 'string' ? new Date(date) : date;
-
-    render(
+  it('formats date using custom format if provided', () => {
+    const { getByLabelText } = render(
       <TimeFilter
-        label="Select Date"
-        onChange={mockOnChange}
-        value={new Date().toISOString()}
-        dateAdapter={AdapterDayjs}
-        dateParser={customDateParser}
+        value="2023-10-01T12:00:00Z"
+        onChange={() => {}}
+        printAs="YYYY-MM-DD"
       />
     );
 
-    expect(screen.getByText('Select Date')).toBeInTheDocument();
+    const input = getByLabelText(/date/i);
+    expect(input).toHaveValue('2023-10-01');
   });
 });
