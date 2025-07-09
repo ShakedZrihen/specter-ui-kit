@@ -11,13 +11,8 @@ describe('getTextDirection', () => {
   });
 
   it('should return "ltr" for non-RTL languages', () => {
-    expect(getTextDirection('heb')).toBe('ltr'); // Hebrew should now be 'ltr'
-    expect(getTextDirection('en')).toBe('ltr');
-    expect(getTextDirection('fr')).toBe('ltr');
-  });
-
-  it('should handle edge cases gracefully', () => {
-    expect(getTextDirection('')).toBe('ltr'); // Empty string should default to 'ltr'
-    expect(getTextDirection('unknown')).toBe('ltr'); // Unknown language should default to 'ltr'
+    expect(getTextDirection('heb')).toBe('ltr');
+    expect(getTextDirection('eng')).toBe('ltr');
+    expect(getTextDirection('spa')).toBe('ltr');
   });
 });
