@@ -2,14 +2,14 @@ import React from 'react';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { StyledDesktopDateTimePicker } from './StyledDesktopDateTimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 
 interface TimeFilterProps {
   value: string | Date | null;
   defaultValue?: string | Date | null;
   label?: string;
   onChange: (date: string | null) => void;
-  dateParser?: (date: string | Date | null) => dayjs.Dayjs | null;
+  dateParser?: (date: string | Date) => Dayjs;
   printAs?: string;
   dateAdapter?: any;
 }
@@ -19,12 +19,12 @@ const TimeFilter: React.FC<TimeFilterProps> = ({
   defaultValue,
   label,
   onChange,
-  dateParser = (date) => (date ? dayjs(date) : null),
+  dateParser = (date) => dayjs(date),
   printAs = 'DD/MM/YYYY hh:mm A',
   dateAdapter = AdapterDayjs,
 }) => {
-  const parsedValue = dateParser(value);
-  const parsedDefaultValue = dateParser(defaultValue);
+  const parsedValue = value ? dateParser(value) : null;
+  const parsedDefaultValue = defaultValue ? dateParser(defaultValue) : null;
 
   return (
     <LocalizationProvider dateAdapter={dateAdapter}>
