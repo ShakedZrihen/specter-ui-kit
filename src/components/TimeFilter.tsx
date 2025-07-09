@@ -14,19 +14,12 @@ interface TimeFilterProps {
   dateAdapter?: any;
 }
 
-const defaultDateParser = (date: string | Date | null): Dayjs | null => {
-  if (date instanceof Date) {
-    return new Dayjs(date);
-  }
-  return date ? new Dayjs(date) : null;
-};
-
-export const TimeFilter: React.FC<TimeFilterProps> = ({
+const TimeFilter: React.FC<TimeFilterProps> = ({
   value,
   defaultValue,
   label,
   onChange,
-  dateParser = defaultDateParser,
+  dateParser = (date) => (date ? AdapterDayjs().date(date) : null),
   printAs = 'DD/MM/YYYY hh:mm A',
   dateAdapter = AdapterDayjs,
 }) => {
@@ -39,7 +32,7 @@ export const TimeFilter: React.FC<TimeFilterProps> = ({
         label={label}
         value={parsedValue}
         onAccept={(date) => {
-          onChange(date ? new Date(date.toString()).toISOString() : null);
+          onChange(date ? date.toISOString() : null);
         }}
         format={printAs}
         defaultValue={parsedDefaultValue}
@@ -47,3 +40,5 @@ export const TimeFilter: React.FC<TimeFilterProps> = ({
     </LocalizationProvider>
   );
 };
+
+export default TimeFilter;
