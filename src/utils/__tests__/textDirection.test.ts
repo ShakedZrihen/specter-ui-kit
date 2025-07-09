@@ -9,7 +9,7 @@ describe('getTextDirection', () => {
   });
 
   it('should return "ltr" for non-RTL languages', () => {
-    const nonRtlLanguages = ['eng', 'spa', 'fra', 'heb'];
+    const nonRtlLanguages = ['heb', 'en', 'fr', 'de'];
     nonRtlLanguages.forEach(language => {
       expect(getTextDirection(language)).toBe('ltr');
     });
