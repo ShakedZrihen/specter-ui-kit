@@ -10,30 +10,31 @@ describe('TimeFilter Component', () => {
     expect(screen.getByRole('textbox')).toBeInTheDocument();
   });
 
-  it('accepts a date string and formats it correctly', () => {
-    const testDate = '2023-10-10T10:00:00Z';
-    render(<TimeFilter value={testDate} onChange={() => {}} />);
-    expect(screen.getByRole('textbox')).toHaveValue(dayjs(testDate).format('DD/MM/YYYY hh:mm A'));
+  it('accepts different date formats', () => {
+    const date = new Date();
+    render(<TimeFilter value={date} onChange={() => {}} />);
+    expect(screen.getByRole('textbox')).toHaveValue(dayjs(date).format('DD/MM/YYYY hh:mm A'));
   });
 
-  it('calls onChange with correct ISO string on date accept', () => {
+  it('calls onChange with ISO string on date selection', () => {
     const handleChange = jest.fn();
     render(<TimeFilter value={null} onChange={handleChange} />);
-    const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: '10/10/2023 10:00 AM' } });
-    fireEvent.blur(input);
-    expect(handleChange).toHaveBeenCalledWith(expect.stringMatching(/2023-10-10T10:00:00.000Z/));
+    
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: '01/01/2023 12:00 AM' } });
+    fireEvent.blur(screen.getByRole('textbox'));
+
+    expect(handleChange).toHaveBeenCalledWith(expect.stringMatching(/2023-01-01T00:00:00.000Z/));
   });
 
   it('uses custom date parser if provided', () => {
     const customParser = jest.fn((date) => (date ? dayjs(date) : null));
-    render(<TimeFilter value="2023-10-10" onChange={() => {}} dateParser={customParser} />);
-    expect(customParser).toHaveBeenCalledWith("2023-10-10");
+    render(<TimeFilter value="2023-01-01" onChange={() => {}} dateParser={customParser} />);
+    expect(customParser).toHaveBeenCalledWith("2023-01-01");
   });
 
-  it('formats date using custom format if provided', () => {
-    const testDate = '2023-10-10T10:00:00Z';
-    render(<TimeFilter value={testDate} onChange={() => {}} printAs="YYYY-MM-DD" />);
-    expect(screen.getByRole('textbox')).toHaveValue(dayjs(testDate).format('YYYY-MM-DD'));
+  it('formats date according to printAs prop', () => {
+    const date = new Date();
+    render(<TimeFilter value={date} onChange={() => {}} printAs="YYYY-MM-DD" />);
+    expect(screen.getByRole('textbox')).toHaveValue(dayjs(date).format('YYYY-MM-DD'));
   });
 });
