@@ -2,5 +2,5 @@ import { DesktopDateTimePicker } from '@mui/x-date-pickers';
 import { styled } from '@mui/material/styles';
 
 export const StyledDesktopDateTimePicker = styled(DesktopDateTimePicker)({
-  // Add any custom styles here
+  // Add custom styles here if needed
 });
