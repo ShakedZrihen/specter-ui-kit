@@ -11,8 +11,12 @@ describe('getTextDirection', () => {
   });
 
   it('should return "ltr" for non-RTL languages', () => {
-    expect(getTextDirection('heb')).toBe('ltr');
     expect(getTextDirection('eng')).toBe('ltr');
     expect(getTextDirection('spa')).toBe('ltr');
+    expect(getTextDirection('heb')).toBe('ltr'); // Hebrew should now return 'ltr'
+  });
+
+  it('should return "ltr" for unknown languages', () => {
+    expect(getTextDirection('xyz')).toBe('ltr');
   });
 });
