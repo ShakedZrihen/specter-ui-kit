@@ -6,6 +6,4 @@ describe('StyledDesktopDateTimePicker Component', () => {
   it('renders without crashing', () => {
     render(<StyledDesktopDateTimePicker />);
   });
-
-  // Additional tests for custom styles can be added here
 });
