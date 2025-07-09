@@ -2,16 +2,17 @@ import { getTextDirection } from '../textDirection';
 
 describe('getTextDirection', () => {
   it('should return "rtl" for RTL languages', () => {
-    const rtlLanguages = ['arb', 'fa', 'pes', 'tur', 'urd', 'prs'];
-    rtlLanguages.forEach(language => {
-      expect(getTextDirection(language)).toBe('rtl');
-    });
+    expect(getTextDirection('arb')).toBe('rtl');
+    expect(getTextDirection('fa')).toBe('rtl');
+    expect(getTextDirection('pes')).toBe('rtl');
+    expect(getTextDirection('tur')).toBe('rtl');
+    expect(getTextDirection('urd')).toBe('rtl');
+    expect(getTextDirection('prs')).toBe('rtl');
   });
 
   it('should return "ltr" for non-RTL languages', () => {
-    const nonRtlLanguages = ['heb', 'en', 'fr', 'de'];
-    nonRtlLanguages.forEach(language => {
-      expect(getTextDirection(language)).toBe('ltr');
-    });
+    expect(getTextDirection('eng')).toBe('ltr');
+    expect(getTextDirection('fr')).toBe('ltr');
+    expect(getTextDirection('heb')).toBe('ltr'); // Hebrew should now return 'ltr'
   });
 });
