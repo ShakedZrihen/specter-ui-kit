@@ -5,11 +5,11 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
 
 interface TimeFilterProps {
-  value: string | Date | null;
-  defaultValue?: string | Date | null;
+  value: string | Date | Dayjs | null;
+  defaultValue?: string | Date | Dayjs | null;
   label?: string;
   onChange: (date: string | null) => void;
-  dateParser?: (date: string | Date | null) => Dayjs | null;
+  dateParser?: (date: string | Date | Dayjs | null) => Dayjs | null;
   printAs?: string;
   dateAdapter?: any;
 }
