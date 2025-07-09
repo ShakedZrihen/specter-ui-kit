@@ -1,4 +1,6 @@
-const RTL_LANGUAGES = ['arb', 'fa', 'pes', 'tur', 'urd', 'prs'];
+import { RTL_LANGUAGES } from './constants';
+
+export const RTL_LANGUAGES = ['arb', 'fa', 'pes', 'tur', 'urd', 'prs'];
 
 export function getTextDirection(language: string): 'rtl' | 'ltr' {
   return RTL_LANGUAGES.includes(language) ? 'rtl' : 'ltr';
