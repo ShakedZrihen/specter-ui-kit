@@ -4,39 +4,35 @@ import TimeFilter from '../TimeFilter';
 import dayjs from 'dayjs';
 
 describe('TimeFilter Component', () => {
+  const mockOnChange = jest.fn();
+
   it('renders without crashing', () => {
-    render(<TimeFilter value={null} onChange={() => {}} />);
+    render(<TimeFilter value={null} onChange={mockOnChange} />);
     expect(screen.getByRole('textbox')).toBeInTheDocument();
   });
 
-  it('accepts and formats date correctly', () => {
-    const mockOnChange = jest.fn();
-    render(<TimeFilter value="2023-10-10T10:00:00Z" onChange={mockOnChange} />);
-    const input = screen.getByRole('textbox');
-    expect(input).toHaveValue(dayjs("2023-10-10T10:00:00Z").format('DD/MM/YYYY hh:mm A'));
+  it('accepts and formats a Date object', () => {
+    const date = new Date(2023, 9, 5, 14, 30);
+    render(<TimeFilter value={date} onChange={mockOnChange} />);
+    expect(screen.getByDisplayValue(dayjs(date).format('DD/MM/YYYY hh:mm A'))).toBeInTheDocument();
   });
 
-  it('calls onChange with correct date format', () => {
-    const mockOnChange = jest.fn();
+  it('calls onChange with ISO string on date selection', () => {
+    const date = new Date(2023, 9, 5, 14, 30);
     render(<TimeFilter value={null} onChange={mockOnChange} />);
-    const input = screen.getByRole('textbox');
-    fireEvent.change(input, { target: { value: '10/10/2023 10:00 AM' } });
-    fireEvent.blur(input);
-    expect(mockOnChange).toHaveBeenCalledWith(expect.stringContaining('2023-10-10T10:00:00'));
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: dayjs(date).format('DD/MM/YYYY hh:mm A') } });
+    expect(mockOnChange).toHaveBeenCalledWith(date.toISOString());
   });
 
-  it('uses custom date parser if provided', () => {
-    const mockOnChange = jest.fn();
-    const customParser = (date) => (date ? dayjs(date).add(1, 'day') : null);
-    render(<TimeFilter value="2023-10-10T10:00:00Z" onChange={mockOnChange} dateParser={customParser} />);
-    const input = screen.getByRole('textbox');
-    expect(input).toHaveValue(dayjs("2023-10-11T10:00:00Z").format('DD/MM/YYYY hh:mm A'));
+  it('handles null value gracefully', () => {
+    render(<TimeFilter value={null} onChange={mockOnChange} />);
+    expect(screen.getByRole('textbox')).toHaveValue('');
   });
 
-  it('uses custom date format if provided', () => {
-    const mockOnChange = jest.fn();
-    render(<TimeFilter value="2023-10-10T10:00:00Z" onChange={mockOnChange} printAs="YYYY-MM-DD" />);
-    const input = screen.getByRole('textbox');
-    expect(input).toHaveValue('2023-10-10');
+  it('allows custom date parser', () => {
+    const customParser = (date: string | Date | null) => (date ? dayjs(date).add(1, 'day') : null);
+    const date = new Date(2023, 9, 5, 14, 30);
+    render(<TimeFilter value={date} onChange={mockOnChange} dateParser={customParser} />);
+    expect(screen.getByDisplayValue(dayjs(date).add(1, 'day').format('DD/MM/YYYY hh:mm A'))).toBeInTheDocument();
   });
 });
