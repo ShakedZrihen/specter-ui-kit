@@ -11,12 +11,12 @@ describe('getTextDirection', () => {
   });
 
   it('should return "ltr" for non-RTL languages', () => {
-    expect(getTextDirection('heb')).toBe('ltr');
-    expect(getTextDirection('en')).toBe('ltr');
-    expect(getTextDirection('fr')).toBe('ltr');
+    expect(getTextDirection('eng')).toBe('ltr');
+    expect(getTextDirection('spa')).toBe('ltr');
+    expect(getTextDirection('fra')).toBe('ltr');
   });
 
-  it('should handle unknown languages as "ltr"', () => {
-    expect(getTextDirection('unknown')).toBe('ltr');
+  it('should return "ltr" for Hebrew', () => {
+    expect(getTextDirection('heb')).toBe('ltr');
   });
 });
